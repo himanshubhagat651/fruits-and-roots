@@ -279,7 +279,7 @@ export const PinnedBottleJourney: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-brand-amber animate-ping" />
                   <span className="font-black text-brand-950 uppercase tracking-wider">
-                    STAGE {activeStage.step}: {activeStage.title}
+                    {activeStage.step} &bull; {activeStage.title}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -376,14 +376,14 @@ export const PinnedBottleJourney: React.FC = () => {
                   onClick={() => scrollToStage(Math.max(0, currentStageIdx - 1))}
                   className="px-5 py-2.5 rounded-full border border-brand-950/20 bg-white hover:bg-brand-parchment text-xs font-bold text-brand-950 transition active:scale-95 shadow-sm"
                 >
-                  ← PREV STAGE
+                  ← PREV
                 </button>
 
                 <button
                   onClick={() => scrollToStage(Math.min(3, currentStageIdx + 1))}
                   className="px-6 py-2.5 rounded-full bg-brand-950 hover:bg-brand-900 text-brand-cream text-xs font-black transition flex items-center gap-1.5 shadow-lg hover:scale-105 active:scale-95"
                 >
-                  <span>NEXT STAGE →</span>
+                  <span>NEXT →</span>
                 </button>
               </div>
 

@@ -88,7 +88,7 @@ const CHAPTERS: ProcessChapter[] = [
   {
     id: 'cold-press',
     step: '01',
-    code: 'STAGE 01',
+    code: '01',
     badge: 'OUR COLD-PRESS METHOD',
     subBadge: 'SLOW COLD-PRESS',
     headline: 'SLOWLY SQUEEZED COLD.',
@@ -99,7 +99,7 @@ const CHAPTERS: ProcessChapter[] = [
   {
     id: 'farm-soil',
     step: '02',
-    code: 'STAGE 02',
+    code: '02',
     badge: 'FARM QUALITY',
     subBadge: '100% ORGANIC',
     headline: 'GROWN WITH CARE IN INDIAN SOIL.',
@@ -110,7 +110,7 @@ const CHAPTERS: ProcessChapter[] = [
   {
     id: 'freshness',
     step: '03',
-    code: 'STAGE 03',
+    code: '03',
     badge: 'COLD FRESHNESS',
     subBadge: 'NEVER BOILED',
     headline: 'NO BOILED JUICE.',
@@ -121,7 +121,7 @@ const CHAPTERS: ProcessChapter[] = [
   {
     id: 'zero-plastic',
     step: '04',
-    code: 'STAGE 04',
+    code: '04',
     badge: 'REUSABLE GLASS',
     subBadge: '+₹25 / BOTTLE',
     headline: 'ZERO PLASTIC.',
@@ -215,7 +215,7 @@ export const BentoGrid: React.FC = () => {
         </div>
 
         <div className="font-mono text-xs tracking-wider text-brand-gold flex items-center gap-2">
-          <span>CHAPTER {CHAPTERS[activeIdx].step} / 04</span>
+          <span>{CHAPTERS[activeIdx].step} / 04</span>
           <span className="text-white/30">&bull;</span>
           <span className="text-white/80">{CHAPTERS[activeIdx].badge}</span>
         </div>
@@ -588,36 +588,6 @@ export const BentoGrid: React.FC = () => {
         </div>
       </div>
 
-      {/* ------------------------------------------------------------------- */}
-      {/* 3. Jeffrey Blum Right-Hand Vertical Chapter Tracker                 */}
-      {/* ------------------------------------------------------------------- */}
-      <div className="absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col gap-4 font-mono text-xs select-none bg-brand-950/85 backdrop-blur-md px-4 py-5 rounded-2xl border border-white/15 shadow-2xl">
-        {CHAPTERS.map((ch, idx) => {
-          const isActive = activeIdx === idx;
-          return (
-            <button
-              key={ch.id}
-              onClick={() => jumpToSlide(idx)}
-              className="group flex items-center justify-end gap-3 transition-all duration-300 cursor-pointer"
-            >
-              <span
-                className={`text-[11px] font-bold uppercase tracking-widest transition-colors duration-200 ${
-                  isActive ? 'text-brand-amber font-black' : 'text-white/70 group-hover:text-white'
-                }`}
-              >
-                {ch.code}
-              </span>
-              <span
-                className={`h-[2px] transition-all duration-300 ${
-                  isActive
-                    ? 'w-10 bg-brand-amber shadow-[0_0_8px_rgba(200,116,27,0.8)]'
-                    : 'w-4 bg-white/40 group-hover:w-6 group-hover:bg-white/80'
-                }`}
-              />
-            </button>
-          );
-        })}
-      </div>
 
       {/* ------------------------------------------------------------------- */}
       {/* 4. Bottom Sticky Telemetry Ribbon & Progress Bar                    */}
