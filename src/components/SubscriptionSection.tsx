@@ -122,9 +122,10 @@ export const SubscriptionSection: React.FC = () => {
 
   return (
     <section
-      id="cleanses"
+      id="plans"
       className="py-16 sm:py-24 bg-[#FAF6EE] text-brand-950 relative overflow-hidden select-none border-t border-brand-950/10"
     >
+      <span id="cleanses" className="sr-only" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Warm Linen Parchment Inner Frame with Subtle Botanical Glow */}

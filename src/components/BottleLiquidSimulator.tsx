@@ -1094,7 +1094,8 @@ export const BottleLiquidSimulator: React.FC = () => {
   }, [selectedProduct]);
 
   return (
-    <section id="alchemy-journey" className="py-20 sm:py-32 bg-brand-cream text-brand-950 relative overflow-hidden border-t border-b border-brand-950/10 select-none">
+    <section id="our-process" className="py-20 sm:py-32 bg-brand-cream text-brand-950 relative overflow-hidden border-t border-b border-brand-950/10 select-none">
+      <span id="alchemy-journey" className="sr-only" />
       {/* Background Archival Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.09] overflow-hidden select-none z-0">
         <span className="font-display text-[18vw] font-black uppercase tracking-tighter whitespace-nowrap text-[#C8741B] leading-none drop-shadow-xs">
@@ -1109,15 +1110,15 @@ export const BottleLiquidSimulator: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950 text-brand-cream text-xs font-mono font-bold tracking-widest uppercase mb-3">
               <Zap className="w-3.5 h-3.5 text-brand-amber" />
-              <span>ACT II • THE 15,000 PSI HYDRAULIC ALCHEMY</span>
+              <span>OUR PROCESS • 3D BOTTLE LAB &amp; HYDRAULIC ALCHEMY</span>
             </div>
             <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-black text-brand-950 uppercase tracking-tight leading-[0.9]">
-              Witness Hydraulic Cold Extraction.
+              3D Bottle Lab: Hydraulic Cold Extraction
             </h2>
           </div>
 
           <p className="max-w-md text-sm text-brand-700 font-sans leading-relaxed">
-            Select an artisanal formula below. Watch 15,000 pounds per square inch of pure hydraulic pressure compress raw organic harvest into living bioavailable nectar directly in our recyclable borosilicate glass bottle.
+            Explore our interactive 3D Bottle Lab and raw hydraulic extraction process. Watch 15,000 PSI of pure cold force press organic harvest into living bioavailable juice at 2.2°C, preserved unpasteurised in recyclable borosilicate glass.
           </p>
         </div>
 

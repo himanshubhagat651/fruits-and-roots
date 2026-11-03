@@ -4,7 +4,7 @@ import { playPopSound, playChimeSound, toggleSound } from '../utils/audio';
 import { ShoppingBag, Sparkles, MapPin, Search, Menu, X, ShieldCheck, Volume2, VolumeX, ArrowRight } from 'lucide-react';
 
 export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen }) => {
-  const { itemCount, subtotal, openCart, openQuiz, boxItems, boxTarget, setDeliveryMode, deliveryMode, zipCode, setZipCode } = useCart();
+  const { itemCount, subtotal, openCart, boxItems, boxTarget, setDeliveryMode, deliveryMode, zipCode, setZipCode } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showLocationModal, setShowLocationModal] = useState(false);
   const [inputZip, setInputZip] = useState(zipCode);
@@ -64,60 +64,35 @@ export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen })
           </div>
 
           {/* Center Navigation Links (Desktop) */}
-          <nav className="hidden lg:flex items-center gap-7 text-xs font-mono font-bold tracking-wider uppercase text-brand-900">
+          <nav className="hidden lg:flex items-center gap-9 text-xs font-mono font-bold tracking-wider uppercase text-brand-900">
             <a
               href="#catalog"
               onClick={() => playPopSound()}
               className="hover:text-brand-amber transition-colors"
             >
-              THE MENU
+              SHOP JUICES
             </a>
             <a
-              href="#alchemy-journey"
+              href="#our-process"
               onClick={() => playPopSound()}
               className="hover:text-brand-amber transition-colors"
             >
-              3D BOTTLE LAB
+              OUR PROCESS
             </a>
             <a
-              href="#botanical-vault"
+              href="#about-us"
               onClick={() => playPopSound()}
               className="hover:text-brand-amber transition-colors"
             >
-              BOTANICAL VAULT
+              ABOUT US
             </a>
             <a
-              href="#horaires"
-              onClick={() => playPopSound()}
-              className="hover:text-[#8A1521] text-[#8A1521] font-black transition-colors flex items-center gap-1.5"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#C8741B] animate-pulse" />
-              <span>TIMINGS</span>
-            </a>
-            <a
-              href="#cleanses"
+              href="#plans"
               onClick={() => playPopSound()}
               className="hover:text-brand-amber transition-colors"
             >
-              CLEANSE PLANS
+              PLANS
             </a>
-            <a
-              href="#craft-faq"
-              onClick={() => playPopSound()}
-              className="hover:text-brand-amber transition-colors"
-            >
-              CRAFT FAQ
-            </a>
-            <button
-              onClick={() => {
-                openQuiz();
-                playPopSound();
-              }}
-              className="flex items-center gap-1.5 text-brand-moss hover:text-brand-amber transition-colors group"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-brand-gold group-hover:rotate-12 transition-transform" />
-              <span>FLAVOUR QUIZ</span>
-            </button>
           </nav>
 
           {/* Right Action Bar */}
@@ -191,46 +166,43 @@ export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen })
             <nav className="flex flex-col space-y-3 text-brand-900">
               <a
                 href="#catalog"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  playPopSound();
+                }}
                 className="py-2 border-b border-brand-950/10 hover:text-brand-amber"
               >
-                THE MENU
+                SHOP JUICES
               </a>
               <a
-                href="#alchemy-journey"
-                onClick={() => setMobileMenuOpen(false)}
+                href="#our-process"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  playPopSound();
+                }}
                 className="py-2 border-b border-brand-950/10 hover:text-brand-amber"
               >
-                3D BOTTLE LAB
+                OUR PROCESS
               </a>
               <a
-                href="#botanical-vault"
-                onClick={() => setMobileMenuOpen(false)}
+                href="#about-us"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  playPopSound();
+                }}
                 className="py-2 border-b border-brand-950/10 hover:text-brand-amber"
               >
-                BOTANICAL VAULT
+                ABOUT US
               </a>
               <a
-                href="#horaires"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-brand-950/10 text-[#8A1521] font-black flex items-center gap-2"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#C8741B]" />
-                <span>PRESS ROOM TIMINGS</span>
-              </a>
-              <a
-                href="#cleanses"
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-2 border-b border-brand-950/10 hover:text-brand-amber"
-              >
-                CLEANSE PLANS
-              </a>
-              <a
-                href="#craft-faq"
-                onClick={() => setMobileMenuOpen(false)}
+                href="#plans"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  playPopSound();
+                }}
                 className="py-2 hover:text-brand-amber"
               >
-                CRAFT FAQ
+                PLANS
               </a>
             </nav>
 
@@ -238,18 +210,8 @@ export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen })
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  openQuiz();
-                }}
-                className="w-full py-3 rounded-xl bg-brand-sand/30 text-brand-950 font-bold flex items-center justify-center gap-2"
-              >
-                <Sparkles className="w-4 h-4 text-brand-amber" />
-                <span>TAKE FLAVOUR QUIZ</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
                   setShowLocationModal(true);
+                  playPopSound();
                 }}
                 className="w-full py-3 rounded-xl bg-white border border-brand-950/15 text-brand-950 font-bold flex items-center justify-center gap-2"
               >

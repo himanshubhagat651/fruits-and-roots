@@ -7,7 +7,6 @@ import { playPopSound, playChimeSound } from '../utils/audio';
 import { ArrowRight, Sparkles, ShieldCheck, RotateCcw, BookOpen } from 'lucide-react';
 
 export const Hero: React.FC = () => {
-  const { openQuiz } = useCart();
   const heroProducts = PRODUCTS.slice(0, 5);
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -110,23 +109,13 @@ export const Hero: React.FC = () => {
           </a>
 
           <a
-            href="#cleanses"
+            href="#plans"
             onClick={() => playPopSound()}
             className="w-full sm:w-auto px-9 py-4 rounded-full bg-brand-950 hover:bg-brand-900 text-brand-cream font-mono font-black text-xs tracking-widest uppercase transition-all duration-300 shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
           >
             <Sparkles className="w-4 h-4 text-brand-amber" />
             <span>CLEANSE PLANS (SAVE 15%)</span>
           </a>
-
-          <button
-            onClick={() => {
-              openQuiz();
-              playPopSound();
-            }}
-            className="text-xs font-mono font-bold text-brand-900 hover:text-brand-amber uppercase tracking-wider underline underline-offset-4 py-2"
-          >
-            Take Flavour Quiz &rarr;
-          </button>
         </div>
       </div>
 

@@ -49,11 +49,12 @@ export const HorairesSchedule: React.FC = () => {
 
   return (
     <section
-      id="horaires"
+      id="about-us"
       ref={containerRef}
       onMouseMove={handleMouseMove}
       className="relative bg-[#F2EADF] text-[#8A1521] overflow-hidden select-none"
     >
+      <span id="horaires" className="sr-only" />
       {/* 1. Bar Topas Signature Scalloped Awning Top Border */}
       <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none z-20 pointer-events-none">
         <svg
@@ -69,31 +70,31 @@ export const HorairesSchedule: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-20 sm:pb-28 relative z-10">
         
-        {/* 2. Top Header Navigation Bar (Direct Bar Topas Layout) */}
+        {/* 2. Top Header Navigation Bar */}
         <div className="flex items-center justify-between pb-10 sm:pb-14">
           
           {/* Oval Sticker Badge: BANDRA WEST / LIVING LAB */}
           <div className="relative group cursor-pointer" onClick={playPopSound}>
             <div className="px-5 py-2.5 rounded-full bg-[#FAF6EE] text-[#8A1521] border-2 border-[#8A1521]/15 shadow-md flex items-center gap-2 -rotate-3 group-hover:rotate-0 transition-transform duration-300">
               <span className="font-display font-black text-xs sm:text-sm uppercase tracking-wider">
-                BANDRA WEST &bull; LIVING LAB
+                MUMBAI DISPENSARY &bull; BANDRA WEST
               </span>
             </div>
           </div>
 
-          {/* Center Burgundy Capsule Badge (Matching MER DÈS 18H30) */}
+          {/* Center Burgundy Capsule Badge */}
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#8A1521] text-white font-mono text-[11px] sm:text-xs font-bold tracking-wider uppercase shadow-md">
             <span className="w-2.5 h-2.5 rounded-full bg-[#C8741B] animate-pulse" />
-            <span>DAILY FROM 6:30 A.M. IST</span>
+            <span>OPEN DAILY FROM 6:30 A.M. IST</span>
           </div>
 
-          {/* Right Pill Link (Matching BAR LE TOPAZE ↗) */}
+          {/* Right Pill Link */}
           <a
             href="#catalog"
             onClick={playPopSound}
             className="hidden sm:inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white text-[#8A1521] border border-[#8A1521]/20 font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#8A1521] hover:text-white transition-all shadow-xs hover:scale-105 active:scale-95"
           >
-            <span>DISPENSARY MENU</span>
+            <span>VIEW JUICE MENU</span>
             <span className="text-sm font-sans font-bold">↗</span>
           </a>
         </div>
@@ -132,66 +133,84 @@ export const HorairesSchedule: React.FC = () => {
 
               <div className="space-y-0.5">
                 <span className="text-xs sm:text-sm font-display font-black uppercase tracking-[0.2em] text-[#C8741B] block">
-                  THE PRESS ROOM IS OPEN
+                  THE APOTHECARY &amp; PRESS ROOM IS OPEN
                 </span>
                 <span className="text-[10px] font-mono font-bold text-[#8A1521]/80 block">
-                  BANDRA WEST, MUMBAI &bull; {isCurrentlyOpen ? '🟢 LIVE PRESSING ACTIVE' : '🟡 OVERNIGHT COLD CELL'}
+                  14TH ROAD, BANDRA WEST, MUMBAI &bull; {isCurrentlyOpen ? '🟢 LIVE PRESSING ACTIVE' : '🟡 OVERNIGHT COLD CELL'}
                 </span>
               </div>
             </div>
 
-            {/* Giant Display Headline: TIMINGS */}
-            <h2 className="font-display text-6xl sm:text-8xl md:text-9xl lg:text-[7.5rem] font-black text-[#8A1521] tracking-tight uppercase leading-[0.85] drop-shadow-xs">
-              TIMINGS
-            </h2>
+            {/* Display Headline: ABOUT US & TIMINGS */}
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#8A1521]/10 text-[#8A1521] text-xs font-mono font-bold tracking-widest uppercase">
+                <span>OUR STORY &amp; DISPENSARY</span>
+              </div>
+              <h2 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black text-[#8A1521] tracking-tight uppercase leading-[0.85] drop-shadow-xs">
+                ABOUT US
+              </h2>
+              <p className="font-display text-xl sm:text-3xl text-[#C8741B] font-black uppercase tracking-tight">
+                &amp; DISPENSARY TIMINGS
+              </p>
+            </div>
+
+            {/* Editorial Story Blurb */}
+            <div className="bg-[#FAF6EE] p-5 sm:p-6 rounded-3xl border-2 border-[#8A1521]/15 shadow-sm space-y-2">
+              <h3 className="font-display font-black text-sm sm:text-base text-[#8A1521] uppercase tracking-wide">
+                Born in Mumbai. Crafted from Pure Indian Soil.
+              </h3>
+              <p className="text-xs sm:text-sm text-[#8A1521]/90 font-sans leading-relaxed">
+                Founded in Bandra West, <strong className="font-bold text-[#8A1521]">Fruits &amp; Roots</strong> crafts India’s cleanest raw cold-pressed botanicals. Every morning before dawn, we receive organic harvest from Nashik and Sahyadri orchards, press cold at 2.2°C under 15,000 PSI hydraulic pressure, and bottle unpasteurised living juices with zero heat, zero preservatives, and zero added sugar.
+              </p>
+            </div>
 
             {/* Timings List */}
-            <div className="space-y-6 pt-2">
+            <div className="space-y-5 pt-1">
               
-              {/* Slot 1: DAILY SUNRISE PRESS / COLD EXTRACTION */}
+              {/* Slot 1: DAILY FRESH PRESS */}
               <div className="space-y-1">
-                <span className="text-sm sm:text-base font-display font-black text-[#C8741B] uppercase tracking-wider block">
-                  DAILY SUNRISE PRESS &bull; FRESH DISPATCH
+                <span className="text-xs sm:text-sm font-display font-black text-[#C8741B] uppercase tracking-wider block">
+                  DAILY FRESH PRESS &bull; MORNING TO NIGHT DISPATCH
                 </span>
-                <div className="font-display font-black text-4xl sm:text-6xl md:text-7xl text-[#8A1521] tracking-tight flex items-center gap-3 sm:gap-5 flex-wrap">
-                  <span>6:30 P.M</span>
-                  <span className="text-3xl sm:text-5xl text-[#C8741B] font-light">→</span>
+                <div className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-[#8A1521] tracking-tight flex items-center gap-3 sm:gap-5 flex-wrap">
+                  <span>6:30 A.M</span>
+                  <span className="text-2xl sm:text-4xl text-[#C8741B] font-light">→</span>
                   <span>10:30 P.M</span>
                 </div>
               </div>
 
               {/* Slot 2: FRI & WEEKENDS with Circle-Ring Arrow */}
               <div className="space-y-1">
-                <span className="text-sm sm:text-base font-display font-black text-[#C8741B] uppercase tracking-wider block">
-                  FRI TO SUN &bull; WEEKEND RESET BATCH
+                <span className="text-xs sm:text-sm font-display font-black text-[#C8741B] uppercase tracking-wider block">
+                  FRI TO SUN &bull; WEEKEND CLEANSE &amp; DETOX BATCH
                 </span>
-                <div className="font-display font-black text-4xl sm:text-6xl md:text-7xl text-[#8A1521] tracking-tight flex items-center gap-3 sm:gap-5 flex-wrap">
-                  <span>5:00 P.M</span>
-                  {/* Signature Arrow with Circle Ring on Shaft (Direct Bar Topas Reference) */}
+                <div className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-[#8A1521] tracking-tight flex items-center gap-3 sm:gap-5 flex-wrap">
+                  <span>6:00 A.M</span>
+                  {/* Signature Arrow with Circle Ring on Shaft */}
                   <span className="inline-flex items-center text-[#C8741B]">
                     <span className="w-8 sm:w-16 h-1 bg-[#C8741B] inline-block" />
                     <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 sm:border-3 border-[#C8741B] bg-[#FAF6EE] inline-block -mx-1 z-10" />
                     <span className="w-8 sm:w-14 h-1 bg-[#C8741B] inline-block" />
                     <span className="text-2xl sm:text-4xl -ml-2 font-bold leading-none">▶</span>
                   </span>
-                  <span>10:30 P.M</span>
+                  <span>11:00 P.M</span>
                 </div>
               </div>
 
             </div>
 
             {/* Handwritten Signature Script: The Taste of Pure Goodness */}
-            <div className="pt-4 sm:pt-6">
+            <div className="pt-2 sm:pt-4">
               <div
                 onClick={triggerToast}
                 className="inline-block group cursor-pointer"
                 title="Click to salute living vitality"
               >
-                <p className="font-script text-5xl sm:text-7xl md:text-8xl text-[#C8741B] -rotate-4 group-hover:rotate-0 transition-transform duration-300 drop-shadow-sm select-none">
+                <p className="font-script text-4xl sm:text-6xl md:text-7xl text-[#C8741B] -rotate-3 group-hover:rotate-0 transition-transform duration-300 drop-shadow-sm select-none">
                   The Taste of Pure Goodness
                 </p>
                 <span className="font-mono text-xs text-[#8A1521]/75 font-bold uppercase tracking-widest block pt-1">
-                  &mdash; Pure living raw earth &bull; Handcrafted in Mumbai
+                  &mdash; Shuddh Living Botanicals &bull; Handcrafted Daily in Mumbai
                 </span>
               </div>
             </div>

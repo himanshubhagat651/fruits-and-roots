@@ -24,7 +24,6 @@ import { CraftFaqAccordion } from './components/CraftFaqAccordion';
 import { ReviewsSection } from './components/ReviewsSection';
 import { Footer } from './components/Footer';
 import { ProductDetailModal } from './components/ProductDetailModal';
-import { JuiceQuizModal } from './components/JuiceQuizModal';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { SearchModal } from './components/SearchModal';
@@ -173,7 +172,6 @@ const MainApp: React.FC = () => {
 
       {/* Global Interactive Modals & Drawers */}
       <ProductDetailModal />
-      <JuiceQuizModal />
       <CartDrawer />
       <CheckoutModal />
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
