@@ -179,15 +179,24 @@ export const BentoGrid: React.FC = () => {
   // Jump to specific slide on indicator click
   const jumpToSlide = (idx: number) => {
     playPopSound();
+    const clampedIdx = Math.max(0, Math.min(CHAPTERS.length - 1, idx));
+    setActiveIdx(clampedIdx);
+    setScrollProgress(clampedIdx / (CHAPTERS.length - 1));
+
     if (!containerRef.current) return;
     const container = containerRef.current;
     const start = container.offsetTop;
     const totalDistance = window.innerWidth * 3.0;
-    const targetScroll = start + (idx / (CHAPTERS.length - 1)) * totalDistance;
-    window.scrollTo({
-      top: targetScroll,
-      behavior: 'smooth',
-    });
+    const targetScroll = start + (clampedIdx / (CHAPTERS.length - 1)) * totalDistance;
+
+    if ((window as any).__lenis) {
+      (window as any).__lenis.scrollTo(targetScroll, { duration: 0.8 });
+    } else {
+      window.scrollTo({
+        top: targetScroll,
+        behavior: 'smooth',
+      });
+    }
   };
 
   return (

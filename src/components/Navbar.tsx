@@ -58,6 +58,20 @@ export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen })
     if (active) playPopSound();
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+    e.preventDefault();
+    playPopSound();
+    setMobileMenuOpen(false);
+    const el = document.querySelector(hash);
+    if (el) {
+      if ((window as any).__lenis) {
+        (window as any).__lenis.scrollTo(el, { duration: 0.9, offset: -10 });
+      } else {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <>
       {/* Main Glassmorphic Sticky Header */}
@@ -100,28 +114,28 @@ export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen })
           <nav className="hidden lg:flex items-center gap-9 text-xs font-mono font-bold tracking-wider uppercase text-brand-900">
             <a
               href="#catalog"
-              onClick={() => playPopSound()}
+              onClick={(e) => handleNavClick(e, '#catalog')}
               className="hover:text-brand-amber transition-colors"
             >
               SHOP JUICES
             </a>
             <a
               href="#our-process"
-              onClick={() => playPopSound()}
+              onClick={(e) => handleNavClick(e, '#our-process')}
               className="hover:text-brand-amber transition-colors"
             >
               OUR PROCESS
             </a>
             <a
               href="#about-us"
-              onClick={() => playPopSound()}
+              onClick={(e) => handleNavClick(e, '#about-us')}
               className="hover:text-brand-amber transition-colors"
             >
               ABOUT US
             </a>
             <a
               href="#plans"
-              onClick={() => playPopSound()}
+              onClick={(e) => handleNavClick(e, '#plans')}
               className="hover:text-brand-amber transition-colors"
             >
               PLANS
@@ -199,40 +213,28 @@ export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen })
             <nav className="flex flex-col space-y-3 text-brand-900">
               <a
                 href="#catalog"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  playPopSound();
-                }}
+                onClick={(e) => handleNavClick(e, '#catalog')}
                 className="py-2 border-b border-brand-950/10 hover:text-brand-amber"
               >
                 SHOP JUICES
               </a>
               <a
                 href="#our-process"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  playPopSound();
-                }}
+                onClick={(e) => handleNavClick(e, '#our-process')}
                 className="py-2 border-b border-brand-950/10 hover:text-brand-amber"
               >
                 OUR PROCESS
               </a>
               <a
                 href="#about-us"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  playPopSound();
-                }}
+                onClick={(e) => handleNavClick(e, '#about-us')}
                 className="py-2 border-b border-brand-950/10 hover:text-brand-amber"
               >
                 ABOUT US
               </a>
               <a
                 href="#plans"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  playPopSound();
-                }}
+                onClick={(e) => handleNavClick(e, '#plans')}
                 className="py-2 hover:text-brand-amber"
               >
                 PLANS

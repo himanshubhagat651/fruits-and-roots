@@ -35,6 +35,11 @@ const MainApp: React.FC = () => {
 
   // Initialize Lenis Smooth Momentum Scrolling synchronized with GSAP ScrollTrigger
   useEffect(() => {
+    // Disable automatic browser scroll restoration to prevent corrupted ScrollTrigger measurements on refresh
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
     const lenis = new Lenis({
       duration: 0.9,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -43,6 +48,8 @@ const MainApp: React.FC = () => {
       smoothWheel: true,
       touchMultiplier: 1.0,
     });
+
+    (window as any).__lenis = lenis;
 
     // Synchronize Lenis scroll with GSAP ScrollTrigger & update scroll progress bar
     const progressEl = document.getElementById('global-scroll-progress');
@@ -61,15 +68,48 @@ const MainApp: React.FC = () => {
     };
 
     gsap.ticker.add(tickerCb);
-    // Smooth frame pacing with GSAP lag smoothing (prevents stuttering on frame drops)
-    gsap.ticker.lagSmoothing(500, 33);
+    // Strict zero-lag smoothing for 1:1 sync between Lenis and ScrollTrigger
+    gsap.ticker.lagSmoothing(0);
+
+    // Refresh ScrollTrigger calculations once layout, fonts, and images settle
+    const refreshAll = () => {
+      ScrollTrigger.refresh();
+      lenis.resize();
+    };
+
+    window.addEventListener('resize', refreshAll);
+    if (document.fonts) {
+      document.fonts.ready.then(refreshAll);
+    }
+
+    const t1 = setTimeout(refreshAll, 200);
+    const t2 = setTimeout(refreshAll, 600);
+    const t3 = setTimeout(refreshAll, 1200);
 
     return () => {
+      window.removeEventListener('resize', refreshAll);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
       gsap.ticker.remove(tickerCb);
       lenis.destroy();
+      (window as any).__lenis = null;
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
+
+  // Recalculate ScrollTrigger once intro preloader completes and AnnouncementBar mounts
+  useEffect(() => {
+    if (isPreloaded) {
+      const timer = setTimeout(() => {
+        ScrollTrigger.refresh();
+        if ((window as any).__lenis) {
+          (window as any).__lenis.resize();
+        }
+      }, 120);
+      return () => clearTimeout(timer);
+    }
+  }, [isPreloaded]);
 
   return (
     <div className="min-h-screen flex flex-col relative selection:bg-brand-amber/25 selection:text-brand-950">

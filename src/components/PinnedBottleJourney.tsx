@@ -100,12 +100,14 @@ export const PinnedBottleJourney: React.FC = () => {
         start: 'top top',
         end: 'bottom bottom',
         scrub: 0.6,
+        invalidateOnRefresh: true,
+        fastScrollEnd: true,
         onUpdate: (self) => {
           const p = self.progress;
           setScrubProgress(p);
 
           // Calculate stage (0, 1, 2, 3) with clean thresholds
-          const stage = Math.min(3, Math.floor(p * 3.99));
+          const stage = Math.min(3, Math.max(0, Math.floor(p * 3.99)));
           if (stage !== currentStageIdxRef.current) {
             currentStageIdxRef.current = stage;
             setCurrentStageIdx(stage);
@@ -113,7 +115,7 @@ export const PinnedBottleJourney: React.FC = () => {
 
           // Smooth continuous liquid interpolation across the scroll (quantized to avoid frame drops)
           const liquid = Math.round(25 + p * (96 - 25));
-          if (Math.abs(liquid - lastLiquidRef.current) >= 2) {
+          if (Math.abs(liquid - lastLiquidRef.current) >= 1) {
             lastLiquidRef.current = liquid;
             setInterpolatedLiquid(liquid);
           }
@@ -124,14 +126,29 @@ export const PinnedBottleJourney: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
-  // Smooth scroll jump to exact stage when clicking stage pill
+  // Smooth jump to exact stage when clicking stage pill or next/prev
   const scrollToStage = (idx: number) => {
-    if (!containerRef.current) return;
+    const clampedIdx = Math.max(0, Math.min(3, idx));
     playPopSound();
-    const containerTop = containerRef.current.getBoundingClientRect().top + window.scrollY;
+    setCurrentStageIdx(clampedIdx);
+    currentStageIdxRef.current = clampedIdx;
+
+    const stageLiquids = [25, 55, 85, 96];
+    setInterpolatedLiquid(stageLiquids[clampedIdx]);
+    setScrubProgress(clampedIdx / 3);
+
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const currentScroll = window.scrollY || document.documentElement.scrollTop;
+    const containerTop = rect.top + currentScroll;
     const containerHeight = containerRef.current.offsetHeight - window.innerHeight;
-    const targetScroll = containerTop + (idx / 3.99) * containerHeight + 10;
-    window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    const targetScroll = containerTop + (clampedIdx / 3.0) * containerHeight + 10;
+
+    if ((window as any).__lenis) {
+      (window as any).__lenis.scrollTo(targetScroll, { duration: 0.8 });
+    } else {
+      window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    }
   };
 
   return (
