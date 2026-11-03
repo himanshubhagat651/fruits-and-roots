@@ -117,8 +117,8 @@ export const ReviewsSection: React.FC = () => {
           alt="Fresh Organic Botanical Harvest Macro Background"
           className="w-full h-full object-cover object-center scale-105"
         />
-        {/* Warm Golden/Amber Dark Gradient Overlay for Maximum Card Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#171412]/85 via-[#171412]/75 to-[#171412]/90 backdrop-blur-[2px]" />
+        {/* Warm Earthy Botanical Harvest Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#241712]/88 via-[#1A110D]/80 to-[#261510]/92 backdrop-blur-[2px]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-16 sm:pb-24">

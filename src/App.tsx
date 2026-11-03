@@ -130,7 +130,7 @@ const MainApp: React.FC = () => {
           quote="No fast blades. No heat. Just pure, slow cold-pressing. Regular juicers use spinning blades that heat up and ruin fresh vitamins. We gently squeeze whole fresh fruits and greens cold—keeping every drop naturally fresh, delicious, and full of honest nutrition."
           author="GENTLE COLD-PRESS METHOD"
           subtext="ZERO HEAT • 100% PURE JUICE • NOTHING ARTIFICIAL"
-          theme="dark"
+          theme="terracotta"
         />
 
         {/* ACT I /01 • Sourced from Organic Indian Farms */}
