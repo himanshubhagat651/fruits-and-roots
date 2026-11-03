@@ -921,11 +921,11 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     const aspect = width / height;
     // 2. Camera: Aspect-ratio aware framing guaranteeing zero side clipping on all screens
     const camera = new THREE.PerspectiveCamera(35, aspect, 0.1, 100);
-    const minW = isMobile ? 3.8 : 4.4;
+    const minW = isMobile ? 4.6 : 5.2;
     const reqZ = (minW * 0.5) / (Math.tan(THREE.MathUtils.degToRad(17.5)) * Math.min(aspect, 1.35));
-    const cameraZ = Math.max(5.5, Math.min(7.2, reqZ));
-    camera.position.set(0, 0.35, cameraZ);
-    camera.lookAt(0, 0.05, 0);
+    const cameraZ = Math.max(6.8, Math.min(8.2, reqZ));
+    camera.position.set(0, 0.32, cameraZ);
+    camera.lookAt(0, -0.05, 0);
 
     // 3. Renderer with hardware optimization
     const renderer = new THREE.WebGLRenderer({
@@ -1016,7 +1016,8 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
 
     // 6. Stage Group (Holds Glass + Fruits beside it)
     const stageGroup = new THREE.Group();
-    stageGroup.position.set(-0.25, -0.05, 0); // Balanced central framing preventing side clipping
+    stageGroup.position.set(-0.25, -0.15, 0); // Balanced central framing preventing side clipping
+    stageGroup.scale.set(0.85, 0.85, 0.85); // Refined elegant scale: visible, realistic, never overflows viewport
     scene.add(stageGroup);
     stageGroupRef.current = stageGroup;
 
@@ -1408,9 +1409,9 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
       const isMob = w < 640;
       const asp = w / h;
       camera.aspect = asp;
-      const minW = isMob ? 3.8 : 4.4;
+      const minW = isMob ? 4.6 : 5.2;
       const reqZ = (minW * 0.5) / (Math.tan(THREE.MathUtils.degToRad(17.5)) * Math.min(asp, 1.35));
-      camera.position.z = Math.max(5.5, Math.min(7.4, reqZ));
+      camera.position.z = Math.max(6.8, Math.min(8.2, reqZ));
       if (stageGroupRef.current) {
         stageGroupRef.current.position.x = isMob ? -0.15 : -0.25;
       }
@@ -1438,7 +1439,7 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     <div
       ref={mountRef}
       onClick={handleSwirl}
-      className="w-full h-full min-h-[520px] sm:min-h-[600px] lg:min-h-[660px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+      className="w-full h-full min-h-[440px] sm:min-h-[500px] lg:min-h-[540px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
     />
   );
 };

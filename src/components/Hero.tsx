@@ -91,9 +91,9 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Real 3D WebGL Juice Glass & Fresh Fruits Canvas Stage */}
-        <div className="relative max-w-4xl mx-auto flex flex-col items-center justify-center min-h-[520px] sm:min-h-[600px] lg:min-h-[660px]">
+        <div className="relative max-w-3xl mx-auto flex flex-col items-center justify-center min-h-[440px] sm:min-h-[500px] lg:min-h-[540px]">
           
-          <div className="w-full h-full min-h-[520px] sm:min-h-[600px] lg:min-h-[660px] relative z-10">
+          <div className="w-full h-full min-h-[440px] sm:min-h-[500px] lg:min-h-[540px] relative z-10">
             <ThreeJuiceGlassCanvas
               colorHex={activeHero.colorHex}
               flavorIndex={activeIdx}
