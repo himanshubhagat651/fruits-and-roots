@@ -886,6 +886,7 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
   const previousMousePositionRef = useRef({ x: 0, y: 0 });
   const rotationTargetRef = useRef({ x: 0.12, y: -0.2 });
   const rotationCurrentRef = useRef({ x: 0.12, y: -0.2 });
+  const dragVelocityRef = useRef({ x: 0, y: 0 });
   const sloshAngleRef = useRef({ x: 0, z: 0 });
   const sloshVelRef = useRef({ x: 0, z: 0 });
   const effervescenceRef = useRef(1.0);
@@ -1202,10 +1203,14 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     fruitGroupsRef.current = fruitGroups;
 
     // ---------------------------------------------------------
-    // Event Handlers for Drag & Inertia
+    // Event Handlers for Drag & Inertia (Full 360° Smooth Rotation)
     // ---------------------------------------------------------
+    let dragDistance = 0;
+
     const onMouseDown = (e: MouseEvent) => {
       isDraggingRef.current = true;
+      dragDistance = 0;
+      dragVelocityRef.current = { x: 0, y: 0 };
       previousMousePositionRef.current = { x: e.clientX, y: e.clientY };
     };
 
@@ -1213,16 +1218,20 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
       if (!isDraggingRef.current) return;
       const deltaX = e.clientX - previousMousePositionRef.current.x;
       const deltaY = e.clientY - previousMousePositionRef.current.y;
+      dragDistance += Math.hypot(deltaX, deltaY);
 
-      // Restrain yaw to [-0.85, 0.85] so rotation never pushes fruits past canvas bounds
-      rotationTargetRef.current.y = Math.max(
-        -0.85,
-        Math.min(0.85, rotationTargetRef.current.y + deltaX * 0.007)
-      );
+      // Unconstrained 360° smooth horizontal rotation around Y axis
+      const speedY = deltaX * 0.009;
+      rotationTargetRef.current.y += speedY;
+      dragVelocityRef.current.y = speedY;
+
+      // Comfortable vertical tilt clamp so glass stays naturally framed
+      const speedX = deltaY * 0.005;
       rotationTargetRef.current.x = Math.max(
-        -0.15,
-        Math.min(0.35, rotationTargetRef.current.x + deltaY * 0.005)
+        -0.25,
+        Math.min(0.45, rotationTargetRef.current.x + speedX)
       );
+      dragVelocityRef.current.x = speedX;
 
       sloshVelRef.current.x += deltaX * 0.003;
       sloshVelRef.current.z += deltaY * 0.003;
@@ -1232,11 +1241,17 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
 
     const onMouseUp = () => {
       isDraggingRef.current = false;
+      // If it was a quick click rather than a drag, trigger swirl splash
+      if (dragDistance < 6) {
+        handleSwirl();
+      }
     };
 
     const onTouchStart = (e: TouchEvent) => {
       if (e.touches.length === 1) {
         isDraggingRef.current = true;
+        dragDistance = 0;
+        dragVelocityRef.current = { x: 0, y: 0 };
         previousMousePositionRef.current = {
           x: e.touches[0].clientX,
           y: e.touches[0].clientY,
@@ -1248,16 +1263,19 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
       if (!isDraggingRef.current || e.touches.length !== 1) return;
       const deltaX = e.touches[0].clientX - previousMousePositionRef.current.x;
       const deltaY = e.touches[0].clientY - previousMousePositionRef.current.y;
+      dragDistance += Math.hypot(deltaX, deltaY);
 
-      // Restrain yaw to [-0.85, 0.85] so touch rotation never pushes fruits past canvas bounds
-      rotationTargetRef.current.y = Math.max(
-        -0.85,
-        Math.min(0.85, rotationTargetRef.current.y + deltaX * 0.007)
-      );
+      // Unconstrained 360° touch rotation around Y axis
+      const speedY = deltaX * 0.01;
+      rotationTargetRef.current.y += speedY;
+      dragVelocityRef.current.y = speedY;
+
+      const speedX = deltaY * 0.006;
       rotationTargetRef.current.x = Math.max(
-        -0.15,
-        Math.min(0.35, rotationTargetRef.current.x + deltaY * 0.005)
+        -0.25,
+        Math.min(0.45, rotationTargetRef.current.x + speedX)
       );
+      dragVelocityRef.current.x = speedX;
 
       sloshVelRef.current.x += deltaX * 0.004;
       sloshVelRef.current.z += deltaY * 0.004;
@@ -1270,6 +1288,9 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
 
     const onTouchEnd = () => {
       isDraggingRef.current = false;
+      if (dragDistance < 10) {
+        handleSwirl();
+      }
     };
 
     const domEl = renderer.domElement;
@@ -1315,11 +1336,23 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
         pointLightRef.current.color.copy(currentColorRef.current);
       }
 
-      // Smooth rotation with spring inertia
+      // Smooth rotation with spring inertia & momentum
+      if (!isDraggingRef.current) {
+        // Coast with release momentum
+        rotationTargetRef.current.y += dragVelocityRef.current.y;
+        dragVelocityRef.current.y *= 0.92;
+        dragVelocityRef.current.x *= 0.92;
+
+        // Subtle ambient idle spin when momentum settles
+        if (Math.abs(dragVelocityRef.current.y) < 0.0003) {
+          rotationTargetRef.current.y += delta * 0.15;
+        }
+      }
+
       rotationCurrentRef.current.x +=
-        (rotationTargetRef.current.x - rotationCurrentRef.current.x) * (delta * 6.0);
+        (rotationTargetRef.current.x - rotationCurrentRef.current.x) * Math.min(1, delta * 8.0);
       rotationCurrentRef.current.y +=
-        (rotationTargetRef.current.y - rotationCurrentRef.current.y) * (delta * 6.0);
+        (rotationTargetRef.current.y - rotationCurrentRef.current.y) * Math.min(1, delta * 8.0);
 
       if (stageGroupRef.current) {
         stageGroupRef.current.rotation.x = rotationCurrentRef.current.x;

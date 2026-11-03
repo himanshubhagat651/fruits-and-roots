@@ -438,6 +438,7 @@ export const JourneyBottle3D: React.FC<JourneyBottle3DProps> = ({
   const previousMousePositionRef = useRef({ x: 0, y: 0 });
   const rotationTargetRef = useRef({ x: 0.12, y: 0.35 });
   const rotationCurrentRef = useRef({ x: 0.12, y: 0.35 });
+  const dragVelocityRef = useRef({ x: 0, y: 0 });
   const sloshVelRef = useRef({ x: 0, z: 0 });
 
   const activeColorHex = liquidColor || STAGE_COLORS[stageIdx % STAGE_COLORS.length] || '#FF9F1C';
@@ -749,6 +750,7 @@ export const JourneyBottle3D: React.FC<JourneyBottle3DProps> = ({
     // ---------------------------------------------------------
     const onMouseDown = (e: MouseEvent) => {
       isDraggingRef.current = true;
+      dragVelocityRef.current = { x: 0, y: 0 };
       previousMousePositionRef.current = { x: e.clientX, y: e.clientY };
     };
 
@@ -757,14 +759,18 @@ export const JourneyBottle3D: React.FC<JourneyBottle3DProps> = ({
       const deltaX = e.clientX - previousMousePositionRef.current.x;
       const deltaY = e.clientY - previousMousePositionRef.current.y;
 
-      rotationTargetRef.current.y = Math.max(
-        -0.85,
-        Math.min(0.85, rotationTargetRef.current.y + deltaX * 0.007)
-      );
+      // Unconstrained 360° smooth horizontal rotation around Y axis
+      const speedY = deltaX * 0.009;
+      rotationTargetRef.current.y += speedY;
+      dragVelocityRef.current.y = speedY;
+
+      // Comfortable vertical tilt clamp so glass stays naturally framed
+      const speedX = deltaY * 0.005;
       rotationTargetRef.current.x = Math.max(
-        -0.15,
-        Math.min(0.35, rotationTargetRef.current.x + deltaY * 0.005)
+        -0.25,
+        Math.min(0.45, rotationTargetRef.current.x + speedX)
       );
+      dragVelocityRef.current.x = speedX;
 
       sloshVelRef.current.x += deltaX * 0.003;
       sloshVelRef.current.z += deltaY * 0.003;
@@ -779,6 +785,7 @@ export const JourneyBottle3D: React.FC<JourneyBottle3DProps> = ({
     const onTouchStart = (e: TouchEvent) => {
       if (e.touches.length === 1) {
         isDraggingRef.current = true;
+        dragVelocityRef.current = { x: 0, y: 0 };
         previousMousePositionRef.current = {
           x: e.touches[0].clientX,
           y: e.touches[0].clientY,
@@ -791,14 +798,17 @@ export const JourneyBottle3D: React.FC<JourneyBottle3DProps> = ({
       const deltaX = e.touches[0].clientX - previousMousePositionRef.current.x;
       const deltaY = e.touches[0].clientY - previousMousePositionRef.current.y;
 
-      rotationTargetRef.current.y = Math.max(
-        -0.85,
-        Math.min(0.85, rotationTargetRef.current.y + deltaX * 0.007)
-      );
+      // Unconstrained 360° touch rotation around Y axis
+      const speedY = deltaX * 0.01;
+      rotationTargetRef.current.y += speedY;
+      dragVelocityRef.current.y = speedY;
+
+      const speedX = deltaY * 0.006;
       rotationTargetRef.current.x = Math.max(
-        -0.15,
-        Math.min(0.35, rotationTargetRef.current.x + deltaY * 0.005)
+        -0.25,
+        Math.min(0.45, rotationTargetRef.current.x + speedX)
       );
+      dragVelocityRef.current.x = speedX;
 
       sloshVelRef.current.x += deltaX * 0.004;
       sloshVelRef.current.z += deltaY * 0.004;
@@ -842,11 +852,21 @@ export const JourneyBottle3D: React.FC<JourneyBottle3DProps> = ({
       lastTime = now;
       const time = now * 0.001;
 
-      // 1. Damped rotation inertia
+      // 1. Damped rotation inertia & momentum
+      if (!isDraggingRef.current) {
+        rotationTargetRef.current.y += dragVelocityRef.current.y;
+        dragVelocityRef.current.y *= 0.92;
+        dragVelocityRef.current.x *= 0.92;
+
+        if (Math.abs(dragVelocityRef.current.y) < 0.0003) {
+          rotationTargetRef.current.y += delta * 0.15;
+        }
+      }
+
       rotationCurrentRef.current.x +=
-        (rotationTargetRef.current.x - rotationCurrentRef.current.x) * 0.08;
+        (rotationTargetRef.current.x - rotationCurrentRef.current.x) * Math.min(1, delta * 8.0);
       rotationCurrentRef.current.y +=
-        (rotationTargetRef.current.y - rotationCurrentRef.current.y) * 0.08;
+        (rotationTargetRef.current.y - rotationCurrentRef.current.y) * Math.min(1, delta * 8.0);
 
       if (stageGroupRef.current) {
         stageGroupRef.current.rotation.x = rotationCurrentRef.current.x;
