@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { PRODUCTS } from '../data/products';
 import { playPopSound } from '../utils/audio';
@@ -7,8 +7,6 @@ export const MarqueeTicker: React.FC = () => {
   const { openProductModal } = useCart();
   const track1Ref = useRef<HTMLDivElement>(null);
   const track2Ref = useRef<HTMLDivElement>(null);
-  const lastScrollY = useRef(0);
-  const velocityRef = useRef(1);
 
   // Drag interaction state for manual touch/mouse scrubbing
   const [dragOffset1, setDragOffset1] = useState(0);
@@ -46,59 +44,6 @@ export const MarqueeTicker: React.FC = () => {
   // Quadruple items to guarantee infinite seamless wrap across all ultra-wide & 4K screens
   const repeatedStatements = [...statements, ...statements, ...statements, ...statements];
   const repeatedFormulas = [...formulas, ...formulas, ...formulas, ...formulas];
-
-  // Dynamic velocity on scroll using Web Animations API (smooth 60fps/120fps hardware acceleration)
-  useEffect(() => {
-    let animationFrameId: number;
-    let currentSpeed = 1;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const delta = Math.abs(currentScrollY - lastScrollY.current);
-      lastScrollY.current = currentScrollY;
-
-      velocityRef.current = Math.min(3.5, 1 + delta * 0.04);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    const updateVelocity = () => {
-      currentSpeed += (velocityRef.current - currentSpeed) * 0.08;
-      velocityRef.current += (1 - velocityRef.current) * 0.05;
-
-      // Update Web Animations API playbackRate for silky-smooth motion without CSS animation restarts
-      if (track1Ref.current) {
-        const anims = track1Ref.current.getAnimations();
-        if (anims && anims.length > 0) {
-          anims.forEach((anim) => {
-            anim.playbackRate = currentSpeed;
-          });
-        } else {
-          track1Ref.current.style.setProperty('--ticker-speed', `${28 / currentSpeed}s`);
-        }
-      }
-
-      if (track2Ref.current) {
-        const anims = track2Ref.current.getAnimations();
-        if (anims && anims.length > 0) {
-          anims.forEach((anim) => {
-            anim.playbackRate = currentSpeed;
-          });
-        } else {
-          track2Ref.current.style.setProperty('--ticker-speed', `${32 / currentSpeed}s`);
-        }
-      }
-
-      animationFrameId = requestAnimationFrame(updateVelocity);
-    };
-
-    animationFrameId = requestAnimationFrame(updateVelocity);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
 
   // Track 1 Drag Handlers
   const handlePointerDown1 = (e: React.PointerEvent) => {
@@ -158,7 +103,7 @@ export const MarqueeTicker: React.FC = () => {
   };
 
   return (
-    <section className="py-5 bg-cream-100 border-y border-brand-950/10 overflow-hidden select-none relative z-20 hover-pause">
+    <section className="py-5 bg-cream-100 border-y border-brand-950/10 overflow-hidden select-none relative z-20">
       
       {/* Track 1: Archival Statements (Leftwards Forward Movement, Draggable) */}
       <div

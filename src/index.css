@@ -103,7 +103,8 @@
     display: flex;
     flex-shrink: 0;
     align-items: center;
-    animation: tickerSlideLeft 32s linear infinite;
+    animation: tickerSlideLeft 32s linear infinite !important;
+    animation-play-state: running !important;
     will-change: transform;
   }
 
@@ -111,7 +112,8 @@
     display: flex;
     flex-shrink: 0;
     align-items: center;
-    animation: tickerSlideRight 32s linear infinite;
+    animation: tickerSlideRight 32s linear infinite !important;
+    animation-play-state: running !important;
     will-change: transform;
   }
 
@@ -119,7 +121,8 @@
     display: inline-flex;
     flex-shrink: 0;
     align-items: center;
-    animation: tickerForward var(--ticker-speed, 32s) linear infinite;
+    animation: tickerForward 30s linear infinite !important;
+    animation-play-state: running !important;
     will-change: transform;
   }
 
@@ -127,18 +130,9 @@
     display: inline-flex;
     flex-shrink: 0;
     align-items: center;
-    animation: tickerReverse var(--ticker-speed, 36s) linear infinite;
+    animation: tickerReverse 34s linear infinite !important;
+    animation-play-state: running !important;
     will-change: transform;
-  }
-
-  /* Interactive deceleration / pause on hover */
-  .ticker-wrap:hover .animate-ticker-left,
-  .ticker-wrap:hover .animate-ticker-right,
-  .ticker-wrap:hover .animate-ticker-forward,
-  .ticker-wrap:hover .animate-ticker-reverse,
-  .hover-pause:hover .animate-ticker-forward,
-  .hover-pause:hover .animate-ticker-reverse {
-    animation-play-state: paused;
   }
 
   /* Gentle wave bobbing animation for Bar Tòpas runway cards */
