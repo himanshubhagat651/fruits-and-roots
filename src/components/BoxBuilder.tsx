@@ -50,7 +50,7 @@ export const BoxBuilder: React.FC = () => {
             <span>ACT V • THE CRATE ATELIER (CUSTOM CURATION)</span>
           </div>
           <h2 className="font-display text-4xl sm:text-6xl font-black text-earth-950 uppercase tracking-tight">
-            Curate Your Cleanse Box.
+            Curate Your Daily Juice Box.
           </h2>
           <p className="text-sm sm:text-base text-earth-700 font-normal">
             The tactile ritual of assembling your cold-chain crate. Mix and match fresh cold-pressed tonics, superfood smoothies, and protein elixirs. Enjoy tier savings, free refrigerated courier shipping, and ₹25 circular bottle cashback.

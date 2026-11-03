@@ -65,7 +65,7 @@ export const SubscriptionSection: React.FC = () => {
     const totalPrice = protocol.basePrice * selectedDuration;
     const cleanseProduct: Product = {
       id: `${protocol.program.id}-${selectedDuration}day`,
-      name: `${protocol.program.name} (${selectedDuration}-Day Cleanse Plan)`,
+      name: `${protocol.program.name} (${selectedDuration}-Day Juice Plan)`,
       subname: `${protocol.scriptTitle} Plan`,
       tagline: `${selectedDuration * protocol.program.bottlesPerDay} bottles total • Delivered in refrigerated cold-chain coolers`,
       description: protocol.program.description,
@@ -108,7 +108,7 @@ export const SubscriptionSection: React.FC = () => {
       isSubscription: true,
       quantity: 1,
     });
-    showToast(`Added ${protocol.scriptTitle} (${selectedDuration}-Day Cleanse) to your bag!`);
+    showToast(`Added ${protocol.scriptTitle} (${selectedDuration}-Day Juice Plan) to your bag!`);
   };
 
   return (
@@ -133,7 +133,7 @@ export const SubscriptionSection: React.FC = () => {
             <div className="inline-block transform rotate-[-1.5deg] hover:rotate-0 transition-transform duration-300">
               <div className="bg-white px-6 sm:px-10 py-3 sm:py-4 rounded-2xl sm:rounded-3xl shadow-xl border-2 border-brand-950/10 inline-block">
                 <h2 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#A31D1D] uppercase tracking-tight leading-none drop-shadow-xs">
-                  CHOOSE YOUR FRESH CLEANSE PLAN
+                  CHOOSE YOUR DAILY JUICE PLAN
                 </h2>
               </div>
             </div>

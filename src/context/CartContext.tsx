@@ -223,7 +223,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const bundleProduct: Product = {
       id: `custom-box-${Date.now()}`,
-      name: `Custom ${boxTarget}-Pack Cleanse Box`,
+      name: `Custom ${boxTarget}-Pack Daily Juice Box`,
       subname: 'Curated Cold-Pressed Bundle',
       tagline: `Hand-selected variety: ${boxItems.map((p) => p.name).join(', ')}`,
       description: `Your bespoke curated box featuring: ${boxItems.map((b) => b.name).join(', ')}. Freshly cold-pressed and packed in insulated chilled packaging.`,
@@ -278,13 +278,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setDiscountPercent(15);
       showToast('15% discount applied successfully!');
       return true;
-    } else if (clean === 'CLEANSE20') {
+    } else if (clean === 'CLEANSE20' || clean === 'PLANS20') {
       setPromoCode(clean);
       setDiscountPercent(20);
-      showToast('20% Cleanse discount applied!');
+      showToast('20% Juice Plan discount applied!');
       return true;
     } else {
-      showToast('Invalid promo code. Try "FRESH15" or "CLEANSE20"');
+      showToast('Invalid promo code. Try "FRESH15" or "PLANS20"');
       return false;
     }
   };

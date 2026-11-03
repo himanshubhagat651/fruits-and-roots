@@ -145,7 +145,7 @@ export const Hero: React.FC = () => {
             className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/70 hover:bg-white text-brand-950 font-mono font-bold text-xs tracking-wider uppercase transition-all duration-300 border-2 border-brand-950/20 hover:border-brand-950/40 shadow-xs hover:scale-102 active:scale-98 flex items-center justify-center gap-2 cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5 text-brand-amber" />
-            <span>CLEANSE PLANS (SAVE 15%)</span>
+            <span>DAILY JUICE PLANS (SAVE 15%)</span>
           </a>
         </div>
       </div>

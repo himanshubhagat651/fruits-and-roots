@@ -106,7 +106,7 @@ export const PRODUCTS: Product[] = [
     },
     colorHex: '#3D6847',
     accentColor: '#88D628',
-    badge: 'Cleanse Favourite',
+    badge: 'Daily Favourite',
     image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80',
     rating: 4.8,
     reviewsCount: 512,
@@ -275,7 +275,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'raw-cacao-reishi-bliss',
-    name: 'Pure Celery & Fennel Cleanse',
+    name: 'Pure Celery & Fennel Refresh',
     subname: '100% Raw Cold-Pressed Living Juice',
     tagline: 'High-elevation Himalayan celery stalks, sweet Florence fennel, Kinnaur apple & lime.',
     description: 'Pure digestive hydration with over 1.6 kg of crisp organic celery stalks gently cold-pressed. Packed with natural plant minerals to refresh your body and soothe your stomach.',
@@ -330,9 +330,9 @@ export const PRODUCTS: Product[] = [
   {
     id: 'activated-charcoal-zen',
     name: 'Activated Charcoal Botanical Elixir',
-    subname: 'Cold-Pressed Botanical Cleanse',
+    subname: 'Cold-Pressed Botanical Elixir',
     tagline: 'Steam-activated coconut shell charcoal, Gondhoraj lime, Valencia orange & pure spring water.',
-    description: 'A refreshing midnight-black citrus tonic. Natural coconut charcoal paired with fresh lime and ginger gently cleanses and comforts your stomach.',
+    description: 'A refreshing midnight-black citrus tonic. Natural coconut charcoal paired with fresh lime and ginger gently refreshes and comforts your stomach.',
     category: 'juices',
     price: 275,
     subscriptionPrice: 235,
@@ -375,7 +375,7 @@ export const PRODUCTS: Product[] = [
     },
     colorHex: '#1F2937',
     accentColor: '#C8741B',
-    badge: 'Deep Cleanse',
+    badge: 'Green Reset',
     image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80',
     rating: 4.7,
     reviewsCount: 198
@@ -439,9 +439,9 @@ export const PRODUCTS: Product[] = [
 export const CLEANSE_PROGRAMS: CleanseProgram[] = [
   {
     id: 'cleanse-beginner',
-    name: 'The Gentle Reset Cleanse',
+    name: 'The Gentle Daily Reset Plan',
     level: 'Beginner Gentle',
-    tagline: 'For first-time cleansers or those needing an easy, energising reboot.',
+    tagline: 'For first-time drinkers or those needing an easy, energising reboot.',
     days: 3,
     bottlesPerDay: 6,
     pricePerDay: 1433,
@@ -513,7 +513,7 @@ export const REVIEWS = [
   {
     id: 'rev-3',
     name: 'Rhea Kapoor-Malhotra',
-    role: 'Weekly Cleanse Subscriber',
+    role: 'Weekly Juice Plan Subscriber',
     rating: 5,
     comment: 'Their 2.2°C cold-chain delivery is phenomenal! Every Monday morning by 6:30 AM IST, our chilled thermal cooler arrives at our doorstep. Returning 6 glass bottles to the delivery rider gives us ₹150 wallet credit instantly on UPI. Total gamechanger!',
     avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',

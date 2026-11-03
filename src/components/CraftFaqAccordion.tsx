@@ -42,9 +42,9 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     id: 'cleanse-schedule-beginners',
     category: 'cleanses',
-    badge: 'EASY CLEANSE',
-    question: 'I am new to juice cleanses. How does a cleanse plan work?',
-    answer: 'Our cleanse plans are simple and refreshing. Each day you receive 6 fresh cold-pressed juices with an easy morning-to-night drinking schedule. It gives your digestive system a gentle rest while providing your body with over 1.5 kg of fresh fruits and greens each day.',
+    badge: 'DAILY PLANS',
+    question: 'I am new to juice plans. How does a daily juice plan work?',
+    answer: 'Our daily juice plans are simple and refreshing. Each day you receive 6 fresh cold-pressed juices with an easy morning-to-night drinking schedule. It gives your digestive system a gentle rest while providing your body with over 1.5 kg of fresh fruits and greens each day.',
   },
   {
     id: 'subscription-flexibility',
@@ -91,7 +91,7 @@ export const CraftFaqAccordion: React.FC = () => {
               { id: 'all', label: 'ALL QUESTIONS' },
               { id: 'craft', label: 'OUR METHOD' },
               { id: 'delivery', label: 'DELIVERY & BOTTLE RETURN' },
-              { id: 'cleanses', label: 'CLEANSE PLANS' },
+              { id: 'cleanses', label: 'DAILY JUICE PLANS' },
             ].map((tab) => (
               <button
                 key={tab.id}

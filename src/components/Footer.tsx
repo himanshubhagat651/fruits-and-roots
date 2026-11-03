@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
               Enjoy 15% off your first cold delivery.
             </h3>
             <p className="text-xs sm:text-sm text-brand-cream/80 font-normal">
-              Plus seasonal Indian harvest announcements, cleanse protocols, and regenerative farming dispatches.
+              Plus seasonal Indian harvest announcements, daily juice plans, and regenerative farming dispatches.
             </p>
           </div>
 

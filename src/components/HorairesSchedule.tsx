@@ -182,7 +182,7 @@ export const HorairesSchedule: React.FC = () => {
               {/* Slot 2: FRI & WEEKENDS with Circle-Ring Arrow */}
               <div className="space-y-1">
                 <span className="text-xs sm:text-sm font-display font-black text-[#C8741B] uppercase tracking-wider block">
-                  FRI TO SUN &bull; WEEKEND CLEANSE &amp; DETOX BATCH
+                  FRI TO SUN &bull; WEEKEND FRESH RESET &amp; DETOX BATCH
                 </span>
                 <div className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-[#8A1521] tracking-tight flex items-center gap-3 sm:gap-5 flex-wrap">
                   <span>6:00 A.M</span>

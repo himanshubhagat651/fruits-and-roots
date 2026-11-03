@@ -149,7 +149,7 @@ export const ProductCatalog: React.FC = () => {
             href="#cleanses"
             className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2 rounded-full border border-earth-900/25 bg-white text-earth-950 font-mono text-xs font-black uppercase tracking-wider hover:bg-earth-950 hover:text-white transition-all shadow-2xs hover:scale-102"
           >
-            <span>EXPLORE CLEANSE PLANS</span>
+            <span>EXPLORE JUICE PLANS</span>
             <span className="text-sm font-sans font-bold">&nearr;</span>
           </a>
         </div>
