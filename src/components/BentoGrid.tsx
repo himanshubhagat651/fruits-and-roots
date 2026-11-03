@@ -133,9 +133,6 @@ export const BentoGrid: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  // Interactive state for Chapter 1: Pressure demonstration slider
-  const [pressurePsi, setPressurePsi] = useState(15000);
-
   // Interactive state for Chapter 2: Farm partner region selector
   const [selectedFarmIdx, setSelectedFarmIdx] = useState(0);
   const activeFarm = FARMS[selectedFarmIdx];
@@ -271,66 +268,76 @@ export const BentoGrid: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Visual Card: Artisanal Hydraulic Press Chamber */}
+            {/* Right Visual Card: Master Luxury Cold-Press Specification Dossier */}
             <div className="lg:col-span-5">
-              <div className="bg-[#1C1714] text-[#FAF6EE] rounded-[32px] p-6 sm:p-8 border border-[#352B24] shadow-[0_20px_50px_-15px_rgba(28,23,20,0.35)] space-y-6 relative overflow-hidden">
+              <div className="bg-[#FCFAF6] text-brand-950 rounded-[32px] p-6 sm:p-8 border border-brand-950/15 shadow-[0_24px_50px_-12px_rgba(45,36,30,0.12)] space-y-6 relative overflow-hidden">
                 {/* Subtle Ambient Amber Glow */}
-                <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-brand-amber/15 blur-3xl pointer-events-none" />
+                <div className="absolute -top-12 -right-12 w-64 h-64 rounded-full bg-brand-amber/10 blur-3xl pointer-events-none" />
 
-                <div className="flex items-center justify-between pb-4 border-b border-white/10 font-mono text-xs relative z-10">
-                  <span className="flex items-center gap-2 text-brand-gold font-bold uppercase tracking-wider">
-                    <Gauge className="w-4 h-4 text-brand-amber" /> HYDRAULIC PRESSURE
+                <div className="flex items-center justify-between pb-4 border-b border-brand-950/10 font-mono text-xs relative z-10">
+                  <span className="flex items-center gap-2 text-brand-950 font-bold uppercase tracking-wider">
+                    <Gauge className="w-4 h-4 text-brand-amber" /> HYDRAULIC CRAFT SPECIFICATION
                   </span>
-                  <span className="px-2.5 py-0.5 rounded bg-brand-amber/20 text-brand-amber font-mono font-bold text-[11px]">
-                    SLOW PRESS CHAMBER
+                  <span className="px-3 py-1 rounded-full bg-brand-amber/15 text-brand-amber border border-brand-amber/30 font-mono font-bold text-[11px] uppercase tracking-wider">
+                    15,000 PSI STATIC EXTRACTION
                   </span>
                 </div>
 
-                {/* Pressure Level Slider */}
-                <div className="space-y-3 relative z-10">
-                  <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-white/70 uppercase">Chamber Pressure:</span>
-                    <span className="font-bold text-brand-gold text-sm">{pressurePsi.toLocaleString()} PSI</span>
+                {/* Craft Comparison Matrix */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 relative z-10">
+                  {/* Conventional Centrifugal Juicer */}
+                  <div className="p-4 rounded-2xl bg-brand-parchment/60 border border-brand-950/10 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-brand-ruby">FAST BLADES JUICER</span>
+                      <span className="px-2 py-0.5 rounded bg-brand-ruby/10 text-brand-ruby font-mono text-[9px] font-bold">14,000 RPM</span>
+                    </div>
+                    <p className="text-xs text-brand-700 leading-snug font-sans">
+                      Fast spinning metal blades create friction heat up to 48°C, cooking away vitamins and oxidizing fresh flavor.
+                    </p>
+                    <div className="text-[11px] font-mono text-brand-ruby font-bold flex items-center gap-1 pt-1">
+                      <span>&times;</span> <span>Thermal friction damage</span>
+                    </div>
                   </div>
 
-                  <input
-                    type="range"
-                    min="5000"
-                    max="15000"
-                    step="500"
-                    value={pressurePsi}
-                    onChange={(e) => {
-                      setPressurePsi(Number(e.target.value));
-                      if (Math.random() > 0.7) playPopSound();
-                    }}
-                    className="w-full accent-brand-amber cursor-pointer h-2 bg-white/15 rounded-lg appearance-none"
-                  />
-
-                  <div className="flex justify-between text-[11px] font-mono text-white/50">
-                    <span>5,000 PSI (Gentle)</span>
-                    <span className="text-brand-gold font-bold">15,000 PSI (Full Extraction)</span>
+                  {/* Fruits & Roots Hydraulic Press */}
+                  <div className="p-4 rounded-2xl bg-white border-2 border-brand-amber/40 shadow-xs space-y-2 relative overflow-hidden">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-brand-amber">FRUITS &amp; ROOTS PRESS</span>
+                      <span className="px-2 py-0.5 rounded bg-brand-amber/20 text-brand-amber font-mono text-[9px] font-bold">0 RPM &bull; COLD</span>
+                    </div>
+                    <p className="text-xs text-brand-800 leading-snug font-sans">
+                      Zero rotating blades. Slow hydraulic ram applies 15,000 PSI to gently squeeze out 100% pure living botanical nectar.
+                    </p>
+                    <div className="text-[11px] font-mono text-brand-moss font-bold flex items-center gap-1 pt-1">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-brand-moss" /> <span>Intact live bio-enzymes</span>
+                    </div>
                   </div>
                 </div>
 
                 {/* 3 Real Cold-Press Metrics */}
-                <div className="grid grid-cols-3 gap-3 pt-3 border-t border-white/10 relative z-10">
-                  <div className="bg-white/5 p-3.5 rounded-2xl border border-white/10 text-center">
-                    <span className="block text-[10px] font-mono text-white/60 uppercase">Heat Generated</span>
-                    <span className="text-lg sm:text-xl font-serif font-black text-white mt-1 block">0.0°C</span>
-                    <span className="text-[10px] font-mono text-brand-amber block mt-0.5 font-semibold">Zero Friction</span>
+                <div className="grid grid-cols-3 gap-3 pt-3 border-t border-brand-950/10 relative z-10 text-center font-mono">
+                  <div className="bg-white p-3.5 rounded-2xl border border-brand-950/10 shadow-xs">
+                    <span className="block text-[10px] text-brand-600 uppercase tracking-wider">HEAT GENERATED</span>
+                    <span className="text-xl sm:text-2xl font-serif font-black text-brand-950 mt-1 block">0.0°C</span>
+                    <span className="text-[10px] text-brand-amber block mt-0.5 font-bold uppercase">Zero Friction</span>
                   </div>
 
-                  <div className="bg-white/5 p-3.5 rounded-2xl border border-white/10 text-center">
-                    <span className="block text-[10px] font-mono text-white/60 uppercase">Juice Purity</span>
-                    <span className="text-lg sm:text-xl font-serif font-black text-brand-gold mt-1 block">100%</span>
-                    <span className="text-[10px] font-mono text-white/70 block mt-0.5 font-semibold">Pure Harvest</span>
+                  <div className="bg-white p-3.5 rounded-2xl border border-brand-950/10 shadow-xs">
+                    <span className="block text-[10px] text-brand-600 uppercase tracking-wider">CHAMBER FORCE</span>
+                    <span className="text-xl sm:text-2xl font-serif font-black text-brand-amber mt-1 block">15,000</span>
+                    <span className="text-[10px] text-brand-700 block mt-0.5 font-semibold uppercase">PSI Pressure</span>
                   </div>
 
-                  <div className="bg-white/5 p-3.5 rounded-2xl border border-white/10 text-center">
-                    <span className="block text-[10px] font-mono text-white/60 uppercase">Live Vitamins</span>
-                    <span className="text-lg sm:text-xl font-serif font-black text-brand-gold mt-1 block">100%</span>
-                    <span className="text-[10px] font-mono text-emerald-400 block mt-0.5 font-semibold">Intact Enzymes</span>
+                  <div className="bg-white p-3.5 rounded-2xl border border-brand-950/10 shadow-xs">
+                    <span className="block text-[10px] text-brand-600 uppercase tracking-wider">LIVE ENZYMES</span>
+                    <span className="text-xl sm:text-2xl font-serif font-black text-brand-moss mt-1 block">100%</span>
+                    <span className="text-[10px] text-brand-moss block mt-0.5 font-bold uppercase">Intact Enzymes</span>
                   </div>
+                </div>
+
+                {/* Bottom Bandra Press Room Certification Stamp */}
+                <div className="pt-2 text-[11px] font-mono text-brand-700 text-center uppercase tracking-wider font-semibold border-t border-brand-950/5">
+                  FSSAI CERTIFIED RAW &bull; ZERO PRESERVATIVES &bull; PRESSED FRESH IN BANDRA WEST
                 </div>
               </div>
             </div>
@@ -379,12 +386,12 @@ export const BentoGrid: React.FC = () => {
 
             {/* Right Visual Card: Interactive Partner Region Selector */}
             <div className="lg:col-span-6">
-              <div className="bg-white rounded-[32px] p-6 sm:p-8 border border-brand-950/10 shadow-[0_20px_50px_-15px_rgba(40,30,20,0.08)] space-y-6">
+              <div className="bg-[#FCFAF6] rounded-[32px] p-6 sm:p-8 border border-brand-950/15 shadow-[0_24px_50px_-12px_rgba(45,36,30,0.12)] space-y-6">
                 <div className="flex items-center justify-between pb-3 border-b border-brand-950/10 font-mono text-xs">
                   <span className="flex items-center gap-2 text-brand-950 font-bold uppercase tracking-wider">
                     <MapPin className="w-4 h-4 text-brand-amber" /> SELECT PARTNER REGION
                   </span>
-                  <span className="text-brand-moss font-bold font-mono text-xs">
+                  <span className="text-brand-moss font-bold font-mono text-xs uppercase tracking-wider">
                     DIRECT FROM FARMERS
                   </span>
                 </div>
@@ -401,7 +408,7 @@ export const BentoGrid: React.FC = () => {
                       className={`p-3.5 rounded-2xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
                         selectedFarmIdx === idx
                           ? 'bg-brand-950 text-white border-brand-950 shadow-md scale-[1.02]'
-                          : 'bg-brand-cream/70 hover:bg-white text-brand-900 border-brand-950/10'
+                          : 'bg-white hover:bg-brand-parchment/60 text-brand-900 border-brand-950/10 shadow-2xs'
                       }`}
                     >
                       <span className="font-mono text-xs font-bold block truncate">{farm.name.split(' ')[0]}</span>
@@ -411,12 +418,12 @@ export const BentoGrid: React.FC = () => {
                 </div>
 
                 {/* Selected Farm Detail Panel */}
-                <div className="bg-brand-cream/80 p-5 rounded-2xl border border-brand-950/10 space-y-3 font-mono text-xs">
+                <div className="bg-white p-5 rounded-2xl border border-brand-950/10 shadow-xs space-y-3 font-mono text-xs">
                   <div className="flex items-center justify-between font-bold text-brand-950">
                     <span className="flex items-center gap-1.5">
                       <Leaf className="w-3.5 h-3.5 text-brand-moss" /> {activeFarm.region}
                     </span>
-                    <span className="px-2 py-0.5 rounded bg-brand-moss/10 text-brand-moss text-[11px]">
+                    <span className="px-2.5 py-0.5 rounded-full bg-brand-moss/10 text-brand-moss text-[11px] font-bold">
                       SOIL SCORE: {activeFarm.soilScore}/100
                     </span>
                   </div>
@@ -469,45 +476,56 @@ export const BentoGrid: React.FC = () => {
             </div>
 
             {/* Right Visual Card: Comparison Breakdown */}
-            <div className="lg:col-span-6 space-y-4">
-              {/* Supermarket Comparison Card */}
-              <div className="bg-white rounded-2xl p-5 border border-brand-950/10 shadow-sm space-y-2">
-                <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-red-700 font-bold uppercase tracking-wider">
-                    COMMERCIAL SUPERMARKET JUICE
+            <div className="lg:col-span-6">
+              <div className="bg-[#FCFAF6] rounded-[32px] p-6 sm:p-8 border border-brand-950/15 shadow-[0_24px_50px_-12px_rgba(45,36,30,0.12)] space-y-4 relative overflow-hidden">
+                <div className="flex items-center justify-between pb-3 border-b border-brand-950/10 font-mono text-xs">
+                  <span className="flex items-center gap-2 text-brand-950 font-bold uppercase tracking-wider">
+                    <ShieldCheck className="w-4 h-4 text-brand-ruby" /> THE RAW INTEGRITY AUDIT
                   </span>
-                  <span className="px-2 py-0.5 rounded bg-red-100 text-red-800 text-[10px] font-bold">
-                    BOILED / FLASH-HEATED
-                  </span>
-                </div>
-                <p className="text-xs text-brand-700 leading-relaxed font-sans">
-                  Heated to 95°C for long shelf life. Destroys delicate living vitamins, natural aroma, and essential phytonutrients. Often packed in single-use plastic.
-                </p>
-                <div className="text-[11px] font-mono text-red-700 font-semibold pt-1">
-                  &times; Boiled to 95°C &bull; Months-old store shelf life
-                </div>
-              </div>
-
-              {/* Fruits & Roots Cold-Pressed Card */}
-              <div className="bg-[#1C1714] text-[#FAF6EE] rounded-2xl p-6 border border-[#352B24] shadow-xl space-y-2 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-brand-amber/15 blur-2xl pointer-events-none" />
-
-                <div className="flex items-center justify-between text-xs font-mono relative z-10">
-                  <span className="text-brand-gold font-bold uppercase tracking-wider flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-brand-amber" /> FRUITS &amp; ROOTS METHOD
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">
-                    CHILLED COLD WATER PRESSURE
+                  <span className="text-brand-amber font-bold font-mono text-xs uppercase tracking-wider">
+                    COLD WATER HYPERBARIC
                   </span>
                 </div>
 
-                <p className="text-xs text-brand-cream/80 leading-relaxed font-sans pt-1 relative z-10">
-                  100% raw juice bottled immediately at 2.2°C. Cold hydraulic pressure eliminates bacteria without heating a single degree. Taste the crisp snap of sunrise farm harvest.
-                </p>
+                {/* Supermarket Comparison Card */}
+                <div className="bg-brand-parchment/60 rounded-2xl p-5 border border-brand-950/10 shadow-xs space-y-2">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="text-brand-ruby font-bold uppercase tracking-wider">
+                      COMMERCIAL SUPERMARKET JUICE
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-brand-ruby/10 text-brand-ruby text-[10px] font-bold">
+                      BOILED / FLASH-HEATED (95°C)
+                    </span>
+                  </div>
+                  <p className="text-xs text-brand-700 leading-relaxed font-sans">
+                    Heated to 95°C for long ambient shelf life in warehouse supply chains. High heat destroys delicate vitamin C, cooks away active enzymes, and alters natural farm taste. Packed in single-use plastic.
+                  </p>
+                  <div className="text-[11px] font-mono text-brand-ruby font-semibold pt-1">
+                    &times; Boiled to 95°C &bull; Months-old store shelf life &bull; Zero live bio-activity
+                  </div>
+                </div>
 
-                <div className="text-xs font-mono text-emerald-400 font-bold pt-2 flex items-center gap-1.5 relative z-10">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>100% Alive Enzymes &bull; Delivered Ice-Cold in Mumbai</span>
+                {/* Fruits & Roots Cold-Pressed Card */}
+                <div className="bg-white rounded-2xl p-6 border-2 border-brand-amber/35 shadow-sm space-y-2.5 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-brand-amber/10 blur-2xl pointer-events-none" />
+
+                  <div className="flex items-center justify-between text-xs font-mono relative z-10">
+                    <span className="text-brand-950 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-brand-amber" /> FRUITS &amp; ROOTS METHOD
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded-full bg-brand-amber/15 text-brand-amber border border-brand-amber/30 text-[10px] font-bold">
+                      CHILLED COLD WATER PRESSURE (2.2°C)
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-brand-800 leading-relaxed font-sans pt-1 relative z-10">
+                    100% raw living juice bottled immediately at 2.2°C. Clean cold water pressure eliminates bacteria without heating a single degree. Experience the crisp snap and vibrant color of freshly picked produce.
+                  </p>
+
+                  <div className="text-xs font-mono text-brand-moss font-bold pt-2 flex items-center gap-1.5 relative z-10">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-brand-moss" />
+                    <span>100% Intact Living Enzymes &bull; Delivered Chilled Daily in Mumbai</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -550,18 +568,18 @@ export const BentoGrid: React.FC = () => {
 
             {/* Right Visual Card: Bottle Deposit Circular Economy Stats */}
             <div className="lg:col-span-6">
-              <div className="bg-white rounded-[32px] p-6 sm:p-8 border border-brand-950/10 shadow-[0_20px_50px_-15px_rgba(40,30,20,0.08)] space-y-6">
+              <div className="bg-[#FCFAF6] rounded-[32px] p-6 sm:p-8 border border-brand-950/15 shadow-[0_24px_50px_-12px_rgba(45,36,30,0.12)] space-y-6">
                 <div className="flex items-center justify-between pb-3 border-b border-brand-950/10 font-mono text-xs">
                   <span className="text-brand-950 font-bold uppercase tracking-wider flex items-center gap-2">
                     <RotateCcw className="w-4 h-4 text-brand-amber" /> BOTTLE RECYCLING IMPACT
                   </span>
-                  <span className="px-2.5 py-0.5 rounded bg-brand-amber/20 text-brand-amber text-xs font-bold">
+                  <span className="px-3 py-1 rounded-full bg-brand-amber/15 text-brand-amber border border-brand-amber/30 text-xs font-bold uppercase tracking-wider">
                     MUMBAI CIRCULAR INITIATIVE
                   </span>
                 </div>
 
                 {/* Giant Metric Counter */}
-                <div className="bg-brand-cream/80 p-6 rounded-2xl border border-brand-950/10 text-center space-y-1">
+                <div className="bg-white p-6 rounded-2xl border border-brand-950/10 shadow-xs text-center space-y-1">
                   <div className="font-serif text-4xl sm:text-5xl font-black text-brand-950 tracking-tight">
                     248,600+
                   </div>
@@ -572,17 +590,17 @@ export const BentoGrid: React.FC = () => {
 
                 {/* Circular Deposit Workflow */}
                 <div className="grid grid-cols-3 gap-3 text-center font-mono text-xs">
-                  <div className="bg-white p-3.5 rounded-xl border border-brand-950/10 space-y-1 shadow-xs">
+                  <div className="bg-white p-3.5 rounded-xl border border-brand-950/10 shadow-xs space-y-1">
                     <span className="text-brand-950 block font-bold text-xs uppercase tracking-wider">DRINK RAW</span>
                     <span className="text-[10px] text-brand-700 block">Pure crystal glass</span>
                   </div>
 
-                  <div className="bg-white p-3.5 rounded-xl border border-brand-950/10 space-y-1 shadow-xs">
+                  <div className="bg-white p-3.5 rounded-xl border border-brand-950/10 shadow-xs space-y-1">
                     <span className="text-brand-950 block font-bold text-xs uppercase tracking-wider">RINSE &amp; HAND</span>
                     <span className="text-[10px] text-brand-700 block">Give bottle to rider</span>
                   </div>
 
-                  <div className="bg-white p-3.5 rounded-xl border border-brand-950/10 space-y-1 shadow-xs">
+                  <div className="bg-white p-3.5 rounded-xl border border-brand-950/10 shadow-xs space-y-1">
                     <span className="text-brand-moss block font-bold text-xs uppercase tracking-wider">GET ₹25 UPI</span>
                     <span className="text-[10px] text-brand-moss/80 block">Instant refund</span>
                   </div>
