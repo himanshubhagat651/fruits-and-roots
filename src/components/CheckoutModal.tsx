@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { OrderDetails } from '../types';
-import { X, Check, ShieldCheck, Lock, CreditCard, Truck, MapPin, Sparkles, CheckCircle2, Clock, Phone, Mail, ArrowLeft, RefreshCw, Smartphone } from 'lucide-react';
+import { X, Check, ShieldCheck, Lock, CreditCard, Truck, MapPin, Sparkles, CheckCircle2, Clock, Phone, Mail, ArrowLeft, RefreshCw, Smartphone, Navigation, Loader2, AlertCircle } from 'lucide-react';
+import { getPreciseDeliveryLocation } from '../utils/location';
 import confetti from 'canvas-confetti';
 
 export const CheckoutModal: React.FC = () => {
@@ -41,6 +42,39 @@ export const CheckoutModal: React.FC = () => {
     cardCvc: '849',
     optInBottleReturn: true,
   });
+
+  const [isLocating, setIsLocating] = useState(false);
+  const [locationStatus, setLocationStatus] = useState<{
+    type: 'idle' | 'success' | 'error';
+    message?: string;
+  }>({ type: 'idle' });
+
+  const handlePreciseLocation = async () => {
+    setIsLocating(true);
+    setLocationStatus({ type: 'idle' });
+    const result = await getPreciseDeliveryLocation();
+    setIsLocating(false);
+
+    if (result.success && result.pincode) {
+      setFormData((prev) => ({
+        ...prev,
+        zip: result.pincode || prev.zip,
+        city: result.city || prev.city,
+        address: result.locality
+          ? `${result.locality}, ${result.city}`
+          : prev.address,
+      }));
+      setLocationStatus({
+        type: 'success',
+        message: `Verified via GPS: ${result.locality}, ${result.city} (${result.pincode})`,
+      });
+    } else {
+      setLocationStatus({
+        type: 'error',
+        message: result.error || 'Could not retrieve GPS location.',
+      });
+    }
+  };
 
   if (!isCheckoutOpen) return null;
 
@@ -155,9 +189,43 @@ export const CheckoutModal: React.FC = () => {
           {/* STEP 1: Contact & Delivery Address */}
           {step === 1 && (
             <div className="space-y-5">
-              <h4 className="font-display text-2xl font-black text-earth-950 uppercase tracking-tight">
-                Where should we drop off your juices?
-              </h4>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <h4 className="font-display text-2xl font-black text-earth-950 uppercase tracking-tight">
+                  Where should we drop off your juices?
+                </h4>
+                <button
+                  type="button"
+                  onClick={handlePreciseLocation}
+                  disabled={isLocating}
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-citrus-amber/10 hover:bg-citrus-amber/20 border border-citrus-amber text-earth-950 text-xs font-mono font-bold transition disabled:opacity-50 cursor-pointer shrink-0"
+                >
+                  {isLocating ? (
+                    <>
+                      <Loader2 className="w-3.5 h-3.5 animate-spin text-citrus-amber" />
+                      <span>Detecting GPS...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Navigation className="w-3.5 h-3.5 text-citrus-amber fill-citrus-amber" />
+                      <span>Use Precise GPS Location</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {locationStatus.type === 'success' && (
+                <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-950 text-xs font-mono flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>{locationStatus.message}</span>
+                </div>
+              )}
+
+              {locationStatus.type === 'error' && (
+                <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-950 text-xs font-mono flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
+                  <span>{locationStatus.message}</span>
+                </div>
+              )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>

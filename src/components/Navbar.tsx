@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { playPopSound, playChimeSound, toggleSound } from '../utils/audio';
-import { ShoppingBag, Sparkles, MapPin, Search, Menu, X, ShieldCheck, Volume2, VolumeX, ArrowRight } from 'lucide-react';
+import { getPreciseDeliveryLocation } from '../utils/location';
+import { ShoppingBag, Sparkles, MapPin, Search, Menu, X, ShieldCheck, Volume2, VolumeX, ArrowRight, Navigation, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 
 export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen }) => {
   const { itemCount, subtotal, openCart, boxItems, boxTarget, setDeliveryMode, deliveryMode, zipCode, setZipCode } = useCart();
@@ -9,6 +10,12 @@ export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen })
   const [showLocationModal, setShowLocationModal] = useState(false);
   const [inputZip, setInputZip] = useState(zipCode);
   const [soundActive, setSoundActive] = useState(false);
+  const [isLocating, setIsLocating] = useState(false);
+  const [locationStatus, setLocationStatus] = useState<{
+    type: 'idle' | 'success' | 'error';
+    message?: string;
+    details?: string;
+  }>({ type: 'idle' });
 
   const handleZipSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,6 +23,32 @@ export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen })
       setZipCode(inputZip.trim());
       setShowLocationModal(false);
       playPopSound();
+    }
+  };
+
+  const handleUsePreciseLocation = async () => {
+    setIsLocating(true);
+    setLocationStatus({ type: 'idle' });
+    playPopSound();
+
+    const result = await getPreciseDeliveryLocation();
+    setIsLocating(false);
+
+    if (result.success && result.pincode) {
+      setInputZip(result.pincode);
+      setZipCode(result.pincode);
+      setLocationStatus({
+        type: 'success',
+        message: `Precise Location Verified: ${result.locality}, ${result.city}`,
+        details: `Pincode ${result.pincode} automatically confirmed for doorstep delivery.`,
+      });
+      playChimeSound();
+    } else {
+      setLocationStatus({
+        type: 'error',
+        message: result.error || 'Could not access GPS location.',
+        details: 'Please allow location permission in your browser or enter your 6-digit pincode manually below.',
+      });
     }
   };
 
@@ -279,26 +312,81 @@ export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen })
               </div>
 
               {deliveryMode !== 'pickup' && (
-                <form onSubmit={handleZipSubmit} className="pt-2">
-                  <label className="block text-xs font-mono font-bold text-brand-800 uppercase tracking-wider mb-1.5">
-                    Enter Delivery Pincode
-                  </label>
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      value={inputZip}
-                      onChange={(e) => setInputZip(e.target.value)}
-                      placeholder="e.g. 400050, 560038, 110057"
-                      className="flex-1 px-4 py-2.5 rounded-xl border border-brand-950/20 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-amber font-mono"
-                    />
-                    <button
-                      type="submit"
-                      className="px-5 py-2.5 bg-brand-950 hover:bg-brand-900 text-brand-cream text-xs font-mono font-bold rounded-xl transition"
-                    >
-                      UPDATE
-                    </button>
+                <div className="pt-2 space-y-3">
+                  {/* Precise GPS Location Button */}
+                  <button
+                    type="button"
+                    onClick={handleUsePreciseLocation}
+                    disabled={isLocating}
+                    className="w-full flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-brand-amber/10 hover:bg-brand-amber/20 border-2 border-brand-amber text-brand-950 font-mono text-xs font-bold transition disabled:opacity-50 cursor-pointer shadow-xs active:scale-[0.99]"
+                  >
+                    {isLocating ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin text-brand-amber" />
+                        <span>DETECTING YOUR GPS LOCATION...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Navigation className="w-4 h-4 text-brand-amber fill-brand-amber" />
+                        <span>USE PRECISE GPS LOCATION</span>
+                      </>
+                    )}
+                  </button>
+
+                  {/* Status Banner */}
+                  {locationStatus.type === 'success' && (
+                    <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-950 text-xs font-mono space-y-1 animate-in fade-in">
+                      <div className="flex items-center gap-1.5 font-bold text-emerald-800">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                        <span>{locationStatus.message}</span>
+                      </div>
+                      {locationStatus.details && (
+                        <p className="text-[11px] text-emerald-700 pl-5">{locationStatus.details}</p>
+                      )}
+                    </div>
+                  )}
+
+                  {locationStatus.type === 'error' && (
+                    <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-950 text-xs font-mono space-y-1 animate-in fade-in">
+                      <div className="flex items-center gap-1.5 font-bold text-amber-900">
+                        <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
+                        <span>{locationStatus.message}</span>
+                      </div>
+                      {locationStatus.details && (
+                        <p className="text-[11px] text-amber-800 pl-5">{locationStatus.details}</p>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Manual Pincode Divider */}
+                  <div className="relative flex items-center justify-center pt-1">
+                    <div className="w-full border-t border-brand-950/15" />
+                    <span className="absolute bg-[#FAF6EE] px-3 text-[10px] font-mono uppercase tracking-widest text-brand-600">
+                      OR ENTER MANUALLY
+                    </span>
                   </div>
-                </form>
+
+                  <form onSubmit={handleZipSubmit} className="pt-2">
+                    <label className="block text-xs font-mono font-bold text-brand-800 uppercase tracking-wider mb-1.5">
+                      Enter Delivery Pincode
+                    </label>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={inputZip}
+                        onChange={(e) => setInputZip(e.target.value)}
+                        placeholder="e.g. 400050, 560038, 110057"
+                        className="flex-1 px-4 py-2.5 rounded-xl border border-brand-950/20 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-amber font-mono"
+                      />
+                      <button
+                        type="submit"
+                        className="px-5 py-2.5 bg-brand-950 hover:bg-brand-900 text-brand-cream text-xs font-mono font-bold rounded-xl transition cursor-pointer"
+                      >
+                        UPDATE
+                      </button>
+                    </div>
+                  </form>
+                </div>
               )}
             </div>
           </div>
