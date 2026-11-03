@@ -270,74 +270,79 @@ export const BentoGrid: React.FC = () => {
 
             {/* Right Visual Card: Master Luxury Cold-Press Specification Dossier */}
             <div className="lg:col-span-5">
-              <div className="bg-[#FCFAF6] text-brand-950 rounded-[32px] p-6 sm:p-8 border border-brand-950/15 shadow-[0_24px_50px_-12px_rgba(45,36,30,0.12)] space-y-6 relative overflow-hidden">
+              <div className="bg-[#FCFAF6] text-brand-950 rounded-[32px] p-6 sm:p-8 border border-brand-950/15 shadow-[0_24px_50px_-12px_rgba(45,36,30,0.12)] space-y-5 relative overflow-hidden">
                 {/* Subtle Ambient Amber Glow */}
                 <div className="absolute -top-12 -right-12 w-64 h-64 rounded-full bg-brand-amber/10 blur-3xl pointer-events-none" />
 
-                <div className="flex items-center justify-between pb-4 border-b border-brand-950/10 font-mono text-xs relative z-10">
-                  <span className="flex items-center gap-2 text-brand-950 font-bold uppercase tracking-wider">
-                    <Gauge className="w-4 h-4 text-brand-amber" /> HYDRAULIC CRAFT SPECIFICATION
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-brand-amber/15 text-brand-amber border border-brand-amber/30 font-mono font-bold text-[11px] uppercase tracking-wider">
+                <div className="flex items-center justify-between pb-3.5 border-b border-brand-950/10 relative z-10">
+                  <div className="flex items-center gap-2 text-brand-950">
+                    <Gauge className="w-4 h-4 text-brand-amber stroke-[2.2]" />
+                    <span className="font-mono text-xs font-bold tracking-[0.2em] uppercase">Hydraulic Specification</span>
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-brand-amber/12 text-brand-amber border border-brand-amber/30 font-mono font-bold text-[10px] tracking-[0.16em] uppercase">
                     15,000 PSI STATIC EXTRACTION
                   </span>
                 </div>
 
                 {/* Craft Comparison Matrix */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 relative z-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 relative z-10">
                   {/* Conventional Centrifugal Juicer */}
-                  <div className="p-4 rounded-2xl bg-brand-parchment/60 border border-brand-950/10 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-brand-ruby">FAST BLADES JUICER</span>
-                      <span className="px-2 py-0.5 rounded bg-brand-ruby/10 text-brand-ruby font-mono text-[9px] font-bold">14,000 RPM</span>
+                  <div className="p-4 sm:p-5 rounded-2xl bg-[#F5EFE6] border border-brand-950/10 space-y-2.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-serif font-bold text-sm tracking-tight text-brand-950">Fast Blades Juicer</span>
+                      <span className="px-2 py-0.5 rounded-md bg-brand-ruby/10 text-brand-ruby font-mono text-[10px] font-bold tracking-wider shrink-0">14,000 RPM</span>
                     </div>
-                    <p className="text-xs text-brand-700 leading-snug font-sans">
-                      Fast spinning metal blades create friction heat up to 48°C, cooking away vitamins and oxidizing fresh flavor.
+                    <p className="text-[12.5px] text-brand-700/90 leading-relaxed font-sans font-normal">
+                      High-speed metal blades create friction heat up to 48°C, cooking away vitamins and oxidizing fresh flavor.
                     </p>
-                    <div className="text-[11px] font-mono text-brand-ruby font-bold flex items-center gap-1 pt-1">
-                      <span>&times;</span> <span>Thermal friction damage</span>
+                    <div className="text-[11px] font-mono tracking-wider font-semibold text-brand-ruby flex items-center gap-1.5 pt-1 border-t border-brand-950/5">
+                      <span className="text-sm font-bold">&times;</span> <span>Thermal friction damage</span>
                     </div>
                   </div>
 
                   {/* Fruits & Roots Hydraulic Press */}
-                  <div className="p-4 rounded-2xl bg-white border-2 border-brand-amber/40 shadow-xs space-y-2 relative overflow-hidden">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-brand-amber">FRUITS &amp; ROOTS PRESS</span>
-                      <span className="px-2 py-0.5 rounded bg-brand-amber/20 text-brand-amber font-mono text-[9px] font-bold">0 RPM &bull; COLD</span>
+                  <div className="p-4 sm:p-5 rounded-2xl bg-white border-2 border-brand-amber/40 shadow-xs space-y-2.5 relative overflow-hidden">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-serif font-bold text-sm tracking-tight text-brand-950">Fruits &amp; Roots Press</span>
+                      <span className="px-2 py-0.5 rounded-md bg-brand-amber/15 text-brand-amber font-mono text-[10px] font-bold tracking-wider shrink-0">0 RPM &bull; COLD</span>
                     </div>
-                    <p className="text-xs text-brand-800 leading-snug font-sans">
+                    <p className="text-[12.5px] text-brand-900 leading-relaxed font-sans font-normal">
                       Zero rotating blades. Slow hydraulic ram applies 15,000 PSI to gently squeeze out 100% pure living botanical nectar.
                     </p>
-                    <div className="text-[11px] font-mono text-brand-moss font-bold flex items-center gap-1 pt-1">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-brand-moss" /> <span>Intact live bio-enzymes</span>
+                    <div className="text-[11px] font-mono tracking-wider font-semibold text-brand-moss flex items-center gap-1.5 pt-1 border-t border-brand-950/5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-brand-moss shrink-0" /> <span>Intact live bio-enzymes</span>
                     </div>
                   </div>
                 </div>
 
-                {/* 3 Real Cold-Press Metrics */}
-                <div className="grid grid-cols-3 gap-3 pt-3 border-t border-brand-950/10 relative z-10 text-center font-mono">
-                  <div className="bg-white p-3.5 rounded-2xl border border-brand-950/10 shadow-xs">
-                    <span className="block text-[10px] text-brand-600 uppercase tracking-wider">HEAT GENERATED</span>
-                    <span className="text-xl sm:text-2xl font-serif font-black text-brand-950 mt-1 block">0.0°C</span>
-                    <span className="text-[10px] text-brand-amber block mt-0.5 font-bold uppercase">Zero Friction</span>
+                {/* 3 Real Cold-Press Metrics: Archival Ledger */}
+                <div className="grid grid-cols-3 divide-x divide-brand-950/10 rounded-2xl bg-white border border-brand-950/10 shadow-xs py-4 px-1 text-center font-mono relative z-10">
+                  <div className="px-2">
+                    <span className="block text-[9.5px] sm:text-[10px] tracking-[0.16em] uppercase text-brand-600 font-semibold">Thermal Heat</span>
+                    <span className="text-2xl sm:text-3xl font-serif font-black text-brand-950 tracking-tight block mt-1">0.0°C</span>
+                    <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-brand-amber block mt-1">Zero Friction</span>
                   </div>
 
-                  <div className="bg-white p-3.5 rounded-2xl border border-brand-950/10 shadow-xs">
-                    <span className="block text-[10px] text-brand-600 uppercase tracking-wider">CHAMBER FORCE</span>
-                    <span className="text-xl sm:text-2xl font-serif font-black text-brand-amber mt-1 block">15,000</span>
-                    <span className="text-[10px] text-brand-700 block mt-0.5 font-semibold uppercase">PSI Pressure</span>
+                  <div className="px-2">
+                    <span className="block text-[9.5px] sm:text-[10px] tracking-[0.16em] uppercase text-brand-600 font-semibold">Chamber Force</span>
+                    <span className="text-2xl sm:text-3xl font-serif font-black text-brand-amber tracking-tight block mt-1">15,000</span>
+                    <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-brand-700 block mt-1">PSI Pressure</span>
                   </div>
 
-                  <div className="bg-white p-3.5 rounded-2xl border border-brand-950/10 shadow-xs">
-                    <span className="block text-[10px] text-brand-600 uppercase tracking-wider">LIVE ENZYMES</span>
-                    <span className="text-xl sm:text-2xl font-serif font-black text-brand-moss mt-1 block">100%</span>
-                    <span className="text-[10px] text-brand-moss block mt-0.5 font-bold uppercase">Intact Enzymes</span>
+                  <div className="px-2">
+                    <span className="block text-[9.5px] sm:text-[10px] tracking-[0.16em] uppercase text-brand-600 font-semibold">Live Enzymes</span>
+                    <span className="text-2xl sm:text-3xl font-serif font-black text-brand-moss tracking-tight block mt-1">100%</span>
+                    <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-brand-moss block mt-1">Active Bio-Cells</span>
                   </div>
                 </div>
 
                 {/* Bottom Bandra Press Room Certification Stamp */}
-                <div className="pt-2 text-[11px] font-mono text-brand-700 text-center uppercase tracking-wider font-semibold border-t border-brand-950/5">
-                  FSSAI CERTIFIED RAW &bull; ZERO PRESERVATIVES &bull; PRESSED FRESH IN BANDRA WEST
+                <div className="pt-3 border-t border-brand-950/10 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.16em] text-brand-700 font-semibold text-center">
+                  <span>FSSAI Certified Raw</span>
+                  <span className="text-brand-950/30">&bull;</span>
+                  <span>Zero Preservatives</span>
+                  <span className="text-brand-950/30">&bull;</span>
+                  <span>Pressed Fresh in Bandra West</span>
                 </div>
               </div>
             </div>
@@ -397,7 +402,7 @@ export const BentoGrid: React.FC = () => {
                 </div>
 
                 {/* 4 Region Selection Buttons */}
-                <div className="grid grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-2 gap-3">
                   {FARMS.map((farm, idx) => (
                     <button
                       key={farm.id}
@@ -405,34 +410,43 @@ export const BentoGrid: React.FC = () => {
                         setSelectedFarmIdx(idx);
                         playPopSound();
                       }}
-                      className={`p-3.5 rounded-2xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
+                      className={`p-4 rounded-2xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
                         selectedFarmIdx === idx
                           ? 'bg-brand-950 text-white border-brand-950 shadow-md scale-[1.02]'
                           : 'bg-white hover:bg-brand-parchment/60 text-brand-900 border-brand-950/10 shadow-2xs'
                       }`}
                     >
-                      <span className="font-mono text-xs font-bold block truncate">{farm.name.split(' ')[0]}</span>
-                      <span className="text-[10px] font-mono mt-1 opacity-70 block">{farm.distance}</span>
+                      <div className="flex items-baseline justify-between w-full gap-2">
+                        <span className={`font-serif font-bold text-sm tracking-tight truncate ${selectedFarmIdx === idx ? 'text-white' : 'text-brand-950'}`}>
+                          {farm.name.split(' ')[0]}
+                        </span>
+                        <span className={`text-[10px] font-mono tracking-wider shrink-0 ${selectedFarmIdx === idx ? 'text-brand-gold' : 'text-brand-700'}`}>
+                          {farm.distance}
+                        </span>
+                      </div>
+                      <span className={`text-[11px] font-sans mt-1.5 truncate ${selectedFarmIdx === idx ? 'text-white/80' : 'text-brand-600'}`}>
+                        {farm.region.split(',')[0]}
+                      </span>
                     </button>
                   ))}
                 </div>
 
                 {/* Selected Farm Detail Panel */}
-                <div className="bg-white p-5 rounded-2xl border border-brand-950/10 shadow-xs space-y-3 font-mono text-xs">
-                  <div className="flex items-center justify-between font-bold text-brand-950">
-                    <span className="flex items-center gap-1.5">
+                <div className="bg-white p-5 sm:p-6 rounded-2xl border border-brand-950/10 shadow-xs space-y-3 font-mono text-xs">
+                  <div className="flex items-center justify-between font-bold text-brand-950 border-b border-brand-950/10 pb-2.5">
+                    <span className="flex items-center gap-1.5 font-serif text-sm tracking-tight">
                       <Leaf className="w-3.5 h-3.5 text-brand-moss" /> {activeFarm.region}
                     </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-brand-moss/10 text-brand-moss text-[11px] font-bold">
-                      SOIL SCORE: {activeFarm.soilScore}/100
+                    <span className="px-2.5 py-0.5 rounded-full bg-brand-moss/10 text-brand-moss text-[10px] font-mono font-bold tracking-wider">
+                      SOIL REGENERATION: {activeFarm.soilScore}/100
                     </span>
                   </div>
 
-                  <div className="text-sm font-serif font-bold text-brand-950 pt-1">
+                  <div className="text-base sm:text-lg font-serif font-black text-brand-950 tracking-tight pt-0.5">
                     {activeFarm.produce}
                   </div>
 
-                  <p className="text-xs font-sans text-brand-700 leading-relaxed pt-1">
+                  <p className="text-[12.5px] font-sans text-brand-800 leading-relaxed pt-0.5 font-normal">
                     {activeFarm.highlight}
                   </p>
                 </div>
@@ -545,8 +559,12 @@ export const BentoGrid: React.FC = () => {
                 </div>
 
                 {/* Bottom Audit Verification Ribbon */}
-                <div className="pt-2 text-[11px] font-mono text-brand-700 text-center uppercase tracking-wider font-semibold border-t border-brand-950/5">
-                  100% INTACT ACTIVE ENZYMES &bull; ZERO ADDED SUGAR &bull; ZERO WATER DILUTION
+                <div className="pt-3 border-t border-brand-950/10 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.16em] text-brand-700 font-semibold text-center">
+                  <span>100% Intact Active Enzymes</span>
+                  <span className="text-brand-950/30">&bull;</span>
+                  <span>Zero Added Sugar</span>
+                  <span className="text-brand-950/30">&bull;</span>
+                  <span>Delivered Chilled at 2.2°C</span>
                 </div>
               </div>
             </div>
@@ -590,40 +608,44 @@ export const BentoGrid: React.FC = () => {
             {/* Right Visual Card: Bottle Deposit Circular Economy Stats */}
             <div className="lg:col-span-6">
               <div className="bg-[#FCFAF6] rounded-[32px] p-6 sm:p-8 border border-brand-950/15 shadow-[0_24px_50px_-12px_rgba(45,36,30,0.12)] space-y-6">
-                <div className="flex items-center justify-between pb-3 border-b border-brand-950/10 font-mono text-xs">
-                  <span className="text-brand-950 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <RotateCcw className="w-4 h-4 text-brand-amber" /> BOTTLE RECYCLING IMPACT
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-brand-amber/15 text-brand-amber border border-brand-amber/30 text-xs font-bold uppercase tracking-wider">
-                    MUMBAI CIRCULAR INITIATIVE
+                <div className="flex items-center justify-between pb-3.5 border-b border-brand-950/10">
+                  <div className="flex items-center gap-2 text-brand-950">
+                    <RotateCcw className="w-4 h-4 text-brand-amber stroke-[2.2]" />
+                    <span className="font-mono text-xs font-bold tracking-[0.2em] uppercase">Circular Glass Initiative</span>
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-brand-amber/12 text-brand-amber border border-brand-amber/30 text-[10px] font-bold font-mono tracking-[0.16em] uppercase">
+                    MUMBAI RETURN INITIATIVE
                   </span>
                 </div>
 
                 {/* Giant Metric Counter */}
-                <div className="bg-white p-6 rounded-2xl border border-brand-950/10 shadow-xs text-center space-y-1">
-                  <div className="font-serif text-4xl sm:text-5xl font-black text-brand-950 tracking-tight">
+                <div className="bg-white p-6 sm:p-7 rounded-2xl border border-brand-950/10 shadow-xs text-center space-y-2">
+                  <div className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-brand-950 tracking-tight">
                     248,600+
                   </div>
-                  <div className="font-mono text-xs text-brand-amber uppercase tracking-wider font-bold">
-                    PLASTIC BOTTLES SAVED FROM MUMBAI LANDFILLS
+                  <div className="font-mono text-[11px] text-brand-amber uppercase tracking-[0.2em] font-bold">
+                    Single-Use Plastic Bottles Kept Out of Mumbai Landfills
                   </div>
+                  <p className="text-xs text-brand-700 font-sans max-w-md mx-auto pt-1 leading-relaxed">
+                    Poured exclusively into reusable borosilicate crystal glass with zero microplastics, zero chemical leaching, and zero petroleum packaging.
+                  </p>
                 </div>
 
                 {/* Circular Deposit Workflow */}
-                <div className="grid grid-cols-3 gap-3 text-center font-mono text-xs">
-                  <div className="bg-white p-3.5 rounded-xl border border-brand-950/10 shadow-xs space-y-1">
-                    <span className="text-brand-950 block font-bold text-xs uppercase tracking-wider">DRINK RAW</span>
-                    <span className="text-[10px] text-brand-700 block">Pure crystal glass</span>
+                <div className="grid grid-cols-3 gap-3 text-center">
+                  <div className="bg-white p-4 rounded-xl border border-brand-950/10 shadow-xs space-y-1">
+                    <span className="text-brand-950 block font-serif font-bold text-xs uppercase tracking-wider">1. Drink Raw</span>
+                    <span className="text-[11px] text-brand-700 block font-sans">Pure crystal glass</span>
                   </div>
 
-                  <div className="bg-white p-3.5 rounded-xl border border-brand-950/10 shadow-xs space-y-1">
-                    <span className="text-brand-950 block font-bold text-xs uppercase tracking-wider">RINSE &amp; HAND</span>
-                    <span className="text-[10px] text-brand-700 block">Give bottle to rider</span>
+                  <div className="bg-white p-4 rounded-xl border border-brand-950/10 shadow-xs space-y-1">
+                    <span className="text-brand-950 block font-serif font-bold text-xs uppercase tracking-wider">2. Rinse &amp; Hand</span>
+                    <span className="text-[11px] text-brand-700 block font-sans">Give bottle to rider</span>
                   </div>
 
-                  <div className="bg-white p-3.5 rounded-xl border border-brand-950/10 shadow-xs space-y-1">
-                    <span className="text-brand-moss block font-bold text-xs uppercase tracking-wider">GET ₹25 UPI</span>
-                    <span className="text-[10px] text-brand-moss/80 block">Instant refund</span>
+                  <div className="bg-white p-4 rounded-xl border border-brand-950/10 shadow-xs space-y-1">
+                    <span className="text-brand-moss block font-serif font-bold text-xs uppercase tracking-wider">3. Get ₹25 UPI</span>
+                    <span className="text-[11px] text-brand-moss font-sans font-semibold">Instant refund</span>
                   </div>
                 </div>
               </div>
