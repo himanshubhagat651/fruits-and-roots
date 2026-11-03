@@ -77,11 +77,6 @@ export const Hero: React.FC = () => {
         
         {/* Editorial Headline */}
         <div className="text-center space-y-3 mb-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-amber/15 border border-brand-amber/30 text-brand-950 text-xs font-mono font-bold tracking-wider uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-brand-amber" />
-            <span>100% Raw &bull; Zero Heat &bull; Cold-Pressed Daily in Mumbai</span>
-          </div>
-
           <h1 className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tight text-brand-950 uppercase leading-[0.88]">
             COLD-PRESSED.<br />
             <span className="font-editorial italic font-normal text-brand-amber lowercase tracking-normal">
