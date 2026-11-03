@@ -103,36 +103,44 @@
     display: flex;
     flex-shrink: 0;
     align-items: center;
-    animation: tickerSlideLeft 32s linear infinite !important;
+    animation: tickerSlideLeft 65s linear infinite !important;
     animation-play-state: running !important;
     will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .animate-ticker-right {
     display: flex;
     flex-shrink: 0;
     align-items: center;
-    animation: tickerSlideRight 32s linear infinite !important;
+    animation: tickerSlideRight 65s linear infinite !important;
     animation-play-state: running !important;
     will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .animate-ticker-forward {
     display: inline-flex;
     flex-shrink: 0;
     align-items: center;
-    animation: tickerForward 30s linear infinite !important;
+    animation: tickerForward 68s linear infinite !important;
     animation-play-state: running !important;
     will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   .animate-ticker-reverse {
     display: inline-flex;
     flex-shrink: 0;
     align-items: center;
-    animation: tickerReverse 34s linear infinite !important;
+    animation: tickerReverse 74s linear infinite !important;
     animation-play-state: running !important;
     will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   /* Gentle wave bobbing animation for Bar Tòpas runway cards */
