@@ -9,7 +9,6 @@ interface PreloaderProps {
 export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
-  const counterTextRef = useRef<HTMLSpanElement>(null);
   const poseARef = useRef<SVGGElement>(null);
   const poseBRef = useRef<SVGGElement>(null);
   const torsoRef = useRef<SVGGElement>(null);
@@ -56,14 +55,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       ease: 'power1.inOut',
       force3D: true,
       onUpdate: function () {
-        const p = this.progress();
-
-        // 1. Update counter directly on text node (zero React re-renders = 120 FPS!)
-        if (counterTextRef.current) {
-          counterTextRef.current.textContent = p.toFixed(2);
-        }
-
-        // 2. High-performance stride toggle on SVG groups (zero reflow)
+        // High-performance stride toggle on SVG groups (zero reflow)
         const now = Date.now();
         if (now - lastStrideTime > 155) {
           lastStrideTime = now;
@@ -145,16 +137,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       title="Click anywhere to skip intro"
     >
       {/* ------------------------------------------------------------------- */}
-      {/* 1. Top Left Minimalist Counter Pill (Exact Huyml.co 1.00 Badge)     */}
-      {/* ------------------------------------------------------------------- */}
-      <div className="fixed top-5 left-5 z-40">
-        <div className="bg-black text-white font-mono text-xs font-semibold px-2.5 py-1 rounded shadow-sm select-none tracking-tight">
-          <span ref={counterTextRef}>0.00</span>
-        </div>
-      </div>
-
-      {/* ------------------------------------------------------------------- */}
-      {/* 2. White Underlayer with Giant Red Brand Typography                 */}
+      {/* White Underlayer with Giant Red Brand Typography                    */}
       {/* ------------------------------------------------------------------- */}
       <div className="absolute inset-0 bg-white flex flex-col items-center justify-center p-4 text-center z-10 pointer-events-none">
         <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center">
