@@ -3,7 +3,7 @@ import { Truck, Tag } from 'lucide-react';
 
 export const AnnouncementBar: React.FC = () => {
   return (
-    <div className="bg-brand-950 text-brand-cream border-b border-brand-800/40 select-none text-[11px] font-mono py-2 px-4 relative z-50">
+    <div className="bg-brand-950 text-brand-cream border-b border-brand-800/40 select-none text-[11px] font-mono py-2 px-4 relative z-40 transition-all duration-300 animate-in fade-in slide-in-from-top-1">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
         
         {/* Left: Fresh Daily Promise */}

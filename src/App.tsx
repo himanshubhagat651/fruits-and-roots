@@ -98,8 +98,8 @@ const MainApp: React.FC = () => {
         </div>
       )}
 
-      {/* Top Archival Announcement Bar */}
-      <AnnouncementBar />
+      {/* Top Archival Announcement Bar - only shown after intro finishes loading */}
+      {isPreloaded && <AnnouncementBar />}
 
       {/* Navigation */}
       <Navbar onSearchOpen={() => setIsSearchOpen(true)} />
