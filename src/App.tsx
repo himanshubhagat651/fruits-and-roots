@@ -33,39 +33,27 @@ const MainApp: React.FC = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isPreloaded, setIsPreloaded] = useState(false);
 
-  // Initialize Lenis Smooth Momentum Scrolling synchronized with GSAP ScrollTrigger (Henrietta Said architecture)
+  // Initialize Lenis Smooth Momentum Scrolling synchronized with GSAP ScrollTrigger
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.25,
+      duration: 0.9,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      touchMultiplier: 1.5,
+      touchMultiplier: 1.0,
     });
 
-    // Synchronize Lenis scroll with GSAP ScrollTrigger, update global progress & velocity skew
-    let skewTimeout: ReturnType<typeof setTimeout>;
+    // Synchronize Lenis scroll with GSAP ScrollTrigger & update scroll progress bar
+    const progressEl = document.getElementById('global-scroll-progress');
     lenis.on('scroll', (e: any) => {
       ScrollTrigger.update();
 
-      // Update global scroll progress bar
-      const progressEl = document.getElementById('global-scroll-progress');
       if (progressEl) {
         const total = document.documentElement.scrollHeight - window.innerHeight;
         const p = total > 0 ? Math.min(1, Math.max(0, e.scroll / total)) : 0;
         progressEl.style.transform = `scaleX(${p})`;
       }
-
-      // Henrietta Said dynamic scroll velocity skew (-2deg to +2deg)
-      const velocity = e.velocity || 0;
-      const skew = Math.max(-2.2, Math.min(2.2, velocity * 0.08));
-      document.documentElement.style.setProperty('--scroll-velocity-skew', `${skew}deg`);
-
-      clearTimeout(skewTimeout);
-      skewTimeout = setTimeout(() => {
-        document.documentElement.style.setProperty('--scroll-velocity-skew', '0deg');
-      }, 100);
     });
 
     const tickerCb = (time: number) => {
@@ -73,7 +61,8 @@ const MainApp: React.FC = () => {
     };
 
     gsap.ticker.add(tickerCb);
-    gsap.ticker.lagSmoothing(0);
+    // Smooth frame pacing with GSAP lag smoothing (prevents stuttering on frame drops)
+    gsap.ticker.lagSmoothing(500, 33);
 
     return () => {
       gsap.ticker.remove(tickerCb);

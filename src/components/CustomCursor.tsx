@@ -27,16 +27,10 @@ export const CustomCursor: React.FC = () => {
         circle.style.opacity = '1';
       }
 
-      // Check if hovering over clickable elements
+      // Check if hovering over clickable elements with a single native selector
       const target = e.target as HTMLElement | null;
       const isInteractive = Boolean(
-        target?.closest('button') ||
-        target?.closest('a') ||
-        target?.closest('input') ||
-        target?.closest('label') ||
-        target?.closest('.cursor-pointer') ||
-        target?.closest('.cursor-grab') ||
-        target?.closest('.group')
+        target?.closest('button, a, input, select, textarea, label, [role="button"], .cursor-pointer, .cursor-grab')
       );
 
       if (isInteractive !== isHovered.current) {

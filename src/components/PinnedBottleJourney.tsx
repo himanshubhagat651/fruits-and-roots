@@ -82,6 +82,8 @@ const STAGES: StoryStage[] = [
 
 export const PinnedBottleJourney: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const currentStageIdxRef = useRef(0);
+  const lastLiquidRef = useRef(25);
   const [currentStageIdx, setCurrentStageIdx] = useState(0);
   const [scrubProgress, setScrubProgress] = useState(0);
   const [interpolatedLiquid, setInterpolatedLiquid] = useState(25);
@@ -104,11 +106,17 @@ export const PinnedBottleJourney: React.FC = () => {
 
           // Calculate stage (0, 1, 2, 3) with clean thresholds
           const stage = Math.min(3, Math.floor(p * 3.99));
-          setCurrentStageIdx(stage);
+          if (stage !== currentStageIdxRef.current) {
+            currentStageIdxRef.current = stage;
+            setCurrentStageIdx(stage);
+          }
 
-          // Smooth continuous liquid interpolation across the scroll
-          const liquid = 25 + p * (96 - 25);
-          setInterpolatedLiquid(Math.round(liquid));
+          // Smooth continuous liquid interpolation across the scroll (quantized to avoid frame drops)
+          const liquid = Math.round(25 + p * (96 - 25));
+          if (Math.abs(liquid - lastLiquidRef.current) >= 2) {
+            lastLiquidRef.current = liquid;
+            setInterpolatedLiquid(liquid);
+          }
         },
       });
     }, containerRef);
@@ -140,22 +148,22 @@ export const PinnedBottleJourney: React.FC = () => {
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
           {/* Top-Left Honey Amber Sun Halo */}
           <div
-            className="absolute -top-24 -left-24 w-[620px] h-[620px] rounded-full bg-gradient-to-br from-[#C8741B]/20 via-[#DDA74F]/15 to-transparent blur-[110px] pointer-events-none transition-transform duration-300 ease-out"
+            className="absolute -top-24 -left-24 w-[620px] h-[620px] rounded-full bg-gradient-to-br from-[#C8741B]/20 via-[#DDA74F]/15 to-transparent blur-[110px] pointer-events-none will-change-transform"
             style={{ transform: `translate3d(${scrubProgress * 60}px, ${scrubProgress * 80}px, 0)` }}
           />
           {/* Bottom-Right Terracotta / Ruby Sunset Halo */}
           <div
-            className="absolute -bottom-28 -right-28 w-[660px] h-[660px] rounded-full bg-gradient-to-tl from-[#8A1521]/20 via-[#C8741B]/15 to-transparent blur-[130px] pointer-events-none transition-transform duration-300 ease-out"
+            className="absolute -bottom-28 -right-28 w-[660px] h-[660px] rounded-full bg-gradient-to-tl from-[#8A1521]/20 via-[#C8741B]/15 to-transparent blur-[130px] pointer-events-none will-change-transform"
             style={{ transform: `translate3d(${-scrubProgress * 70}px, ${-scrubProgress * 60}px, 0)` }}
           />
           {/* Dynamic Stage Liquid Aura */}
           <div
-            className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[580px] h-[580px] rounded-full blur-[140px] opacity-45 transition-all duration-700 pointer-events-none"
+            className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[580px] h-[580px] rounded-full blur-[140px] opacity-45 transition-colors duration-700 pointer-events-none"
             style={{ backgroundColor: activeStage.liquidColor }}
           />
           {/* Concentric Rotating Botanical Astrolabe / Compass Rings */}
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[680px] rounded-full border-2 border-[#C8741B]/25 pointer-events-none select-none transition-transform duration-100 ease-out"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[680px] rounded-full border-2 border-[#C8741B]/25 pointer-events-none select-none will-change-transform"
             style={{ transform: `translate(-50%, -50%) rotate(${scrubProgress * 180}deg)` }}
           >
             <div className="w-full h-full rounded-full border border-dashed border-[#C8741B]/35 p-12">
@@ -167,7 +175,7 @@ export const PinnedBottleJourney: React.FC = () => {
         {/* Layer 2: Upper Kinetic Marquee Ribbon (Visibly running above & behind header) */}
         <div className="absolute top-6 sm:top-10 left-0 w-full pointer-events-none select-none z-0 overflow-hidden">
           <div
-            className="flex whitespace-nowrap opacity-[0.28] sm:opacity-[0.35] transition-transform duration-100 ease-out will-change-transform"
+            className="flex whitespace-nowrap opacity-[0.28] sm:opacity-[0.35] will-change-transform"
             style={{ transform: `translate3d(${-scrubProgress * 420}px, 0, 0)` }}
           >
             <div className="flex animate-ticker-left">
@@ -187,7 +195,7 @@ export const PinnedBottleJourney: React.FC = () => {
         {/* Layer 4: Lower Kinetic Ticker Ribbon (Visibly running across the bottom) */}
         <div className="absolute bottom-6 sm:bottom-8 left-0 w-full pointer-events-none select-none z-0 overflow-hidden">
           <div
-            className="flex whitespace-nowrap opacity-[0.28] sm:opacity-[0.34] transition-transform duration-100 ease-out will-change-transform"
+            className="flex whitespace-nowrap opacity-[0.28] sm:opacity-[0.34] will-change-transform"
             style={{ transform: `translate3d(${scrubProgress * 380}px, 0, 0)` }}
           >
             <div className="flex animate-ticker-right">
@@ -205,7 +213,7 @@ export const PinnedBottleJourney: React.FC = () => {
 
         {/* Global Floating Botanical Particles reacting to scrub */}
         <div
-          className="absolute top-1/4 left-8 pointer-events-none opacity-50 transition-transform duration-100 ease-out z-0 hidden lg:block"
+          className="absolute top-1/4 left-8 pointer-events-none opacity-50 will-change-transform z-0 hidden lg:block"
           style={{
             transform: `translate3d(0, ${scrubProgress * 180}px, 0) rotate(${scrubProgress * 90}deg)`,
           }}
@@ -213,7 +221,7 @@ export const PinnedBottleJourney: React.FC = () => {
           <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#C8741B] to-[#8A1521] blur-[1px] shadow-lg opacity-70" />
         </div>
         <div
-          className="absolute bottom-1/4 right-12 pointer-events-none opacity-45 transition-transform duration-100 ease-out z-0 hidden lg:block"
+          className="absolute bottom-1/4 right-12 pointer-events-none opacity-45 will-change-transform z-0 hidden lg:block"
           style={{
             transform: `translate3d(0, ${-scrubProgress * 220}px, 0) rotate(${-scrubProgress * 120}deg)`,
           }}
@@ -316,7 +324,7 @@ export const PinnedBottleJourney: React.FC = () => {
                 </span>
                 <div className="flex-1 h-2 bg-brand-parchment rounded-full overflow-hidden relative">
                   <div
-                    className="h-full bg-gradient-to-r from-brand-amber via-[#C8741B] to-[#8A1521] rounded-full transition-all duration-75"
+                    className="h-full bg-gradient-to-r from-brand-amber via-[#C8741B] to-[#8A1521] rounded-full will-change-[width]"
                     style={{ width: `${Math.round(scrubProgress * 100)}%` }}
                   />
                 </div>

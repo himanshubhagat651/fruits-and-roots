@@ -23,8 +23,10 @@ interface BotanicalElement {
 }
 
 export const FloatingProduce: React.FC = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [scrollY, setScrollY] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const layerFarRef = useRef<HTMLDivElement>(null);
+  const layerMidRef = useRef<HTMLDivElement>(null);
+  const layerNearRef = useRef<HTMLDivElement>(null);
 
   // Carefully curated botanical produce distributed across the Hero canvas
   const elementsRef = useRef<BotanicalElement[]>([
@@ -62,21 +64,69 @@ export const FloatingProduce: React.FC = () => {
     { id: 21, type: 'mint-leaf', x: 72, y: 38, size: 44, depth: 0.07, rotation: 24, speed: 1.2, opacity: 0.75 },
   ]);
 
+  // Hardware-accelerated smooth parallax animation with zero React re-renders
   useEffect(() => {
+    let mouseTarget = { x: 0, y: 0 };
+    let mouseCurrent = { x: 0, y: 0 };
+    let scrollTarget = 0;
+    let scrollCurrent = 0;
+    let isVisible = true;
+    let animId: number;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.01 }
+    );
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
-      const x = e.clientX - window.innerWidth / 2;
-      const y = e.clientY - window.innerHeight / 2;
-      setMousePos({ x, y });
+      mouseTarget.x = e.clientX - window.innerWidth / 2;
+      mouseTarget.y = e.clientY - window.innerHeight / 2;
     };
 
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      scrollTarget = window.scrollY;
     };
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     window.addEventListener('scroll', handleScroll, { passive: true });
 
+    const tick = () => {
+      animId = requestAnimationFrame(tick);
+      if (!isVisible) return; // Completely sleep when Hero is scrolled out of view
+
+      mouseCurrent.x += (mouseTarget.x - mouseCurrent.x) * 0.07;
+      mouseCurrent.y += (mouseTarget.y - mouseCurrent.y) * 0.07;
+      scrollCurrent += (scrollTarget - scrollCurrent) * 0.09;
+
+      if (layerFarRef.current) {
+        const x = mouseCurrent.x * 0.07;
+        const y = mouseCurrent.y * 0.07 + scrollCurrent * 0.07 * 0.35;
+        layerFarRef.current.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
+      }
+
+      if (layerMidRef.current) {
+        const x = mouseCurrent.x * 0.11;
+        const y = mouseCurrent.y * 0.11 + scrollCurrent * 0.11 * 0.35;
+        layerMidRef.current.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
+      }
+
+      if (layerNearRef.current) {
+        const x = mouseCurrent.x * 0.16;
+        const y = mouseCurrent.y * 0.16 + scrollCurrent * 0.16 * 0.35;
+        layerNearRef.current.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
+      }
+    };
+
+    tick();
+
     return () => {
+      cancelAnimationFrame(animId);
+      observer.disconnect();
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
@@ -429,36 +479,50 @@ export const FloatingProduce: React.FC = () => {
     }
   };
 
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none" aria-hidden="true">
-      {elementsRef.current.map((item) => {
-        const offsetX = mousePos.x * item.depth;
-        const offsetY = mousePos.y * item.depth + (scrollY * item.depth * 0.35);
+  const farElements = elementsRef.current.filter((e) => e.depth <= 0.09);
+  const midElements = elementsRef.current.filter((e) => e.depth > 0.09 && e.depth <= 0.13);
+  const nearElements = elementsRef.current.filter((e) => e.depth > 0.13);
 
-        return (
-          <div
-            key={item.id}
-            className="absolute transition-transform duration-300 ease-out will-change-transform hover:scale-110 pointer-events-auto cursor-pointer"
-            style={{
-              left: `${item.x}%`,
-              top: `${item.y}%`,
-              transform: `translate3d(${offsetX}px, ${offsetY}px, 0) rotate(${item.rotation + offsetX * 0.08 + (scrollY * item.depth * 0.08)}deg)`,
-              filter: 'drop-shadow(0 12px 24px rgba(23,20,18,0.09))',
-              opacity: item.opacity || 0.88,
-            }}
-          >
-            <div
-              className="animate-float"
-              style={{
-                animationDuration: `${4.5 + item.speed * 2}s`,
-                animationDelay: `-${item.id * 0.4}s`,
-              }}
-            >
-              {renderProduceSvg(item.type, item.size, item.id)}
-            </div>
-          </div>
-        );
-      })}
+  const renderItem = (item: BotanicalElement) => (
+    <div
+      key={item.id}
+      className="absolute hover:scale-110 pointer-events-auto cursor-pointer transition-transform duration-200"
+      style={{
+        left: `${item.x}%`,
+        top: `${item.y}%`,
+        transform: `rotate(${item.rotation}deg)`,
+        filter: 'drop-shadow(0 12px 24px rgba(23,20,18,0.09))',
+        opacity: item.opacity || 0.88,
+      }}
+    >
+      <div
+        className="animate-float"
+        style={{
+          animationDuration: `${4.5 + item.speed * 2}s`,
+          animationDelay: `-${item.id * 0.4}s`,
+        }}
+      >
+        {renderProduceSvg(item.type, item.size, item.id)}
+      </div>
+    </div>
+  );
+
+  return (
+    <div ref={containerRef} className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none" aria-hidden="true">
+      {/* Background Parallax Depth Layer (~0.08) */}
+      <div ref={layerFarRef} className="absolute inset-0 pointer-events-none will-change-transform">
+        {farElements.map(renderItem)}
+      </div>
+
+      {/* Midground Parallax Depth Layer (~0.12) */}
+      <div ref={layerMidRef} className="absolute inset-0 pointer-events-none will-change-transform">
+        {midElements.map(renderItem)}
+      </div>
+
+      {/* Foreground Parallax Depth Layer (~0.16) */}
+      <div ref={layerNearRef} className="absolute inset-0 pointer-events-none will-change-transform">
+        {nearElements.map(renderItem)}
+      </div>
     </div>
   );
 };

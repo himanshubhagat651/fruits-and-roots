@@ -262,7 +262,7 @@ export const ProductCatalog: React.FC = () => {
 
         {/* VIEW 1: THE BAR TÒPAS SIGNATURE RUNWAY (HORIZONTAL CARD WAVE) */}
         {viewMode === 'runway' && (
-          <div className="mt-14 relative skew-on-scroll">
+          <div className="mt-14 relative">
             <div
               ref={runwayRef}
               onScroll={handleRunwayScroll}

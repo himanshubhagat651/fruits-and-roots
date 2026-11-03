@@ -94,7 +94,7 @@ function createDoubleWalledBottleGeometry(): THREE.BufferGeometry {
   points.push(new THREE.Vector2(0.35, 0.12));
   points.push(new THREE.Vector2(0.00, 0.14)); // Inner base center
 
-  const geometry = new THREE.LatheGeometry(points, 72);
+  const geometry = new THREE.LatheGeometry(points, 48);
   geometry.computeVertexNormals();
   // Center bottle vertically
   geometry.translate(0, -2.18, 0);
@@ -156,7 +156,7 @@ function createFluidGeometry(fillFraction: number): THREE.BufferGeometry {
     points.push(new THREE.Vector2(0, currentTopY - 0.018));
   }
 
-  const geometry = new THREE.LatheGeometry(points, 72);
+  const geometry = new THREE.LatheGeometry(points, 48);
   geometry.computeVertexNormals();
   geometry.translate(0, -2.18, 0);
   return geometry;
@@ -381,14 +381,15 @@ export const JourneyBottle3D: React.FC<JourneyBottle3DProps> = ({
     const camera = new THREE.PerspectiveCamera(35, width / height, 0.1, 100);
     camera.position.set(0, 0.1, 7.8);
 
-    // 3. Renderer with ACES Tone Mapping
+    // 3. Renderer with ACES Tone Mapping & Hardware Optimization
     const renderer = new THREE.WebGLRenderer({
       alpha: false,
       antialias: true,
       powerPreference: 'high-performance',
+      precision: 'mediump',
     });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.3;
     rendererRef.current = renderer;
@@ -687,11 +688,24 @@ export const JourneyBottle3D: React.FC<JourneyBottle3DProps> = ({
     window.addEventListener('touchmove', onTouchMove, { passive: true });
     window.addEventListener('touchend', onTouchEnd);
 
-    // 9. Render & Animation Loop
+    // 9. Render & Animation Loop with Visibility Culling
     let animationFrameId: number;
     let clock = new THREE.Clock();
+    let isVisible = true;
+    let lastGeometryFraction = currentLiquidFractionRef.current;
+
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.05 }
+    );
+    visibilityObserver.observe(container);
 
     const render = () => {
+      animationFrameId = requestAnimationFrame(render);
+      if (!isVisible) return; // Completely pause 3D draw calls when offscreen
+
       const elapsedTime = clock.getElapsedTime();
 
       // Gentle idle sway when user is not dragging
@@ -724,13 +738,20 @@ export const JourneyBottle3D: React.FC<JourneyBottle3DProps> = ({
         bubblesGroupRef.current.geometry.attributes.position.needsUpdate = true;
       }
 
-      // Smoothly interpolate fluid fill level
+      // Smoothly interpolate fluid fill level with quantized geometry regeneration
       const liquidDiff = targetLiquidFractionRef.current - currentLiquidFractionRef.current;
-      if (Math.abs(liquidDiff) > 0.005) {
-        currentLiquidFractionRef.current += liquidDiff * 0.06;
-        if (liquidMeshRef.current) {
-          liquidMeshRef.current.geometry.dispose();
-          liquidMeshRef.current.geometry = createFluidGeometry(currentLiquidFractionRef.current);
+      if (Math.abs(liquidDiff) > 0.002) {
+        currentLiquidFractionRef.current += liquidDiff * 0.08;
+        // Only regenerate buffer geometry when change delta exceeds threshold (prevents 60fps buffer GC thrash)
+        if (
+          Math.abs(currentLiquidFractionRef.current - lastGeometryFraction) > 0.025 ||
+          Math.abs(liquidDiff) <= 0.003
+        ) {
+          lastGeometryFraction = currentLiquidFractionRef.current;
+          if (liquidMeshRef.current) {
+            liquidMeshRef.current.geometry.dispose();
+            liquidMeshRef.current.geometry = createFluidGeometry(currentLiquidFractionRef.current);
+          }
         }
       }
 
@@ -742,7 +763,6 @@ export const JourneyBottle3D: React.FC<JourneyBottle3DProps> = ({
       }
 
       renderer.render(scene, camera);
-      animationFrameId = requestAnimationFrame(render);
     };
 
     render();
@@ -761,6 +781,7 @@ export const JourneyBottle3D: React.FC<JourneyBottle3DProps> = ({
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      visibilityObserver.disconnect();
       window.removeEventListener('resize', handleResize);
       container.removeEventListener('mousedown', onMouseDown);
       window.removeEventListener('mousemove', onMouseMove);

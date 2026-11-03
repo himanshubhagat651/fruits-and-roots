@@ -865,14 +865,16 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     camera.position.set(0, 0.5, isMobile ? 8.6 : 7.4);
     camera.lookAt(0, 0.1, 0);
 
-    // 3. Renderer
+    // 3. Renderer with hardware optimization
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
       powerPreference: 'high-performance',
+      precision: 'mediump',
     });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Cap pixel ratio at 1.5 to guarantee buttery 60/120fps on Retina displays
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.25;
     renderer.shadowMap.enabled = true;
@@ -888,8 +890,8 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     const keyLight = new THREE.DirectionalLight(0xfffaed, 2.0);
     keyLight.position.set(4, 7, 5);
     keyLight.castShadow = true;
-    keyLight.shadow.mapSize.width = 1024;
-    keyLight.shadow.mapSize.height = 1024;
+    keyLight.shadow.mapSize.width = 512;
+    keyLight.shadow.mapSize.height = 512;
     keyLight.shadow.bias = -0.0001;
     scene.add(keyLight);
 
@@ -1162,13 +1164,24 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     window.addEventListener('touchend', onTouchEnd);
 
     // ---------------------------------------------------------
-    // Animation Loop
+    // Animation Loop with Visibility Culling (Zero GPU lag when scrolled)
     // ---------------------------------------------------------
     let animationFrameId: number;
     let clock = new THREE.Clock();
+    let isVisible = true;
+
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.05 }
+    );
+    visibilityObserver.observe(container);
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
+      if (!isVisible) return; // Completely pause WebGL draw calls when offscreen
+
       const delta = Math.min(clock.getDelta(), 0.1);
       const time = clock.getElapsedTime();
 
@@ -1290,6 +1303,7 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      visibilityObserver.disconnect();
       window.removeEventListener('resize', handleResize);
       domEl.removeEventListener('mousedown', onMouseDown);
       window.removeEventListener('mousemove', onMouseMove);

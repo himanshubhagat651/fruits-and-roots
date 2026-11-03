@@ -48,7 +48,7 @@ export const BentoGrid: React.FC = () => {
         </div>
 
         {/* Bento Grid Matrix */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 skew-on-scroll">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           
           {/* Bento Cell 1: Slow Cold-Press Method */}
           <div className="md:col-span-2 lg:col-span-2 md:row-span-2 bg-brand-950 text-brand-cream rounded-3xl p-8 sm:p-10 border border-brand-800/80 shadow-2xl flex flex-col justify-between relative overflow-hidden group">
