@@ -92,7 +92,7 @@ export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen })
               className="hover:text-[#8A1521] text-[#8A1521] font-black transition-colors flex items-center gap-1.5"
             >
               <span className="w-2 h-2 rounded-full bg-[#C8741B] animate-pulse" />
-              <span>HORAIRES</span>
+              <span>TIMINGS</span>
             </a>
             <a
               href="#cleanses"
@@ -216,7 +216,7 @@ export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen })
                 className="py-2 border-b border-brand-950/10 text-[#8A1521] font-black flex items-center gap-2"
               >
                 <span className="w-2 h-2 rounded-full bg-[#C8741B]" />
-                <span>HORAIRES (PRESS ROOM SCHEDULE)</span>
+                <span>PRESS ROOM TIMINGS</span>
               </a>
               <a
                 href="#cleanses"

@@ -72,11 +72,11 @@ export const HorairesSchedule: React.FC = () => {
         {/* 2. Top Header Navigation Bar (Direct Bar Topas Layout) */}
         <div className="flex items-center justify-between pb-10 sm:pb-14">
           
-          {/* Oval Sticker Badge: TÒPAS / FRUITS & ROOTS */}
+          {/* Oval Sticker Badge: BANDRA WEST / LIVING LAB */}
           <div className="relative group cursor-pointer" onClick={playPopSound}>
             <div className="px-5 py-2.5 rounded-full bg-[#FAF6EE] text-[#8A1521] border-2 border-[#8A1521]/15 shadow-md flex items-center gap-2 -rotate-3 group-hover:rotate-0 transition-transform duration-300">
               <span className="font-display font-black text-xs sm:text-sm uppercase tracking-wider">
-                TÒPAS &bull; LIVING LAB
+                BANDRA WEST &bull; LIVING LAB
               </span>
             </div>
           </div>
@@ -140,18 +140,18 @@ export const HorairesSchedule: React.FC = () => {
               </div>
             </div>
 
-            {/* Giant Display Headline: HORAIRES */}
+            {/* Giant Display Headline: TIMINGS */}
             <h2 className="font-display text-6xl sm:text-8xl md:text-9xl lg:text-[7.5rem] font-black text-[#8A1521] tracking-tight uppercase leading-[0.85] drop-shadow-xs">
-              HORAIRES
+              TIMINGS
             </h2>
 
             {/* Timings List */}
             <div className="space-y-6 pt-2">
               
-              {/* Slot 1: SEA & GAME / DAILY COLD-PRESS */}
+              {/* Slot 1: DAILY SUNRISE PRESS / COLD EXTRACTION */}
               <div className="space-y-1">
                 <span className="text-sm sm:text-base font-display font-black text-[#C8741B] uppercase tracking-wider block">
-                  SEA &amp; GAME &bull; FRESH DISPATCH
+                  DAILY SUNRISE PRESS &bull; FRESH DISPATCH
                 </span>
                 <div className="font-display font-black text-4xl sm:text-6xl md:text-7xl text-[#8A1521] tracking-tight flex items-center gap-3 sm:gap-5 flex-wrap">
                   <span>6:30 P.M</span>
@@ -163,7 +163,7 @@ export const HorairesSchedule: React.FC = () => {
               {/* Slot 2: FRI & WEEKENDS with Circle-Ring Arrow */}
               <div className="space-y-1">
                 <span className="text-sm sm:text-base font-display font-black text-[#C8741B] uppercase tracking-wider block">
-                  FRI &bull; WEEKEND CELLULAR RESET
+                  FRI TO SUN &bull; WEEKEND RESET BATCH
                 </span>
                 <div className="font-display font-black text-4xl sm:text-6xl md:text-7xl text-[#8A1521] tracking-tight flex items-center gap-3 sm:gap-5 flex-wrap">
                   <span>5:00 P.M</span>
@@ -180,7 +180,7 @@ export const HorairesSchedule: React.FC = () => {
 
             </div>
 
-            {/* Handwritten Signature Script: el gusto por lo bueno */}
+            {/* Handwritten Signature Script: The Taste of Pure Goodness */}
             <div className="pt-4 sm:pt-6">
               <div
                 onClick={triggerToast}
@@ -188,7 +188,7 @@ export const HorairesSchedule: React.FC = () => {
                 title="Click to salute living vitality"
               >
                 <p className="font-script text-5xl sm:text-7xl md:text-8xl text-[#C8741B] -rotate-4 group-hover:rotate-0 transition-transform duration-300 drop-shadow-sm select-none">
-                  el gusto por lo bueno
+                  The Taste of Pure Goodness
                 </p>
                 <span className="font-mono text-xs text-[#8A1521]/75 font-bold uppercase tracking-widest block pt-1">
                   &mdash; Pure living raw earth &bull; Handcrafted in Mumbai

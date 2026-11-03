@@ -97,7 +97,7 @@ export const Footer: React.FC = () => {
               <li><a href="#catalog" className="hover:text-brand-gold transition">22G PLANT PROTEIN</a></li>
               <li><a href="#cleanses" className="hover:text-brand-gold transition">MULTI-DAY PROTOCOLS</a></li>
               <li><a href="#catalog" className="hover:text-brand-gold transition">IMMUNITY SHOTS (60ML)</a></li>
-              <li><a href="#horaires" className="hover:text-brand-gold transition">DISPENSARY HORAIRES</a></li>
+              <li><a href="#horaires" className="hover:text-brand-gold transition">DISPENSARY TIMINGS</a></li>
             </ul>
           </div>
 

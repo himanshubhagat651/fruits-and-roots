@@ -16,7 +16,7 @@ const CHAPTERS: Chapter[] = [
   { id: 'runway', act: '04', title: 'RITUALS' },
   { id: 'atelier', act: '05', title: 'THE CRATE' },
   { id: 'catalog', act: '06', title: 'DISPENSARY' },
-  { id: 'horaires', act: '07', title: 'HORAIRES' },
+  { id: 'horaires', act: '07', title: 'TIMINGS' },
   { id: 'cleanses', act: '08', title: 'PROTOCOLS' },
 ];
 
