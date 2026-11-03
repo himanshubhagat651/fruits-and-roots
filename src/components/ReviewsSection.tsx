@@ -35,7 +35,7 @@ const REVIEWS_DATA: CustomerReview[] = [
     location: 'Juhu Tara Road, Mumbai',
     rating: 5,
     comment:
-      '"As a physician, finding genuine 100% unpasteurised cold-pressed juice in India that maintains an unbroken 2.2°C cold chain without thermal pasteurisation was nearly impossible. Their 15,000 PSI hydraulic extraction keeps living digestive enzymes and cellular phytonutrients completely intact. My morning celery flush and Emerald Canopy have become non-negotiable!"',
+      '"As a physician, finding genuine 100% unpasteurised cold-pressed juice in India that maintains an unbroken 2.2°C cold chain without thermal pasteurisation was nearly impossible. Their 15,000 PSI hydraulic extraction keeps living digestive enzymes and cellular phytonutrients completely intact. My morning celery ritual and Emerald Canopy have become non-negotiable!"',
     cardColor: '#2E4733', // Deep Nilgiri Botanical Forest Green
     shadowColor: '#D9CEBE', // Warm Sand Offset
     sparkColor: '#DDA74F',

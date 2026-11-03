@@ -31,7 +31,7 @@ export const SubscriptionSection: React.FC = () => {
       features: [
         '6 Living cold-press bottles daily (473ml)',
         '2x Raw Lakadong turmeric immunity shots',
-        'Morning golden digestion & liver flush',
+        'Morning golden digestion & gut awakening',
         'Delivered daily before 6:30 AM IST in cold coolers',
         'Up to ₹150 UPI cashback on returning 6 bottles',
         'Full hour-by-hour nutritionist schedule guide',
@@ -60,8 +60,8 @@ export const SubscriptionSection: React.FC = () => {
       basePrice: 1199,
       features: [
         '6 Pure alkaline green bottles daily (0g added fruit sugar)',
-        'Evening activated charcoal toxin binding elixir',
-        'High-chlorophyll cellular autophagy flush',
+        'Evening activated charcoal & Persian lime botanical elixir',
+        'High-chlorophyll cellular hydration & green reset',
         '100% Single-origin organic farm traceability',
         'Himalayan pink rock salt hydration pouch included',
         'Permanent 20% bundle savings vs single bottles',

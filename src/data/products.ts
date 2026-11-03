@@ -278,7 +278,7 @@ export const PRODUCTS: Product[] = [
     name: 'Pure Celery & Fennel Cleanse',
     subname: '100% Raw Cold-Pressed Living Juice',
     tagline: 'High-elevation Himalayan celery stalks, sweet Florence fennel, Kinnaur apple & lime.',
-    description: 'Pure gut & liver flush with over 1.6 kg of crisp organic celery stalks cold-pressed at 15,000 PSI. Natural mineral cluster salts replenish stomach hydrochloric acid.',
+    description: 'Pure gut hydration and digestive balance with over 1.6 kg of crisp organic celery stalks cold-pressed at 15,000 PSI. Natural mineral cluster salts replenish essential electrolytes.',
     category: 'juices',
     price: 325,
     subscriptionPrice: 275,
@@ -293,7 +293,7 @@ export const PRODUCTS: Product[] = [
       'Sahyadri Garden Spearmint'
     ],
     ingredientHighlights: [
-      { name: 'Himalayan Celery', benefit: 'Bioavailable sodium cluster salts to rebuild stomach acid & flush toxins', origin: 'Shimla Slopes, Himachal' },
+      { name: 'Himalayan Celery', benefit: 'Bioavailable sodium cluster salts to hydrate and support natural digestion', origin: 'Shimla Slopes, Himachal' },
       { name: 'Sweet Fennel Bulb', benefit: 'Relaxes gastrointestinal muscles and relieves metabolic bloating', origin: 'Ooty Hills, Tamil Nadu' },
       { name: 'Kinnaur Green Apple', benefit: 'Malic acid helps soften gallstones and aids hepatic bile flow', origin: 'Kinnaur, Himachal' }
     ],
@@ -321,7 +321,7 @@ export const PRODUCTS: Product[] = [
     },
     colorHex: '#487834',
     accentColor: '#7BC442',
-    badge: 'Gut Flush Favourite',
+    badge: 'Digestive Favourite',
     image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80',
     rating: 4.9,
     reviewsCount: 410,
@@ -329,10 +329,10 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'activated-charcoal-zen',
-    name: 'Activated Charcoal Botanical Flush',
-    subname: 'Cold-Pressed Toxin-Binding Juice',
+    name: 'Activated Charcoal Botanical Elixir',
+    subname: 'Cold-Pressed Botanical Cleanse',
     tagline: 'Steam-activated coconut shell charcoal, Gondhoraj lime, Valencia orange & pure spring water.',
-    description: 'A midnight-black detoxifying masterwork. Coconut charcoal traps unwanted metabolic toxins and environmental heavy metals, gently resetting your gastrointestinal tract.',
+    description: 'A midnight-black refreshing masterwork. Micro-porous coconut charcoal paired with fresh lime and ginger gently cleanses and balances your digestive tract.',
     category: 'juices',
     price: 275,
     subscriptionPrice: 235,
@@ -347,7 +347,7 @@ export const PRODUCTS: Product[] = [
       'Pinch of Pink Rock Salt (Sendha Namak)'
     ],
     ingredientHighlights: [
-      { name: 'Activated Coconut Charcoal', benefit: 'Micro-porous structure binds intestinal toxins & gas', origin: 'Pollachi, Tamil Nadu' },
+      { name: 'Activated Coconut Charcoal', benefit: 'Micro-porous structure promotes digestive balance & comfort', origin: 'Pollachi, Tamil Nadu' },
       { name: 'Gondhoraj Lime', benefit: 'Rich in citrus bioflavonoids to stimulate hepatic bile flow', origin: 'Hooghly Belt, West Bengal' },
       { name: 'Himalayan Spring Water', benefit: 'Naturally micro-clustered mineral water without acidity', origin: 'Uttarkashi, Uttarakhand' }
     ],
@@ -375,7 +375,7 @@ export const PRODUCTS: Product[] = [
     },
     colorHex: '#1F2937',
     accentColor: '#C8741B',
-    badge: 'Toxin Cleanse',
+    badge: 'Deep Cleanse',
     image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80',
     rating: 4.7,
     reviewsCount: 198
@@ -475,7 +475,7 @@ export const CLEANSE_PROGRAMS: CleanseProgram[] = [
     pricePerDay: 1566,
     totalPrice: 4699,
     savings: 800,
-    description: 'Strictly zero high-sugar fruits. 100% cold-pressed organic leafy greens, herbs, activated charcoal, and celery to facilitate deep cellular autophagy and liver reset.',
+    description: 'Strictly zero high-sugar fruits. 100% cold-pressed organic leafy greens, herbs, activated charcoal, and celery to support deep cellular rejuvenation and metabolic balance.',
     color: '#3D6847',
     includes: [
       '18 Pure Green & Functional Borosilicate Bottles',
@@ -485,12 +485,12 @@ export const CLEANSE_PROGRAMS: CleanseProgram[] = [
       'VIP WhatsApp Concierge Support'
     ],
     schedule: [
-      { time: '7:30 AM IST', drink: 'Morning Pure Himalayan Celery Elixir (473ml)', benefit: 'Natural mineral salts flush stomach acid' },
+      { time: '7:30 AM IST', drink: 'Morning Pure Himalayan Celery Elixir (473ml)', benefit: 'Natural mineral salts balance hydration and digestion' },
       { time: '10:00 AM IST', drink: 'Emerald Canopy (Extra Nilgiri Kale & Parsley)', benefit: 'Deep cellular oxygenation' },
-      { time: '12:30 PM IST', drink: 'Deep Earth Chlorophyll Tonic', benefit: 'Kidney & liver filtration assist' },
+      { time: '12:30 PM IST', drink: 'Deep Earth Chlorophyll Tonic', benefit: 'Rich bioavailable greens & cellular hydration' },
       { time: '3:00 PM IST', drink: 'Emerald Canopy Detox', benefit: 'Alkaline blood pH rebalancing' },
       { time: '5:30 PM IST', drink: 'Fire & Ginger Immunity Shot + Lemon Cucumber', benefit: 'Lymphatic drainage stimulant' },
-      { time: '8:00 PM IST', drink: 'Activated Charcoal Zen', benefit: 'Traps toxins before nocturnal sleep' }
+      { time: '8:00 PM IST', drink: 'Activated Charcoal Zen', benefit: 'Calming digestive balance before sleep' }
     ]
   }
 ];

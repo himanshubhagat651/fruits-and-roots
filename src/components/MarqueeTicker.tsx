@@ -40,7 +40,7 @@ export const MarqueeTicker: React.FC = () => {
     { name: 'BLUE MAJIK MARINE TONIC (WILD SPIRULINA & COCONUT WATER)', id: 'blue-majik-cloud' },
     { name: 'PURE CELERY & FENNEL (HIMALAYAN MOUNTAIN STALKS)', id: 'raw-cacao-reishi-bliss' },
     { name: 'FIRE & ROOT IMMUNITY BOOSTER (WAYANAD HIGH-GINGEROL)', id: 'fire-ginger-immunity-shot' },
-    { name: 'ACTIVATED CHARCOAL FLUSH (POLLACHI COCONUT CARBON)', id: 'activated-charcoal-zen' },
+    { name: 'ACTIVATED CHARCOAL BOTANICAL ELIXIR (POLLACHI COCONUT CARBON)', id: 'activated-charcoal-zen' },
   ];
 
   // Quadruple items to guarantee infinite seamless wrap across all ultra-wide & 4K screens

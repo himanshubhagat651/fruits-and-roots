@@ -145,7 +145,7 @@ const MainApp: React.FC = () => {
         {/* Story Bridge 2: The Living Pharmacopoeia */}
         <StoryBridge
           actBadge="THE BOTANICAL SPECTRUM"
-          quote="Living plants speak in frequency, colour, and taste. The golden rhizome calms systemic fire. The emerald leaf binds heavy toxins. The crimson root fuels arterial nitric oxide."
+          quote="Living plants speak in frequency, colour, and taste. The golden rhizome calms systemic inflammation. The emerald leaf delivers rich living chlorophyll. The crimson root fuels natural nitric oxide."
           author="SINGLE-ORIGIN PHARMACOPOEIA"
           subtext="100% UNPASTEURISED LIVING ENZYMES • ZERO PRESERVATIVES"
           theme="amber"

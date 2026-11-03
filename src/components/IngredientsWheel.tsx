@@ -37,7 +37,7 @@ const INGREDIENTS: IngredientInfo[] = [
     category: 'Leafy Greens',
     farmOrigin: 'Ooty Organic Terraces, Nilgiris (2,200m Altitude)',
     keyPhytonutrient: 'Living Chlorophyll, Lutein & Zeaxanthin',
-    healthBenefit: 'Binds heavy metals in the intestinal lumen, assists phase-2 liver enzyme clearance, and protects retinal cells.',
+    healthBenefit: 'Delivers high concentrations of living chlorophyll and carotenoids, supporting cellular hydration and antioxidant defense.',
     colorHex: '#3D6847',
     matchingDrinks: ['Emerald Canopy'],
     image: 'https://images.unsplash.com/photo-1524179091875-bf99a9a6fa57?auto=format&fit=crop&w=600&q=80',
