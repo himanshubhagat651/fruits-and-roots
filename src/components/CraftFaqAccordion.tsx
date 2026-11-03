@@ -78,7 +78,7 @@ export const CraftFaqAccordion: React.FC = () => {
             <HelpCircle className="w-3.5 h-3.5 text-brand-amber" />
             <span>FREQUENTLY ASKED QUESTIONS</span>
           </div>
-          <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-black text-brand-950 uppercase tracking-tight leading-[0.9]">
+          <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-black text-brand-950 uppercase tracking-tight leading-[0.92]">
             Got Questions? We Have Answers.
           </h2>
           <p className="text-sm sm:text-base text-brand-700 font-normal">

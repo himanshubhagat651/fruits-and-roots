@@ -127,15 +127,13 @@ export const SubscriptionSection: React.FC = () => {
           <div className="absolute top-1/3 -right-20 w-80 h-80 bg-[#8A1521]/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-16 left-1/3 w-96 h-96 bg-[#C8741B]/20 rounded-full blur-3xl pointer-events-none" />
 
-          {/* 1. Top 3D Sticker Header: PICK THE PERFECT LIVING PROTOCOL */}
+          {/* 1. Luxury Editorial Header */}
           <div className="text-center relative z-10 mb-8 sm:mb-12 space-y-4">
             
-            <div className="inline-block transform rotate-[-1.5deg] hover:rotate-0 transition-transform duration-300">
-              <div className="bg-white px-6 sm:px-10 py-3 sm:py-4 rounded-2xl sm:rounded-3xl shadow-xl border-2 border-brand-950/10 inline-block">
-                <h2 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#A31D1D] uppercase tracking-tight leading-none drop-shadow-xs">
-                  CHOOSE YOUR DAILY JUICE PLAN
-                </h2>
-              </div>
+            <div className="space-y-3">
+              <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-black text-brand-950 tracking-tight leading-[0.95] uppercase">
+                CHOOSE YOUR DAILY JUICE PLAN
+              </h2>
             </div>
 
             <p className="font-mono text-xs sm:text-sm text-brand-800 font-bold uppercase tracking-widest max-w-xl mx-auto pt-1">

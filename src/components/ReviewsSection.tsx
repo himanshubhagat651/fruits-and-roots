@@ -137,7 +137,7 @@ export const ReviewsSection: React.FC = () => {
 
         {/* Partake Foods Signature Colossal Headline */}
         <div className="text-center space-y-2 mb-10 sm:mb-14">
-          <h2 className="font-display text-5xl sm:text-7xl md:text-8xl font-black text-white tracking-tight uppercase leading-none drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]">
+          <h2 className="font-serif text-5xl sm:text-7xl md:text-8xl font-black text-white tracking-tight uppercase leading-none drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]">
             Certified Tasty
           </h2>
           <div className="flex items-center justify-center gap-2 pt-1 font-mono text-xs sm:text-sm font-bold text-white/90">

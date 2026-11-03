@@ -96,18 +96,18 @@ export const ProductCatalog: React.FC = () => {
           className="absolute -bottom-28 -right-28 w-[600px] h-[600px] rounded-full bg-gradient-to-tl from-[#8A1521]/25 via-[#C8741B]/15 to-transparent blur-[130px] pointer-events-none"
         />
 
-        {/* Kinetic Watermark Marquee (Distinctly Visible & Movable) */}
+        {/* Kinetic Watermark Marquee (Subtle luxury watermark) */}
         <div
-          className="absolute top-1/2 left-0 -translate-y-1/2 w-full flex whitespace-nowrap opacity-[0.28] sm:opacity-[0.35] transition-transform duration-100 ease-out will-change-transform drop-shadow-[0_4px_24px_rgba(200,116,27,0.30)]"
+          className="absolute top-1/2 left-0 -translate-y-1/2 w-full flex whitespace-nowrap opacity-[0.08] sm:opacity-[0.12] transition-transform duration-100 ease-out will-change-transform"
           style={{ transform: `translate3d(${-scrollProgress * 480}px, 0, 0)` }}
         >
           <div className="flex animate-ticker-left">
-            <span className="font-display text-[20vw] sm:text-[24vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-12 select-none">
+            <span className="font-serif text-[20vw] sm:text-[24vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-12 select-none">
               FRUITS &amp; ROOTS &bull; RAW COLD-PRESSED JUICES &bull; PURE HARVEST &bull; MUMBAI &bull;
             </span>
           </div>
           <div className="flex animate-ticker-left" aria-hidden="true">
-            <span className="font-display text-[20vw] sm:text-[24vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-12 select-none">
+            <span className="font-serif text-[20vw] sm:text-[24vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-12 select-none">
               FRUITS &amp; ROOTS &bull; RAW COLD-PRESSED JUICES &bull; PURE HARVEST &bull; MUMBAI &bull;
             </span>
           </div>
@@ -166,7 +166,7 @@ export const ProductCatalog: React.FC = () => {
             </div>
 
             {/* Giant Bold Headline */}
-            <h2 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-[#8A1521] tracking-tight uppercase leading-[0.88]">
+            <h2 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-[#8A1521] tracking-tight uppercase leading-[0.88]">
               THE LIVING<br />
               JUICE MENU.
             </h2>

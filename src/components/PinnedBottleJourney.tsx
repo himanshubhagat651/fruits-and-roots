@@ -175,16 +175,16 @@ export const PinnedBottleJourney: React.FC = () => {
         {/* Layer 2: Upper Kinetic Marquee Ribbon (Visibly running above & behind header) */}
         <div className="absolute top-6 sm:top-10 left-0 w-full pointer-events-none select-none z-0 overflow-hidden">
           <div
-            className="flex whitespace-nowrap opacity-[0.28] sm:opacity-[0.35] will-change-transform"
+            className="flex whitespace-nowrap opacity-[0.08] sm:opacity-[0.12] will-change-transform"
             style={{ transform: `translate3d(${-scrubProgress * 420}px, 0, 0)` }}
           >
             <div className="flex animate-ticker-left">
-              <span className="font-display text-[9vw] sm:text-[7vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-12 drop-shadow-[0_2px_14px_rgba(200,116,27,0.32)]">
+              <span className="font-serif text-[9vw] sm:text-[7vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-12">
                 FRUITS &amp; ROOTS &bull; 100% RAW COLD-PRESSED JUICES &bull; NEVER HEATED &bull; ZERO ADDED SUGAR &bull; 2.2&deg;C CHILLED DELIVERY &bull;
               </span>
             </div>
             <div className="flex animate-ticker-left" aria-hidden="true">
-              <span className="font-display text-[9vw] sm:text-[7vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-12 drop-shadow-[0_2px_14px_rgba(200,116,27,0.32)]">
+              <span className="font-serif text-[9vw] sm:text-[7vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-12">
                 FRUITS &amp; ROOTS &bull; 100% RAW COLD-PRESSED JUICES &bull; NEVER HEATED &bull; ZERO ADDED SUGAR &bull; 2.2&deg;C CHILLED DELIVERY &bull;
               </span>
             </div>
@@ -195,16 +195,16 @@ export const PinnedBottleJourney: React.FC = () => {
         {/* Layer 4: Lower Kinetic Ticker Ribbon (Visibly running across the bottom) */}
         <div className="absolute bottom-6 sm:bottom-8 left-0 w-full pointer-events-none select-none z-0 overflow-hidden">
           <div
-            className="flex whitespace-nowrap opacity-[0.28] sm:opacity-[0.34] will-change-transform"
+            className="flex whitespace-nowrap opacity-[0.08] sm:opacity-[0.12] will-change-transform"
             style={{ transform: `translate3d(${scrubProgress * 380}px, 0, 0)` }}
           >
             <div className="flex animate-ticker-right">
-              <span className="font-display text-[7vw] sm:text-[5.5vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-10 drop-shadow-[0_2px_12px_rgba(200,116,27,0.22)]">
+              <span className="font-serif text-[7vw] sm:text-[5.5vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-10">
                 PURE BOROSILICATE GLASS &bull; ZERO PLASTIC &bull; &#8377;150 CASHBACK ON 6 BOTTLES &bull; CHILLED TO YOUR DOORSTEP &bull;
               </span>
             </div>
             <div className="flex animate-ticker-right" aria-hidden="true">
-              <span className="font-display text-[7vw] sm:text-[5.5vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-10 drop-shadow-[0_2px_12px_rgba(200,116,27,0.22)]">
+              <span className="font-serif text-[7vw] sm:text-[5.5vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-10">
                 PURE BOROSILICATE GLASS &bull; ZERO PLASTIC &bull; &#8377;150 CASHBACK ON 6 BOTTLES &bull; CHILLED TO YOUR DOORSTEP &bull;
               </span>
             </div>
@@ -238,7 +238,7 @@ export const PinnedBottleJourney: React.FC = () => {
                 <Zap className="w-3.5 h-3.5 text-brand-amber" />
                 <span>Our Cold-Press Craftsmanship</span>
               </div>
-              <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-black text-brand-950 uppercase tracking-tight leading-[0.9]">
+              <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-black text-brand-950 uppercase tracking-tight leading-[0.92]">
                 From fresh harvest to chilled glass.
               </h2>
             </div>
@@ -344,7 +344,7 @@ export const PinnedBottleJourney: React.FC = () => {
                   </span>
                 </div>
 
-                <h3 className="font-display text-2xl sm:text-4xl md:text-5xl font-black text-brand-950 leading-[0.92] uppercase tracking-tight">
+                <h3 className="font-serif text-2xl sm:text-4xl md:text-5xl font-black text-brand-950 leading-[0.95] tracking-tight">
                   {activeStage.headline}
                 </h3>
 

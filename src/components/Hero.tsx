@@ -77,9 +77,9 @@ export const Hero: React.FC = () => {
         
         {/* Editorial Headline */}
         <div className="text-center space-y-3 mb-4">
-          <h1 className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tight text-brand-950 uppercase leading-[0.88]">
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tight text-brand-950 uppercase leading-[0.88]">
             COLD-PRESSED.<br />
-            <span className="font-editorial italic font-normal text-brand-amber lowercase tracking-normal">
+            <span className="font-serif italic font-normal text-brand-amber lowercase tracking-normal">
               unapologetically
             </span>{' '}
             RAW.

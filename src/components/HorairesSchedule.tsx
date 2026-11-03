@@ -146,10 +146,10 @@ export const HorairesSchedule: React.FC = () => {
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#8A1521]/10 text-[#8A1521] text-xs font-mono font-bold tracking-widest uppercase">
                 <span>OUR STORY &amp; DISPENSARY</span>
               </div>
-              <h2 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black text-[#8A1521] tracking-tight uppercase leading-[0.85] drop-shadow-xs">
+              <h2 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black text-[#8A1521] tracking-tight uppercase leading-[0.85]">
                 ABOUT US
               </h2>
-              <p className="font-display text-xl sm:text-3xl text-[#C8741B] font-black uppercase tracking-tight">
+              <p className="font-serif text-xl sm:text-3xl text-[#C8741B] font-bold uppercase tracking-tight">
                 &amp; DISPENSARY TIMINGS
               </p>
             </div>
