@@ -217,7 +217,7 @@ export const BentoGrid: React.FC = () => {
       <div className="absolute top-0 left-0 right-0 z-30 px-6 sm:px-12 py-4 sm:py-5 flex items-center justify-between border-b border-brand-950/10 backdrop-blur-md bg-[#FAF6EE]/85">
         <div className="flex items-center gap-3 font-mono text-xs sm:text-sm font-bold tracking-widest uppercase">
           <span className="w-2.5 h-2.5 rounded-full bg-brand-amber animate-pulse" />
-          <span className="text-brand-950">CHAPTER {CHAPTERS[activeIdx].step} &bull; OUR COLD-PRESS CRAFTSMANSHIP</span>
+          <span className="text-brand-950">OUR COLD-PRESS CRAFTSMANSHIP</span>
           <span className="hidden md:inline text-brand-950/30">&bull;</span>
           <span className="hidden md:inline text-brand-700 font-normal">
             SOURCED DIRECT FROM ORGANIC INDIAN SOIL
@@ -225,8 +225,6 @@ export const BentoGrid: React.FC = () => {
         </div>
 
         <div className="font-mono text-xs tracking-wider text-brand-800 flex items-center gap-2">
-          <span className="font-bold text-brand-950">{CHAPTERS[activeIdx].step} / 04</span>
-          <span className="text-brand-950/30">&bull;</span>
           <span className="text-brand-amber font-bold">{CHAPTERS[activeIdx].badge}</span>
         </div>
       </div>
@@ -572,23 +570,20 @@ export const BentoGrid: React.FC = () => {
                   </div>
                 </div>
 
-                {/* 3 Step Circular Deposit Workflow */}
+                {/* Circular Deposit Workflow */}
                 <div className="grid grid-cols-3 gap-3 text-center font-mono text-xs">
                   <div className="bg-white p-3.5 rounded-xl border border-brand-950/10 space-y-1 shadow-xs">
-                    <span className="text-brand-amber font-bold block text-sm">/01</span>
-                    <span className="text-brand-950 block font-semibold text-[11px]">DRINK RAW</span>
+                    <span className="text-brand-950 block font-bold text-xs uppercase tracking-wider">DRINK RAW</span>
                     <span className="text-[10px] text-brand-700 block">Pure crystal glass</span>
                   </div>
 
                   <div className="bg-white p-3.5 rounded-xl border border-brand-950/10 space-y-1 shadow-xs">
-                    <span className="text-brand-amber font-bold block text-sm">/02</span>
-                    <span className="text-brand-950 block font-semibold text-[11px]">RINSE &amp; HAND</span>
+                    <span className="text-brand-950 block font-bold text-xs uppercase tracking-wider">RINSE &amp; HAND</span>
                     <span className="text-[10px] text-brand-700 block">Give bottle to rider</span>
                   </div>
 
                   <div className="bg-white p-3.5 rounded-xl border border-brand-950/10 space-y-1 shadow-xs">
-                    <span className="text-brand-moss font-bold block text-sm">/03</span>
-                    <span className="text-brand-moss block font-semibold text-[11px]">GET ₹25 UPI</span>
+                    <span className="text-brand-moss block font-bold text-xs uppercase tracking-wider">GET ₹25 UPI</span>
                     <span className="text-[10px] text-brand-moss/80 block">Instant refund</span>
                   </div>
                 </div>
@@ -599,38 +594,7 @@ export const BentoGrid: React.FC = () => {
       </div>
 
       {/* ------------------------------------------------------------------- */}
-      {/* 3. Minimalist Floating Chapter Tracker                              */}
-      {/* ------------------------------------------------------------------- */}
-      <div className="absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col gap-4 font-mono text-xs select-none bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-brand-950/10 shadow-lg">
-        {CHAPTERS.map((ch, idx) => {
-          const isActive = activeIdx === idx;
-          return (
-            <button
-              key={ch.id}
-              onClick={() => jumpToSlide(idx)}
-              className="group flex items-center justify-end gap-3 transition-all duration-300 cursor-pointer"
-            >
-              <span
-                className={`text-[11px] font-bold uppercase tracking-widest transition-colors duration-200 ${
-                  isActive ? 'text-brand-amber font-black' : 'text-brand-950/40 group-hover:text-brand-950/80'
-                }`}
-              >
-                {ch.code}
-              </span>
-              <span
-                className={`h-[2px] transition-all duration-300 rounded-full ${
-                  isActive
-                    ? 'w-8 bg-brand-amber shadow-[0_0_8px_rgba(200,116,27,0.6)]'
-                    : 'w-3 bg-brand-950/20 group-hover:w-5 group-hover:bg-brand-950/50'
-                }`}
-              />
-            </button>
-          );
-        })}
-      </div>
-
-      {/* ------------------------------------------------------------------- */}
-      {/* 4. Bottom Sticky Telemetry Ribbon & Progress Bar                    */}
+      {/* 3. Bottom Sticky Telemetry Ribbon & Progress Bar                    */}
       {/* ------------------------------------------------------------------- */}
       <div className="absolute bottom-0 left-0 right-0 z-30 px-6 sm:px-12 py-3 bg-[#FAF6EE]/90 backdrop-blur-md border-t border-brand-950/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
         {/* Cold-Chain Dispatch Telemetry */}

@@ -266,14 +266,13 @@ export const PinnedBottleJourney: React.FC = () => {
                 <button
                   key={s.step}
                   onClick={() => scrollToStage(idx)}
-                  className={`px-3.5 py-2 rounded-2xl text-xs font-bold transition-all duration-300 flex items-center gap-2 border ${
+                  className={`px-4 py-2 rounded-2xl text-xs font-bold transition-all duration-300 flex items-center gap-2 border cursor-pointer ${
                     currentStageIdx === idx
                       ? 'bg-brand-950 text-brand-cream border-brand-950 shadow-lg scale-105'
                       : 'bg-white text-brand-700 border-brand-950/15 hover:border-brand-950/30 hover:bg-brand-parchment'
                   }`}
                 >
-                  <span className="text-brand-amber font-black">{s.step}</span>
-                  <span className="whitespace-nowrap hidden sm:inline">{s.title.split(' ')[0]}</span>
+                  <span className="whitespace-nowrap uppercase tracking-wider">{s.title}</span>
                 </button>
               ))}
             </div>
@@ -296,7 +295,7 @@ export const PinnedBottleJourney: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-brand-amber animate-ping" />
                   <span className="font-black text-brand-950 uppercase tracking-wider">
-                    {activeStage.step} &bull; {activeStage.title}
+                    {activeStage.title}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -353,10 +352,7 @@ export const PinnedBottleJourney: React.FC = () => {
               {/* Active Stage Narrative */}
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
-                  <span className="font-mono text-3xl sm:text-5xl font-black text-brand-amber leading-none">
-                    /{activeStage.step}
-                  </span>
-                  <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-brand-700 font-bold">
+                  <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-brand-amber font-bold">
                     {activeStage.title}
                   </span>
                 </div>
