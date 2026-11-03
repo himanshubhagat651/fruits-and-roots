@@ -103,12 +103,12 @@ export const ProductCatalog: React.FC = () => {
         >
           <div className="flex animate-ticker-left">
             <span className="font-display text-[20vw] sm:text-[24vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-12 select-none">
-              FRUITS &amp; ROOTS &bull; RAW COLD-PRESSED JUICES &bull; 15,000 PSI HYDRAULIC &bull; 2.2&deg;C COLD-CHAIN &bull; MUMBAI &bull;
+              FRUITS &amp; ROOTS &bull; RAW COLD-PRESSED JUICES &bull; PURE HARVEST &bull; MUMBAI &bull;
             </span>
           </div>
           <div className="flex animate-ticker-left" aria-hidden="true">
             <span className="font-display text-[20vw] sm:text-[24vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-12 select-none">
-              FRUITS &amp; ROOTS &bull; RAW COLD-PRESSED JUICES &bull; 15,000 PSI HYDRAULIC &bull; 2.2&deg;C COLD-CHAIN &bull; MUMBAI &bull;
+              FRUITS &amp; ROOTS &bull; RAW COLD-PRESSED JUICES &bull; PURE HARVEST &bull; MUMBAI &bull;
             </span>
           </div>
         </div>

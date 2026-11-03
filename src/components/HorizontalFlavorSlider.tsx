@@ -180,12 +180,12 @@ export const HorizontalFlavorSlider: React.FC = () => {
           >
             <div className="flex animate-ticker-left">
               <span className="font-display text-[18vw] sm:text-[22vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-16 drop-shadow-[0_4px_24px_rgba(200,116,27,0.32)]">
-                FRUITS &amp; ROOTS &bull; RAW LIVING BOTANICALS &bull; 15,000 PSI HYDRAULIC &bull; 2.2&deg;C COLD-CHAIN &bull; MUMBAI &bull;
+                FRUITS &amp; ROOTS &bull; RAW COLD-PRESSED BOTANICALS &bull; PURE HARVEST &bull; MUMBAI &bull;
               </span>
             </div>
             <div className="flex animate-ticker-left" aria-hidden="true">
               <span className="font-display text-[18vw] sm:text-[22vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-16 drop-shadow-[0_4px_24px_rgba(200,116,27,0.32)]">
-                FRUITS &amp; ROOTS &bull; RAW LIVING BOTANICALS &bull; 15,000 PSI HYDRAULIC &bull; 2.2&deg;C COLD-CHAIN &bull; MUMBAI &bull;
+                FRUITS &amp; ROOTS &bull; RAW COLD-PRESSED BOTANICALS &bull; PURE HARVEST &bull; MUMBAI &bull;
               </span>
             </div>
           </div>

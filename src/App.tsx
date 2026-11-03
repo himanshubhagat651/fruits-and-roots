@@ -143,7 +143,7 @@ const MainApp: React.FC = () => {
           actBadge="FRESH FROM THE FARM"
           quote="Real fruits and plants speak for themselves. Golden turmeric brings warmth and natural balance. Crisp green leaves nourish and hydrate. Sweet red beetroot fuels your day with natural energy."
           author="100% NATURAL HARVEST"
-          subtext="ZERO PRESERVATIVES • ZERO ADDED SUGAR • RAW & COLD-PRESSED"
+          subtext="SINGLE-ORIGIN INDIAN FARMS • HANDPICKED AT PEAK RIPENESS"
           theme="amber"
         />
 

@@ -91,7 +91,7 @@ export const Hero: React.FC = () => {
           </h1>
 
           <p className="text-sm sm:text-base text-brand-800 max-w-xl mx-auto pt-2 font-normal leading-relaxed">
-            Freshly extracted every sunrise from 1.8 kg of single-origin Indian harvests. Zero added sugars, zero preservatives. Delivered ice-cold to your doorstep in Mumbai.
+            Freshly cold-pressed from Indian farm harvests. 100% pure, raw, and delivered chilled to your doorstep in Mumbai.
           </p>
         </div>
 
@@ -133,12 +133,12 @@ export const Hero: React.FC = () => {
           ))}
         </div>
 
-        {/* High-Impact Actions */}
+        {/* High-Impact Actions with Clear Hierarchy */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="#catalog"
             onClick={() => playPopSound()}
-            className="w-full sm:w-auto px-10 py-4 rounded-full bg-[#8A1521] hover:bg-[#680D1A] text-white font-mono font-black text-xs tracking-widest uppercase transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 flex items-center justify-center gap-2 group cursor-pointer"
+            className="w-full sm:w-auto px-10 py-4 rounded-full bg-[#8A1521] hover:bg-[#680D1A] text-white font-mono font-black text-xs tracking-widest uppercase transition-all duration-300 shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center gap-2 group cursor-pointer"
           >
             <span>ORDER FRESH JUICES</span>
             <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1.5 transition-transform" />
@@ -147,19 +147,19 @@ export const Hero: React.FC = () => {
           <a
             href="#plans"
             onClick={() => playPopSound()}
-            className="w-full sm:w-auto px-9 py-4 rounded-full bg-brand-950 hover:bg-brand-900 text-brand-cream font-mono font-black text-xs tracking-widest uppercase transition-all duration-300 shadow-xl hover:scale-105 active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/70 hover:bg-white text-brand-950 font-mono font-bold text-xs tracking-wider uppercase transition-all duration-300 border-2 border-brand-950/20 hover:border-brand-950/40 shadow-xs hover:scale-102 active:scale-98 flex items-center justify-center gap-2 cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-brand-amber" />
+            <Sparkles className="w-3.5 h-3.5 text-brand-amber" />
             <span>CLEANSE PLANS (SAVE 15%)</span>
           </a>
         </div>
       </div>
 
-      {/* Bottom Customer Trust & Delivery Ticker */}
+      {/* Bottom Customer Trust Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono uppercase tracking-wider text-brand-700 border-t border-brand-800/10 pt-4">
-        <div className="flex items-center gap-2 font-bold">
+        <div className="flex items-center gap-2 font-bold text-brand-900">
           <ShieldCheck className="w-4 h-4 text-brand-moss" />
-          <span>Chilled 2-Hour Delivery in Mumbai &bull; 2.2&deg;C Cold-Chain</span>
+          <span>FSSAI Certified Raw &bull; 100% Cold-Pressed</span>
         </div>
         <a
           href="#catalog"
@@ -167,10 +167,8 @@ export const Hero: React.FC = () => {
         >
           <span>Explore The Full Juice Menu &darr;</span>
         </a>
-        <div className="flex items-center gap-2 font-bold">
-          <span>Pure Reusable Glass Bottle</span>
-          <span>&bull;</span>
-          <span className="text-brand-amber">&#8377;25 Bottle Return Credit</span>
+        <div className="flex items-center gap-2 font-bold text-brand-900">
+          <span>Pure Reusable Glass Bottles</span>
         </div>
       </div>
     </section>

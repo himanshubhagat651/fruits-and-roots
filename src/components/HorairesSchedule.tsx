@@ -160,7 +160,7 @@ export const HorairesSchedule: React.FC = () => {
                 Born in Mumbai. Crafted from Pure Indian Soil.
               </h3>
               <p className="text-xs sm:text-sm text-[#8A1521]/90 font-sans leading-relaxed">
-                Founded in Bandra West, <strong className="font-bold text-[#8A1521]">Fruits &amp; Roots</strong> crafts India’s cleanest raw cold-pressed botanicals. Every morning before dawn, we receive organic harvest from Nashik and Sahyadri orchards, press cold at 2.2°C under 15,000 PSI hydraulic pressure, and bottle unpasteurised living juices with zero heat, zero preservatives, and zero added sugar.
+                Founded in Bandra West, <strong className="font-bold text-[#8A1521]">Fruits &amp; Roots</strong> crafts pure cold-pressed juices. Every morning before dawn, we receive fresh organic harvests from Maharashtra and Sahyadri orchards, slow-press them cold, and bottle delicious raw drinks for your daily wellbeing.
               </p>
             </div>
 

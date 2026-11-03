@@ -447,14 +447,12 @@ export const CLEANSE_PROGRAMS: CleanseProgram[] = [
     pricePerDay: 1433,
     totalPrice: 4299,
     savings: 650,
-    description: 'A friendly balance of nutrient-dense greens, grounding root juices, a hearty plant smoothie, and an evening soothing cashew milk to keep hunger at bay while cleansing.',
+    description: 'A gentle balance of leafy greens, root juices, and soothing evening drinks to reboot your body with ease.',
     color: '#FFA826',
     includes: [
-      '18 Chilled Glass Bottles (6 per day)',
-      '3x Morning Fire & Root Immunity Shots daily',
-      'Digital Cleanse Guide & Gentle Meal Transition Tips',
-      'Insulated Thermal Cooler Bag with dry-chill packs',
-      'Daily WhatsApp motivational check-in guidance from certified nutritionists'
+      '6 Fresh cold-pressed juices daily (473ml)',
+      'Morning wellness shots & herbal guide',
+      'Doorstep insulated cooler bag with ice packs'
     ],
     schedule: [
       { time: '8:00 AM IST', drink: 'Fire & Root Immunity Shot + 500ml Warm Jeera Water', benefit: 'Gently awakens digestion and soothes the stomach' },
@@ -475,14 +473,12 @@ export const CLEANSE_PROGRAMS: CleanseProgram[] = [
     pricePerDay: 1566,
     totalPrice: 4699,
     savings: 800,
-    description: 'Strictly zero high-sugar fruits. 100% cold-pressed organic leafy greens, herbs, activated charcoal, and celery to reset your digestion, reduce bloating, and leave you feeling light and energized.',
+    description: '100% cold-pressed organic greens, celery, and activated charcoal to reset your digestion and relieve bloating.',
     color: '#3D6847',
     includes: [
-      '18 Pure Green & Functional Borosilicate Bottles',
-      '3x Activated Charcoal Evening Cleansers',
+      '6 Low-sugar green juices & evening tonic daily',
       'Himalayan electrolyte pink rock salt pouch',
-      'Pre- and Post-Cleanse Organic Herbal Kadhai Broth Pack',
-      'VIP WhatsApp Concierge Support'
+      'Doorstep insulated cooler bag with ice packs'
     ],
     schedule: [
       { time: '7:30 AM IST', drink: 'Morning Pure Himalayan Celery Elixir (473ml)', benefit: 'Natural mineral salts balance hydration and digestion' },

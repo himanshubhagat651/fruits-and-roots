@@ -20,51 +20,42 @@ export const SubscriptionSection: React.FC = () => {
   const [activeCardId, setActiveCardId] = useState<string>('cleanse-balanced');
   const [showScheduleModal, setShowScheduleModal] = useState<CleanseProgram | null>(null);
 
-  // 3 Curated Protocols styled as Awwwards Dispenser Tickets
+  // 3 Curated Cleanse Plans with punchy, high-impact benefits
   const protocols: ProtocolTicket[] = [
     {
       id: 'cleanse-beginner',
       program: CLEANSE_PROGRAMS[0],
       scriptTitle: 'Beginner Gentle',
-      timelineBadge: `Timeline: ${selectedDuration} Days • Daily Fresh Press`,
+      timelineBadge: `${selectedDuration}-Day Gentle Reset`,
       basePrice: 899,
       features: [
-        '6 Fresh cold-pressed juice bottles daily (473ml)',
-        '2x Fresh wild turmeric wellness shots',
-        'Morning golden digestion & gut awakening',
-        'Delivered daily before 6:30 AM IST in cold coolers',
-        'Up to ₹150 UPI cashback on returning 6 bottles',
-        'Full hour-by-hour nutritionist schedule guide',
+        '6 Cold-pressed juices + 2 wellness shots daily',
+        'Easy, soothing reset that keeps hunger away',
+        'Delivered chilled to your door every morning',
       ],
     },
     {
       id: 'cleanse-balanced',
-      program: CLEANSE_PROGRAMS[1],
+      program: CLEANSE_PROGRAMS[1] || CLEANSE_PROGRAMS[0],
       scriptTitle: 'Balanced Reset',
-      timelineBadge: `Timeline: ${selectedDuration} Days • Daily Energy`,
+      timelineBadge: `${selectedDuration}-Day Energy Reboot`,
       basePrice: 999,
       features: [
-        '6 Functional cold-pressed bottles daily',
-        '3x Fresh ginger & wheatgrass wellness shots',
-        'Fresh kale, beetroot & citrus revitalising juices',
-        'Naturally protected with cold water pressure',
-        '1-on-1 VIP WhatsApp nutritionist guidance',
-        'Free insulated thermal doorstep cooler bag',
+        '6 Nutrient-rich juices + daily ginger shot',
+        'Steady stamina, mental clarity & natural glow',
+        'Delivered chilled to your door every morning',
       ],
     },
     {
       id: 'cleanse-green',
-      program: CLEANSE_PROGRAMS[2],
+      program: CLEANSE_PROGRAMS[1] || CLEANSE_PROGRAMS[0],
       scriptTitle: 'Deep Green Pro',
-      timelineBadge: `Timeline: ${selectedDuration} Days • Zero Fruit Sugar`,
+      timelineBadge: `${selectedDuration}-Day Pure Greens`,
       basePrice: 1199,
       features: [
-        '6 Pure green bottles daily (0g added fruit sugar)',
-        'Evening activated charcoal & Persian lime botanical elixir',
-        'Fresh green leaf hydration & daily vitality',
-        '100% Single-origin organic farm traceability',
-        'Himalayan pink rock salt hydration pouch included',
-        'Permanent 20% bundle savings vs single bottles',
+        '6 Pure low-sugar green juices & charcoal elixir',
+        'Deep digestive refresh & debloating recharge',
+        'Delivered chilled to your door every morning',
       ],
     },
   ];
@@ -148,7 +139,7 @@ export const SubscriptionSection: React.FC = () => {
             </div>
 
             <p className="font-mono text-xs sm:text-sm text-brand-800 font-bold uppercase tracking-widest max-w-xl mx-auto pt-1">
-              DAILY FRESH MORNING DELIVERY &bull; 100% RAW JUICES &bull; FREE DOORSTEP COOLER BAG
+              Curated multi-day juice plans to reboot your energy and digestion.
             </p>
 
             {/* Duration Selector Tabs (3-Day, 5-Day, 7-Day) */}
@@ -194,7 +185,7 @@ export const SubscriptionSection: React.FC = () => {
 
                   {/* SKEUOMORPHIC WHITE RECEIPT TICKET (SLIDING OUT OF THE DISPENSER) */}
                   <div
-                    className={`w-full max-w-[318px] sm:max-w-[338px] bg-white rounded-b-[28px] p-6 sm:p-7 shadow-2xl border-x-2 border-b-2 border-brand-950/10 -mt-2.5 relative z-10 transition-all duration-500 ease-out flex flex-col justify-between min-h-[560px] ${
+                    className={`w-full max-w-[318px] sm:max-w-[338px] bg-white rounded-b-[28px] p-6 sm:p-7 shadow-2xl border-x-2 border-b-2 border-brand-950/10 -mt-2.5 relative z-10 transition-all duration-500 ease-out flex flex-col justify-between min-h-[460px] ${
                       isActive
                         ? 'translate-y-2 shadow-[0_25px_50px_rgba(12,10,9,0.18)]'
                         : 'translate-y-0 opacity-95 group-hover:translate-y-1.5'
