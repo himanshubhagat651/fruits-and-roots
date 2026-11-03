@@ -74,8 +74,8 @@ export const SubscriptionSection: React.FC = () => {
     const totalPrice = protocol.basePrice * selectedDuration;
     const cleanseProduct: Product = {
       id: `${protocol.program.id}-${selectedDuration}day`,
-      name: `${protocol.program.name} (${selectedDuration}-Day Protocol)`,
-      subname: `${protocol.scriptTitle} Protocol`,
+      name: `${protocol.program.name} (${selectedDuration}-Day Cleanse Plan)`,
+      subname: `${protocol.scriptTitle} Plan`,
       tagline: `${selectedDuration * protocol.program.bottlesPerDay} bottles total • Delivered in refrigerated cold-chain coolers`,
       description: protocol.program.description,
       category: 'detox',
@@ -83,8 +83,8 @@ export const SubscriptionSection: React.FC = () => {
       subscriptionPrice: Math.round(totalPrice * 0.85),
       volume: `${selectedDuration * protocol.program.bottlesPerDay}x 473 ml Bottles + Shots`,
       calories: 120,
-      benefits: ['Cellular Detox', 'Gut Health', 'Energy Boost'],
-      ingredients: ['Organic Leafy Greens', 'Cold-Pressed Roots', 'Living Enzymes'],
+      benefits: ['Gentle Reset', 'Digestive Health', 'All-Day Energy'],
+      ingredients: ['Organic Leafy Greens', 'Cold-Pressed Roots', 'Living Vitamins'],
       ingredientHighlights: [],
       nutritionFacts: {
         servingSize: '1 Bottle',
@@ -117,7 +117,7 @@ export const SubscriptionSection: React.FC = () => {
       isSubscription: true,
       quantity: 1,
     });
-    showToast(`Added ${protocol.scriptTitle} (${selectedDuration}-Day) Protocol to your bag!`);
+    showToast(`Added ${protocol.scriptTitle} (${selectedDuration}-Day Cleanse) to your bag!`);
   };
 
   return (

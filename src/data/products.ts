@@ -6,25 +6,25 @@ export const PRODUCTS: Product[] = [
     name: 'Golden Roots Glow',
     subname: 'Raw Cold-Pressed Elixir',
     tagline: 'Liquid sunshine with wild Lakadong turmeric, Nagpur oranges & Wayanad ginger.',
-    description: 'Our signature anti-inflammatory botanical blend handcrafted with over 1.5 kg of fresh Indian harvest. Designed to ignite internal radiance, enhance cellular repair, and soothe gut digestion.',
+    description: 'Our signature cold-pressed blend made with over 1.5 kg of fresh Indian harvest. Crafted to give you a natural daily glow, boost your immunity, and soothe everyday digestion.',
     category: 'juices',
     price: 295,
     subscriptionPrice: 250,
     volume: '473 ml (16 fl oz)',
     calories: 140,
-    benefits: ['Immunity', 'Anti-Inflammatory', 'Skin Glow'],
+    benefits: ['Immunity', 'Natural Glow', 'Joint Comfort'],
     ingredients: [
       'Sun-Ripened Nagpur Oranges',
       'Crisp Kashmiri Golden Apples',
-      'Organic Lakadong Turmeric Root (7.5% Curcumin)',
+      'Organic Lakadong Turmeric Root',
       'Fresh Wayanad Baby Ginger Root',
       'Fresh Assam Kaji Nemu Lime',
-      'Cracked Malabar Black Peppercorn (for 2000% curcumin absorption)'
+      'Cracked Malabar Black Peppercorn (helps your body absorb turmeric naturally)'
     ],
     ingredientHighlights: [
-      { name: 'Lakadong Turmeric', benefit: 'World-renowned 7.5% curcumin content for deep joint ease', origin: 'Jaintia Hills, Meghalaya' },
-      { name: 'Wayanad Ginger', benefit: 'Stimulates digestive agni & beneficial gut microflora', origin: 'Western Ghats, Kerala' },
-      { name: 'Nagpur Oranges', benefit: '180% Daily Value of raw, unpasteurised natural Vitamin C', origin: 'Vidarbha Belt, Maharashtra' }
+      { name: 'Lakadong Turmeric', benefit: 'Rich in natural turmeric goodness that eases stiff joints and soreness', origin: 'Jaintia Hills, Meghalaya' },
+      { name: 'Wayanad Ginger', benefit: 'Soothes your stomach and promotes comfortable, easy digestion', origin: 'Western Ghats, Kerala' },
+      { name: 'Nagpur Oranges', benefit: 'Provides 180% of your daily Vitamin C from fresh, raw oranges', origin: 'Vidarbha Belt, Maharashtra' }
     ],
     nutritionFacts: {
       servingSize: '1 Bottle (473 ml / 16 fl oz)',
@@ -60,14 +60,14 @@ export const PRODUCTS: Product[] = [
     id: 'emerald-canopy-detox',
     name: 'Emerald Canopy',
     subname: 'Deep Green Cold-Pressed Juice',
-    tagline: 'Crisp, alkalising chlorophyll powerhouse with Nilgiri greens, cucumber and cooling pudina.',
-    description: 'An intensely refreshing, crisp green tonic packed with over 1.8 kg of living leafy greens per bottle. Alkaline-balancing and deeply hydrating for tired metropolitan routines.',
+    tagline: 'Crisp, refreshing green juice with Nilgiri mountain greens, cucumber and cooling pudina.',
+    description: 'An intensely refreshing, crisp green juice pressed from over 1.8 kg of fresh leafy greens per bottle. Clean, hydrating, and revitalising for busy daily routines.',
     category: 'juices',
     price: 315,
     subscriptionPrice: 265,
     volume: '473 ml (16 fl oz)',
     calories: 90,
-    benefits: ['Cellular Detox', 'Gut Health', 'Energy Boost'],
+    benefits: ['Daily Energy', 'Gut Health', 'Deep Hydration'],
     ingredients: [
       'Organic Nilgiri Curly Kale & Baby Spinach',
       'Crisp Shinkansen Cucumber',
@@ -78,9 +78,9 @@ export const PRODUCTS: Product[] = [
       'Fresh Kaji Nemu Lime'
     ],
     ingredientHighlights: [
-      { name: 'Nilgiri Mountain Kale', benefit: 'Bioavailable chlorophyll & micronutrient dense', origin: 'Ooty Organic Farms, Tamil Nadu' },
-      { name: 'Shinkansen Cucumber', benefit: 'Electrolyte hydration with natural bio-silica', origin: 'Pune Valley, Maharashtra' },
-      { name: 'Sahyadri Pudina', benefit: 'Calms bloated digestion and uplifts the senses', origin: 'Western Ghats, Maharashtra' }
+      { name: 'Nilgiri Mountain Kale', benefit: 'Loaded with fresh green vitamins and essential natural minerals', origin: 'Ooty Organic Farms, Tamil Nadu' },
+      { name: 'Shinkansen Cucumber', benefit: 'Deeply hydrating and cooling, keeping your body fresh and hydrated', origin: 'Pune Valley, Maharashtra' },
+      { name: 'Sahyadri Pudina', benefit: 'Calms a heavy stomach and leaves you feeling light and refreshed', origin: 'Western Ghats, Maharashtra' }
     ],
     nutritionFacts: {
       servingSize: '1 Bottle (473 ml / 16 fl oz)',
@@ -115,15 +115,15 @@ export const PRODUCTS: Product[] = [
   {
     id: 'ruby-beet-vitality',
     name: 'Ruby Beet Vitality',
-    subname: 'Nitric Oxide & Root Elixir',
-    tagline: 'Deep Ooty beetroot, Himalayan wild berries and cold-pressed Solan pomegranate.',
-    description: 'Engineered for cardiovascular endurance and natural oxygenation. Rich in dietary nitrates that naturally dilate blood vessels, elevating athletic stamina and mental focus.',
+    subname: 'Fresh Beet, Pomegranate & Apple Juice',
+    tagline: 'Deep Ooty beetroot, wild mountain berries and sweet cold-pressed pomegranate.',
+    description: 'Crafted for daily stamina and natural energy. Made with sweet mountain beets and pomegranates that improve natural blood flow, keeping you active and alert all day.',
     category: 'juices',
     price: 295,
     subscriptionPrice: 250,
     volume: '473 ml (16 fl oz)',
     calories: 130,
-    benefits: ['Energy Boost', 'Anti-Inflammatory', 'Cellular Detox'],
+    benefits: ['Daily Stamina', 'Workout Energy', 'Heart Health'],
     ingredients: [
       'Organic Ooty Table Beetroots',
       'Wild Himalayan Seabuckthorn Berries',
@@ -133,9 +133,9 @@ export const PRODUCTS: Product[] = [
       'Organic Garden Rosemary'
     ],
     ingredientHighlights: [
-      { name: 'Ooty Crimson Beets', benefit: 'Boosts natural nitric oxide for stamina & blood flow', origin: 'Nilgiris, Tamil Nadu' },
-      { name: 'Himalayan Seabuckthorn', benefit: 'Potent Omega-7 & bioflavonoids for cell longevity', origin: 'Spiti Valley, Himachal' },
-      { name: 'Kandahari Pomegranate', benefit: 'Potent polyphenols support heart & vascular health', origin: 'Solan Orchards, Himachal' }
+      { name: 'Ooty Crimson Beets', benefit: 'Boosts natural stamina, oxygen flow, and workout endurance', origin: 'Nilgiris, Tamil Nadu' },
+      { name: 'Himalayan Seabuckthorn', benefit: 'Rich in mountain antioxidants for youthful, glowing skin', origin: 'Spiti Valley, Himachal' },
+      { name: 'Kandahari Pomegranate', benefit: 'Natural antioxidants that support strong heart and blood health', origin: 'Solan Orchards, Himachal' }
     ],
     nutritionFacts: {
       servingSize: '1 Bottle (473 ml / 16 fl oz)',
@@ -171,13 +171,13 @@ export const PRODUCTS: Product[] = [
     name: 'Dragon Fruit Sunrise Nectar',
     subname: 'Cold-Pressed Dragonfruit & Citrus Juice',
     tagline: 'Vibrant Kutch pink dragonfruit, Ratnagiri Alphonso mango & Pollachi tender coconut cold-pressed.',
-    description: 'An exotic magenta botanical cold-press. Hydrating tender coconut electrolytes pressed with antioxidant-rich pink dragonfruit and Vitamin C-dense Alphonso mango at 15,000 PSI.',
+    description: 'An exotic pink cold-pressed juice. Sweet tender coconut water cold-pressed with antioxidant-rich pink dragon fruit and sun-ripened Alphonso mango with zero added sugar.',
     category: 'juices',
     price: 335,
     subscriptionPrice: 285,
     volume: '473 ml (16 fl oz)',
     calories: 160,
-    benefits: ['Skin Glow', 'Gut Health', 'Energy Boost'],
+    benefits: ['Natural Glow', 'Gut Health', 'Energy Boost'],
     ingredients: [
       'Organic Pink Dragon Fruit (Kamalam)',
       'GI-Tagged Ratnagiri Alphonso Mango',
@@ -186,9 +186,9 @@ export const PRODUCTS: Product[] = [
       'Assam Kaji Nemu Lime Juice'
     ],
     ingredientHighlights: [
-      { name: 'Kutch Pink Dragon Fruit', benefit: 'Natural Vitamin C & lycopene for radiant skin elasticity', origin: 'Kutch Belt, Gujarat' },
-      { name: 'Ratnagiri Alphonso', benefit: 'Pure unadulterated sunshine aroma & beta-carotene', origin: 'Konkan Coast, Maharashtra' },
-      { name: 'Pollachi Coconut Water', benefit: '5 essential natural isotonic bio-electrolytes', origin: 'Coimbatore Belt, Tamil Nadu' }
+      { name: 'Kutch Pink Dragon Fruit', benefit: 'Packed with natural Vitamin C for radiant, supple, healthy skin', origin: 'Kutch Belt, Gujarat' },
+      { name: 'Ratnagiri Alphonso', benefit: 'Rich in natural beta-carotene with pure sweet mango aroma', origin: 'Konkan Coast, Maharashtra' },
+      { name: 'Pollachi Coconut Water', benefit: 'Natural coconut electrolytes that keep your body refreshed and hydrated', origin: 'Coimbatore Belt, Tamil Nadu' }
     ],
     nutritionFacts: {
       servingSize: '1 Bottle (473 ml / 16 fl oz)',
@@ -225,13 +225,13 @@ export const PRODUCTS: Product[] = [
     name: 'Blue Majik Marine Tonic',
     subname: 'Cold-Pressed Blue Spirulina & Coconut Juice',
     tagline: 'Rare wild blue spirulina, raw Pollachi coconut water, sweet Kaji Nemu lime & pure ocean electrolytes.',
-    description: 'A radiant azure cold-pressed botanical tonic. Formulated with phycocyanin-rich spirulina, organic lime, and pure isotonic coconut water for profound cellular rehydration and mental clarity.',
+    description: 'A radiant azure cold-pressed botanical juice. Formulated with wild blue spirulina, fresh lime, and pure tender coconut water for deep natural hydration and a calm, focused mind.',
     category: 'juices',
     price: 365,
     subscriptionPrice: 310,
     volume: '473 ml (16 fl oz)',
     calories: 110,
-    benefits: ['Energy Boost', 'Anti-Inflammatory', 'Skin Glow'],
+    benefits: ['Energy Boost', 'Mental Focus', 'Natural Glow'],
     ingredients: [
       'Wild-Cultivated Blue Majik Spirulina Extract',
       'Fresh Pollachi Tender Coconut Water',
@@ -240,9 +240,9 @@ export const PRODUCTS: Product[] = [
       'Pure Himalayan Rock Salt'
     ],
     ingredientHighlights: [
-      { name: 'Blue Spirulina Extract', benefit: 'Pure phycocyanin antioxidant for cognitive resilience', origin: 'Auroville Organic Biotech, Puducherry' },
-      { name: 'Pollachi Coconut Water', benefit: 'Natural plant electrolytes with zero synthetic additives', origin: 'Western Ghats, Tamil Nadu' },
-      { name: 'Kaji Nemu Lime', benefit: 'Alkalising natural citric acid for cellular energy balance', origin: 'Brahmaputra Valley, Assam' }
+      { name: 'Blue Spirulina Extract', benefit: 'Natural blue superfood that clears brain fog and relieves fatigue', origin: 'Auroville Organic Biotech, Puducherry' },
+      { name: 'Pollachi Coconut Water', benefit: 'Pure coconut water electrolytes to recharge and hydrate your body', origin: 'Western Ghats, Tamil Nadu' },
+      { name: 'Kaji Nemu Lime', benefit: 'Zesty fresh lime that balances natural body energy', origin: 'Brahmaputra Valley, Assam' }
     ],
     nutritionFacts: {
       servingSize: '1 Bottle (473 ml / 16 fl oz)',
@@ -278,13 +278,13 @@ export const PRODUCTS: Product[] = [
     name: 'Pure Celery & Fennel Cleanse',
     subname: '100% Raw Cold-Pressed Living Juice',
     tagline: 'High-elevation Himalayan celery stalks, sweet Florence fennel, Kinnaur apple & lime.',
-    description: 'Pure gut hydration and digestive balance with over 1.6 kg of crisp organic celery stalks cold-pressed at 15,000 PSI. Natural mineral cluster salts replenish essential electrolytes.',
+    description: 'Pure digestive hydration with over 1.6 kg of crisp organic celery stalks gently cold-pressed. Packed with natural plant minerals to refresh your body and soothe your stomach.',
     category: 'juices',
     price: 325,
     subscriptionPrice: 275,
     volume: '473 ml (16 fl oz)',
     calories: 75,
-    benefits: ['Cellular Detox', 'Gut Health', 'Energy Boost'],
+    benefits: ['Daily Reset', 'Gut Health', 'Energy Boost'],
     ingredients: [
       'Cold-Pressed Himalayan Celery Stalks',
       'Sweet Florence Fennel Bulb',
@@ -293,9 +293,9 @@ export const PRODUCTS: Product[] = [
       'Sahyadri Garden Spearmint'
     ],
     ingredientHighlights: [
-      { name: 'Himalayan Celery', benefit: 'Bioavailable sodium cluster salts to hydrate and support natural digestion', origin: 'Shimla Slopes, Himachal' },
-      { name: 'Sweet Fennel Bulb', benefit: 'Relaxes gastrointestinal muscles and relieves metabolic bloating', origin: 'Ooty Hills, Tamil Nadu' },
-      { name: 'Kinnaur Green Apple', benefit: 'Malic acid helps soften gallstones and aids hepatic bile flow', origin: 'Kinnaur, Himachal' }
+      { name: 'Himalayan Celery', benefit: 'Natural mineral salts that hydrate your body and promote easy digestion', origin: 'Shimla Slopes, Himachal' },
+      { name: 'Sweet Fennel Bulb', benefit: 'Relaxes your stomach muscles and relieves uncomfortable bloating', origin: 'Ooty Hills, Tamil Nadu' },
+      { name: 'Kinnaur Green Apple', benefit: 'Crisp green apples that aid natural digestion and refresh your palate', origin: 'Kinnaur, Himachal' }
     ],
     nutritionFacts: {
       servingSize: '1 Bottle (473 ml / 16 fl oz)',
@@ -332,24 +332,24 @@ export const PRODUCTS: Product[] = [
     name: 'Activated Charcoal Botanical Elixir',
     subname: 'Cold-Pressed Botanical Cleanse',
     tagline: 'Steam-activated coconut shell charcoal, Gondhoraj lime, Valencia orange & pure spring water.',
-    description: 'A midnight-black refreshing masterwork. Micro-porous coconut charcoal paired with fresh lime and ginger gently cleanses and balances your digestive tract.',
+    description: 'A refreshing midnight-black citrus tonic. Natural coconut charcoal paired with fresh lime and ginger gently cleanses and comforts your stomach.',
     category: 'juices',
     price: 275,
     subscriptionPrice: 235,
     volume: '473 ml (16 fl oz)',
     calories: 60,
-    benefits: ['Cellular Detox', 'Gut Health'],
+    benefits: ['Gentle Reset', 'Gut Health'],
     ingredients: [
       'Steam-Activated Virgin Coconut Charcoal',
       'Fresh Aromatic Gondhoraj Lime Juice',
       'Raw Wild Forest Honey',
-      'Filtered 9.5 pH Alkaline Himalayan Spring Water',
+      'Filtered Pure Himalayan Spring Water',
       'Pinch of Pink Rock Salt (Sendha Namak)'
     ],
     ingredientHighlights: [
-      { name: 'Activated Coconut Charcoal', benefit: 'Micro-porous structure promotes digestive balance & comfort', origin: 'Pollachi, Tamil Nadu' },
-      { name: 'Gondhoraj Lime', benefit: 'Rich in citrus bioflavonoids to stimulate hepatic bile flow', origin: 'Hooghly Belt, West Bengal' },
-      { name: 'Himalayan Spring Water', benefit: 'Naturally micro-clustered mineral water without acidity', origin: 'Uttarkashi, Uttarakhand' }
+      { name: 'Activated Coconut Charcoal', benefit: 'Fine natural charcoal that relieves bloating and gas after heavy meals', origin: 'Pollachi, Tamil Nadu' },
+      { name: 'Gondhoraj Lime', benefit: 'Aromatic Bengali lime that refreshes your stomach and aids digestion', origin: 'Hooghly Belt, West Bengal' },
+      { name: 'Himalayan Spring Water', benefit: 'Pure mountain spring water with smooth, clean mineral balance', origin: 'Uttarkashi, Uttarakhand' }
     ],
     nutritionFacts: {
       servingSize: '1 Bottle (473 ml / 16 fl oz)',
@@ -385,13 +385,13 @@ export const PRODUCTS: Product[] = [
     name: 'Fire & Root Immunity Booster',
     subname: 'Concentrated Cold-Pressed Botanical Elixir',
     tagline: 'High-pungency Wayanad ginger, Lakadong turmeric, Guntur chilli and wild tulsi extract.',
-    description: 'An explosive, throat-warming 60 ml tonic shot that kickstarts circulation, activates white blood cells, and dissolves mental fog in seconds.',
+    description: 'A spicy, throat-warming 60 ml wellness shot that instantly energises your body, clears stuffy sinuses, and blows away morning fatigue.',
     category: 'juices',
     price: 145,
     subscriptionPrice: 125,
     volume: '60 ml (2 fl oz)',
     calories: 25,
-    benefits: ['Immunity', 'Anti-Inflammatory', 'Energy Boost'],
+    benefits: ['Immunity', 'Throat Comfort', 'Energy Boost'],
     ingredients: [
       '100% Raw Wayanad Ginger Juice',
       'Cold-Pressed Lakadong Turmeric Juice',
@@ -400,9 +400,9 @@ export const PRODUCTS: Product[] = [
       'Pinch of Guntur Sanam Red Chilli (40,000 SHU)'
     ],
     ingredientHighlights: [
-      { name: 'Wayanad High-Gingerol Root', benefit: 'Immediate thermogenic digestive kick & sinus clearing', origin: 'Wayanad, Kerala' },
-      { name: 'Krishna Tulsi Extract', benefit: 'Eugenol compound provides natural microbial defense', origin: 'Vrindavan, UP' },
-      { name: 'Guntur Red Chilli', benefit: 'Stimulates peripheral circulation & lymphatic flow', origin: 'Guntur, Andhra Pradesh' }
+      { name: 'Wayanad High-Gingerol Root', benefit: 'Instant warming kick that clears your throat and awakens digestion', origin: 'Wayanad, Kerala' },
+      { name: 'Krishna Tulsi Extract', benefit: 'Holy basil that provides natural immune protection against seasonal colds', origin: 'Vrindavan, UP' },
+      { name: 'Guntur Red Chilli', benefit: 'A tiny pinch of spicy chilli that warms your body and boosts circulation', origin: 'Guntur, Andhra Pradesh' }
     ],
     nutritionFacts: {
       servingSize: '1 Shot (60 ml / 2 fl oz)',
@@ -450,32 +450,32 @@ export const CLEANSE_PROGRAMS: CleanseProgram[] = [
     description: 'A friendly balance of nutrient-dense greens, grounding root juices, a hearty plant smoothie, and an evening soothing cashew milk to keep hunger at bay while cleansing.',
     color: '#FFA826',
     includes: [
-      '18 Chilled Borosilicate Glass Bottles (6 per day)',
+      '18 Chilled Glass Bottles (6 per day)',
       '3x Morning Fire & Root Immunity Shots daily',
-      'Digital Ayurvedic Cleanse Guide & Meal Transition Protocol',
-      'Insulated Thermal Courier Box with dry-chill packs',
+      'Digital Cleanse Guide & Gentle Meal Transition Tips',
+      'Insulated Thermal Cooler Bag with dry-chill packs',
       'Daily WhatsApp motivational check-in guidance from certified nutritionists'
     ],
     schedule: [
-      { time: '8:00 AM IST', drink: 'Fire & Root Immunity Shot + 500ml Warm Jeera Water', benefit: 'Awakens digestive agni & stimulates bile' },
-      { time: '9:30 AM IST', drink: 'Golden Roots Glow', benefit: 'Circulation & gentle antioxidant awakening' },
-      { time: '12:00 PM IST', drink: 'Emerald Canopy Detox', benefit: 'High-chlorophyll midday cellular nourishment' },
-      { time: '2:30 PM IST', drink: 'Dragon Fruit Sunrise Velvet', benefit: 'Fiber-rich fruit vitality & natural satiety' },
-      { time: '5:00 PM IST', drink: 'Ruby Beet Vitality', benefit: 'Cardiovascular support & evening stamina' },
-      { time: '7:30 PM IST', drink: 'Raw Cacao & Reishi Bliss', benefit: 'Calming nervous system unwind & amino replenishment' }
+      { time: '8:00 AM IST', drink: 'Fire & Root Immunity Shot + 500ml Warm Jeera Water', benefit: 'Gently awakens digestion and soothes the stomach' },
+      { time: '9:30 AM IST', drink: 'Golden Roots Glow', benefit: 'Boosts daily circulation and natural morning glow' },
+      { time: '12:00 PM IST', drink: 'Emerald Canopy Detox', benefit: 'Midday boost of fresh greens and natural vitamins' },
+      { time: '2:30 PM IST', drink: 'Dragon Fruit Sunrise Velvet', benefit: 'Refreshing afternoon boost that keeps hunger at bay' },
+      { time: '5:00 PM IST', drink: 'Ruby Beet Vitality', benefit: 'Heart-healthy root juice for smooth evening stamina' },
+      { time: '7:30 PM IST', drink: 'Raw Cacao & Reishi Bliss', benefit: 'Relaxing evening shake for restful recovery' }
     ]
   },
   {
     id: 'cleanse-deep-green',
     name: 'The Deep Green Alkaline Master',
     level: 'Deep Green Pro',
-    tagline: 'Low glycemic, ultra-pure alkaline flood for seasoned cleanse practitioners.',
+    tagline: 'Pure, low-sugar green reboot for an intense, refreshing reset.',
     days: 3,
     bottlesPerDay: 6,
     pricePerDay: 1566,
     totalPrice: 4699,
     savings: 800,
-    description: 'Strictly zero high-sugar fruits. 100% cold-pressed organic leafy greens, herbs, activated charcoal, and celery to support deep cellular rejuvenation and metabolic balance.',
+    description: 'Strictly zero high-sugar fruits. 100% cold-pressed organic leafy greens, herbs, activated charcoal, and celery to reset your digestion, reduce bloating, and leave you feeling light and energized.',
     color: '#3D6847',
     includes: [
       '18 Pure Green & Functional Borosilicate Bottles',
@@ -486,10 +486,10 @@ export const CLEANSE_PROGRAMS: CleanseProgram[] = [
     ],
     schedule: [
       { time: '7:30 AM IST', drink: 'Morning Pure Himalayan Celery Elixir (473ml)', benefit: 'Natural mineral salts balance hydration and digestion' },
-      { time: '10:00 AM IST', drink: 'Emerald Canopy (Extra Nilgiri Kale & Parsley)', benefit: 'Deep cellular oxygenation' },
-      { time: '12:30 PM IST', drink: 'Deep Earth Chlorophyll Tonic', benefit: 'Rich bioavailable greens & cellular hydration' },
-      { time: '3:00 PM IST', drink: 'Emerald Canopy Detox', benefit: 'Alkaline blood pH rebalancing' },
-      { time: '5:30 PM IST', drink: 'Fire & Ginger Immunity Shot + Lemon Cucumber', benefit: 'Lymphatic drainage stimulant' },
+      { time: '10:00 AM IST', drink: 'Emerald Canopy (Extra Nilgiri Kale & Parsley)', benefit: 'Fresh greens to revitalize your body and clear morning sluggishness' },
+      { time: '12:30 PM IST', drink: 'Deep Earth Chlorophyll Tonic', benefit: 'Rich green vitamins and deep, cooling hydration' },
+      { time: '3:00 PM IST', drink: 'Emerald Canopy Detox', benefit: 'Cooling midday recharge to reduce acidity and boost energy' },
+      { time: '5:30 PM IST', drink: 'Fire & Ginger Immunity Shot + Lemon Cucumber', benefit: 'Revitalising citrus & ginger boost for active immune defense' },
       { time: '8:00 PM IST', drink: 'Activated Charcoal Zen', benefit: 'Calming digestive balance before sleep' }
     ]
   }
@@ -501,7 +501,7 @@ export const REVIEWS = [
     name: 'Dr. Ananya Sen',
     role: 'Integrative Medicine Physician',
     rating: 5,
-    comment: 'Fruits & Roots is the gold standard for India. Most commercial supermarket juices in India are heat-pasteurised or stuffed with synthetic preservatives and sugar. Their non-thermal 15,000 PSI HPP extraction keeps living enzymes and raw bioflavonoids intact.',
+    comment: 'Fruits & Roots is the gold standard for India. Most supermarket juices in India are heated or packed with artificial preservatives and added sugar. Their gentle cold-pressing keeps live vitamins, raw minerals, and natural plant goodness completely intact.',
     avatar: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80',
     location: 'Bandra West, Mumbai'
   },
@@ -510,7 +510,7 @@ export const REVIEWS = [
     name: 'Karan Singhania',
     role: 'Ironman Triathlete & Endurance Coach',
     rating: 5,
-    comment: 'The Ruby Beet and Golden Roots have permanently replaced synthetic pre-workouts in my routine. The natural nitric oxide from fresh Nilgiri beets gives me relentless stamina on the road, and the 22g protein cacao shake is pure gold for muscle recovery.',
+    comment: 'The Ruby Beet and Golden Roots have permanently replaced synthetic pre-workouts in my routine. Fresh Nilgiri beet juice gives me steady, long-lasting stamina on the road, and the 22g protein cacao shake is pure gold for muscle recovery.',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
     location: 'Indiranagar, Bengaluru'
   },
@@ -528,6 +528,6 @@ export const REVIEWS = [
 export const PRESS_MENTIONS = [
   { outlet: 'Vogue India', quote: 'The chicest, most potent raw cold-pressed elixir brand in India.' },
   { outlet: 'GQ India', quote: 'Finally, an artisanal juice dispensary that treats Indian organic produce with Michelin-level reverence.' },
-  { outlet: 'Architectural Digest India', quote: 'From bespoke borosilicate glass bottles to 15,000 PSI extraction, Fruits & Roots is redefining wellness design.' },
+  { outlet: 'Architectural Digest India', quote: 'From sustainable glass bottles to pure cold-pressing, Fruits & Roots is redefining everyday wellness.' },
   { outlet: 'The Hindu Weekend', quote: 'Remarkably vibrant, zero added sugars, and unparalleled farm-to-bottle single-origin transparency.' }
 ];

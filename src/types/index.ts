@@ -8,7 +8,20 @@ export type FunctionalBenefit =
   | 'Anti-Inflammatory' 
   | 'Muscle Recovery' 
   | 'Cellular Detox' 
-  | 'Skin Glow';
+  | 'Skin Glow'
+  | 'Natural Glow'
+  | 'Joint Comfort'
+  | 'Daily Energy'
+  | 'Deep Hydration'
+  | 'Daily Stamina'
+  | 'Workout Energy'
+  | 'Heart Health'
+  | 'Mental Focus'
+  | 'Daily Reset'
+  | 'Gentle Reset'
+  | 'Throat Comfort'
+  | 'Digestive Health'
+  | 'All-Day Energy';
 
 export interface NutritionFacts {
   servingSize: string;

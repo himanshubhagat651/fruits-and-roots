@@ -21,11 +21,11 @@ const INGREDIENTS: IngredientInfo[] = [
   {
     id: 'turmeric',
     name: 'Lakadong Turmeric Root',
-    botanicalFamily: 'Jaintia Hills High-Curcumin Rhizome',
+    botanicalFamily: 'Jaintia Hills Golden Turmeric',
     category: 'Roots',
-    farmOrigin: 'Jaintia Hills, Meghalaya (7.5% Natural Curcumin)',
-    keyPhytonutrient: 'Bioavailable Curcuminoids (7.5% natural content vs 2% industry avg)',
-    healthBenefit: 'Extinguishes systemic cellular inflammation, supports cognitive focus, and soothes joint stiffness.',
+    farmOrigin: 'Jaintia Hills, Meghalaya',
+    keyPhytonutrient: 'Rich in natural Curcumin (3x higher than regular turmeric)',
+    healthBenefit: 'Naturally calms body aches, eases stiff joints, and helps you feel refreshed and focused.',
     colorHex: '#FFA826',
     matchingDrinks: ['Golden Roots Glow', 'Fire & Root Immunity Shot'],
     image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=600&q=80',
@@ -33,11 +33,11 @@ const INGREDIENTS: IngredientInfo[] = [
   {
     id: 'kale',
     name: 'Nilgiri Mountain Kale',
-    botanicalFamily: 'High-Altitude Brassica Oleracea',
+    botanicalFamily: 'High-Altitude Fresh Mountain Greens',
     category: 'Leafy Greens',
-    farmOrigin: 'Ooty Organic Terraces, Nilgiris (2,200m Altitude)',
-    keyPhytonutrient: 'Living Chlorophyll, Lutein & Zeaxanthin',
-    healthBenefit: 'Delivers high concentrations of living chlorophyll and carotenoids, supporting cellular hydration and antioxidant defense.',
+    farmOrigin: 'Ooty Organic Terraces, Nilgiris',
+    keyPhytonutrient: 'Fresh Vitamin A, C & K and natural plant iron',
+    healthBenefit: 'Packed with fresh green vitamins that deeply hydrate your body, improve digestion, and boost daily energy.',
     colorHex: '#3D6847',
     matchingDrinks: ['Emerald Canopy'],
     image: 'https://images.unsplash.com/photo-1524179091875-bf99a9a6fa57?auto=format&fit=crop&w=600&q=80',
@@ -45,11 +45,11 @@ const INGREDIENTS: IngredientInfo[] = [
   {
     id: 'beet',
     name: 'Ooty Crimson Table Beets',
-    botanicalFamily: 'Deep Crimson Nilgiri Root',
+    botanicalFamily: 'Sweet Nilgiri Mountain Beets',
     category: 'Roots',
     farmOrigin: 'Nilgiri Hills Organic Slopes, Tamil Nadu',
-    keyPhytonutrient: 'Dietary Nitrates & Betalains',
-    healthBenefit: 'Converts to bioactive nitric oxide in blood plasma, boosting aerobic endurance and arterial flexibility.',
+    keyPhytonutrient: 'Natural beet nutrients that support healthy blood flow',
+    healthBenefit: 'Naturally boosts stamina, supports heart health, and keeps you active and energised throughout the day.',
     colorHex: '#8F1E42',
     matchingDrinks: ['Ruby Beet Vitality'],
     image: 'https://images.unsplash.com/photo-1593105544559-ecb03bf76f82?auto=format&fit=crop&w=600&q=80',
@@ -57,23 +57,23 @@ const INGREDIENTS: IngredientInfo[] = [
   {
     id: 'spirulina',
     name: 'Madurai Blue Spirulina',
-    botanicalFamily: 'Pristine Bio-Cultivated Blue Algae',
+    botanicalFamily: 'Pure Mineral-Rich Blue Superfood',
     category: 'Superfoods',
-    farmOrigin: 'Madurai Organic Bio-Cultivation, Tamil Nadu',
-    keyPhytonutrient: 'Pure Phycocyanin (Water-soluble antioxidant pigment)',
-    healthBenefit: 'Inhibits inflammatory enzymes, protects against oxidative stress, and supports steady mental clarity.',
+    farmOrigin: 'Madurai Organic Farms, Tamil Nadu',
+    keyPhytonutrient: 'Natural plant antioxidants & clean minerals',
+    healthBenefit: 'Fights daily tiredness, sharpens mental focus, and supports overall body vitality.',
     colorHex: '#1981C8',
     matchingDrinks: ['Blue Majik Cloud'],
     image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 'ginger',
-    name: 'Wayanad High-Gingerol Ginger',
-    botanicalFamily: 'Western Ghats Volcanic Yellow Rhizome',
+    name: 'Wayanad Baby Ginger',
+    botanicalFamily: 'Fresh Western Ghats Spiced Root',
     category: 'Roots',
     farmOrigin: 'Wayanad High Ranges, Kerala',
-    keyPhytonutrient: 'Gingerols & Shogaols',
-    healthBenefit: 'Accelerates gastric emptying, halts nausea, warms peripheral capillaries, and stimulates digestive enzymes.',
+    keyPhytonutrient: 'Natural gingerol that warms and comforts the gut',
+    healthBenefit: 'Soothes an upset stomach, eases bloating and heaviness, and promotes smooth, comfortable digestion.',
     colorHex: '#FF7A00',
     matchingDrinks: ['Golden Roots Glow', 'Emerald Canopy', 'Fire & Root Immunity Shot'],
     image: 'https://images.unsplash.com/photo-1615485290176-6953e5e40854?auto=format&fit=crop&w=600&q=80',
@@ -81,11 +81,11 @@ const INGREDIENTS: IngredientInfo[] = [
   {
     id: 'charcoal',
     name: 'Pollachi Coconut Charcoal',
-    botanicalFamily: 'Steam-Activated Virgin Coconut Husk',
+    botanicalFamily: 'Pure Food-Grade Coconut Charcoal',
     category: 'Superfoods',
-    farmOrigin: 'Fair Trade Virgin Coconut Groves, Pollachi, Tamil Nadu',
-    keyPhytonutrient: 'High-surface micro-porosity (1,000m² per gram)',
-    healthBenefit: 'Attracts and mechanically locks unwanted gastrointestinal impurities, relieving gas and bloating.',
+    farmOrigin: 'Organic Coconut Groves, Pollachi, Tamil Nadu',
+    keyPhytonutrient: 'Ultra-fine natural charcoal that gently traps impurities',
+    healthBenefit: 'Gently relieves gas and tummy bloating, leaving you feeling light, clean, and comfortable after meals.',
     colorHex: '#1F2937',
     matchingDrinks: ['Activated Charcoal Zen'],
     image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80',
@@ -104,13 +104,13 @@ export const IngredientsWheel: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950 text-brand-cream text-xs font-mono font-bold tracking-widest uppercase">
             <Leaf className="w-3.5 h-3.5 text-brand-amber" />
-            <span>INDIAN SINGLE-ORIGIN SOIL TRANSPARENCY</span>
+            <span>FARM ORIGIN &amp; NATURAL INGREDIENTS</span>
           </div>
           <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-black text-brand-950 uppercase tracking-tight leading-[0.9]">
-            Raw botanical sourcing.
+            Real Indian Farm Harvest.
           </h2>
           <p className="text-sm sm:text-base text-brand-700 font-normal">
-            We partner exclusively with certified organic, regenerative family farms across India. Tap an ingredient to inspect its soil origin, active phytonutrient compounds, and functional cellular benefits.
+            We partner directly with certified organic family farms across India. Tap any ingredient to see where it is grown and its simple, natural health benefits.
           </p>
         </div>
 
@@ -176,20 +176,20 @@ export const IngredientsWheel: React.FC = () => {
               </p>
             </div>
 
-            {/* Key Phytonutrient Breakdown */}
+            {/* Key Nutrient Breakdown */}
             <div className="p-4 rounded-2xl bg-brand-cream/60 border border-brand-950/10 space-y-1 font-mono">
               <span className="text-[11px] font-bold text-brand-500 uppercase tracking-wider block">
-                Primary Active Phytochemical:
+                Key Natural Goodness:
               </span>
               <span className="text-sm font-black text-brand-950 block">
                 {selectedIngredient.keyPhytonutrient}
               </span>
             </div>
 
-            {/* Matching Elixirs Featuring This Botanical */}
+            {/* Matching Juices */}
             <div className="space-y-3 pt-2">
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand-950 block">
-                Bottled in These Master Sips:
+                Bottled in These Fresh Juices:
               </span>
               <div className="flex flex-wrap gap-2">
                 {selectedIngredient.matchingDrinks.map((drinkName) => {

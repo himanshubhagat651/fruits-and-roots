@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { PRODUCTS } from '../data/products';
+import { ThreeJuiceGlassCanvas } from './ThreeJuiceGlassCanvas';
 import { FloatingProduce } from './FloatingProduce';
 import { playPopSound, playChimeSound } from '../utils/audio';
-import { ArrowRight, Sparkles, ShieldCheck, ShoppingBag, Eye } from 'lucide-react';
+import { ArrowRight, Sparkles, ShieldCheck, RotateCcw } from 'lucide-react';
 
 interface HeroJuiceItem {
   id: string;
   name: string;
   shortName: string;
   colorHex: string;
-  image: string;
-  fruitTitle: string;
-  fruitDescription: string;
-  fruitsBeside: string[];
   productIndex: number;
 }
 
@@ -23,10 +20,6 @@ const HERO_ITEMS: HeroJuiceItem[] = [
     name: 'Golden Roots Glow',
     shortName: 'GOLDEN',
     colorHex: '#FFA826',
-    image: '/images/hero/golden-glass-fruit.jpg',
-    fruitTitle: 'Fresh Nagpur Oranges & Lakadong Turmeric',
-    fruitDescription: 'Chilled citrus elixir with whole and sliced Nagpur oranges & wild turmeric root beside the glass.',
-    fruitsBeside: ['Nagpur Oranges', 'Turmeric Root', 'Golden Apples', 'Assam Lime'],
     productIndex: 0,
   },
   {
@@ -34,10 +27,6 @@ const HERO_ITEMS: HeroJuiceItem[] = [
     name: 'Emerald Canopy',
     shortName: 'EMERALD',
     colorHex: '#3D6847',
-    image: '/images/hero/emerald-glass-fruit.jpg',
-    fruitTitle: 'Crisp Green Apple, Celery & Cucumber',
-    fruitDescription: 'Vibrant living green cold-press with crisp sliced green apples, cucumber wheels & mountain celery stalks beside the glass.',
-    fruitsBeside: ['Green Apple', 'Crisp Cucumber', 'Celery Stalks', 'Garden Mint'],
     productIndex: 1,
   },
   {
@@ -45,10 +34,6 @@ const HERO_ITEMS: HeroJuiceItem[] = [
     name: 'Ruby Beet Vitality',
     shortName: 'RUBY',
     colorHex: '#8F1E42',
-    image: '/images/hero/ruby-user-highres.jpg',
-    fruitTitle: 'Solan Pomegranate & Ooty Crimson Beet',
-    fruitDescription: 'Deep ruby cold-press with a whole ripe pomegranate & open ruby seeds spilling beside the glass on the counter.',
-    fruitsBeside: ['Whole Pomegranate', 'Pomegranate Seeds', 'Crimson Beet', 'Wild Berries'],
     productIndex: 2,
   },
   {
@@ -56,10 +41,6 @@ const HERO_ITEMS: HeroJuiceItem[] = [
     name: 'Dragon Fruit Sunrise Nectar',
     shortName: 'DRAGON',
     colorHex: '#C02856',
-    image: '/images/hero/dragon-glass-fruit.jpg',
-    fruitTitle: 'Pink Dragonfruit & Ratnagiri Alphonso Mango',
-    fruitDescription: 'Chilled magenta pitaya nectar with fresh sliced dragon fruit & sun-kissed Alphonso mango wedges beside the glass.',
-    fruitsBeside: ['Pink Dragonfruit', 'Alphonso Mango', 'Tender Coconut', 'Assam Lime'],
     productIndex: 3,
   },
   {
@@ -67,16 +48,11 @@ const HERO_ITEMS: HeroJuiceItem[] = [
     name: 'Blue Majik Marine Tonic',
     shortName: 'BLUE',
     colorHex: '#1B6CA8',
-    image: '/images/hero/blue-glass-fruit.jpg',
-    fruitTitle: 'Blue Spirulina, Tender Coconut & Pineapple',
-    fruitDescription: 'Radiant azure botanical tonic with fresh cracked coconut, golden pineapple slice & fresh mint beside the glass.',
-    fruitsBeside: ['Blue Spirulina', 'Cracked Coconut', 'Golden Pineapple', 'Cooling Mint'],
     productIndex: 4,
   },
 ];
 
 export const Hero: React.FC = () => {
-  const { addToCart, openProductModal } = useCart();
   const [activeIdx, setActiveIdx] = useState(0);
 
   const activeHero = HERO_ITEMS[activeIdx];
@@ -119,90 +95,20 @@ export const Hero: React.FC = () => {
           </p>
         </div>
 
-        {/* Fresh Cold-Pressed Juice Glass & Fruit Presentation Showcase */}
-        <div className="relative max-w-3xl mx-auto flex flex-col items-center justify-center my-3">
+        {/* Real 3D WebGL Juice Glass & Fresh Fruits Canvas Stage */}
+        <div className="relative max-w-2xl mx-auto flex flex-col items-center justify-center min-h-[460px] sm:min-h-[520px]">
           
-          {/* Main Visual Showcase Card */}
-          <div
-            onClick={() => {
-              openProductModal(activeProduct);
-              playPopSound();
-            }}
-            className="w-full relative rounded-[32px] sm:rounded-[40px] overflow-hidden bg-[#FAF6EE] border-2 border-brand-950/15 shadow-[0_20px_50px_-12px_rgba(23,20,18,0.22)] cursor-pointer group transition-all duration-500 hover:shadow-[0_28px_65px_-10px_rgba(23,20,18,0.28)]"
-          >
-            {/* Top Floating Badges */}
-            <div className="absolute top-4 left-4 sm:top-5 sm:left-5 z-20 flex items-center gap-2">
-              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-cream/92 backdrop-blur-md border border-brand-950/10 shadow-sm text-[11px] font-mono font-bold uppercase tracking-wider text-brand-950">
-                <span className="w-2.5 h-2.5 rounded-full animate-pulse shadow-xs" style={{ backgroundColor: activeHero.colorHex }} />
-                <span>{activeHero.name}</span>
-              </div>
-            </div>
-
-            <div className="absolute top-4 right-4 sm:top-5 sm:right-5 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-950/85 backdrop-blur-md text-brand-cream text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase shadow-sm">
-              <span className="text-brand-amber">❄</span>
-              <span>CHILLED AT 2.2°C</span>
-            </div>
-
-            {/* Juice Glass & Fruit Beside Image Display */}
-            <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] max-h-[440px] sm:max-h-[480px] overflow-hidden bg-brand-cream/40 flex items-center justify-center">
-              <img
-                key={activeHero.id}
-                src={activeHero.image}
-                alt={`${activeHero.name} juice in a glass with fresh ${activeHero.fruitTitle} beside it`}
-                className="w-full h-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-105 select-none animate-in fade-in zoom-in-95"
-              />
-
-              {/* Subtle ambient lighting vignette & bottom gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-950/15 to-transparent pointer-events-none" />
-            </div>
-
-            {/* Editorial Glass & Fruit Bar Overlay */}
-            <div className="absolute bottom-3 inset-x-3 sm:bottom-4 sm:inset-x-4 z-20 p-3.5 sm:p-4 rounded-2xl bg-brand-cream/94 backdrop-blur-md border border-brand-950/10 shadow-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-[10px] font-mono font-bold text-brand-amber uppercase tracking-widest">
-                    RAW HARVEST BESIDE THE GLASS:
-                  </span>
-                  {activeHero.fruitsBeside.map((fruit) => (
-                    <span
-                      key={fruit}
-                      className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-brand-950/5 border border-brand-950/10 text-brand-900"
-                    >
-                      {fruit}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-xs sm:text-sm font-display font-black text-brand-950 uppercase tracking-tight">
-                  {activeHero.fruitDescription}
-                </p>
-              </div>
-
-              {/* Quick Add To Bag Action */}
-              <div className="flex items-center gap-3 shrink-0 self-end sm:self-center">
-                <span className="font-display font-black text-sm text-brand-950">
-                  ₹{activeProduct.price}
-                </span>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    addToCart(activeProduct);
-                    playChimeSound();
-                  }}
-                  className="px-4 py-2 rounded-xl bg-brand-950 hover:bg-[#8A1521] text-brand-cream text-xs font-mono font-bold tracking-wider uppercase transition shadow-md active:scale-95 flex items-center gap-1.5 cursor-pointer"
-                >
-                  <ShoppingBag className="w-3.5 h-3.5 text-brand-amber" />
-                  <span>ADD TO BAG</span>
-                </button>
-              </div>
-            </div>
+          <div className="w-full h-full min-h-[460px] sm:min-h-[520px] relative z-10">
+            <ThreeJuiceGlassCanvas
+              colorHex={activeHero.colorHex}
+              flavorIndex={activeIdx}
+            />
           </div>
 
-          {/* Interactive Tap Hint */}
-          <div className="mt-2.5 text-center">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-brand-600">
-              TAP SHOWCASE TO VIEW NUTRITION FACTS &bull; SWITCH FLAVOURS BELOW &darr;
-            </span>
+          {/* Interactive Drag & Swirl Hint */}
+          <div className="absolute bottom-1 inset-x-0 flex items-center justify-center gap-2 text-[11px] font-mono uppercase tracking-wider text-brand-700 bg-brand-cream/80 backdrop-blur-md py-1.5 px-4 rounded-full border border-brand-800/10 shadow-xs max-w-fit mx-auto z-20">
+            <RotateCcw className="w-3.5 h-3.5 text-brand-amber" />
+            <span>DRAG TO ROTATE &bull; TAP TO SWIRL JUICE</span>
           </div>
         </div>
 

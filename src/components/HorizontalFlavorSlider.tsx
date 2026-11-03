@@ -221,7 +221,7 @@ export const HorizontalFlavorSlider: React.FC = () => {
             </h2>
 
             <p className="font-mono text-xs sm:text-sm text-earth-700 max-w-xl pt-2 font-medium leading-relaxed">
-              Zero thermal friction. Zero added sugars. Pure 100% unpasteurised living enzymes pressed daily at 2.2&deg;C from single-origin Indian soils.
+              Never heated or boiled. Zero added sugar. 100% pure cold-pressed juice with all its fresh vitamins and rich natural taste, pressed daily from Indian farm harvests.
             </p>
           </div>
 

@@ -31,11 +31,11 @@ const REVIEWS_DATA: CustomerReview[] = [
   {
     id: 'rev-2',
     name: 'DR. ANANYA & ARJUN SEN',
-    role: 'Integrative Gut Health Specialists',
+    role: 'Digestive Health Specialists',
     location: 'Juhu Tara Road, Mumbai',
     rating: 5,
     comment:
-      '"As a physician, finding genuine 100% unpasteurised cold-pressed juice in India that maintains an unbroken 2.2°C cold chain without thermal pasteurisation was nearly impossible. Their 15,000 PSI hydraulic extraction keeps living digestive enzymes and cellular phytonutrients completely intact. My morning celery ritual and Emerald Canopy have become non-negotiable!"',
+      '"As doctors, finding authentic fresh cold-pressed juice in India delivered cold without boiling or chemical preservatives was nearly impossible. Fruits & Roots uses gentle cold-pressing that keeps all natural fresh vitamins, minerals, and live nutrients completely intact. My morning celery juice and Emerald Canopy have become non-negotiable!"',
     cardColor: '#2E4733', // Deep Nilgiri Botanical Forest Green
     shadowColor: '#D9CEBE', // Warm Sand Offset
     sparkColor: '#DDA74F',
@@ -43,11 +43,11 @@ const REVIEWS_DATA: CustomerReview[] = [
   {
     id: 'rev-3',
     name: 'KARAN SINGHANIA',
-    role: 'Ironman Triathlete & Endurance Coach',
+    role: 'Marathon Coach & Triathlete',
     location: 'Indiranagar, Bengaluru',
     rating: 5,
     comment:
-      '"The Ruby Beet and Golden Roots have permanently replaced synthetic pre-workout drinks in my marathon training. The raw dietary nitric oxide from fresh Nilgiri beets gives me relentless stamina on the road, with zero caffeine jitters or stomach distress. It is pure, living plant fuel that actually works!"',
+      '"The Ruby Beet and Golden Roots have permanently replaced artificial energy drinks in my training. The fresh beet juice gives me steady, long-lasting stamina on long runs, with zero caffeine crashes or stomach upset. It is pure, honest plant nutrition that truly works!"',
     cardColor: '#8A1521', // Bar Tòpas Signature Deep Cherry Wine
     shadowColor: '#DDA74F', // Champagne Amber Offset
     sparkColor: '#DDA74F',
@@ -55,11 +55,11 @@ const REVIEWS_DATA: CustomerReview[] = [
   {
     id: 'rev-4',
     name: 'SIMRAN & KABIR MEHTA',
-    role: 'Organic Living Advocates & Parents',
+    role: 'Health-Conscious Parents',
     location: 'Cuffe Parade, South Mumbai',
     rating: 5,
     comment:
-      '"Our kids used to drink sugary supermarket cartons until we introduced them to the Pitaya Sunrise and Nagpur Orange press. They love the vibrant natural colors and heavy glass bottles, and we love having total peace of mind knowing every bottle contains 1.8 kg of raw single-origin Indian harvests with zero thermal pasteurisation!"',
+      '"Our kids used to drink sugary supermarket cartons until we introduced them to the Pitaya Sunrise and Nagpur Orange press. They love the vibrant natural colors and heavy glass bottles, and we love having total peace of mind knowing every bottle contains 1.8 kg of fresh organic Indian fruits with zero preservatives and zero added sugar!"',
     cardColor: '#932839', // Deep Beet Burgundy
     shadowColor: '#F2EADF', // Warm Linen Offset
     sparkColor: '#DDA74F',
