@@ -155,7 +155,7 @@ export const SubscriptionSection: React.FC = () => {
                       : 'text-brand-800 hover:text-[#A31D1D]'
                   }`}
                 >
-                  {days}-DAY RESET
+                  {days}-DAY JUICE PLAN
                 </button>
               ))}
             </div>
@@ -258,7 +258,7 @@ export const SubscriptionSection: React.FC = () => {
                         }}
                         className="w-full text-center text-[10px] font-mono font-bold uppercase tracking-wider text-brand-600 hover:text-brand-950 transition-colors pt-3"
                       >
-                        VIEW HOURLY SIP SCHEDULE (IST) &rarr;
+                        VIEW DAILY DRINK TIMETABLE &rarr;
                       </button>
 
                       {/* Footnote below button */}
@@ -310,7 +310,7 @@ export const SubscriptionSection: React.FC = () => {
               <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-[#A31D1D]" />
                 <h3 className="font-display font-black text-lg text-brand-950 uppercase tracking-tight">
-                  {showScheduleModal.name} Sip Schedule
+                  {showScheduleModal.name} Drink Timetable
                 </h3>
               </div>
               <button
@@ -339,7 +339,7 @@ export const SubscriptionSection: React.FC = () => {
               onClick={() => setShowScheduleModal(null)}
               className="w-full py-3 rounded-xl bg-brand-950 hover:bg-brand-900 text-white font-mono font-bold text-xs uppercase tracking-wider transition"
             >
-              CLOSE SCHEDULE
+              CLOSE TIMETABLE
             </button>
           </div>
         </div>

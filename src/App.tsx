@@ -183,7 +183,7 @@ const MainApp: React.FC = () => {
         {/* Signature Store Schedule & Opening Hours */}
         <HorairesSchedule />
 
-        {/* ACT VII /07 • Targeted Cellular Reset Protocols (Multi-Day Schedules) */}
+        {/* ACT VII /07 • Daily Juice Plans & Subscription Packs */}
         <SubscriptionSection />
 
         {/* Craft Archives & Frequently Asked Questions */}
