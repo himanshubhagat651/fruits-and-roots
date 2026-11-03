@@ -21,10 +21,10 @@ const STAGES: StoryStage[] = [
   {
     step: '01',
     title: 'THE FRESH HARVEST',
-    headline: 'Over 1.5 kg of Fresh Farm Produce in Every Bottle.',
+    headline: 'Over 1.5 kg of Fresh Farm Produce in Every Glass.',
     description: 'Every morning before dawn, freshly picked organic fruits and vegetables arrive at our Bandra West press room directly from family farms in Meghalaya, Kerala, and Himachal. Never frozen, never preserved.',
     stats: [
-      { label: 'Fresh Produce / Bottle', value: '1.8 kg' },
+      { label: 'Fresh Produce / Glass', value: '1.8 kg' },
       { label: 'Organic Quality', value: '100% Certified' },
       { label: 'Sourcing', value: 'Direct from Farms' },
     ],
@@ -65,9 +65,9 @@ const STAGES: StoryStage[] = [
   },
   {
     step: '04',
-    title: 'REUSABLE GLASS & ZERO PLASTIC',
-    headline: 'Pure Glass Bottles. Healthy For You & Nature.',
-    description: 'Sealed cold in 100% recyclable glass bottles with an airtight cap. Return your clean empty bottles to our delivery rider and receive ₹25 per bottle back on UPI.',
+    title: 'REUSABLE CRYSTAL GLASS',
+    headline: 'Pure Crystal Glass. Healthy For You & Nature.',
+    description: 'Poured pure into chilled reusable borosilicate glass with zero microplastics, zero chemical leaching, and zero artificial preservatives. Delivered chilled in sustainable reusable packaging.',
     stats: [
       { label: 'Single-Use Plastic', value: '0% (Plastic Free)' },
       { label: 'Bottle Return Reward', value: '₹25 per bottle' },
@@ -75,7 +75,7 @@ const STAGES: StoryStage[] = [
     ],
     liquidPercent: 96,
     liquidColor: '#DDA74F',
-    pressure: 'Freshly Sealed',
+    pressure: 'Freshly Poured',
     temp: 'Chilled 2.2°C',
   },
 ];
@@ -200,12 +200,12 @@ export const PinnedBottleJourney: React.FC = () => {
           >
             <div className="flex animate-ticker-right">
               <span className="font-display text-[7vw] sm:text-[5.5vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-10 drop-shadow-[0_2px_12px_rgba(200,116,27,0.22)]">
-                REUSABLE GLASS BOTTLES &bull; ZERO PLASTIC &bull; &#8377;150 UPI CASHBACK ON 6 BOTTLES &bull; CHILLED TO YOUR DOORSTEP &bull;
+                PURE BOROSILICATE GLASS &bull; ZERO PLASTIC &bull; &#8377;150 CASHBACK ON 6 BOTTLES &bull; CHILLED TO YOUR DOORSTEP &bull;
               </span>
             </div>
             <div className="flex animate-ticker-right" aria-hidden="true">
               <span className="font-display text-[7vw] sm:text-[5.5vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-10 drop-shadow-[0_2px_12px_rgba(200,116,27,0.22)]">
-                REUSABLE GLASS BOTTLES &bull; ZERO PLASTIC &bull; &#8377;150 UPI CASHBACK ON 6 BOTTLES &bull; CHILLED TO YOUR DOORSTEP &bull;
+                PURE BOROSILICATE GLASS &bull; ZERO PLASTIC &bull; &#8377;150 CASHBACK ON 6 BOTTLES &bull; CHILLED TO YOUR DOORSTEP &bull;
               </span>
             </div>
           </div>
@@ -239,7 +239,7 @@ export const PinnedBottleJourney: React.FC = () => {
                 <span>Our Cold-Press Craftsmanship</span>
               </div>
               <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-black text-brand-950 uppercase tracking-tight leading-[0.9]">
-                From raw earth to glass bottle.
+                From fresh harvest to chilled glass.
               </h2>
             </div>
 
@@ -265,7 +265,7 @@ export const PinnedBottleJourney: React.FC = () => {
           {/* Main 2-Column Experience Stage */}
           <div className="mt-6 sm:mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Left Column: Real Three.js WebGL 3D Interactive Bottle Card */}
+            {/* Left Column: Real Three.js WebGL 3D Interactive Juice Glass Card */}
             <div className="lg:col-span-6 bg-white/80 backdrop-blur-xl rounded-3xl p-5 sm:p-7 border border-brand-950/10 shadow-2xl relative overflow-hidden flex flex-col items-center justify-between min-h-[460px] sm:min-h-[520px]">
               
               {/* Dynamic Ambient Juice Halo Glow behind the glass */}
@@ -289,7 +289,7 @@ export const PinnedBottleJourney: React.FC = () => {
                 </div>
               </div>
 
-              {/* The Real Three.js WebGL 3D Bottle Canvas */}
+              {/* The Real Three.js WebGL 3D Juice Glass Canvas */}
               <div className="w-full h-[320px] sm:h-[380px] relative z-10 my-auto">
                 <JourneyBottle3D
                   stageIdx={currentStageIdx}
@@ -304,8 +304,8 @@ export const PinnedBottleJourney: React.FC = () => {
               <div className="w-full pt-3 border-t border-brand-950/10 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-brand-700 relative z-10">
                 <div className="flex items-center gap-1.5">
                   <RotateCcw className="w-3.5 h-3.5 text-brand-amber" />
-                  <span className="hidden sm:inline">DRAG 3D BOTTLE IN WEBGL</span>
-                  <span className="sm:hidden">3D BOTTLE</span>
+                  <span className="hidden sm:inline">DRAG 3D JUICE GLASS IN WEBGL</span>
+                  <span className="sm:hidden">3D JUICE GLASS</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-brand-950 font-black">
                   <ArrowDown className="w-3.5 h-3.5 text-[#8A1521] animate-bounce" />
