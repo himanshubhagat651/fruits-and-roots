@@ -107,9 +107,9 @@ export const Footer: React.FC = () => {
               ARCHITECTURE &amp; CRAFT
             </h4>
             <ul className="space-y-2 text-brand-cream/70">
-              <li><a href="#alchemy-journey" className="hover:text-brand-gold transition">3D BOTTLE LAB (WEBGL)</a></li>
+              <li><a href="#our-process" className="hover:text-brand-gold transition">OUR COLD-PRESS PROCESS</a></li>
               <li><a href="#botanical-vault" className="hover:text-brand-gold transition">BOTANICAL VAULT</a></li>
-              <li><a href="#alchemy-journey" className="hover:text-brand-gold transition">15,000 PSI HYDRAULIC PRESS</a></li>
+              <li><a href="#our-process" className="hover:text-brand-gold transition">FARM-TO-BOTTLE JOURNEY</a></li>
               <li><a href="#terroir" className="hover:text-brand-gold transition">INDIAN REGENERATIVE SOIL</a></li>
               <li><a href="#craft-faq" className="hover:text-brand-gold transition">CRAFT SECRETS &amp; FAQ</a></li>
               <li><a href="#craft-faq" className="hover:text-brand-gold transition">₹25 UPI BOTTLE DEPOSIT</a></li>

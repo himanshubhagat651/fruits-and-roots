@@ -15,7 +15,6 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { MarqueeTicker } from './components/MarqueeTicker';
 import { BentoGrid } from './components/BentoGrid';
-import { BottleLiquidSimulator } from './components/BottleLiquidSimulator';
 import { PinnedBottleJourney } from './components/PinnedBottleJourney';
 import { ProductCatalog } from './components/ProductCatalog';
 import { HorairesSchedule } from './components/HorairesSchedule';
@@ -136,10 +135,7 @@ const MainApp: React.FC = () => {
         {/* ACT I /01 • Sourced from Organic Indian Farms */}
         <BentoGrid />
 
-        {/* ACT II /02 • Interactive 3D Bottle Lab */}
-        <BottleLiquidSimulator />
-
-        {/* ACT III /03 • From Fresh Farm Harvest to Glass Bottle */}
+        {/* ACT II /02 • From Fresh Farm Harvest to Glass Bottle */}
         <PinnedBottleJourney />
 
         {/* Story Bridge 2: Real Fresh Ingredients */}

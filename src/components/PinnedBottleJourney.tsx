@@ -128,10 +128,11 @@ export const PinnedBottleJourney: React.FC = () => {
 
   return (
     <section
-      id="metamorphosis"
+      id="our-process"
       ref={containerRef}
       className="relative min-h-[380vh] bg-brand-cream text-brand-950 select-none border-b border-brand-950/10"
     >
+      <span id="metamorphosis" className="sr-only" />
       {/* Henrietta Said Sticky Viewport Container */}
       <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden z-10 px-4 sm:px-6 lg:px-8">
         

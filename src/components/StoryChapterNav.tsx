@@ -11,13 +11,10 @@ interface Chapter {
 const CHAPTERS: Chapter[] = [
   { id: 'prologue', act: '00', title: 'PROLOGUE' },
   { id: 'terroir', act: '01', title: 'TERROIR' },
-  { id: 'alchemy', act: '02', title: '15,000 PSI' },
-  { id: 'metamorphosis', act: '03', title: 'METAMORPHOSIS' },
-  { id: 'runway', act: '04', title: 'RITUALS' },
-  { id: 'atelier', act: '05', title: 'THE CRATE' },
-  { id: 'catalog', act: '06', title: 'DISPENSARY' },
-  { id: 'horaires', act: '07', title: 'TIMINGS' },
-  { id: 'cleanses', act: '08', title: 'PROTOCOLS' },
+  { id: 'our-process', act: '02', title: 'OUR PROCESS' },
+  { id: 'catalog', act: '03', title: 'JUICE MENU' },
+  { id: 'horaires', act: '04', title: 'TIMINGS' },
+  { id: 'cleanses', act: '05', title: 'PLANS' },
 ];
 
 export const StoryChapterNav: React.FC = () => {
