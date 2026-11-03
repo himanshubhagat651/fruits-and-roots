@@ -307,8 +307,8 @@ export const Navbar: React.FC<{ onSearchOpen: () => void }> = ({ onSearchOpen })
                       : 'border-brand-950/15 bg-white text-brand-700 hover:border-brand-950/30'
                   }`}
                 >
-                  <div className="text-[10px] font-bold text-brand-moss uppercase tracking-wider">FLAGSHIP DISPENSARY</div>
-                  <div className="text-xs font-bold mt-0.5">Bandra West Bar</div>
+                  <div className="text-[10px] font-bold text-brand-moss uppercase tracking-wider">STORE PICKUP</div>
+                  <div className="text-xs font-bold mt-0.5">Bandra West Store</div>
                   <div className="text-[10px] text-brand-500 mt-1">Ready in 20 mins</div>
                 </button>
               </div>

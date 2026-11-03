@@ -10,7 +10,7 @@ interface Chapter {
 
 const CHAPTERS: Chapter[] = [
   { id: 'prologue', act: '00', title: 'PROLOGUE' },
-  { id: 'terroir', act: '01', title: 'TERROIR' },
+  { id: 'terroir', act: '01', title: 'FRESH FARMS' },
   { id: 'our-process', act: '02', title: 'OUR PROCESS' },
   { id: 'catalog', act: '03', title: 'JUICE MENU' },
   { id: 'horaires', act: '04', title: 'TIMINGS' },

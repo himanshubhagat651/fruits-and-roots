@@ -25,7 +25,7 @@ export const HorairesSchedule: React.FC = () => {
   const hourAngle = (hours % 12) * 30 + minutes * 0.5;
   const minuteAngle = minutes * 6 + seconds * 0.1;
 
-  // Determine if dispensary is currently active (6:30 AM to 10:30 PM IST)
+  // Determine if store is currently active (6:30 AM to 10:30 PM IST)
   const isCurrentlyOpen = (hours > 6 || (hours === 6 && minutes >= 30)) && (hours < 22 || (hours === 22 && minutes <= 30));
 
   // Mouse move for 3D perspective parallax on the drink illustration
@@ -77,7 +77,7 @@ export const HorairesSchedule: React.FC = () => {
           <div className="relative group cursor-pointer" onClick={playPopSound}>
             <div className="px-5 py-2.5 rounded-full bg-[#FAF6EE] text-[#8A1521] border-2 border-[#8A1521]/15 shadow-md flex items-center gap-2 -rotate-3 group-hover:rotate-0 transition-transform duration-300">
               <span className="font-display font-black text-xs sm:text-sm uppercase tracking-wider">
-                MUMBAI DISPENSARY &bull; BANDRA WEST
+                MUMBAI STORE &bull; BANDRA WEST
               </span>
             </div>
           </div>
@@ -85,7 +85,7 @@ export const HorairesSchedule: React.FC = () => {
           {/* Center Burgundy Capsule Badge */}
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#8A1521] text-white font-mono text-[11px] sm:text-xs font-bold tracking-wider uppercase shadow-md">
             <span className="w-2.5 h-2.5 rounded-full bg-[#C8741B] animate-pulse" />
-            <span>OPEN DAILY FROM 6:30 A.M. IST</span>
+            <span>OPEN ALL 7 DAYS &bull; 6:30 A.M. TO 10:30 P.M.</span>
           </div>
 
           {/* Right Pill Link */}
@@ -133,10 +133,10 @@ export const HorairesSchedule: React.FC = () => {
 
               <div className="space-y-0.5">
                 <span className="text-xs sm:text-sm font-display font-black uppercase tracking-[0.2em] text-[#C8741B] block">
-                  THE APOTHECARY &amp; PRESS ROOM IS OPEN
+                  BANDRA FRESH JUICE STORE IS OPEN
                 </span>
                 <span className="text-[10px] font-mono font-bold text-[#8A1521]/80 block">
-                  14TH ROAD, BANDRA WEST, MUMBAI &bull; {isCurrentlyOpen ? '🟢 LIVE PRESSING ACTIVE' : '🟡 OVERNIGHT COLD CELL'}
+                  14TH ROAD, BANDRA WEST, MUMBAI &bull; {isCurrentlyOpen ? '🟢 STORE OPEN &bull; FRESH JUICE DELIVERING NOW' : '🟡 CLOSED FOR THE NIGHT &bull; OPENS AT 6:30 AM'}
                 </span>
               </div>
             </div>
@@ -144,23 +144,23 @@ export const HorairesSchedule: React.FC = () => {
             {/* Display Headline: ABOUT US & TIMINGS */}
             <div className="space-y-2">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#8A1521]/10 text-[#8A1521] text-xs font-mono font-bold tracking-widest uppercase">
-                <span>OUR STORY &amp; DISPENSARY</span>
+                <span>OUR STORY &amp; STORE TIMINGS</span>
               </div>
               <h2 className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] font-black text-[#8A1521] tracking-tight uppercase leading-[0.85]">
                 ABOUT US
               </h2>
               <p className="font-serif text-xl sm:text-3xl text-[#C8741B] font-bold uppercase tracking-tight">
-                &amp; DISPENSARY TIMINGS
+                &amp; STORE TIMINGS
               </p>
             </div>
 
             {/* Editorial Story Blurb */}
             <div className="bg-[#FAF6EE] p-5 sm:p-6 rounded-3xl border-2 border-[#8A1521]/15 shadow-sm space-y-2">
               <h3 className="font-display font-black text-sm sm:text-base text-[#8A1521] uppercase tracking-wide">
-                Born in Mumbai. Crafted from Pure Indian Soil.
+                Born in Mumbai. 100% Pure Fruits, No Added Water or Sugar.
               </h3>
               <p className="text-xs sm:text-sm text-[#8A1521]/90 font-sans leading-relaxed">
-                Founded in Bandra West, <strong className="font-bold text-[#8A1521]">Fruits &amp; Roots</strong> crafts pure cold-pressed juices. Every morning before dawn, we receive fresh organic harvests from Maharashtra and Sahyadri orchards, slow-press them cold, and bottle delicious raw drinks for your daily wellbeing.
+                Started in Bandra West, <strong className="font-bold text-[#8A1521]">Fruits &amp; Roots</strong> makes 100% pure cold-pressed juices. Every morning, fresh farm fruits arrive directly from Maharashtra orchards. We press them cold without heating or adding any water or sugar, and deliver chilled bottles across Mumbai for your daily health.
               </p>
             </div>
 
@@ -170,7 +170,7 @@ export const HorairesSchedule: React.FC = () => {
               {/* Slot 1: DAILY FRESH PRESS */}
               <div className="space-y-1">
                 <span className="text-xs sm:text-sm font-display font-black text-[#C8741B] uppercase tracking-wider block">
-                  DAILY FRESH PRESS &bull; MORNING TO NIGHT DISPATCH
+                  DAILY STORE &amp; HOME DELIVERY TIMINGS
                 </span>
                 <div className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-[#8A1521] tracking-tight flex items-center gap-3 sm:gap-5 flex-wrap">
                   <span>6:30 A.M</span>
@@ -182,7 +182,7 @@ export const HorairesSchedule: React.FC = () => {
               {/* Slot 2: FRI & WEEKENDS with Circle-Ring Arrow */}
               <div className="space-y-1">
                 <span className="text-xs sm:text-sm font-display font-black text-[#C8741B] uppercase tracking-wider block">
-                  FRI TO SUN &bull; WEEKEND FRESH RESET &amp; DETOX BATCH
+                  FRIDAY TO SUNDAY &bull; WEEKEND SPECIAL FRESH TIMINGS
                 </span>
                 <div className="font-display font-black text-3xl sm:text-5xl md:text-6xl text-[#8A1521] tracking-tight flex items-center gap-3 sm:gap-5 flex-wrap">
                   <span>6:00 A.M</span>
@@ -210,7 +210,7 @@ export const HorairesSchedule: React.FC = () => {
                   The Taste of Pure Goodness
                 </p>
                 <span className="font-mono text-xs text-[#8A1521]/75 font-bold uppercase tracking-widest block pt-1">
-                  &mdash; Shuddh Living Botanicals &bull; Handcrafted Daily in Mumbai
+                  &mdash; 100% Shuddh Pure Juices &bull; Made Fresh Daily in Mumbai
                 </span>
               </div>
             </div>
@@ -427,11 +427,11 @@ export const HorairesSchedule: React.FC = () => {
         <div className="mt-14 sm:mt-20 pt-8 border-t border-[#8A1521]/20 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[#8A1521]/80 font-bold">
           <div className="flex items-center gap-3">
             <span className="w-2 h-2 rounded-full bg-[#C8741B] animate-ping" />
-            <span>MUMBAI DISPENSARY NO. 01 &bull; 14TH ROAD, OFF WATERFIELD, BANDRA WEST</span>
+            <span>MUMBAI STORE &bull; 14TH ROAD, OFF WATERFIELD, BANDRA WEST</span>
           </div>
           <div className="flex items-center gap-6">
             <span>FSSAI LIC: 11524999000213</span>
-            <span>HYDRAULIC COLD PRESSURE AT 2.2&deg;C</span>
+            <span>100% CHILLED COLD-PRESSED &bull; ZERO PRESERVATIVES</span>
           </div>
         </div>
 

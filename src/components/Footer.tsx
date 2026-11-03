@@ -19,18 +19,18 @@ export const Footer: React.FC = () => {
   const NAV_LINKS = [
     { label: 'Shop Fresh Juices', href: '#catalog' },
     { label: 'Our Cold-Press Process', href: '#our-process' },
-    { label: 'Living Terroir & Soil', href: '#terroir' },
-    { label: 'Dispensary Hours', href: '#horaires' },
-    { label: 'Cleanse Protocols', href: '#cleanses' },
-    { label: 'Contact Atelier', href: '#contact' },
+    { label: 'Fresh Farms & Sourcing', href: '#terroir' },
+    { label: 'Store Timings & Hours', href: '#horaires' },
+    { label: 'Cleanse Plans', href: '#cleanses' },
+    { label: 'Contact & Support', href: '#contact' },
   ];
 
   const SOCIAL_LINKS = [
     { name: 'Instagram', href: 'https://instagram.com' },
-    { name: 'WhatsApp Concierge', href: 'https://whatsapp.com' },
-    { name: 'Spotify Atelier Sounds', href: 'https://spotify.com' },
+    { name: 'WhatsApp Help & Orders', href: 'https://whatsapp.com' },
+    { name: 'Spotify Music', href: 'https://spotify.com' },
     { name: 'Strava Run Club', href: 'https://strava.com' },
-    { name: 'Botanical Journal', href: '#terroir' },
+    { name: 'Our Farm Journal', href: '#terroir' },
   ];
 
   const LEGAL_LINKS = [

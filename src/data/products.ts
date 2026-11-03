@@ -523,7 +523,7 @@ export const REVIEWS = [
 
 export const PRESS_MENTIONS = [
   { outlet: 'Vogue India', quote: 'The chicest, most potent raw cold-pressed elixir brand in India.' },
-  { outlet: 'GQ India', quote: 'Finally, an artisanal juice dispensary that treats Indian organic produce with Michelin-level reverence.' },
+  { outlet: 'GQ India', quote: 'Finally, an artisanal cold-pressed juice brand that treats fresh Indian farm produce with five-star perfection.' },
   { outlet: 'Architectural Digest India', quote: 'From sustainable glass bottles to pure cold-pressing, Fruits & Roots is redefining everyday wellness.' },
   { outlet: 'The Hindu Weekend', quote: 'Remarkably vibrant, zero added sugars, and unparalleled farm-to-bottle single-origin transparency.' }
 ];

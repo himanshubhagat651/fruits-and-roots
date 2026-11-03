@@ -180,7 +180,7 @@ const MainApp: React.FC = () => {
         {/* ACT IV /04 • The Single Living Cold-Pressed Juice Compendium (Unified Masterpiece) */}
         <ProductCatalog />
 
-        {/* Bar Tòpas Signature "HORAIRES" Dispensary Schedule & Living Harvest Hours */}
+        {/* Signature Store Schedule & Opening Hours */}
         <HorairesSchedule />
 
         {/* ACT VII /07 • Targeted Cellular Reset Protocols (Multi-Day Schedules) */}

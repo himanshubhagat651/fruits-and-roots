@@ -494,7 +494,7 @@ export const BentoGrid: React.FC = () => {
               <div className="bg-[#FCFAF6] rounded-[32px] p-6 sm:p-8 border border-brand-950/15 shadow-[0_24px_50px_-12px_rgba(45,36,30,0.12)] space-y-5 relative overflow-hidden">
                 <div className="flex items-center justify-between pb-3 border-b border-brand-950/10 font-mono text-xs">
                   <span className="flex items-center gap-2 text-brand-950 font-bold uppercase tracking-wider">
-                    <ShieldCheck className="w-4 h-4 text-brand-amber" /> APOTHECARY PURITY AUDIT
+                    <ShieldCheck className="w-4 h-4 text-brand-amber" /> 100% PURITY &amp; LAB TESTED
                   </span>
                   <span className="px-3 py-1 rounded-full bg-brand-moss/10 text-brand-moss font-mono font-bold text-[11px] uppercase tracking-wider">
                     100% UNPASTEURIZED RAW
