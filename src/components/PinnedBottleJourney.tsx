@@ -20,63 +20,63 @@ interface StoryStage {
 const STAGES: StoryStage[] = [
   {
     step: '01',
-    title: 'THE LIVING HARVEST',
-    headline: '1.5 to 2.2 Kilograms of Living Soil Nutrition.',
-    description: 'Every sunrise, hand-harvested regenerative organic produce arrives at our Bandra West press room from Meghalaya, Wayanad, Kashmir, and Konkan belts. Never frozen, never chemically preserved.',
+    title: 'THE FRESH HARVEST',
+    headline: 'Over 1.5 kg of Fresh Farm Produce in Every Bottle.',
+    description: 'Every morning before dawn, freshly picked organic fruits and vegetables arrive at our Bandra West press room directly from family farms in Meghalaya, Kerala, and Himachal. Never frozen, never preserved.',
     stats: [
-      { label: 'Raw Produce / Bottle', value: '1.8 kg' },
-      { label: 'Soil Health Score', value: '98/100' },
-      { label: 'Farm Traceability', value: '100% Single Origin' },
+      { label: 'Fresh Produce / Bottle', value: '1.8 kg' },
+      { label: 'Organic Quality', value: '100% Certified' },
+      { label: 'Sourcing', value: 'Direct from Farms' },
     ],
     liquidPercent: 25,
     liquidColor: '#FFA826',
-    pressure: '1 ATM (Ambient)',
-    temp: '5.5°C (Farm Gate)',
+    pressure: 'Fresh Harvest',
+    temp: 'Crisp & Chilled',
   },
   {
     step: '02',
-    title: '15,000 PSI HYDRAULIC PRESS',
-    headline: 'Immense Pressure. Zero Destructive Heat.',
-    description: 'Traditional centrifuges spin at 10,000 RPM, cooking delicate vitamins with friction heat. Our mammoth hydraulic press applies 15,000 PSI of pure crushing force to squeeze every drop of cellular nectar intact.',
+    title: 'SLOW COLD-PRESSING',
+    headline: 'Gently Squeezed. Never Heated.',
+    description: 'Regular juicers use fast metal blades that heat up and ruin fresh vitamins. We use gentle hydraulic cold pressure to slowly squeeze every single drop of juice cold, keeping the flavor crisp, sweet, and alive.',
     stats: [
-      { label: 'Hydraulic Pressure', value: '15,000 PSI' },
-      { label: 'Friction Heat Generated', value: '0.0°C' },
-      { label: 'Cellular Yield', value: '94.8%' },
+      { label: 'Juicing Method', value: 'Slow Cold Press' },
+      { label: 'Heat Generated', value: '0.0°C (Zero Heat)' },
+      { label: 'Juice Purity', value: '100% Pure' },
     ],
     liquidPercent: 55,
     liquidColor: '#2E6F40',
-    pressure: '15,000 PSI Active',
-    temp: '3.3°C (Controlled)',
+    pressure: 'Slow Cold-Press',
+    temp: 'Chilled 3.3°C',
   },
   {
     step: '03',
-    title: 'NON-THERMAL HPP PRESERVATION',
-    headline: 'Active Enzymes & Phytonutrients Survive.',
-    description: 'Submerged under hyperbaric cold water pressure to neutralise unwanted microorganisms without thermal shock. Living Vitamins C, A, active probiotics, and polyphenols remain alive and bioavailable.',
+    title: 'COLD FRESHNESS PROTECTION',
+    headline: 'Natural Vitamins & Goodness Stay Alive.',
+    description: 'We never boil or heat-pasteurise our juices. Using chilled cold water pressure, we keep our juice naturally safe and fresh while preserving 100% of the active vitamins, refreshing taste, and natural nutrients.',
     stats: [
-      { label: 'Active Live Enzymes', value: '100%' },
-      { label: 'Sugar Added', value: '0g' },
-      { label: 'Water Dilution', value: '0.0%' },
+      { label: 'Natural Vitamins', value: '100% Intact' },
+      { label: 'Added Sugar', value: '0g (Zero)' },
+      { label: 'Added Water', value: '0.0% (Zero Dilution)' },
     ],
     liquidPercent: 85,
     liquidColor: '#932839',
-    pressure: '87,000 PSI Hyperbaric',
-    temp: '2.5°C (Cryo Chill)',
+    pressure: 'Cold Water Protected',
+    temp: 'Chilled 2.5°C',
   },
   {
     step: '04',
-    title: 'BOROSILICATE GLASS & HERMETIC SEAL',
-    headline: 'Pure Glass. Zero Plastic Leaching.',
-    description: 'Sealed cold in 100% recyclable, UV-protective glass bottles with an airtight hermetic brass crown. Hand 6 clean bottles to your delivery rider for ₹150 instant UPI cashback.',
+    title: 'REUSABLE GLASS & ZERO PLASTIC',
+    headline: 'Pure Glass Bottles. Healthy For You & Nature.',
+    description: 'Sealed cold in 100% recyclable glass bottles with an airtight cap. Return your clean empty bottles to our delivery rider and receive ₹25 per bottle back on UPI.',
     stats: [
-      { label: 'Single-Use Plastic', value: '0%' },
-      { label: 'Bottle Return Credit', value: '₹25/ea' },
+      { label: 'Single-Use Plastic', value: '0% (Plastic Free)' },
+      { label: 'Bottle Return Reward', value: '₹25 per bottle' },
       { label: 'Chilled Shelf Life', value: '45 Days' },
     ],
     liquidPercent: 96,
     liquidColor: '#DDA74F',
-    pressure: 'Hermetic Vacuum',
-    temp: '2.2°C (Doorstep)',
+    pressure: 'Freshly Sealed',
+    temp: 'Chilled 2.2°C',
   },
 ];
 
@@ -171,12 +171,12 @@ export const PinnedBottleJourney: React.FC = () => {
           >
             <div className="flex animate-ticker-left">
               <span className="font-display text-[9vw] sm:text-[7vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-12 drop-shadow-[0_2px_14px_rgba(200,116,27,0.32)]">
-                FRUITS &amp; ROOTS &bull; RAW LIVING BOTANICALS &bull; 15,000 PSI HYDRAULIC &bull; 2.2&deg;C COLD-CHAIN &bull;
+                FRUITS &amp; ROOTS &bull; 100% RAW COLD-PRESSED JUICES &bull; NEVER HEATED &bull; ZERO ADDED SUGAR &bull; 2.2&deg;C CHILLED DELIVERY &bull;
               </span>
             </div>
             <div className="flex animate-ticker-left" aria-hidden="true">
               <span className="font-display text-[9vw] sm:text-[7vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-12 drop-shadow-[0_2px_14px_rgba(200,116,27,0.32)]">
-                FRUITS &amp; ROOTS &bull; RAW LIVING BOTANICALS &bull; 15,000 PSI HYDRAULIC &bull; 2.2&deg;C COLD-CHAIN &bull;
+                FRUITS &amp; ROOTS &bull; 100% RAW COLD-PRESSED JUICES &bull; NEVER HEATED &bull; ZERO ADDED SUGAR &bull; 2.2&deg;C CHILLED DELIVERY &bull;
               </span>
             </div>
           </div>
@@ -191,12 +191,12 @@ export const PinnedBottleJourney: React.FC = () => {
           >
             <div className="flex animate-ticker-right">
               <span className="font-display text-[7vw] sm:text-[5.5vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-10 drop-shadow-[0_2px_12px_rgba(200,116,27,0.22)]">
-                BOROSILICATE GLASS &bull; UV PROTECTION &bull; ZERO PLASTIC LEACH &bull; &#8377;150 INSTANT UPI RETURN &bull; 45-DAY CHILLED &bull;
+                REUSABLE GLASS BOTTLES &bull; ZERO PLASTIC &bull; &#8377;150 UPI CASHBACK ON 6 BOTTLES &bull; CHILLED TO YOUR DOORSTEP &bull;
               </span>
             </div>
             <div className="flex animate-ticker-right" aria-hidden="true">
               <span className="font-display text-[7vw] sm:text-[5.5vw] font-black uppercase text-[#C8741B] tracking-tight block leading-none mr-10 drop-shadow-[0_2px_12px_rgba(200,116,27,0.22)]">
-                BOROSILICATE GLASS &bull; UV PROTECTION &bull; ZERO PLASTIC LEACH &bull; &#8377;150 INSTANT UPI RETURN &bull; 45-DAY CHILLED &bull;
+                REUSABLE GLASS BOTTLES &bull; ZERO PLASTIC &bull; &#8377;150 UPI CASHBACK ON 6 BOTTLES &bull; CHILLED TO YOUR DOORSTEP &bull;
               </span>
             </div>
           </div>

@@ -26,11 +26,11 @@ export const SubscriptionSection: React.FC = () => {
       id: 'cleanse-beginner',
       program: CLEANSE_PROGRAMS[0],
       scriptTitle: 'Beginner Gentle',
-      timelineBadge: `Timeline: ${selectedDuration} Days • Daily 2.2°C Press`,
+      timelineBadge: `Timeline: ${selectedDuration} Days • Daily Fresh Press`,
       basePrice: 899,
       features: [
-        '6 Living cold-press bottles daily (473ml)',
-        '2x Raw Lakadong turmeric immunity shots',
+        '6 Fresh cold-pressed juice bottles daily (473ml)',
+        '2x Fresh wild turmeric wellness shots',
         'Morning golden digestion & gut awakening',
         'Delivered daily before 6:30 AM IST in cold coolers',
         'Up to ₹150 UPI cashback on returning 6 bottles',
@@ -41,14 +41,14 @@ export const SubscriptionSection: React.FC = () => {
       id: 'cleanse-balanced',
       program: CLEANSE_PROGRAMS[1],
       scriptTitle: 'Balanced Reset',
-      timelineBadge: `Timeline: ${selectedDuration} Days • Metabolic Fire`,
+      timelineBadge: `Timeline: ${selectedDuration} Days • Daily Energy`,
       basePrice: 999,
       features: [
         '6 Functional cold-pressed bottles daily',
-        '3x High-gingerol & wheatgrass cellular shots',
-        'Nilgiri kale, beetroot & citrus alkalising tonics',
-        '87,000 PSI non-thermal hyperbaric cryo protection',
-        '1-on-1 VIP WhatsApp nutritionist concierge',
+        '3x Fresh ginger & wheatgrass wellness shots',
+        'Fresh kale, beetroot & citrus revitalising juices',
+        'Naturally protected with cold water pressure',
+        '1-on-1 VIP WhatsApp nutritionist guidance',
         'Free insulated thermal doorstep cooler bag',
       ],
     },
@@ -59,9 +59,9 @@ export const SubscriptionSection: React.FC = () => {
       timelineBadge: `Timeline: ${selectedDuration} Days • Zero Fruit Sugar`,
       basePrice: 1199,
       features: [
-        '6 Pure alkaline green bottles daily (0g added fruit sugar)',
+        '6 Pure green bottles daily (0g added fruit sugar)',
         'Evening activated charcoal & Persian lime botanical elixir',
-        'High-chlorophyll cellular hydration & green reset',
+        'Fresh green leaf hydration & daily vitality',
         '100% Single-origin organic farm traceability',
         'Himalayan pink rock salt hydration pouch included',
         'Permanent 20% bundle savings vs single bottles',
@@ -142,13 +142,13 @@ export const SubscriptionSection: React.FC = () => {
             <div className="inline-block transform rotate-[-1.5deg] hover:rotate-0 transition-transform duration-300">
               <div className="bg-white px-6 sm:px-10 py-3 sm:py-4 rounded-2xl sm:rounded-3xl shadow-xl border-2 border-brand-950/10 inline-block">
                 <h2 className="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#A31D1D] uppercase tracking-tight leading-none drop-shadow-xs">
-                  PICK THE PERFECT LIVING PROTOCOL
+                  CHOOSE YOUR FRESH CLEANSE PLAN
                 </h2>
               </div>
             </div>
 
             <p className="font-mono text-xs sm:text-sm text-brand-800 font-bold uppercase tracking-widest max-w-xl mx-auto pt-1">
-              ACT VII &bull; METABOLIC RESET &bull; DAILY 2.2&deg;C DOORSTEP COLD-CHAIN DISPATCH
+              DAILY FRESH MORNING DELIVERY &bull; 100% RAW JUICES &bull; FREE DOORSTEP COOLER BAG
             </p>
 
             {/* Duration Selector Tabs (3-Day, 5-Day, 7-Day) */}

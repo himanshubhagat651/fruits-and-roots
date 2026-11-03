@@ -132,7 +132,7 @@ export const Hero: React.FC = () => {
           <span>Explore The Full Juice Menu &darr;</span>
         </a>
         <div className="flex items-center gap-2 font-bold">
-          <span>Heavy Borosilicate Glass</span>
+          <span>Pure Reusable Glass Bottle</span>
           <span>&bull;</span>
           <span className="text-brand-amber">&#8377;25 Bottle Return Credit</span>
         </div>

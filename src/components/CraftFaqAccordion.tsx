@@ -14,44 +14,44 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     id: 'why-cold-press',
     category: 'craft',
-    badge: 'HYDRAULIC EXTRACTION',
-    question: 'Why 15,000 PSI hydraulic cold pressing instead of centrifugal blenders?',
-    answer: 'Standard juice bars and home juicers use high-speed spinning blades (up to 14,000 RPM) that whip friction heat into the produce, cooking sensitive enzymes and oxidizing delicate Vitamin C. Fruits & Roots uses static hydraulic pressure—15,000 pounds per square inch of pure crushing force—squeezing whole botanical cells at 2.2°C without generating a single fraction of a degree of heat.',
+    badge: 'COLD-PRESS METHOD',
+    question: 'Why cold-pressed juice instead of regular juicers or blenders?',
+    answer: 'Regular home juicers and blenders use fast spinning blades that generate heat, destroying delicate fresh vitamins and natural enzymes. We use a gentle, slow cold-press method that squeezes fresh fruits and vegetables cold—keeping all the rich nutrients, vibrant natural color, and delicious taste 100% intact.',
   },
   {
     id: 'how-hpp-works',
     category: 'craft',
-    badge: 'BIOAVAILABILITY',
-    question: 'What is Non-Thermal HPP and how do living enzymes and probiotics survive?',
-    answer: 'High-Pressure Processing (HPP) submerges cold-sealed glass bottles in pure hyperbaric water pressure (87,000 PSI). This pressure physically disrupts harmful pathogen cell walls without applying thermal heat shock. As a result, 100% of the active digestive enzymes, live flora, chlorophyll, and vitamins remain intact and bioavailable, compliant with FSSAI regulations.',
+    badge: 'NATURALLY FRESH',
+    question: 'How does the juice stay fresh without any preservatives?',
+    answer: 'Most store-bought juices are boiled (pasteurised) to sit on supermarket shelves for months, which removes their fresh taste. We keep our juices ice-cold and use clean cold-water pressure to keep them completely safe, keeping all the live vitamins, enzymes, and fresh flavor naturally alive.',
   },
   {
     id: 'glass-bottle-deposit',
     category: 'delivery',
-    badge: 'ZERO-PLASTIC CIRCULARITY',
-    question: 'How does the ₹25 glass bottle return and rider pickup program work?',
-    answer: 'We never bottle in single-use plastic that leaches petrochemicals or microplastics. Every bottle carries a refundable ₹25 deposit credit. Simply rinse your empty glass bottles and place them back inside your insulated doorstep crate. When your refrigerated rider delivers your next batch, they collect the bottles and your ₹25/bottle credit is automatically deposited to your account balance via instant UPI.',
+    badge: 'ZERO PLASTIC',
+    question: 'How does the ₹25 glass bottle return and cashback work?',
+    answer: 'We are 100% plastic-free. All our juices come in reusable, clean glass bottles. Simply rinse your empty bottles and hand them back to our delivery rider, and you will receive ₹25 per bottle back directly to your UPI.',
   },
   {
     id: 'shelf-life-storage',
     category: 'delivery',
-    badge: 'COLD-CHAIN AT 2.2°C',
-    question: 'How long does unpasteurised juice stay fresh in my refrigerator?',
-    answer: 'Because of our clean non-thermal HPP protocol, unopened bottles remain fresh and enzymatically active for up to 45 days when kept continuously chilled under 3.3°C. Once unsealed and exposed to ambient air, we recommend drinking within 72 hours for peak flavour and crisp vitality.',
+    badge: 'CHILLED STORAGE',
+    question: 'How long does the juice stay fresh in my refrigerator?',
+    answer: 'Unopened bottles stay fresh and full of natural flavor for up to 45 days when kept continuously chilled in your refrigerator. Once opened, we recommend enjoying your juice within 3 days for the crispest taste.',
   },
   {
     id: 'cleanse-schedule-beginners',
     category: 'cleanses',
-    badge: 'METABOLIC RESET',
-    question: 'I am new to juice cleansing. How does the 3-Day or 5-Day Protocol work?',
-    answer: 'Our protocols are designed by holistic functional nutritionists to give your digestive system complete rest while flooding your bloodstream with 1.8+ kilograms of bioavailable produce per day. You receive an hour-by-hour drinking schedule in IST (starting with the Fire Ginger shot at 7:30 AM through Golden Roots, Emerald Canopy, and ending with calming Raw Cacao & Reishi at 7:30 PM). Complete pre-cleanse and post-cleanse guides are included.',
+    badge: 'EASY CLEANSE',
+    question: 'I am new to juice cleanses. How does a cleanse plan work?',
+    answer: 'Our cleanse plans are simple and refreshing. Each day you receive 6 fresh cold-pressed juices with an easy morning-to-night drinking schedule. It gives your digestive system a gentle rest while providing your body with over 1.5 kg of fresh fruits and greens each day.',
   },
   {
     id: 'subscription-flexibility',
     category: 'delivery',
-    badge: 'CLUB FLEXIBILITY',
-    question: 'Can I swap flavours, pause for travel, or cancel my subscription anytime?',
-    answer: 'Yes, with zero hassle and zero penalty. Our Club Membership gives you a permanent 15% discount across all bottles and cleanses. You can swap upcoming flavours with a single tap, modify your delivery cadence (weekly, bi-weekly, or monthly), pause for vacations, or cancel anytime directly in your customer dashboard.',
+    badge: 'FLEXIBLE PLANS',
+    question: 'Can I swap flavours, pause for travel, or cancel anytime?',
+    answer: 'Yes, easily! You can change upcoming flavours with one tap, adjust delivery days (weekly, every 2 weeks, or monthly), pause when you are traveling, or cancel anytime with zero hassle.',
   },
 ];
 
@@ -76,22 +76,22 @@ export const CraftFaqAccordion: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950 text-brand-cream text-xs font-mono font-bold tracking-widest uppercase">
             <HelpCircle className="w-3.5 h-3.5 text-brand-amber" />
-            <span>CRAFT SECRETS &amp; FREQUENTLY ASKED QUESTIONS</span>
+            <span>FREQUENTLY ASKED QUESTIONS</span>
           </div>
           <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-black text-brand-950 uppercase tracking-tight leading-[0.9]">
-            Curious about living botany?
+            Got Questions? We Have Answers.
           </h2>
           <p className="text-sm sm:text-base text-brand-700 font-normal">
-            Everything you need to know about hydraulic cold extraction, non-thermal preservation, and our closed-loop glass bottle circularity across Mumbai, Bengaluru &amp; Delhi.
+            Everything you need to know about our slow cold-press juicing, bottle cashback, and doorstep delivery across Mumbai.
           </p>
 
           {/* Filter Tabs */}
           <div className="flex flex-wrap items-center justify-center gap-2 pt-4 font-mono">
             {[
               { id: 'all', label: 'ALL QUESTIONS' },
-              { id: 'craft', label: '15,000 PSI CRAFT' },
-              { id: 'delivery', label: 'COURIER & GLASS RETURN' },
-              { id: 'cleanses', label: 'CLEANSE PROTOCOLS' },
+              { id: 'craft', label: 'OUR METHOD' },
+              { id: 'delivery', label: 'DELIVERY & BOTTLE RETURN' },
+              { id: 'cleanses', label: 'CLEANSE PLANS' },
             ].map((tab) => (
               <button
                 key={tab.id}

@@ -1099,7 +1099,7 @@ export const BottleLiquidSimulator: React.FC = () => {
       {/* Background Archival Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.09] overflow-hidden select-none z-0">
         <span className="font-display text-[18vw] font-black uppercase tracking-tighter whitespace-nowrap text-[#C8741B] leading-none drop-shadow-xs">
-          15,000 PSI LAB
+          COLD PRESS LAB
         </span>
       </div>
 
@@ -1110,15 +1110,15 @@ export const BottleLiquidSimulator: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950 text-brand-cream text-xs font-mono font-bold tracking-widest uppercase mb-3">
               <Zap className="w-3.5 h-3.5 text-brand-amber" />
-              <span>OUR PROCESS • 3D BOTTLE LAB &amp; HYDRAULIC ALCHEMY</span>
+              <span>OUR PROCESS • 3D BOTTLE LAB &amp; SLOW COLD PRESS</span>
             </div>
             <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-black text-brand-950 uppercase tracking-tight leading-[0.9]">
-              3D Bottle Lab: Hydraulic Cold Extraction
+              3D Bottle Lab: Gentle Cold Pressing
             </h2>
           </div>
 
           <p className="max-w-md text-sm text-brand-700 font-sans leading-relaxed">
-            Explore our interactive 3D Bottle Lab and raw hydraulic extraction process. Watch 15,000 PSI of pure cold force press organic harvest into living bioavailable juice at 2.2°C, preserved unpasteurised in recyclable borosilicate glass.
+            Explore our interactive 3D Bottle Lab. See how our slow, cold-press method extracts every drop of fresh, living juice at a chilled 2.2°C—bottled in pure reusable glass with zero heat and zero chemicals.
           </p>
         </div>
 
@@ -1202,9 +1202,9 @@ export const BottleLiquidSimulator: React.FC = () => {
             <div className="w-full pt-3 border-t border-brand-950/10 flex items-center justify-between text-xs font-mono uppercase tracking-wider text-brand-700 relative z-10">
               <span className="flex items-center gap-1.5">
                 <RotateCcw className="w-3.5 h-3.5 text-brand-amber" />
-                <span>DRAG TO ORBIT 360°</span>
+                <span>DRAG TO ROTATE 360°</span>
               </span>
-              <span className="text-[11px] text-brand-500 font-bold">BOROSILICATE GLASS</span>
+              <span className="text-[11px] text-brand-500 font-bold">REUSABLE GLASS BOTTLE</span>
             </div>
           </div>
 
@@ -1215,7 +1215,7 @@ export const BottleLiquidSimulator: React.FC = () => {
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-brand-amber">
                 <Activity className="w-4 h-4" />
-                <span>HYDRAULIC CRUSH TELEMETRY</span>
+                <span>LIVE COLD-PRESS DETAILS</span>
               </div>
               <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-black text-brand-950 uppercase tracking-tight leading-[0.92]">
                 {selectedProduct.name}
@@ -1230,13 +1230,13 @@ export const BottleLiquidSimulator: React.FC = () => {
               <div className="p-4 rounded-2xl bg-brand-parchment/60 border border-brand-950/10">
                 <div className="flex items-center gap-1.5 text-brand-500 text-[10px] font-bold uppercase tracking-wider mb-1">
                   <Gauge className="w-3.5 h-3.5 text-brand-amber" />
-                  <span>Pressure Force</span>
+                  <span>Pressing Method</span>
                 </div>
                 <span className="font-display text-2xl font-black text-brand-950 block">
-                  {pressureReadout.split(' ')[0]}
+                  Cold Press
                 </span>
                 <span className="text-[10px] text-brand-forest font-semibold block mt-0.5">
-                  Zero heat friction
+                  Zero friction heat
                 </span>
               </div>
 
@@ -1249,7 +1249,7 @@ export const BottleLiquidSimulator: React.FC = () => {
                   {chamberTemp}
                 </span>
                 <span className="text-[10px] text-brand-forest font-semibold block mt-0.5">
-                  Ice-cold cryo seal
+                  Fresh chilled seal
                 </span>
               </div>
 

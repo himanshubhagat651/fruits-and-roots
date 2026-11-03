@@ -124,30 +124,30 @@ const MainApp: React.FC = () => {
         {/* Velocity Dual-Direction Marquee Ribbon */}
         <MarqueeTicker />
 
-        {/* Story Bridge 1: The Extraction Philosophy */}
+        {/* Story Bridge 1: Our Cold-Press Philosophy */}
         <StoryBridge
-          actBadge="THE CRAFT CONVICTION"
-          quote="We do not blend. We crush. Centrifugal juicers spin steel blades at 14,000 RPM, cooking produce with friction heat. We chose the heavier path: fifteen thousand pounds of silent hydraulic pressure."
-          author="COLD-PRESSED EXTRACTION"
-          subtext="15,000 PSI HYDRAULIC PRESSURE • ZERO FRICTION HEAT"
+          actBadge="OUR CRAFT PROMISE"
+          quote="No fast blades. No heat. Just pure, slow cold-pressing. Regular juicers use spinning blades that heat up and ruin fresh vitamins. We gently squeeze whole fresh fruits and greens cold—keeping every drop naturally fresh, delicious, and full of honest nutrition."
+          author="GENTLE COLD-PRESS METHOD"
+          subtext="ZERO HEAT • 100% PURE JUICE • NOTHING ARTIFICIAL"
           theme="dark"
         />
 
-        {/* ACT I /01 • The Untamed Indian Terroir & Regenerative Soil */}
+        {/* ACT I /01 • Sourced from Organic Indian Farms */}
         <BentoGrid />
 
-        {/* ACT II /02 • The 15,000 PSI Hydraulic Alchemy (Interactive 3D Pour Simulator) */}
+        {/* ACT II /02 • Interactive 3D Bottle Lab */}
         <BottleLiquidSimulator />
 
-        {/* ACT III /03 • Metamorphosis in Living Glass (4-Stage Lathe Bottle Journey) */}
+        {/* ACT III /03 • From Fresh Farm Harvest to Glass Bottle */}
         <PinnedBottleJourney />
 
-        {/* Story Bridge 2: The Living Pharmacopoeia */}
+        {/* Story Bridge 2: Real Fresh Ingredients */}
         <StoryBridge
-          actBadge="THE BOTANICAL SPECTRUM"
-          quote="Living plants speak in frequency, colour, and taste. The golden rhizome calms systemic inflammation. The emerald leaf delivers rich living chlorophyll. The crimson root fuels natural nitric oxide."
-          author="SINGLE-ORIGIN PHARMACOPOEIA"
-          subtext="100% UNPASTEURISED LIVING ENZYMES • ZERO PRESERVATIVES"
+          actBadge="FRESH FROM THE FARM"
+          quote="Real fruits and plants speak for themselves. Golden turmeric brings warmth and natural balance. Crisp green leaves nourish and hydrate. Sweet red beetroot fuels your day with natural energy."
+          author="100% NATURAL HARVEST"
+          subtext="ZERO PRESERVATIVES • ZERO ADDED SUGAR • RAW & COLD-PRESSED"
           theme="amber"
         />
 

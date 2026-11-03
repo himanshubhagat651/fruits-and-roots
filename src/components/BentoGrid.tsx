@@ -31,26 +31,26 @@ export const BentoGrid: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-950 text-brand-cream text-xs font-mono font-bold tracking-widest uppercase mb-3">
               <Sparkles className="w-3.5 h-3.5 text-brand-amber" />
-              <span>ACT I • THE UNTAMED INDIAN TERROIR &amp; SOIL HEALTH</span>
+              <span>ACT I • SOURCED FROM ORGANIC INDIAN FARMS</span>
             </div>
             <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-black text-brand-950 uppercase tracking-tight leading-[0.9]">
-              The living soil of India.
+              Grown with care in Indian soil.
             </h2>
             <p className="text-sm sm:text-base text-brand-700 mt-2 max-w-xl font-normal leading-relaxed">
-              We do not source from commercial industrial wholesale yards. We partner directly with organic family cooperatives across Meghalaya, Wayanad, and Ooty where regenerative soil health indexes consistently surpass 98/100.
+              We don't buy from mass industrial wholesale markets. We work directly with certified organic family farms across Meghalaya, Kerala, and Himachal to pick the sweetest, cleanest, pesticide-free fruits and vegetables.
             </p>
           </div>
 
           <div className="flex items-center gap-2 font-mono text-xs font-bold text-brand-950">
             <span className="w-2 h-2 rounded-full bg-brand-amber animate-pulse" />
-            <span>STANDARDS: FSSAI CERTIFIED • ISO 22000 • ZERO PRESERVATIVES</span>
+            <span>STANDARDS: FSSAI CERTIFIED • ZERO ADDED SUGAR • ZERO PRESERVATIVES</span>
           </div>
         </div>
 
         {/* Bento Grid Matrix */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 skew-on-scroll">
           
-          {/* Bento Cell 1: 15,000 PSI Mammoth Cold Hydraulic Press (2 cols, 2 rows on large) */}
+          {/* Bento Cell 1: Slow Cold-Press Method */}
           <div className="md:col-span-2 lg:col-span-2 md:row-span-2 bg-brand-950 text-brand-cream rounded-3xl p-8 sm:p-10 border border-brand-800/80 shadow-2xl flex flex-col justify-between relative overflow-hidden group">
             {/* Ambient Background Warmth Glow */}
             <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-brand-amber/15 blur-3xl pointer-events-none" />
@@ -58,28 +58,28 @@ export const BentoGrid: React.FC = () => {
             <div>
               <div className="flex items-center justify-between pb-4 border-b border-brand-800/60 font-mono text-xs">
                 <span className="flex items-center gap-2 text-brand-gold font-bold uppercase tracking-wider">
-                  <Gauge className="w-4 h-4 text-brand-amber" /> CELL 01: HYDRAULIC PRESSURE
+                  <Gauge className="w-4 h-4 text-brand-amber" /> OUR COLD-PRESS METHOD
                 </span>
                 <span className="bg-brand-900 border border-brand-800 px-3 py-1 rounded-full text-brand-amber font-black">
-                  15,000 PSI ACTIVE
+                  SLOW COLD-PRESS
                 </span>
               </div>
 
               <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-brand-cream mt-6 leading-[0.92] uppercase tracking-tight">
-                Immense Cold Pressure.<br />
-                <span className="font-editorial italic font-normal text-brand-amber lowercase tracking-normal">Zero friction heat.</span>
+                Slowly Squeezed Cold.<br />
+                <span className="font-editorial italic font-normal text-brand-amber lowercase tracking-normal">Never heated.</span>
               </h3>
 
               <p className="text-sm text-brand-cream/80 mt-4 leading-relaxed font-normal max-w-lg">
-                Centrifugal juicers spin steel blades at 14,000 RPM, heating delicate micronutrients to 52°C and destroying active digestive enzymes before they reach your cup. Our custom cold hydraulic press exerts 15,000 PSI of pure static compression to squeeze whole Indian produce cold without a single degree of thermal degradation.
+                Regular blenders and juicers use fast spinning metal blades that heat up fresh fruits, cooking away delicate vitamins before you take a sip. We gently press whole produce cold with slow hydraulic pressure—preserving every drop of fresh taste, natural color, and live vitamins.
               </p>
             </div>
 
             {/* Interactive Pressure Demonstration Slider */}
             <div className="mt-8 pt-6 border-t border-brand-800/60 space-y-4">
               <div className="flex items-center justify-between font-mono text-xs">
-                <span className="text-brand-cream/80 font-semibold uppercase">INTERACTIVE PRESSURE CHAMBER:</span>
-                <span className="text-brand-amber font-black text-sm">{psiLevel.toLocaleString('en-IN')} PSI</span>
+                <span className="text-brand-cream/80 font-semibold uppercase">HOW WE SQUEEZE JUICE COLD:</span>
+                <span className="text-brand-amber font-black text-sm">Gentle Pressure Active</span>
               </div>
 
               <input
@@ -97,29 +97,29 @@ export const BentoGrid: React.FC = () => {
 
               <div className="grid grid-cols-3 gap-3 pt-2 text-center font-mono">
                 <div className="p-3 rounded-2xl bg-brand-900/80 border border-brand-800">
-                  <span className="text-[10px] text-brand-cream/80 block uppercase">THERMAL HEAT</span>
+                  <span className="text-[10px] text-brand-cream/80 block uppercase">HEAT GENERATED</span>
                   <span className="font-display text-xl font-bold text-brand-amber">0.0°C</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-brand-900/80 border border-brand-800">
-                  <span className="text-[10px] text-brand-cream/80 block uppercase">CELLULAR YIELD</span>
-                  <span className="font-display text-xl font-bold text-brand-gold">94.8%</span>
+                  <span className="text-[10px] text-brand-cream/80 block uppercase">JUICE PURITY</span>
+                  <span className="font-display text-xl font-bold text-brand-gold">100% Pure</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-brand-900/80 border border-brand-800">
-                  <span className="text-[10px] text-brand-cream/80 block uppercase">ENZYME ACTIVITY</span>
-                  <span className="font-display text-xl font-bold text-brand-cream">100%</span>
+                  <span className="text-[10px] text-brand-cream/80 block uppercase">NATURAL VITAMINS</span>
+                  <span className="font-display text-xl font-bold text-brand-cream">100% Intact</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Bento Cell 2: Regenerative Soil Health Score (1 col, 2 rows) */}
+          {/* Bento Cell 2: Organic Farm Quality (1 col, 2 rows) */}
           <div className="md:col-span-1 lg:col-span-1 md:row-span-2 bg-white rounded-3xl p-6 sm:p-8 border border-brand-950/10 shadow-xl flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between pb-3 border-b border-brand-950/10 font-mono text-xs">
                 <span className="flex items-center gap-1.5 text-brand-950 font-bold uppercase tracking-wider">
-                  <Leaf className="w-4 h-4 text-brand-moss" /> SOIL INTEGRITY
+                  <Leaf className="w-4 h-4 text-brand-moss" /> FARM QUALITY
                 </span>
-                <span className="text-brand-amber font-black text-xs">INDEX 98/100</span>
+                <span className="text-brand-amber font-black text-xs">100% ORGANIC</span>
               </div>
 
               <div className="mt-6">
@@ -127,12 +127,12 @@ export const BentoGrid: React.FC = () => {
                   {activeFarm.soilScore}<span className="text-2xl text-brand-amber">/100</span>
                 </span>
                 <span className="font-mono text-xs uppercase tracking-widest text-brand-600 block mt-1 font-bold">
-                  REGENERATIVE SOIL SCORE
+                  ORGANIC HARVEST SCORE
                 </span>
               </div>
 
               <p className="text-xs text-brand-700 mt-4 leading-relaxed font-normal">
-                Cold-pressed elixirs are only as living as the organic topsoil they grow in. We source 100% of our botanicals from multi-generational certified organic family farms practicing natural composting and zero synthetic fertilizers.
+                Great juice starts with great soil. We source all our fruits, greens, and roots from trusted family farms that use zero chemical pesticides and 100% natural organic compost.
               </p>
 
               {/* Partner Farm Selector */}
@@ -171,30 +171,30 @@ export const BentoGrid: React.FC = () => {
             </div>
           </div>
 
-          {/* Bento Cell 3: Non-Thermal HPP (1 col, 1 row) */}
+          {/* Bento Cell 3: Gentle Freshness (1 col, 1 row) */}
           <div className="bg-brand-parchment rounded-3xl p-6 border border-brand-950/10 shadow-lg flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between pb-3 border-b border-brand-950/10 font-mono text-xs">
                 <span className="flex items-center gap-1.5 text-brand-950 font-bold uppercase tracking-wider">
-                  <ShieldCheck className="w-4 h-4 text-brand-amber" /> NON-THERMAL HPP
+                  <ShieldCheck className="w-4 h-4 text-brand-amber" /> COLD FRESHNESS
                 </span>
                 <span className="font-bold text-[10px] bg-brand-950 text-white px-2 py-0.5 rounded">
-                  87,000 PSI
+                  NEVER BOILED
                 </span>
               </div>
 
               <h4 className="font-display text-2xl font-black text-brand-950 mt-4 leading-tight uppercase tracking-tight">
-                No boiled juice. Ever.
+                No Boiled Juice. Ever.
               </h4>
 
               <p className="text-xs text-brand-700 mt-2 leading-relaxed">
-                We submerge chilled borosilicate bottles in hyperbaric pure water pressure to neutralise harmful pathogens while safeguarding living enzymes, polyphenols, and native probiotics.
+                Supermarket juices are heated and boiled to sit on shelves for months. We use clean cold water pressure to keep our juice completely safe while keeping all its fresh flavor and live vitamins.
               </p>
             </div>
 
             <div className="pt-4 border-t border-brand-950/10 flex items-center justify-between font-mono text-xs">
-              <span className="text-brand-600 font-bold">LIVING PHYTONUTRIENTS:</span>
-              <span className="text-brand-moss font-black">100% ACTIVE</span>
+              <span className="text-brand-600 font-bold">NATURAL VITAMINS:</span>
+              <span className="text-brand-moss font-black">100% INTACT</span>
             </div>
           </div>
 
@@ -203,22 +203,22 @@ export const BentoGrid: React.FC = () => {
             <div>
               <div className="flex items-center justify-between pb-3 border-b border-brand-950/10 font-mono text-xs">
                 <span className="flex items-center gap-1.5 text-brand-950 font-bold uppercase tracking-wider">
-                  <RotateCcw className="w-4 h-4 text-brand-amber" /> CRADLE-TO-CRADLE
+                  <RotateCcw className="w-4 h-4 text-brand-amber" /> REUSABLE GLASS
                 </span>
                 <span className="font-bold text-brand-amber text-xs">+₹25 / BOTTLE</span>
               </div>
 
               <h4 className="font-display text-2xl font-black text-brand-950 mt-4 leading-tight uppercase tracking-tight">
-                Zero Plastic Leaching.
+                Zero Plastic. Pure Glass.
               </h4>
 
               <p className="text-xs text-brand-700 mt-2 leading-relaxed">
-                All elixirs are poured into heavy UV-protective borosilicate glass. Hand empty bottles to your refrigerated courier rider for instant UPI cashback credit.
+                All our juices are poured into clean, reusable glass bottles. Simply hand your rinsed empty bottles to our delivery rider and receive ₹25 per bottle back on UPI.
               </p>
             </div>
 
             <div className="pt-4 border-t border-brand-950/10 flex items-center justify-between font-mono text-xs">
-              <span className="text-brand-600 font-bold">PLASTIC BOTTLES DIVERTED:</span>
+              <span className="text-brand-600 font-bold">PLASTIC BOTTLES SAVED:</span>
               <span className="text-brand-950 font-black">248,600+</span>
             </div>
           </div>

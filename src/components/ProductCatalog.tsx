@@ -172,7 +172,7 @@ export const ProductCatalog: React.FC = () => {
             </h2>
 
             <p className="text-sm sm:text-base text-earth-800 max-w-xl pt-2 font-normal leading-relaxed">
-              Extracted fresh from over 1.8 kg of single-origin Indian harvests at 2.2&deg;C. Zero thermal heat, zero preservatives. Bottled in reusable borosilicate glass with &#8377;25 return credit.
+              Pressed fresh daily from over 1.5 kg of organic Indian fruits and vegetables. Zero added sugar, zero preservatives. Bottled in reusable glass with &#8377;25 cashback on return.
             </p>
           </div>
 

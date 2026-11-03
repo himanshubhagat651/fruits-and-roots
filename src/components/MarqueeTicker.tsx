@@ -22,25 +22,25 @@ export const MarqueeTicker: React.FC = () => {
   const hasMoved2 = useRef(false);
 
   const statements = [
-    '100% CERTIFIED ORGANIC INDIAN BOTANY',
-    '15,000 PSI COLD HYDRAULIC EXTRACTION',
-    'ZERO ADDED SUGARS OR THERMAL PASTEURISATION',
-    '1.8 KG OF RAW HARVEST IN EVERY BOTTLE',
-    'REUSABLE BOROSILICATE GLASS (₹25 CASHBACK)',
-    '2-HOUR CHILLED COURIER IN MUMBAI',
-    '2.2°C UNBROKEN FARM-TO-DOOR COLD-CHAIN',
-    'SINGLE-ORIGIN SOILS: MEGHALAYA • WAYANAD • KASHMIR • RATNAGIRI',
+    '100% FRESH ORGANIC INDIAN HARVEST',
+    'COLD-PRESSED DAILY • ZERO HEAT',
+    'ZERO ADDED SUGAR • NO PRESERVATIVES',
+    'OVER 1.5 KG OF FRESH PRODUCE PER BOTTLE',
+    'RETURN EMPTY GLASS BOTTLES (₹25 CASHBACK)',
+    'FAST CHILLED DELIVERY IN MUMBAI',
+    'DELIVERED FRESH AT 2.2°C TO YOUR DOOR',
+    'SOURCED FROM LOCAL INDIAN FARMS: MEGHALAYA • WAYANAD • KASHMIR • RATNAGIRI',
   ];
 
   const formulas = [
-    { name: 'GOLDEN ROOTS GLOW (LAKADONG 7.5% CURCUMIN)', id: 'golden-roots-glow' },
-    { name: 'EMERALD CANOPY (NILGIRI KALE & SAHYADRI PUDINA)', id: 'emerald-canopy-detox' },
-    { name: 'RUBY BEET VITALITY (OOTY BEETROOT & SOLAN POMEGRANATE)', id: 'ruby-beet-vitality' },
-    { name: 'DRAGON FRUIT SUNRISE NECTAR (KUTCH PITAYA & ALPHONSO)', id: 'pitaya-sunrise-velvet' },
-    { name: 'BLUE MAJIK MARINE TONIC (WILD SPIRULINA & COCONUT WATER)', id: 'blue-majik-cloud' },
-    { name: 'PURE CELERY & FENNEL (HIMALAYAN MOUNTAIN STALKS)', id: 'raw-cacao-reishi-bliss' },
-    { name: 'FIRE & ROOT IMMUNITY BOOSTER (WAYANAD HIGH-GINGEROL)', id: 'fire-ginger-immunity-shot' },
-    { name: 'ACTIVATED CHARCOAL BOTANICAL ELIXIR (POLLACHI COCONUT CARBON)', id: 'activated-charcoal-zen' },
+    { name: 'GOLDEN ROOTS GLOW (WILD TURMERIC & VALENCIA ORANGE)', id: 'golden-roots-glow' },
+    { name: 'EMERALD CANOPY (NILGIRI KALE & FRESH MINT)', id: 'emerald-canopy-detox' },
+    { name: 'RUBY BEET VITALITY (OOTY BEETROOT & FRESH POMEGRANATE)', id: 'ruby-beet-vitality' },
+    { name: 'DRAGON FRUIT SUNRISE (KUTCH PITAYA & RATNAGIRI MANGO)', id: 'pitaya-sunrise-velvet' },
+    { name: 'BLUE SPIRULINA TONIC (TENDER COCONUT WATER)', id: 'blue-majik-cloud' },
+    { name: 'PURE CELERY & FENNEL (CRISP HIMALAYAN STALKS)', id: 'raw-cacao-reishi-bliss' },
+    { name: 'FIRE & GINGER SHOT (KERALA GINGER & FRESH LEMON)', id: 'fire-ginger-immunity-shot' },
+    { name: 'ACTIVATED CHARCOAL ELIXIR (ORGANIC COCONUT & LIME)', id: 'activated-charcoal-zen' },
   ];
 
   // Quadruple items to guarantee infinite seamless wrap across all ultra-wide & 4K screens
