@@ -113,7 +113,11 @@ function createOrangeSliceTexture(): THREE.CanvasTexture {
   const ctx = canvas.getContext('2d')!;
   const cx = 256;
   const cy = 256;
-  const r = 240;
+  const r = 246;
+
+  // Solid rind background to prevent dark transparent edge fringes
+  ctx.fillStyle = '#FF7500';
+  ctx.fillRect(0, 0, 512, 512);
 
   // Outer orange rind
   ctx.fillStyle = '#FF7A00';
@@ -127,7 +131,7 @@ function createOrangeSliceTexture(): THREE.CanvasTexture {
   ctx.arc(cx, cy, r * 0.92, 0, Math.PI * 2);
   ctx.fill();
 
-  // Pulp segments (10 triangular wedges)
+  // Pulp segments (10 triangular wedges) with juicy gradient
   const segments = 10;
   for (let i = 0; i < segments; i++) {
     const a1 = (i / segments) * Math.PI * 2 + 0.05;
@@ -141,7 +145,7 @@ function createOrangeSliceTexture(): THREE.CanvasTexture {
     ctx.fill();
 
     // Juicy highlights inside segment
-    ctx.fillStyle = '#FFB74D';
+    ctx.fillStyle = '#FFD166';
     ctx.beginPath();
     ctx.moveTo(cx, cy);
     ctx.arc(cx, cy, r * 0.72, a1 + 0.04, a2 - 0.04);
@@ -152,7 +156,7 @@ function createOrangeSliceTexture(): THREE.CanvasTexture {
   // Center white star core
   ctx.fillStyle = '#FFF8E7';
   ctx.beginPath();
-  ctx.arc(cx, cy, 18, 0, Math.PI * 2);
+  ctx.arc(cx, cy, 20, 0, Math.PI * 2);
   ctx.fill();
 
   return new THREE.CanvasTexture(canvas);
@@ -166,10 +170,14 @@ function createPomegranateHalfTexture(): THREE.CanvasTexture {
   const ctx = canvas.getContext('2d')!;
   const cx = 256;
   const cy = 256;
-  const r = 240;
+  const r = 246;
+
+  // Solid deep crimson rind background
+  ctx.fillStyle = '#73091B';
+  ctx.fillRect(0, 0, 512, 512);
 
   // Deep crimson outer leather rind
-  ctx.fillStyle = '#73091B';
+  ctx.fillStyle = '#8A0E23';
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, Math.PI * 2);
   ctx.fill();
@@ -212,7 +220,11 @@ function createDragonfruitSliceTexture(): THREE.CanvasTexture {
   const ctx = canvas.getContext('2d')!;
   const cx = 256;
   const cy = 256;
-  const r = 240;
+  const r = 246;
+
+  // Solid pink rind background
+  ctx.fillStyle = '#E61C5D';
+  ctx.fillRect(0, 0, 512, 512);
 
   // Bright pink / magenta rind
   ctx.fillStyle = '#E61C5D';
@@ -262,7 +274,11 @@ function createGreenAppleSliceTexture(): THREE.CanvasTexture {
   const ctx = canvas.getContext('2d')!;
   const cx = 256;
   const cy = 256;
-  const r = 240;
+  const r = 246;
+
+  // Solid green skin background
+  ctx.fillStyle = '#6BA32D';
+  ctx.fillRect(0, 0, 512, 512);
 
   // Granny Smith green peel
   ctx.fillStyle = '#6BA32D';
@@ -302,7 +318,11 @@ function createCoconutSliceTexture(): THREE.CanvasTexture {
   const ctx = canvas.getContext('2d')!;
   const cx = 256;
   const cy = 256;
-  const r = 240;
+  const r = 246;
+
+  // Solid husk background
+  ctx.fillStyle = '#5A6836';
+  ctx.fillRect(0, 0, 512, 512);
 
   // Greenish-brown husk
   ctx.fillStyle = '#5A6836';
@@ -339,7 +359,11 @@ function createCucumberSliceTexture(): THREE.CanvasTexture {
   const ctx = canvas.getContext('2d')!;
   const cx = 256;
   const cy = 256;
-  const r = 240;
+  const r = 246;
+
+  // Solid dark green skin background
+  ctx.fillStyle = '#204E24';
+  ctx.fillRect(0, 0, 512, 512);
 
   // Dark green skin
   ctx.fillStyle = '#204E24';
@@ -378,72 +402,70 @@ function createCucumberSliceTexture(): THREE.CanvasTexture {
 // 2. 3D Glass & Liquid Lathe Geometries
 // ---------------------------------------------------------
 
-// Premium heavy-base highball drinking tumbler
+// Premium heavy-base highball drinking tumbler (Bigger, taller, authentic luxury crystal sham)
 function createHighballGlassGeometry(): THREE.BufferGeometry {
   const points: THREE.Vector2[] = [];
 
-  // Bottom base (solid thick glass from y = 0 to 0.45)
+  // Bottom base (solid thick crystal glass sham from y = 0 to 0.58)
   points.push(new THREE.Vector2(0, 0.05));
-  points.push(new THREE.Vector2(0.55, 0.03));
-  points.push(new THREE.Vector2(0.78, 0.0));
-  points.push(new THREE.Vector2(0.85, 0.06));
+  points.push(new THREE.Vector2(0.68, 0.04));
+  points.push(new THREE.Vector2(0.96, 0.02));
+  points.push(new THREE.Vector2(1.06, 0.08));
 
-  // Outer straight upward taper
-  points.push(new THREE.Vector2(0.88, 0.8));
-  points.push(new THREE.Vector2(0.92, 1.8));
-  points.push(new THREE.Vector2(0.96, 2.8));
-  points.push(new THREE.Vector2(0.98, 3.25));
+  // Outer straight upward taper to 1.28 radius at rim y = 4.10
+  points.push(new THREE.Vector2(1.08, 0.9));
+  points.push(new THREE.Vector2(1.14, 2.0));
+  points.push(new THREE.Vector2(1.21, 3.2));
+  points.push(new THREE.Vector2(1.27, 4.05));
 
-  // Polished rim bead
-  points.push(new THREE.Vector2(0.97, 3.28));
-  points.push(new THREE.Vector2(0.94, 3.28));
-  points.push(new THREE.Vector2(0.93, 3.25));
+  // Polished rounded rim bead
+  points.push(new THREE.Vector2(1.26, 4.10));
+  points.push(new THREE.Vector2(1.22, 4.10));
+  points.push(new THREE.Vector2(1.20, 4.05));
 
   // Inner glass cavity wall
-  points.push(new THREE.Vector2(0.91, 2.8));
-  points.push(new THREE.Vector2(0.87, 1.8));
-  points.push(new THREE.Vector2(0.83, 0.8));
-  points.push(new THREE.Vector2(0.79, 0.42)); // Heavy sham floor
+  points.push(new THREE.Vector2(1.16, 3.2));
+  points.push(new THREE.Vector2(1.08, 2.0));
+  points.push(new THREE.Vector2(1.01, 0.9));
+  points.push(new THREE.Vector2(0.96, 0.58)); // Heavy sham floor
 
   // Inner bottom sham floor
-  points.push(new THREE.Vector2(0.45, 0.40));
-  points.push(new THREE.Vector2(0, 0.40));
+  points.push(new THREE.Vector2(0.55, 0.55));
+  points.push(new THREE.Vector2(0, 0.55));
 
   const geo = new THREE.LatheGeometry(points, 64);
   geo.computeVertexNormals();
-  geo.translate(0, -1.6, 0);
+  geo.translate(0, -1.95, 0);
   return geo;
 }
 
 // Liquid volume inside tumbler
-function createTumblerLiquidGeometry(fillFraction = 0.85): THREE.BufferGeometry {
+function createTumblerLiquidGeometry(fillFraction = 0.88): THREE.BufferGeometry {
   const points: THREE.Vector2[] = [];
-  const baseFloorY = 0.41;
-  const maxFluidY = 3.0;
+  const baseFloorY = 0.56;
+  const maxFluidY = 3.95;
   const topY = baseFloorY + fillFraction * (maxFluidY - baseFloorY);
 
   points.push(new THREE.Vector2(0, baseFloorY + 0.01));
-  points.push(new THREE.Vector2(0.45, baseFloorY + 0.01));
-  points.push(new THREE.Vector2(0.78, baseFloorY + 0.02));
+  points.push(new THREE.Vector2(0.55, baseFloorY + 0.01));
+  points.push(new THREE.Vector2(0.95, baseFloorY + 0.02));
 
-  // Interpolate side wall radius at current topY
-  const t = (topY - 0.41) / (3.25 - 0.41);
-  const wallRadiusAtTop = 0.79 + t * (0.93 - 0.79);
+  // Middle wall point
+  const midY = (baseFloorY + topY) * 0.5;
+  const midR = 0.96 + ((midY - 0.58) / (4.10 - 0.58)) * (1.20 - 0.96);
+  points.push(new THREE.Vector2(midR - 0.008, midY));
 
-  // Middle wall points
-  points.push(new THREE.Vector2(0.82, 0.8));
-  if (topY > 1.8) {
-    points.push(new THREE.Vector2(0.86, 1.8));
-  }
-  points.push(new THREE.Vector2(wallRadiusAtTop - 0.015, topY));
+  // Top surface radius
+  const topR = 0.96 + ((topY - 0.58) / (4.10 - 0.58)) * (1.20 - 0.96);
+  points.push(new THREE.Vector2(topR - 0.008, topY));
 
-  // Soft meniscus curve
-  points.push(new THREE.Vector2(wallRadiusAtTop * 0.85, topY - 0.01));
-  points.push(new THREE.Vector2(0, topY - 0.015));
+  // Natural concave meniscus curve touching glass
+  points.push(new THREE.Vector2(topR * 0.88, topY - 0.015));
+  points.push(new THREE.Vector2(0, topY - 0.025));
 
   const geo = new THREE.LatheGeometry(points, 64);
   geo.computeVertexNormals();
-  geo.translate(0, -1.6, 0);
+  geo.translate(0, -1.95, 0);
   return geo;
 }
 
@@ -798,7 +820,6 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
   const liquidMaterialRef = useRef<THREE.MeshPhysicalMaterial | null>(null);
   const pointLightRef = useRef<THREE.PointLight | null>(null);
   const iceCubesRef = useRef<THREE.Mesh[]>([]);
-  const rimGarnishRef = useRef<THREE.Mesh | null>(null);
   const bubblesPointsRef = useRef<THREE.Points | null>(null);
 
   // Fruit Groups Refs (5 flavours)
@@ -823,19 +844,6 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
   useEffect(() => {
     targetColorRef.current.set(colorHex);
     activeFruitIdxRef.current = flavorIndex;
-
-    // Update rim garnish slice texture
-    if (rimGarnishRef.current) {
-      let garnishTex: THREE.CanvasTexture;
-      if (flavorIndex === 0) garnishTex = createOrangeSliceTexture();
-      else if (flavorIndex === 1) garnishTex = createGreenAppleSliceTexture();
-      else if (flavorIndex === 2) garnishTex = createPomegranateHalfTexture();
-      else if (flavorIndex === 3) garnishTex = createDragonfruitSliceTexture();
-      else garnishTex = createCoconutSliceTexture();
-
-      (rimGarnishRef.current.material as THREE.MeshStandardMaterial).map = garnishTex;
-      (rimGarnishRef.current.material as THREE.MeshStandardMaterial).needsUpdate = true;
-    }
   }, [colorHex, flavorIndex]);
 
   // Trigger swirl physics on click/tap
@@ -852,18 +860,18 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     const container = mountRef.current;
     if (!container) return;
 
-    const width = container.clientWidth || 580;
-    const height = container.clientHeight || 520;
+    const width = container.clientWidth || 640;
+    const height = container.clientHeight || 600;
 
     // 1. Scene
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
     const isMobile = width < 640;
-    // 2. Camera
-    const camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 100);
-    camera.position.set(0, 0.5, isMobile ? 8.6 : 7.4);
-    camera.lookAt(0, 0.1, 0);
+    // 2. Camera: Closer, cinematic hero perspective so the glass is prominent & grand
+    const camera = new THREE.PerspectiveCamera(35, width / height, 0.1, 100);
+    camera.position.set(0, 0.35, isMobile ? 6.2 : 5.4);
+    camera.lookAt(0, 0.05, 0);
 
     // 3. Renderer with hardware optimization
     const renderer = new THREE.WebGLRenderer({
@@ -876,18 +884,61 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     // Cap pixel ratio at 1.5 to guarantee buttery 60/120fps on Retina displays
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.25;
+    renderer.toneMappingExposure = 1.35;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     rendererRef.current = renderer;
 
     container.replaceChildren(renderer.domElement);
 
-    // 4. Lights
-    const ambient = new THREE.AmbientLight(0xfff8ee, 0.95);
+    // 4. Studio Environment Map (CRITICAL FOR PHOTOREALISTIC GLASS REFRACTION & SPECULAR)
+    const pmremGenerator = new THREE.PMREMGenerator(renderer);
+    pmremGenerator.compileEquirectangularShader();
+
+    const envScene = new THREE.Scene();
+    envScene.background = new THREE.Color(0xfcf9f2);
+
+    // Overhead diffuse softbox
+    const envTop = new THREE.DirectionalLight(0xfff6ea, 4.0);
+    envTop.position.set(0, 10, 3);
+    envScene.add(envTop);
+
+    // Left vertical softbox strip (creates the crisp vertical specular line down glass)
+    const stripBox = new THREE.Mesh(
+      new THREE.PlaneGeometry(1.4, 10),
+      new THREE.MeshBasicMaterial({ color: 0xffffff })
+    );
+    stripBox.position.set(-4.5, 0.5, 3.5);
+    stripBox.lookAt(0, 0, 0);
+    envScene.add(stripBox);
+
+    // Right warm bounce softbox
+    const rightBox = new THREE.Mesh(
+      new THREE.PlaneGeometry(1.6, 9),
+      new THREE.MeshBasicMaterial({ color: 0xffeedd })
+    );
+    rightBox.position.set(5.0, 0.5, 3.0);
+    rightBox.lookAt(0, 0, 0);
+    envScene.add(rightBox);
+
+    // Backlight rim softbox (illuminates liquid from behind with warm translucency)
+    const rimBox = new THREE.Mesh(
+      new THREE.PlaneGeometry(3.6, 8),
+      new THREE.MeshBasicMaterial({ color: 0xffffff })
+    );
+    rimBox.position.set(0, 2.0, -6.0);
+    rimBox.lookAt(0, 0, 0);
+    envScene.add(rimBox);
+
+    const envTexture = pmremGenerator.fromScene(envScene, 0.04).texture;
+    scene.environment = envTexture;
+    pmremGenerator.dispose();
+
+    // 5. Studio Key, Rim & Fill Lights
+    const ambient = new THREE.AmbientLight(0xfff8ee, 0.85);
     scene.add(ambient);
 
-    const keyLight = new THREE.DirectionalLight(0xfffaed, 2.0);
+    const keyLight = new THREE.DirectionalLight(0xfffaed, 2.4);
     keyLight.position.set(4, 7, 5);
     keyLight.castShadow = true;
     keyLight.shadow.mapSize.width = 512;
@@ -895,7 +946,7 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     keyLight.shadow.bias = -0.0001;
     scene.add(keyLight);
 
-    const rimLight = new THREE.DirectionalLight(0xffffff, 2.6);
+    const rimLight = new THREE.DirectionalLight(0xffffff, 3.2);
     rimLight.position.set(-4, 5, -5);
     scene.add(rimLight);
 
@@ -903,27 +954,28 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     fillLight.position.set(-3, -1, 3);
     scene.add(fillLight);
 
-    // Internal colored glow point light
-    const pointLight = new THREE.PointLight(colorHex, 2.5, 4.5);
+    // Internal colored glow point light for juicy translucency
+    const pointLight = new THREE.PointLight(colorHex, 2.8, 5.0);
     pointLight.position.set(0, 0.2, 0);
     scene.add(pointLight);
     pointLightRef.current = pointLight;
 
-    // 5. Stage Group (Holds Glass + Fruits beside it)
+    // 6. Stage Group (Holds Glass + Fruits beside it)
     const stageGroup = new THREE.Group();
-    stageGroup.position.set(-0.35, -0.1, 0); // slight left offset for magnificent balance with fruits on right!
+    stageGroup.position.set(-0.45, -0.05, 0); // Perfectly balanced composition with fruits on right
     scene.add(stageGroup);
     stageGroupRef.current = stageGroup;
 
-    // Ground Contact Shadow Disc
-    const shadowGeo = new THREE.PlaneGeometry(6.5, 6.5);
+    // Soft Studio Ground Contact Shadow
+    const shadowGeo = new THREE.PlaneGeometry(7.5, 7.5);
     const shadowCanvas = document.createElement('canvas');
     shadowCanvas.width = 256;
     shadowCanvas.height = 256;
     const sCtx = shadowCanvas.getContext('2d')!;
-    const sGrad = sCtx.createRadialGradient(128, 128, 15, 128, 128, 120);
-    sGrad.addColorStop(0, 'rgba(30, 20, 15, 0.38)');
-    sGrad.addColorStop(0.45, 'rgba(40, 25, 20, 0.18)');
+    const sGrad = sCtx.createRadialGradient(128, 128, 12, 128, 128, 124);
+    sGrad.addColorStop(0, 'rgba(30, 20, 15, 0.42)');
+    sGrad.addColorStop(0.35, 'rgba(40, 25, 20, 0.20)');
+    sGrad.addColorStop(0.7, 'rgba(40, 25, 20, 0.05)');
     sGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
     sCtx.fillStyle = sGrad;
     sCtx.fillRect(0, 0, 256, 256);
@@ -932,81 +984,98 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     const shadowMat = new THREE.MeshBasicMaterial({
       map: shadowTex,
       transparent: true,
-      opacity: 0.75,
+      opacity: 0.82,
       depthWrite: false,
     });
     const shadowMesh = new THREE.Mesh(shadowGeo, shadowMat);
     shadowMesh.rotation.x = -Math.PI / 2;
-    shadowMesh.position.y = -1.62;
+    shadowMesh.position.y = -1.94;
     stageGroup.add(shadowMesh);
 
-    // 6. Build Highball Juice Glass
+    // 7. Photorealistic Crystal Highball Glass
     const glassGeo = createHighballGlassGeometry();
     const condensationTex = createCondensationBump();
 
     const glassMat = new THREE.MeshPhysicalMaterial({
       color: 0xffffff,
       metalness: 0.0,
-      roughness: 0.04,
-      transmission: 0.95,
-      ior: 1.52,
-      thickness: 0.45,
-      specularIntensity: 1.0,
+      roughness: 0.012,
+      transmission: 0.98,
+      ior: 1.515,
+      thickness: 0.95,
+      specularIntensity: 2.2,
+      specularColor: 0xffffff,
       clearcoat: 1.0,
-      clearcoatRoughness: 0.04,
+      clearcoatRoughness: 0.02,
+      attenuationColor: new THREE.Color(0xfcfaf5),
+      attenuationDistance: 6.0,
       bumpMap: condensationTex,
-      bumpScale: 0.008,
+      bumpScale: 0.005,
       transparent: true,
       opacity: 1.0,
+      depthWrite: false,
     });
     const glassMesh = new THREE.Mesh(glassGeo, glassMat);
     glassMesh.castShadow = true;
     glassMesh.receiveShadow = true;
+    glassMesh.renderOrder = 2;
     stageGroup.add(glassMesh);
 
-    // 7. Cold-Pressed Juice Liquid Mesh
-    const liquidGeo = createTumblerLiquidGeometry(0.85);
-    const pulpTex = createJuicePulpTexture(colorHex);
+    // 8. Cold-Pressed Luminous Juice Liquid
+    const liquidGeo = createTumblerLiquidGeometry(0.88);
 
     const liquidMat = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color(colorHex),
-      metalness: 0.02,
-      roughness: 0.22,
-      transmission: 0.44,
+      metalness: 0.0,
+      roughness: 0.04,
+      transmission: 0.62,
       ior: 1.34,
-      thickness: 1.8,
-      attenuationDistance: 1.1,
-      attenuationColor: new THREE.Color(colorHex).multiplyScalar(0.7),
-      map: pulpTex,
-      bumpMap: pulpTex,
-      bumpScale: 0.02,
+      thickness: 2.6,
+      attenuationDistance: 1.5,
+      attenuationColor: new THREE.Color(colorHex).multiplyScalar(0.72),
+      emissive: new THREE.Color(colorHex).multiplyScalar(0.24),
       transparent: true,
+      opacity: 0.96,
     });
     const liquidMesh = new THREE.Mesh(liquidGeo, liquidMat);
     liquidMesh.position.y = 0;
+    liquidMesh.renderOrder = 1;
     stageGroup.add(liquidMesh);
     liquidMeshRef.current = liquidMesh;
     liquidMaterialRef.current = liquidMat;
 
-    // 8. Floating Ice Cubes Inside Juice
-    const iceGeo = new THREE.BoxGeometry(0.42, 0.42, 0.42, 4, 4, 4);
-    // Smooth ice cube edges
+    // 9. Frosted Crystal Sugar / Ice Rim Band
+    const rimTorusGeo = new THREE.TorusGeometry(1.23, 0.038, 16, 64);
+    const rimTorusMat = new THREE.MeshStandardMaterial({
+      color: 0xffffff,
+      roughness: 0.9,
+      metalness: 0.05,
+      transparent: true,
+      opacity: 0.85,
+    });
+    const frostedRimMesh = new THREE.Mesh(rimTorusGeo, rimTorusMat);
+    frostedRimMesh.rotation.x = Math.PI / 2;
+    frostedRimMesh.position.y = 2.14;
+    stageGroup.add(frostedRimMesh);
+
+    // 10. Crystal-Clear Rounded Floating Ice Cubes Inside Juice
+    const iceGeo = new THREE.BoxGeometry(0.46, 0.46, 0.46, 4, 4, 4);
     const iceMat = new THREE.MeshPhysicalMaterial({
       color: 0xffffff,
       metalness: 0.0,
-      roughness: 0.08,
+      roughness: 0.05,
       transmission: 0.96,
-      ior: 1.31, // true ice index
-      thickness: 0.35,
+      ior: 1.31,
+      thickness: 0.45,
       transparent: true,
-      opacity: 0.9,
+      opacity: 0.92,
     });
 
     const iceCubes: THREE.Mesh[] = [];
     const iceConfigs = [
-      { pos: [-0.28, 0.92, 0.15], rot: [0.35, 0.4, -0.2] },
-      { pos: [0.26, 0.85, -0.1], rot: [-0.2, 0.6, 0.35] },
-      { pos: [0.02, 0.65, 0.2], rot: [0.5, -0.3, 0.1] },
+      { pos: [-0.34, 1.35, 0.2], rot: [0.35, 0.4, -0.2] },
+      { pos: [0.32, 1.28, -0.15], rot: [-0.2, 0.6, 0.35] },
+      { pos: [0.05, 1.12, 0.25], rot: [0.5, -0.3, 0.1] },
     ];
 
     iceConfigs.forEach((cfg) => {
@@ -1014,37 +1083,22 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
       cube.position.set(cfg.pos[0], cfg.pos[1], cfg.pos[2]);
       cube.rotation.set(cfg.rot[0], cfg.rot[1], cfg.rot[2]);
       cube.castShadow = true;
+      cube.renderOrder = 1;
       stageGroup.add(cube);
       iceCubes.push(cube);
     });
     iceCubesRef.current = iceCubes;
 
-    // 9. Rim Fruit Garnish Slice
-    const garnishGeo = new THREE.CylinderGeometry(0.45, 0.45, 0.06, 32);
-    const garnishTex = createOrangeSliceTexture();
-    const garnishMat = new THREE.MeshStandardMaterial({
-      map: garnishTex,
-      roughness: 0.3,
-      side: THREE.DoubleSide,
-    });
-    const garnishMesh = new THREE.Mesh(garnishGeo, garnishMat);
-    // Slotted over the glass rim
-    garnishMesh.position.set(0.92, 1.62, 0);
-    garnishMesh.rotation.set(0.2, 0.3, 1.35);
-    garnishMesh.castShadow = true;
-    stageGroup.add(garnishMesh);
-    rimGarnishRef.current = garnishMesh;
-
-    // 10. Effervescent Rising Micro-bubbles
+    // 11. Effervescent Rising Micro-bubbles
     const bubbleCount = 45;
     const bubbleGeo = new THREE.BufferGeometry();
     const bubblePositions = new Float32Array(bubbleCount * 3);
     const bubbleVelocities = new Float32Array(bubbleCount);
 
     for (let i = 0; i < bubbleCount; i++) {
-      bubblePositions[i * 3 + 0] = (Math.random() - 0.5) * 1.3;
-      bubblePositions[i * 3 + 1] = -1.1 + Math.random() * 2.1;
-      bubblePositions[i * 3 + 2] = (Math.random() - 0.5) * 1.3;
+      bubblePositions[i * 3 + 0] = (Math.random() - 0.5) * 1.5;
+      bubblePositions[i * 3 + 1] = -1.4 + Math.random() * 2.8;
+      bubblePositions[i * 3 + 2] = (Math.random() - 0.5) * 1.5;
       bubbleVelocities[i] = 0.015 + Math.random() * 0.025;
     }
     bubbleGeo.setAttribute('position', new THREE.BufferAttribute(bubblePositions, 3));
@@ -1062,7 +1116,7 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
 
     const bubbleMat = new THREE.PointsMaterial({
       map: bubbleTex,
-      size: 0.07,
+      size: 0.075,
       transparent: true,
       opacity: 0.75,
       blending: THREE.AdditiveBlending,
@@ -1072,7 +1126,7 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     stageGroup.add(bubbles);
     bubblesPointsRef.current = bubbles;
 
-    // 11. Build 5 Fruit Groups (Beside the glass to the right!)
+    // 12. Build 5 Fruit Groups (Resting BESIDE the glass on the table surface!)
     const fruitBuilders = [
       createOrangeModel, // 0: Golden Roots
       createGreenAppleModel, // 1: Emerald Canopy
@@ -1084,7 +1138,7 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     const fruitGroups: THREE.Group[] = [];
     fruitBuilders.forEach((builder, idx) => {
       const fGroup = builder();
-      fGroup.position.set(1.55, -1.6, 0.4); // Sitting right beside the glass!
+      fGroup.position.set(1.5, -1.95, 0.3); // Sitting gracefully right on the tabletop beside the glass!
       const initialScale = idx === flavorIndex ? 1 : 0;
       fGroup.scale.set(initialScale, initialScale, initialScale);
       stageGroup.add(fGroup);
@@ -1245,10 +1299,10 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
           pArr[i * 3 + 0] += Math.sin(time * 3 + i) * 0.002;
 
           // Pop at liquid surface
-          if (pArr[i * 3 + 1] > 1.05) {
-            pArr[i * 3 + 1] = -1.1;
-            pArr[i * 3 + 0] = (Math.random() - 0.5) * 1.2;
-            pArr[i * 3 + 2] = (Math.random() - 0.5) * 1.2;
+          if (pArr[i * 3 + 1] > 1.65) {
+            pArr[i * 3 + 1] = -1.35;
+            pArr[i * 3 + 0] = (Math.random() - 0.5) * 1.5;
+            pArr[i * 3 + 2] = (Math.random() - 0.5) * 1.5;
           }
         }
         posAttr.needsUpdate = true;
@@ -1271,9 +1325,9 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
         fGroup.scale.set(newScale, newScale, newScale);
         fGroup.visible = newScale > 0.005;
 
-        // Subtle organic breathing & levitation of fruits
+        // Subtle organic breathing of fruits on the table
         if (newScale > 0.01) {
-          fGroup.position.y = -1.6 + Math.sin(time * 1.8 + idx) * 0.025;
+          fGroup.position.y = -1.95 + Math.sin(time * 1.8 + idx) * 0.015;
         }
       });
 
@@ -1291,9 +1345,9 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
       const h = container.clientHeight;
       const isMob = w < 640;
       camera.aspect = w / h;
-      camera.position.z = isMob ? 8.6 : 7.4;
+      camera.position.z = isMob ? 6.2 : 5.4;
       if (stageGroupRef.current) {
-        stageGroupRef.current.position.x = isMob ? -0.2 : -0.35;
+        stageGroupRef.current.position.x = isMob ? -0.25 : -0.45;
       }
       camera.updateProjectionMatrix();
       rendererRef.current.setSize(w, h);
@@ -1319,7 +1373,7 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
     <div
       ref={mountRef}
       onClick={handleSwirl}
-      className="w-full h-full min-h-[460px] sm:min-h-[520px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+      className="w-full h-full min-h-[520px] sm:min-h-[600px] lg:min-h-[660px] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
     />
   );
 };
