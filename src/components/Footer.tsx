@@ -20,17 +20,17 @@ export const Footer: React.FC = () => {
     { label: 'Shop Fresh Juices', href: '#catalog' },
     { label: 'Our Cold-Press Process', href: '#our-process' },
     { label: 'Fresh Farms & Sourcing', href: '#terroir' },
-    { label: 'Store Timings & Hours', href: '#horaires' },
-    { label: 'Cleanse Plans', href: '#cleanses' },
-    { label: 'Contact & Support', href: '#contact' },
+    { label: 'Store Timings', href: '#horaires' },
+    { label: 'Daily Juice Plans', href: '#cleanses' },
+    { label: 'Contact Us', href: '#contact' },
   ];
 
   const SOCIAL_LINKS = [
     { name: 'Instagram', href: 'https://instagram.com' },
-    { name: 'WhatsApp Help & Orders', href: 'https://whatsapp.com' },
+    { name: 'WhatsApp Order & Help', href: 'https://whatsapp.com' },
     { name: 'Spotify Music', href: 'https://spotify.com' },
     { name: 'Strava Run Club', href: 'https://strava.com' },
-    { name: 'Our Farm Journal', href: '#terroir' },
+    { name: 'Farm Stories & Health Tips', href: '#terroir' },
   ];
 
   const LEGAL_LINKS = [
@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
     { name: 'FSSAI Lic. #10023022001489', href: '#' },
     { name: '₹25 Bottle Return Policy', href: '#terroir' },
     {
-      name: 'Cookie Preferences',
+      name: 'Cookie Settings',
       onClick: () => {
         playPopSound();
         window.dispatchEvent(new CustomEvent('open-cookie-settings'));
@@ -65,19 +65,19 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-7 lg:pr-16 space-y-10 sm:space-y-12">
             
             {/* Top Manifesto Statement with Highlighted Words */}
-            <p className="text-2xl sm:text-3xl md:text-4xl text-white/45 leading-[1.25] font-sans font-normal tracking-tight max-w-xl">
+            <p className="text-2xl sm:text-3xl md:text-4xl text-white/50 leading-[1.25] font-sans font-normal tracking-tight max-w-xl">
               We choose{' '}
-              <strong className="text-white font-bold">cold extraction over fast blades</strong>{' '}
+              <strong className="text-white font-bold">slow cold-pressing over fast blades</strong>{' '}
               and{' '}
-              <strong className="text-white font-bold">living Indian soil over commercial yield</strong>,{' '}
-              because honest nutrition begins with{' '}
-              <strong className="text-white font-bold">pure botanical respect</strong>.
+              <strong className="text-white font-bold">fresh Indian farm fruits over artificial shortcuts</strong>,{' '}
+              because pure health begins with{' '}
+              <strong className="text-white font-bold">100% natural juices</strong>.
             </p>
 
             {/* Atelier Meta Info */}
-            <div className="space-y-1 font-mono text-xs uppercase tracking-[0.2em] text-white/40">
-              <div>Cold-Pressed Botanical Atelier</div>
-              <div>Based in Bandra West, Mumbai, IN</div>
+            <div className="space-y-1 font-mono text-xs uppercase tracking-[0.2em] text-white/50">
+              <div>Fresh Cold-Pressed Juices &bull; 100% Raw &amp; Natural</div>
+              <div>Bandra West Store &bull; Mumbai, India</div>
             </div>
 
             {/* Large Primary Contact */}
@@ -97,7 +97,7 @@ export const Footer: React.FC = () => {
                   (+91) 98201 44829
                 </a>
                 <span className="text-white/20">&bull;</span>
-                <span>Flagship Press Room Daily 6:30 AM – 9:00 PM IST</span>
+                <span>Bandra Store &amp; Delivery: Daily 6:30 AM – 10:30 PM IST</span>
               </div>
             </div>
 
@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
             <div className="pt-2 max-w-md">
               <div className="text-[11px] font-mono uppercase tracking-[0.18em] text-brand-gold font-bold mb-2 flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-brand-amber" />
-                <span>Refrigerated Circle &bull; 15% Off First Delivery</span>
+                <span>Get 15% Off Your First Order &bull; Use Code: FRESH15</span>
               </div>
               <form
                 onSubmit={handleSubscribe}
@@ -221,7 +221,7 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="text-center sm:text-right text-white/50">
-            Cold-Pressed Daily in Bandra West, Mumbai &bull; Delivered Chilled at 2.2&deg;C
+            Pressed Fresh Daily in Bandra West, Mumbai &bull; Delivered Chilled to Your Doorstep
           </div>
         </div>
 
