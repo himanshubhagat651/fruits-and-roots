@@ -477,55 +477,76 @@ export const BentoGrid: React.FC = () => {
 
             {/* Right Visual Card: Comparison Breakdown */}
             <div className="lg:col-span-6">
-              <div className="bg-[#FCFAF6] rounded-[32px] p-6 sm:p-8 border border-brand-950/15 shadow-[0_24px_50px_-12px_rgba(45,36,30,0.12)] space-y-4 relative overflow-hidden">
+              <div className="bg-[#FCFAF6] rounded-[32px] p-6 sm:p-8 border border-brand-950/15 shadow-[0_24px_50px_-12px_rgba(45,36,30,0.12)] space-y-5 relative overflow-hidden">
                 <div className="flex items-center justify-between pb-3 border-b border-brand-950/10 font-mono text-xs">
                   <span className="flex items-center gap-2 text-brand-950 font-bold uppercase tracking-wider">
-                    <ShieldCheck className="w-4 h-4 text-brand-ruby" /> THE RAW INTEGRITY AUDIT
+                    <ShieldCheck className="w-4 h-4 text-brand-amber" /> APOTHECARY PURITY AUDIT
                   </span>
-                  <span className="text-brand-amber font-bold font-mono text-xs uppercase tracking-wider">
-                    COLD WATER HYPERBARIC
+                  <span className="px-3 py-1 rounded-full bg-brand-moss/10 text-brand-moss font-mono font-bold text-[11px] uppercase tracking-wider">
+                    100% UNPASTEURIZED RAW
                   </span>
                 </div>
 
-                {/* Supermarket Comparison Card */}
-                <div className="bg-brand-parchment/60 rounded-2xl p-5 border border-brand-950/10 shadow-xs space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-brand-ruby font-bold uppercase tracking-wider">
-                      COMMERCIAL SUPERMARKET JUICE
-                    </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-brand-ruby/10 text-brand-ruby text-[10px] font-bold">
-                      BOILED / FLASH-HEATED (95°C)
-                    </span>
+                {/* Comparative Specimen Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  {/* Supermarket Commercial Juice */}
+                  <div className="bg-brand-parchment/60 rounded-2xl p-4 sm:p-5 border border-brand-950/10 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-brand-ruby font-mono text-xs font-bold uppercase tracking-wider">
+                        CONVENTIONAL JUICE
+                      </span>
+                      <span className="px-2 py-0.5 rounded bg-brand-ruby/10 text-brand-ruby text-[9px] font-mono font-bold uppercase">
+                        PASTEURIZED
+                      </span>
+                    </div>
+
+                    <ul className="space-y-2 text-xs font-sans text-brand-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand-ruby font-bold mt-0.5">&times;</span>
+                        <span><strong>Boiled to 95°C:</strong> High heat cooks away delicate vitamin C &amp; live enzymes.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand-ruby font-bold mt-0.5">&times;</span>
+                        <span><strong>Warehouse Shelf Life:</strong> Sits in ambient storage for 6–12 months.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-brand-ruby font-bold mt-0.5">&times;</span>
+                        <span><strong>Single-Use Plastic:</strong> Bottled in cheap single-use PET bottles.</span>
+                      </li>
+                    </ul>
                   </div>
-                  <p className="text-xs text-brand-700 leading-relaxed font-sans">
-                    Heated to 95°C for long ambient shelf life in warehouse supply chains. High heat destroys delicate vitamin C, cooks away active enzymes, and alters natural farm taste. Packed in single-use plastic.
-                  </p>
-                  <div className="text-[11px] font-mono text-brand-ruby font-semibold pt-1">
-                    &times; Boiled to 95°C &bull; Months-old store shelf life &bull; Zero live bio-activity
+
+                  {/* Fruits & Roots Method */}
+                  <div className="bg-white rounded-2xl p-4 sm:p-5 border-2 border-brand-amber/40 shadow-sm space-y-3 relative overflow-hidden">
+                    <div className="flex items-center justify-between">
+                      <span className="text-brand-950 font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 text-brand-amber" /> FRUITS &amp; ROOTS
+                      </span>
+                      <span className="px-2 py-0.5 rounded bg-brand-amber/15 text-brand-amber text-[9px] font-mono font-bold uppercase">
+                        2.2°C CHILLED
+                      </span>
+                    </div>
+
+                    <ul className="space-y-2 text-xs font-sans text-brand-800">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-brand-moss shrink-0 mt-0.5" />
+                        <span><strong>Zero Boiling:</strong> Cold water pressure protects raw nutrients without heat.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-brand-moss shrink-0 mt-0.5" />
+                        <span><strong>Sunrise Fresh:</strong> Cold-pressed daily, delivered chilled within hours.</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-brand-moss shrink-0 mt-0.5" />
+                        <span><strong>Reusable Glass:</strong> Borosilicate glass with ₹25 UPI return reward.</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
 
-                {/* Fruits & Roots Cold-Pressed Card */}
-                <div className="bg-white rounded-2xl p-6 border-2 border-brand-amber/35 shadow-sm space-y-2.5 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-brand-amber/10 blur-2xl pointer-events-none" />
-
-                  <div className="flex items-center justify-between text-xs font-mono relative z-10">
-                    <span className="text-brand-950 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-brand-amber" /> FRUITS &amp; ROOTS METHOD
-                    </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-brand-amber/15 text-brand-amber border border-brand-amber/30 text-[10px] font-bold">
-                      CHILLED COLD WATER PRESSURE (2.2°C)
-                    </span>
-                  </div>
-
-                  <p className="text-xs text-brand-800 leading-relaxed font-sans pt-1 relative z-10">
-                    100% raw living juice bottled immediately at 2.2°C. Clean cold water pressure eliminates bacteria without heating a single degree. Experience the crisp snap and vibrant color of freshly picked produce.
-                  </p>
-
-                  <div className="text-xs font-mono text-brand-moss font-bold pt-2 flex items-center gap-1.5 relative z-10">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-brand-moss" />
-                    <span>100% Intact Living Enzymes &bull; Delivered Chilled Daily in Mumbai</span>
-                  </div>
+                {/* Bottom Audit Verification Ribbon */}
+                <div className="pt-2 text-[11px] font-mono text-brand-700 text-center uppercase tracking-wider font-semibold border-t border-brand-950/5">
+                  100% INTACT ACTIVE ENZYMES &bull; ZERO ADDED SUGAR &bull; ZERO WATER DILUTION
                 </div>
               </div>
             </div>
