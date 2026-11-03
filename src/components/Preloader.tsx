@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import gsap from 'gsap';
-import { PreloaderFruitSvg, PreloaderFruitType } from './PreloaderFruits';
-
-interface FruitConfig {
-  type: PreloaderFruitType;
-  top: string;
-  size: number;
-  rotation: number;
-  animClass: string;
-}
 
 interface CurtainStrip {
   id: string;
   name: string;
   color: string;
-  fruits: FruitConfig[];
 }
 
 export const Preloader: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
@@ -24,9 +14,9 @@ export const Preloader: React.FC<{ onComplete: () => void }> = ({ onComplete }) 
   useEffect(() => {
     const texts = [
       'Harvesting Organic Indian Produce...',
-      'Cold-Pressing Under 15,000 PSI...',
-      'Preserving Active Living Enzymes...',
-      'Chilling to 2.2°C in Borosilicate Glass...',
+      'Cold-Pressing Under Gentle Pressure...',
+      'Preserving Active Living Nutrients...',
+      'Chilling to 2.2°C in Reusable Glass...',
       'Fruits & Roots Ready.'
     ];
 
@@ -54,7 +44,7 @@ export const Preloader: React.FC<{ onComplete: () => void }> = ({ onComplete }) 
           duration: 0.45,
           ease: 'power3.inOut'
         })
-        // 2. 5-color sliding curtain stagger reveal with fruits sliding inside them
+        // 2. 5-color sliding curtain stagger reveal
         .to('.curtain-strip', {
           yPercent: -100,
           duration: 0.9,
@@ -67,96 +57,25 @@ export const Preloader: React.FC<{ onComplete: () => void }> = ({ onComplete }) 
     return () => clearInterval(interval);
   }, [onComplete]);
 
-  // 5 Color Strips paired with matching-coloured living botanical fruits
+  // 5 Iconic brand color strips
   const curtainStrips: CurtainStrip[] = [
-    // 1. RED STRIP: Deep Heritage Burgundy with Red Fruits
-    {
-      id: 'strip-red',
-      name: 'Red Botanical Harvest',
-      color: '#8A1521',
-      fruits: [
-        { type: 'red-pomegranate', top: '14%', size: 78, rotation: -12, animClass: 'animate-fruit-float-1' },
-        { type: 'beet-wheel', top: '38%', size: 72, rotation: 18, animClass: 'animate-fruit-float-2' },
-        { type: 'pomegranate-arils', top: '62%', size: 68, rotation: -8, animClass: 'animate-fruit-float-3' },
-        { type: 'red-apple', top: '84%', size: 76, rotation: 15, animClass: 'animate-fruit-float-4' },
-      ],
-    },
-    // 2. ORANGE STRIP: Roasted Turmeric Amber with Orange Fruits
-    {
-      id: 'strip-orange',
-      name: 'Orange Citrus Harvest',
-      color: '#C8741B',
-      fruits: [
-        { type: 'orange-slice', top: '12%', size: 76, rotation: 14, animClass: 'animate-fruit-float-2' },
-        { type: 'turmeric-root', top: '36%', size: 74, rotation: -22, animClass: 'animate-fruit-float-3' },
-        { type: 'orange-wedge', top: '60%', size: 70, rotation: 25, animClass: 'animate-fruit-float-1' },
-        { type: 'whole-orange', top: '86%', size: 78, rotation: -10, animClass: 'animate-fruit-float-4' },
-      ],
-    },
-    // 3. YELLOW STRIP: Champagne Honey Gold with Golden/Yellow Fruits
-    {
-      id: 'strip-yellow',
-      name: 'Golden Pineapple & Lemon Harvest',
-      color: '#DDA74F',
-      fruits: [
-        { type: 'lemon-wheel', top: '15%', size: 76, rotation: -18, animClass: 'animate-fruit-float-3' },
-        { type: 'pineapple-slice', top: '40%', size: 80, rotation: 12, animClass: 'animate-fruit-float-1' },
-        { type: 'golden-turmeric', top: '64%', size: 70, rotation: -15, animClass: 'animate-fruit-float-4' },
-        { type: 'lemon-wedge', top: '85%', size: 72, rotation: 20, animClass: 'animate-fruit-float-2' },
-      ],
-    },
-    // 4. CREAM STRIP: Warm Linen with Green & Light Botanicals (Green Apple, Cucumber, Mint)
-    {
-      id: 'strip-cream',
-      name: 'Crisp Green Apple & Mint Harvest',
-      color: '#F2EADF',
-      fruits: [
-        { type: 'green-apple', top: '14%', size: 78, rotation: 14, animClass: 'animate-fruit-float-1' },
-        { type: 'cucumber-wheel', top: '38%', size: 74, rotation: -16, animClass: 'animate-fruit-float-4' },
-        { type: 'mint-leaf', top: '62%', size: 72, rotation: 28, animClass: 'animate-fruit-float-2' },
-        { type: 'coconut-half', top: '84%', size: 80, rotation: -12, animClass: 'animate-fruit-float-3' },
-      ],
-    },
-    // 5. OBSIDIAN STRIP: Midnight Noir with Dark Blackberries, Grapes & Blueberries
-    {
-      id: 'strip-obsidian',
-      name: 'Midnight Dark Berry Harvest',
-      color: '#0C0A09',
-      fruits: [
-        { type: 'blackberry', top: '16%', size: 76, rotation: -10, animClass: 'animate-fruit-float-4' },
-        { type: 'dark-grapes', top: '40%', size: 80, rotation: 15, animClass: 'animate-fruit-float-2' },
-        { type: 'purple-plum', top: '64%', size: 72, rotation: -20, animClass: 'animate-fruit-float-1' },
-        { type: 'blueberries', top: '86%', size: 78, rotation: 12, animClass: 'animate-fruit-float-3' },
-      ],
-    },
+    { id: 'strip-red', name: 'Ruby Beet Red', color: '#8A1521' },
+    { id: 'strip-orange', name: 'Turmeric Amber', color: '#C8741B' },
+    { id: 'strip-yellow', name: 'Golden Honey', color: '#DDA74F' },
+    { id: 'strip-cream', name: 'Warm Cream Parchment', color: '#F2EADF' },
+    { id: 'strip-obsidian', name: 'Midnight Charcoal Noir', color: '#0C0A09' },
   ];
 
   return (
     <div className="fixed inset-0 z-50 pointer-events-auto flex flex-col items-center justify-center overflow-hidden select-none">
-      {/* 5-Column Sliding Curtains with Matching Color Fruits */}
+      {/* 5-Column Sliding Curtains */}
       <div className="absolute inset-0 flex z-10 pointer-events-none">
         {curtainStrips.map((strip) => (
           <div
             key={strip.id}
             className="curtain-strip flex-1 h-full relative overflow-hidden will-change-transform"
             style={{ backgroundColor: strip.color }}
-          >
-            {/* Array of matching color animated fruits */}
-            {strip.fruits.map((fruit, fIdx) => (
-              <div
-                key={fIdx}
-                className={`absolute left-1/2 -translate-x-1/2 select-none pointer-events-none drop-shadow-[0_10px_20px_rgba(0,0,0,0.35)] ${fruit.animClass}`}
-                style={{
-                  top: fruit.top,
-                  transform: `translate(-50%, -50%) rotate(${fruit.rotation}deg)`,
-                }}
-              >
-                <div className="transform scale-75 sm:scale-90 md:scale-100 transition-transform">
-                  <PreloaderFruitSvg type={fruit.type} size={fruit.size} />
-                </div>
-              </div>
-            ))}
-          </div>
+          />
         ))}
       </div>
 
