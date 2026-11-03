@@ -1,691 +1,177 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { playPopSound, playChimeSound } from '../utils/audio';
-import { ArrowDown, Compass, MapPin, Sparkles, Wind, Sun, Mountain, Flame, Check } from 'lucide-react';
+import { playPopSound } from '../utils/audio';
+import {
+  Gauge,
+  Leaf,
+  ShieldCheck,
+  RotateCcw,
+  Sparkles,
+  MapPin,
+  CheckCircle2,
+  Droplets,
+  ArrowUpRight,
+  ArrowDown,
+} from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 // ---------------------------------------------------------------------------
-// Terroir Data Definition
+// Sourced Farm Data (Original Content from Bento Grid)
 // ---------------------------------------------------------------------------
-interface TerroirChapter {
+interface Farm {
   id: string;
-  step: string;
-  code: string;
-  coordinates: string;
+  name: string;
+  produce: string;
   region: string;
-  state: string;
-  altitude: string;
-  headlineFirst: string;
-  headlineSecond: string;
-  produceName: string;
-  subhead: string;
-  narrative: string;
-  calloutPrefix: string;
-  calloutTitle: string;
-  calloutNote: string;
-  dialType: 'curcumin' | 'solar' | 'altitude' | 'rainforest';
-  accentColor: string;
-  accentBg: string;
-  theme: 'dark' | 'light';
+  distance: string;
+  soilScore: number;
+  highlight: string;
 }
 
-const CHAPTERS: TerroirChapter[] = [
-  {
-    id: 'intro',
-    step: '00',
-    code: 'ORIGIN 00',
-    coordinates: '19.0760° N, 72.8777° E',
-    region: 'PAN-INDIAN HARVEST',
-    state: 'DIRECT FROM FAMILY FARMS',
-    altitude: 'SEA LEVEL TO 2,100M',
-    headlineFirst: 'BORN IN INDIAN SOIL.',
-    headlineSecond: 'BOTTLED IN MUMBAI.',
-    produceName: '100% Raw Botanical Terroir',
-    subhead: 'NO MASS INDUSTRIAL WHOLESALE. NO WAREHOUSE STORAGE.',
-    narrative:
-      'We do not buy from wholesale industrial auctions. Every sunrise, living harvests arrive at our Bandra West press room directly from organic family farms in Meghalaya, Maharashtra, Tamil Nadu, and Kerala. Cold-pressed within hours of arrival.',
-    calloutPrefix: 'THE CONVICTION',
-    calloutTitle: 'ZERO COMMODITY JUICE',
-    calloutNote: 'Single-origin terroir traceability in every single glass bottle.',
-    dialType: 'curcumin',
-    accentColor: '#E5A93C',
-    accentBg: '#171412',
-    theme: 'dark',
-  },
+const FARMS: Farm[] = [
   {
     id: 'jaintia',
-    step: '01',
-    code: 'ORIGIN 01',
-    coordinates: '25.4484° N, 92.1933° E',
-    region: 'JAINTIA HILLS',
-    state: 'MEGHALAYA',
-    altitude: 'ALTITUDE 1,200M • VOLCANIC SOIL',
-    headlineFirst: 'JAINTIA',
-    headlineSecond: 'HILLS',
-    produceName: 'Lakadong 7.5% Curcumin Turmeric',
-    subhead: 'CLOUD-MISTED VOLCANIC HIGHLANDS',
-    narrative:
-      'High in the misty rain-fed valleys of Meghalaya, untouched volcanic soils nurture the world’s most potent turmeric. Hand-dug at peak maturity by indigenous women’s farming collectives, never bleached, and pressed fresh for raw golden warmth.',
-    calloutPrefix: 'GIVES US',
-    calloutTitle: '7.5% PURE CURCUMIN',
-    calloutNote: 'vs 2.0% in commercial wholesale powder • 3.75x higher active bio-potency',
-    dialType: 'curcumin',
-    accentColor: '#FF9F1C',
-    accentBg: '#F7F3EA',
-    theme: 'light',
+    name: 'Jaintia Hills Organics',
+    produce: 'Lakadong 7.5% Curcumin Turmeric',
+    region: 'Jaintia Hills, Meghalaya',
+    distance: '2,150 km',
+    soilScore: 99,
+    highlight: 'Hand-dug at peak maturity from misty volcanic soil; 3.75x higher potency than commercial powder.',
   },
   {
     id: 'konkan',
-    step: '02',
-    code: 'ORIGIN 02',
-    coordinates: '16.9902° N, 73.3120° E',
-    region: 'KONKAN COAST',
-    state: 'MAHARASHTRA',
-    altitude: 'SEA LEVEL • RED LATERITE CLIFFS',
-    headlineFirst: 'KONKAN',
-    headlineSecond: 'COAST',
-    produceName: 'GI-Tagged Ratnagiri Alphonso & Citrus',
-    subhead: 'ARABIAN SEA BREEZES & LATERITE SOIL',
-    narrative:
-      'Saline sea breezes off the Arabian Sea sweep over red laterite cliffs. Our Ratnagiri Alphonso mangoes and Assam Kaji Nemu limes ripen naturally under warm coastal sunshine—zero chemical carbide ripening, zero syrups, just honest citrus vitality.',
-    calloutPrefix: 'GIVES US',
-    calloutTitle: '24° BRIX SUNSHINE',
-    calloutNote: '100% natural tree-ripened fructose • Zero added sugar • Zero concentrates',
-    dialType: 'solar',
-    accentColor: '#E85D04',
-    accentBg: '#F5EFE6',
-    theme: 'light',
+    name: 'Konkan Coast Orchards',
+    produce: 'GI-Tagged Ratnagiri Alphonso Mango',
+    region: 'Ratnagiri, Maharashtra',
+    distance: '340 km',
+    soilScore: 99,
+    highlight: 'Naturally tree-ripened with Arabian Sea breezes; zero chemical carbide, 100% pure fructose.',
   },
   {
     id: 'nilgiri',
-    step: '03',
-    code: 'ORIGIN 03',
-    coordinates: '11.4916° N, 76.7337° E',
-    region: 'NILGIRI PEAKS',
-    state: 'TAMIL NADU',
-    altitude: 'ALTITUDE 2,100M • MOUNTAIN MIST',
-    headlineFirst: 'NILGIRI',
-    headlineSecond: 'PEAKS',
-    produceName: 'Curly Kale, Celery & Mountain Herbs',
-    subhead: 'HIGH-ALTITUDE SHADOW CANOPY',
-    narrative:
-      'Cool alpine elevations kissed by morning frost and rolling tea-mist. Slow cellular growth in mineral mountain soils yields dense, deep green curly kale and crisp stalk celery packed with concentrated living chlorophyll and cellular hydration.',
-    calloutPrefix: 'GIVES US',
-    calloutTitle: 'LIVING CHLOROPHYLL',
-    calloutNote: 'Dense cellular oxygenation • 1.8 kg of crisp mountain greens in every bottle',
-    dialType: 'altitude',
-    accentColor: '#2D6A4F',
-    accentBg: '#F2ECE4',
-    theme: 'light',
+    name: 'Nilgiri Mountain Farms',
+    produce: 'Organic Curly Kale & Crisp Mountain Celery',
+    region: 'Ooty, Tamil Nadu',
+    distance: '1,120 km',
+    soilScore: 98,
+    highlight: 'Grown at 2,000m altitude in cool mountain air; rich in natural chlorophyll and living enzymes.',
   },
   {
     id: 'wayanad',
-    step: '04',
-    code: 'ORIGIN 04',
-    coordinates: '11.6854° N, 76.1320° E',
-    region: 'WAYANAD VALLEY',
-    state: 'KERALA',
-    altitude: 'RAINFOREST CANOPY • PERENNIAL SPRINGS',
-    headlineFirst: 'WAYANAD',
-    headlineSecond: 'VALLEY',
-    produceName: 'Wild Baby Ginger & Malabar Black Pepper',
-    subhead: 'BIODIVERSE RAINFOREST SOILS',
-    narrative:
-      'Shaded cardamom and pepper groves watered by natural mountain springs. Tender, fiber-rich baby ginger brings a clean, warming botanical snap, while cracked Tellicherry black peppercorns enhance the body’s absorption of turmeric curcumin by up to 2000%.',
-    calloutPrefix: 'GIVES US',
-    calloutTitle: 'BIO-ACTIVE DIGESTIVE FIRE',
-    calloutNote: 'Natural piperine bio-enhancer • Earthen warmth that soothes digestion',
-    dialType: 'rainforest',
-    accentColor: '#A44200',
-    accentBg: '#EFE8DE',
-    theme: 'light',
+    name: 'Wayanad Forest Soils',
+    produce: 'High-Gingerol Ginger & Black Malabar Peppercorn',
+    region: 'Western Ghats, Kerala',
+    distance: '1,180 km',
+    soilScore: 98,
+    highlight: 'Intercropped in bio-diverse forest shade with pristine rainwater compost; bold natural kick.',
   },
 ];
 
 // ---------------------------------------------------------------------------
-// Precision Swiss-Style Mechanical SVG Instruments
-// Inspired by Jeffrey Blum's Swiss Made Clock / Scientific Origin Mechanics
+// 4 Master Chapters (Exact Original Website Content + Blum Scroll Architecture)
 // ---------------------------------------------------------------------------
+interface ProcessChapter {
+  id: string;
+  step: string;
+  code: string;
+  badge: string;
+  subBadge: string;
+  headline: string;
+  headlineAccent: string;
+  body: string;
+  theme: 'dark' | 'light' | 'parchment' | 'cacao';
+}
 
-// 1. Lakadong Curcumin Potency Chronometer
-const CurcuminInstrument: React.FC<{ active: boolean }> = ({ active }) => {
-  return (
-    <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center select-none group">
-      <svg
-        viewBox="0 0 400 400"
-        className="w-full h-full drop-shadow-xl transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-      >
-        {/* Outer Heavy Brass Bezel */}
-        <circle cx="200" cy="200" r="188" fill="#FBF8F2" stroke="#171412" strokeWidth="4" />
-        <circle cx="200" cy="200" r="182" fill="none" stroke="#171412" strokeWidth="1" strokeDasharray="3,3" />
+const CHAPTERS: ProcessChapter[] = [
+  {
+    id: 'cold-press',
+    step: '01',
+    code: 'STAGE 01',
+    badge: 'OUR COLD-PRESS METHOD',
+    subBadge: 'SLOW COLD-PRESS',
+    headline: 'SLOWLY SQUEEZED COLD.',
+    headlineAccent: 'never heated.',
+    body: 'Regular blenders and juicers use fast spinning metal blades that heat up fresh fruits, cooking away delicate vitamins before you take a sip. We gently press whole produce cold with slow hydraulic pressure—preserving every drop of fresh taste, natural color, and live vitamins.',
+    theme: 'dark',
+  },
+  {
+    id: 'farm-soil',
+    step: '02',
+    code: 'STAGE 02',
+    badge: 'FARM QUALITY',
+    subBadge: '100% ORGANIC',
+    headline: 'GROWN WITH CARE IN INDIAN SOIL.',
+    headlineAccent: 'straight from family farms.',
+    body: 'Great juice starts with great soil. We source all our fruits, greens, and roots from trusted family farms that use zero chemical pesticides and 100% natural organic compost. We never buy from mass industrial wholesale auctions.',
+    theme: 'parchment',
+  },
+  {
+    id: 'freshness',
+    step: '03',
+    code: 'STAGE 03',
+    badge: 'COLD FRESHNESS',
+    subBadge: 'NEVER BOILED',
+    headline: 'NO BOILED JUICE.',
+    headlineAccent: 'ever.',
+    body: 'Supermarket juices are heated and boiled to sit on shelves for months. We use clean cold water pressure to keep our juice completely safe while keeping all its fresh flavor, natural vibrancy, and live vitamins intact.',
+    theme: 'light',
+  },
+  {
+    id: 'zero-plastic',
+    step: '04',
+    code: 'STAGE 04',
+    badge: 'REUSABLE GLASS',
+    subBadge: '+₹25 / BOTTLE',
+    headline: 'ZERO PLASTIC.',
+    headlineAccent: 'pure glass.',
+    body: 'All our juices are poured into clean, reusable glass bottles. Simply hand your rinsed empty bottles to our delivery rider and receive ₹25 per bottle back on UPI.',
+    theme: 'cacao',
+  },
+];
 
-        {/* 60 Precision Dial Ticks */}
-        {Array.from({ length: 60 }).map((_, i) => {
-          const angle = (i * 6 * Math.PI) / 180;
-          const isMajor = i % 5 === 0;
-          const r1 = 176;
-          const r2 = isMajor ? 154 : 166;
-          const x1 = 200 + Math.sin(angle) * r1;
-          const y1 = 200 - Math.cos(angle) * r1;
-          const x2 = 200 + Math.sin(angle) * r2;
-          const y2 = 200 - Math.cos(angle) * r2;
-          return (
-            <line
-              key={i}
-              x1={x1}
-              y1={y1}
-              x2={x2}
-              y2={y2}
-              stroke="#171412"
-              strokeWidth={isMajor ? 3.5 : 1.2}
-              strokeLinecap="round"
-            />
-          );
-        })}
-
-        {/* Curcumin Potency Gauge Arc (0% to 10%) */}
-        <path
-          d="M 100 280 A 130 130 0 1 1 300 280"
-          fill="none"
-          stroke="#EAE0D1"
-          strokeWidth="10"
-          strokeLinecap="round"
-        />
-        {/* Active Golden Curcumin Arc from 0 to 7.5% */}
-        <path
-          d="M 100 280 A 130 130 0 1 1 275 140"
-          fill="none"
-          stroke="#FF9F1C"
-          strokeWidth="10"
-          strokeLinecap="round"
-          className="transition-all duration-1000 ease-out"
-        />
-
-        {/* Commercial Turmeric Reference Marker at 2.0% */}
-        <line x1="112" y1="210" x2="135" y2="210" stroke="#7A6F66" strokeWidth="2.5" />
-        <text x="142" y="214" fill="#7A6F66" fontSize="10" fontFamily="Space Grotesk, monospace" fontWeight="bold">
-          COM. 2.0%
-        </text>
-
-        {/* Lakadong Pin Marker at 7.5% */}
-        <circle cx="275" cy="140" r="6" fill="#FF9F1C" stroke="#171412" strokeWidth="2" />
-        <text x="290" y="144" fill="#171412" fontSize="12" fontFamily="Space Grotesk, monospace" fontWeight="900">
-          7.5% LAKADONG
-        </text>
-
-        {/* Inner Scientific Dial Text */}
-        <text
-          x="200"
-          y="110"
-          textAnchor="middle"
-          fill="#171412"
-          fontSize="11"
-          fontFamily="Space Grotesk, monospace"
-          letterSpacing="0.25em"
-          fontWeight="bold"
-        >
-          CURCUMIN CHRONOMETER
-        </text>
-        <text
-          x="200"
-          y="126"
-          textAnchor="middle"
-          fill="#8A7D73"
-          fontSize="9"
-          fontFamily="Space Grotesk, monospace"
-          letterSpacing="0.15em"
-        >
-          MEGHALAYA VOLCANIC SOIL
-        </text>
-
-        <text
-          x="200"
-          y="275"
-          textAnchor="middle"
-          fill="#171412"
-          fontSize="10"
-          fontFamily="Space Grotesk, monospace"
-          letterSpacing="0.3em"
-          fontWeight="bold"
-        >
-          SWISS-INSPECTED CRAFT
-        </text>
-
-        {/* Central Monogram */}
-        <text
-          x="200"
-          y="180"
-          textAnchor="middle"
-          fill="#171412"
-          fontSize="28"
-          fontFamily="Sink, Impact, sans-serif"
-          fontWeight="900"
-        >
-          7.5%
-        </text>
-        <text
-          x="200"
-          y="198"
-          textAnchor="middle"
-          fill="#FF9F1C"
-          fontSize="11"
-          fontFamily="Space Grotesk, monospace"
-          fontWeight="bold"
-        >
-          POTENCY INDEX
-        </text>
-
-        {/* Hour Hand (Points to origin coordinate) */}
-        <line
-          x1="200"
-          y1="200"
-          x2="150"
-          y2="235"
-          stroke="#171412"
-          strokeWidth="6"
-          strokeLinecap="round"
-        />
-
-        {/* Minute Hand (Points to 7.5% dial calibration) */}
-        <line
-          x1="200"
-          y1="200"
-          x2="265"
-          y2="145"
-          stroke="#171412"
-          strokeWidth="4"
-          strokeLinecap="round"
-        />
-
-        {/* Mechanical Swiss Ticking Second Hand with Yellow Dot Pip (Inspired by Blum clock) */}
-        <g className="origin-center animate-[spin_60s_steps(60)_infinite]">
-          <line x1="200" y1="230" x2="200" y2="55" stroke="#171412" strokeWidth="1.8" />
-          <circle cx="200" cy="85" r="9" fill="#FF9F1C" stroke="#171412" strokeWidth="2" />
-        </g>
-
-        {/* Solid Center Bezel Hub */}
-        <circle cx="200" cy="200" r="14" fill="#171412" />
-        <circle cx="200" cy="200" r="5" fill="#FAF6EE" />
-      </svg>
-    </div>
-  );
-};
-
-// 2. Konkan Maritime Solar & Brix Sweetness Compass
-const SolarInstrument: React.FC<{ active: boolean }> = ({ active }) => {
-  return (
-    <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center select-none group">
-      <svg
-        viewBox="0 0 400 400"
-        className="w-full h-full drop-shadow-xl transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-      >
-        <circle cx="200" cy="200" r="188" fill="#FBF8F2" stroke="#171412" strokeWidth="4" />
-        <circle cx="200" cy="200" r="182" fill="none" stroke="#E85D04" strokeWidth="2" opacity="0.4" />
-
-        {/* 360 Degree Compass Rose Ticks */}
-        {Array.from({ length: 36 }).map((_, i) => {
-          const angle = (i * 10 * Math.PI) / 180;
-          const isCardinal = i % 9 === 0;
-          const r1 = 176;
-          const r2 = isCardinal ? 148 : 164;
-          return (
-            <line
-              key={i}
-              x1={200 + Math.sin(angle) * r1}
-              y1={200 - Math.cos(angle) * r1}
-              x2={200 + Math.sin(angle) * r2}
-              y2={200 - Math.cos(angle) * r2}
-              stroke="#171412"
-              strokeWidth={isCardinal ? 4 : 1.2}
-            />
-          );
-        })}
-
-        {/* Cardinal Directions */}
-        <text x="200" y="52" textAnchor="middle" fill="#171412" fontSize="14" fontFamily="Space Grotesk, monospace" fontWeight="900">
-          N (16.99° N)
-        </text>
-        <text x="352" y="205" textAnchor="middle" fill="#171412" fontSize="14" fontFamily="Space Grotesk, monospace" fontWeight="900">
-          E
-        </text>
-        <text x="200" y="360" textAnchor="middle" fill="#171412" fontSize="14" fontFamily="Space Grotesk, monospace" fontWeight="900">
-          S
-        </text>
-        <text x="48" y="205" textAnchor="middle" fill="#171412" fontSize="14" fontFamily="Space Grotesk, monospace" fontWeight="900">
-          W (ARABIAN SEA)
-        </text>
-
-        {/* Brix Scale Arc */}
-        <path
-          d="M 120 200 A 80 80 0 1 1 280 200"
-          fill="none"
-          stroke="#EAE0D1"
-          strokeWidth="8"
-        />
-        <path
-          d="M 120 200 A 80 80 0 0 1 260 145"
-          fill="none"
-          stroke="#E85D04"
-          strokeWidth="8"
-          strokeLinecap="round"
-        />
-
-        <text
-          x="200"
-          y="120"
-          textAnchor="middle"
-          fill="#171412"
-          fontSize="11"
-          fontFamily="Space Grotesk, monospace"
-          letterSpacing="0.2em"
-          fontWeight="bold"
-        >
-          MARITIME SOLAR COMPASS
-        </text>
-
-        <text
-          x="200"
-          y="180"
-          textAnchor="middle"
-          fill="#171412"
-          fontSize="30"
-          fontFamily="Sink, Impact, sans-serif"
-          fontWeight="900"
-        >
-          24° BRIX
-        </text>
-        <text
-          x="200"
-          y="200"
-          textAnchor="middle"
-          fill="#E85D04"
-          fontSize="10"
-          fontFamily="Space Grotesk, monospace"
-          fontWeight="bold"
-          letterSpacing="0.1em"
-        >
-          TREE-RIPENED RATNAGIRI
-        </text>
-
-        <text
-          x="200"
-          y="280"
-          textAnchor="middle"
-          fill="#7A6F66"
-          fontSize="9"
-          fontFamily="Space Grotesk, monospace"
-          letterSpacing="0.15em"
-        >
-          ZERO ARTIFICIAL RIPENING
-        </text>
-
-        {/* Compass Needle (Nautical pointer) */}
-        <polygon points="200,85 208,200 192,200" fill="#E85D04" />
-        <polygon points="200,315 208,200 192,200" fill="#171412" />
-
-        {/* Rotating Solar Dot Pip */}
-        <g className="origin-center animate-[spin_45s_linear_infinite]">
-          <line x1="200" y1="200" x2="200" y2="70" stroke="#171412" strokeWidth="1.5" strokeDasharray="4,3" />
-          <circle cx="200" cy="70" r="10" fill="#FFB703" stroke="#171412" strokeWidth="2" />
-        </g>
-
-        <circle cx="200" cy="200" r="14" fill="#171412" />
-        <circle cx="200" cy="200" r="5" fill="#FAF6EE" />
-      </svg>
-    </div>
-  );
-};
-
-// 3. Nilgiri High-Altitude Chlorophyll Barometer
-const AltitudeInstrument: React.FC<{ active: boolean }> = ({ active }) => {
-  return (
-    <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center select-none group">
-      <svg
-        viewBox="0 0 400 400"
-        className="w-full h-full drop-shadow-xl transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-      >
-        <circle cx="200" cy="200" r="188" fill="#FBF8F2" stroke="#171412" strokeWidth="4" />
-
-        {/* Altitude Concentric Rings */}
-        <circle cx="200" cy="200" r="160" fill="none" stroke="#D8CDBE" strokeWidth="1" />
-        <circle cx="200" cy="200" r="130" fill="none" stroke="#171412" strokeWidth="1.5" strokeDasharray="2,4" />
-        <circle cx="200" cy="200" r="100" fill="none" stroke="#D8CDBE" strokeWidth="1" />
-
-        {/* Altitude Graduation Notches (0m to 2500m) */}
-        {Array.from({ length: 50 }).map((_, i) => {
-          const angle = ((i * 5.5 - 135) * Math.PI) / 180;
-          const r1 = 175;
-          const r2 = i % 5 === 0 ? 152 : 164;
-          return (
-            <line
-              key={i}
-              x1={200 + Math.cos(angle) * r1}
-              y1={200 + Math.sin(angle) * r1}
-              x2={200 + Math.cos(angle) * r2}
-              y2={200 + Math.sin(angle) * r2}
-              stroke="#171412"
-              strokeWidth={i % 5 === 0 ? 3 : 1.2}
-            />
-          );
-        })}
-
-        {/* Altitude Pin at 2,100M */}
-        <circle cx="295" cy="115" r="7" fill="#2D6A4F" stroke="#171412" strokeWidth="2" />
-        <text x="310" y="120" fill="#2D6A4F" fontSize="12" fontFamily="Space Grotesk, monospace" fontWeight="900">
-          2,100M PEAK
-        </text>
-
-        <text
-          x="200"
-          y="105"
-          textAnchor="middle"
-          fill="#171412"
-          fontSize="11"
-          fontFamily="Space Grotesk, monospace"
-          letterSpacing="0.2em"
-          fontWeight="bold"
-        >
-          ALPINE ELEVATION BAROMETER
-        </text>
-
-        <text
-          x="200"
-          y="180"
-          textAnchor="middle"
-          fill="#171412"
-          fontSize="28"
-          fontFamily="Sink, Impact, sans-serif"
-          fontWeight="900"
-        >
-          14°C MIST
-        </text>
-        <text
-          x="200"
-          y="200"
-          textAnchor="middle"
-          fill="#2D6A4F"
-          fontSize="11"
-          fontFamily="Space Grotesk, monospace"
-          fontWeight="bold"
-          letterSpacing="0.1em"
-        >
-          OOTY HIGHLANDS
-        </text>
-
-        <text
-          x="200"
-          y="280"
-          textAnchor="middle"
-          fill="#7A6F66"
-          fontSize="9"
-          fontFamily="Space Grotesk, monospace"
-          letterSpacing="0.2em"
-        >
-          DENSE LIVING CHLOROPHYLL
-        </text>
-
-        {/* Barometer Needle pointing to 2,100M */}
-        <line x1="200" y1="200" x2="288" y2="120" stroke="#171412" strokeWidth="4.5" strokeLinecap="round" />
-
-        {/* Sweeping Botanical Dot Pip */}
-        <g className="origin-center animate-[spin_55s_linear_infinite]">
-          <line x1="200" y1="220" x2="200" y2="55" stroke="#171412" strokeWidth="1.5" />
-          <circle cx="200" cy="75" r="9" fill="#52B788" stroke="#171412" strokeWidth="2" />
-        </g>
-
-        <circle cx="200" cy="200" r="14" fill="#171412" />
-        <circle cx="200" cy="200" r="5" fill="#FAF6EE" />
-      </svg>
-    </div>
-  );
-};
-
-// 4. Wayanad Rainforest Bio-Potency Chronometer
-const RainforestInstrument: React.FC<{ active: boolean }> = ({ active }) => {
-  return (
-    <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center select-none group">
-      <svg
-        viewBox="0 0 400 400"
-        className="w-full h-full drop-shadow-xl transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-      >
-        <circle cx="200" cy="200" r="188" fill="#FBF8F2" stroke="#171412" strokeWidth="4" />
-        <circle cx="200" cy="200" r="180" fill="none" stroke="#A44200" strokeWidth="2" strokeDasharray="4,4" />
-
-        {/* Outer Dual Concentric Calibrations */}
-        {Array.from({ length: 48 }).map((_, i) => {
-          const angle = (i * 7.5 * Math.PI) / 180;
-          const isMajor = i % 4 === 0;
-          return (
-            <line
-              key={i}
-              x1={200 + Math.sin(angle) * 175}
-              y1={200 - Math.cos(angle) * 175}
-              x2={200 + Math.sin(angle) * (isMajor ? 152 : 165)}
-              y2={200 - Math.cos(angle) * (isMajor ? 152 : 165)}
-              stroke="#171412"
-              strokeWidth={isMajor ? 3.5 : 1.2}
-            />
-          );
-        })}
-
-        {/* Absorption Multiplier Arc */}
-        <path
-          d="M 110 270 A 120 120 0 1 1 290 270"
-          fill="none"
-          stroke="#EAE0D1"
-          strokeWidth="10"
-        />
-        <path
-          d="M 110 270 A 120 120 0 1 1 270 125"
-          fill="none"
-          stroke="#A44200"
-          strokeWidth="10"
-          strokeLinecap="round"
-        />
-
-        <text
-          x="200"
-          y="110"
-          textAnchor="middle"
-          fill="#171412"
-          fontSize="11"
-          fontFamily="Space Grotesk, monospace"
-          letterSpacing="0.2em"
-          fontWeight="bold"
-        >
-          BIO-ACTIVE EXTRACTION
-        </text>
-
-        <text
-          x="200"
-          y="178"
-          textAnchor="middle"
-          fill="#171412"
-          fontSize="28"
-          fontFamily="Sink, Impact, sans-serif"
-          fontWeight="900"
-        >
-          +2000%
-        </text>
-        <text
-          x="200"
-          y="198"
-          textAnchor="middle"
-          fill="#A44200"
-          fontSize="11"
-          fontFamily="Space Grotesk, monospace"
-          fontWeight="bold"
-        >
-          PIPERINE SYNERGY
-        </text>
-
-        <text
-          x="200"
-          y="278"
-          textAnchor="middle"
-          fill="#7A6F66"
-          fontSize="9"
-          fontFamily="Space Grotesk, monospace"
-          letterSpacing="0.2em"
-        >
-          WESTERN GHATS PERENNIAL CANOPY
-        </text>
-
-        {/* Dual Needle Array */}
-        <line x1="200" y1="200" x2="140" y2="140" stroke="#171412" strokeWidth="5" strokeLinecap="round" />
-        <line x1="200" y1="200" x2="265" y2="130" stroke="#A44200" strokeWidth="4" strokeLinecap="round" />
-
-        {/* Mechanical Swiss Ticking Second Hand */}
-        <g className="origin-center animate-[spin_60s_steps(60)_infinite]">
-          <line x1="200" y1="225" x2="200" y2="55" stroke="#171412" strokeWidth="1.6" />
-          <circle cx="200" cy="80" r="9" fill="#D97706" stroke="#171412" strokeWidth="2" />
-        </g>
-
-        <circle cx="200" cy="200" r="14" fill="#171412" />
-        <circle cx="200" cy="200" r="5" fill="#FAF6EE" />
-      </svg>
-    </div>
-  );
-};
-
-// ---------------------------------------------------------------------------
-// Main Component: The Award-Winning Pinned Origin Scroll Journey
-// ---------------------------------------------------------------------------
 export const BentoGrid: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+
   const [activeIdx, setActiveIdx] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  // Interactive state for Chapter 1: Pressure demonstration slider
+  const [pressurePsi, setPressurePsi] = useState(15000);
+
+  // Interactive state for Chapter 2: Farm partner region selector
+  const [selectedFarmIdx, setSelectedFarmIdx] = useState(0);
+  const activeFarm = FARMS[selectedFarmIdx];
+
+  // -------------------------------------------------------------------------
+  // Jeffrey Blum-style Pinned Horizontal Scroll Trigger
+  // -------------------------------------------------------------------------
   useEffect(() => {
     const container = containerRef.current;
     const track = trackRef.current;
     if (!container || !track) return;
 
     const ctx = gsap.context(() => {
-      const totalChapters = CHAPTERS.length;
+      const total = CHAPTERS.length;
 
       gsap.to(track, {
         x: () => -(track.scrollWidth - window.innerWidth),
         ease: 'none',
         scrollTrigger: {
-          id: 'terroir-scroll',
+          id: 'process-pinned-scroll',
           trigger: container,
           pin: true,
-          scrub: 0.85,
+          scrub: 0.8,
           start: 'top top',
-          end: () => `+=${window.innerWidth * 3.4}`,
+          end: () => `+=${window.innerWidth * 3.0}`,
           anticipatePin: 1,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
             const p = self.progress;
             setScrollProgress(p);
-            const idx = Math.min(
-              totalChapters - 1,
-              Math.floor(p * totalChapters + 0.1)
-            );
+            const idx = Math.min(total - 1, Math.floor(p * total + 0.15));
             setActiveIdx(idx);
           },
         },
@@ -695,12 +181,13 @@ export const BentoGrid: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
-  const jumpToChapter = (idx: number) => {
+  // Jump to specific slide on indicator click
+  const jumpToSlide = (idx: number) => {
     playPopSound();
     if (!containerRef.current) return;
     const container = containerRef.current;
     const start = container.offsetTop;
-    const totalDistance = window.innerWidth * 3.4;
+    const totalDistance = window.innerWidth * 3.0;
     const targetScroll = start + (idx / (CHAPTERS.length - 1)) * totalDistance;
     window.scrollTo({
       top: targetScroll,
@@ -715,184 +202,416 @@ export const BentoGrid: React.FC = () => {
       className="relative w-full h-screen overflow-hidden select-none bg-brand-950 text-brand-cream"
     >
       {/* ------------------------------------------------------------------- */}
-      {/* 1. Sticky Top Editorial Header (Remains visible during full pin) */}
+      {/* 1. Sticky Top Editorial Header (Jeffrey Blum Minimalist Header)      */}
       {/* ------------------------------------------------------------------- */}
-      <div className="absolute top-0 left-0 right-0 z-30 px-6 sm:px-12 py-5 sm:py-7 flex items-center justify-between border-b border-white/10 backdrop-blur-md bg-brand-950/70">
+      <div className="absolute top-0 left-0 right-0 z-30 px-6 sm:px-12 py-5 sm:py-6 flex items-center justify-between border-b border-white/10 backdrop-blur-md bg-brand-950/75">
         <div className="flex items-center gap-3 font-mono text-xs sm:text-sm font-bold tracking-widest uppercase">
           <span className="w-2.5 h-2.5 rounded-full bg-brand-amber animate-pulse" />
-          <span className="text-white">ACT I / 01 &bull; THE TERROIR ORIGIN</span>
-          <span className="hidden md:inline text-white/40">&bull;</span>
+          <span className="text-white">ACT I / 01 &bull; OUR COLD-PRESS CRAFT</span>
+          <span className="hidden md:inline text-white/30">&bull;</span>
           <span className="hidden md:inline text-white/60 font-normal">
-            SINGLE-ORIGIN INDIAN HARVESTS
+            SOURCED FROM ORGANIC INDIAN SOIL
           </span>
         </div>
 
-        <div className="font-mono text-xs tracking-wider text-brand-gold hidden sm:flex items-center gap-2">
+        <div className="font-mono text-xs tracking-wider text-brand-gold flex items-center gap-2">
           <span>CHAPTER {CHAPTERS[activeIdx].step} / 04</span>
           <span className="text-white/30">&bull;</span>
-          <span className="text-white/70">{CHAPTERS[activeIdx].region}</span>
+          <span className="text-white/80">{CHAPTERS[activeIdx].badge}</span>
         </div>
       </div>
 
       {/* ------------------------------------------------------------------- */}
-      {/* 2. Horizontal Scrolling Pinned Track */}
+      {/* 2. Pinned Horizontal Track (4 Fullscreen Slides)                    */}
       {/* ------------------------------------------------------------------- */}
       <div
         ref={trackRef}
         className="flex h-full will-change-transform"
         style={{ width: `${CHAPTERS.length * 100}vw` }}
       >
-        {CHAPTERS.map((ch, idx) => {
-          const isDark = ch.theme === 'dark';
+        {/* ================================================================= */}
+        {/* SLIDE 01: OUR COLD-PRESS METHOD (SLOW COLD-PRESS)                 */}
+        {/* ================================================================= */}
+        <div className="w-screen h-full shrink-0 flex items-center justify-center px-6 sm:px-12 lg:px-20 pt-20 pb-16 bg-[#0C0A09] text-brand-cream relative">
+          {/* Subtle Ambient Golden Glow */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-brand-amber/12 blur-3xl pointer-events-none" />
 
-          return (
-            <div
-              key={ch.id}
-              className={`w-screen h-screen flex-shrink-0 relative flex flex-col justify-between pt-24 sm:pt-28 pb-16 px-6 sm:px-12 lg:px-20 transition-colors duration-700 ${
-                isDark
-                  ? 'bg-gradient-to-b from-[#0C0A09] via-[#14110F] to-[#0A0908] text-white'
-                  : 'bg-gradient-to-b from-[#F7F4EC] via-[#F2ECE0] to-[#EAE2D2] text-brand-950'
-              }`}
-            >
-              {/* Subtle Atmospheric Film Grain Texture */}
-              <div
-                className="absolute inset-0 pointer-events-none opacity-[0.035]"
-                style={{
-                  backgroundImage: `radial-gradient(${isDark ? '#FFF' : '#000'} 1px, transparent 0)`,
-                  backgroundSize: '24px 24px',
-                }}
-              />
-
-              {/* Top Metadata Strip */}
-              <div className="flex items-center justify-between border-b border-black/10 dark:border-white/10 pb-4 font-mono text-xs tracking-widest uppercase">
-                <div className="flex items-center gap-3">
-                  <span className="font-bold text-brand-amber">{ch.code}</span>
-                  <span className="text-black/30 dark:text-white/30">&bull;</span>
-                  <span className="text-black/70 dark:text-white/70">{ch.coordinates}</span>
-                </div>
-                <div className="hidden sm:block text-black/50 dark:text-white/50 text-[11px]">
-                  {ch.altitude}
-                </div>
+          <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+            {/* Left Narrative Column */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex items-center gap-3 font-mono text-xs">
+                <span className="px-3 py-1 rounded-full bg-brand-amber/15 border border-brand-amber/30 text-brand-gold font-bold tracking-widest uppercase">
+                  {CHAPTERS[0].badge}
+                </span>
+                <span className="px-3 py-1 rounded-full bg-white/10 text-white/70 font-semibold uppercase tracking-wider">
+                  {CHAPTERS[0].subBadge}
+                </span>
               </div>
 
-              {/* Center Main Split: Hero Typography & Precision Instrument */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto z-10">
-                
-                {/* Left Column: Brutalist Editorial Typography (7 Cols) */}
-                <div className="lg:col-span-7 space-y-6">
-                  {idx === 0 ? (
-                    // Cover Slide Layout (Identical to Jeffrey Blum's BORN IN... BUILT IN... layout)
-                    <div className="space-y-4">
-                      <h2 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.85]">
-                        <span className="block text-white">{ch.headlineFirst}</span>
-                        <span className="block text-brand-amber">{ch.headlineSecond}</span>
-                      </h2>
+              <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-black text-brand-cream uppercase tracking-tight leading-[0.88]">
+                {CHAPTERS[0].headline}
+                <br />
+                <span className="font-editorial italic font-normal text-brand-amber lowercase tracking-normal">
+                  {CHAPTERS[0].headlineAccent}
+                </span>
+              </h2>
 
-                      <div className="pt-4 flex items-center gap-3 font-mono text-xs sm:text-sm text-white/70 tracking-wider">
-                        <span className="w-8 h-[2px] bg-brand-amber inline-block" />
-                        <span>SCROLL TO TRAVEL THROUGH THE ORIGINS</span>
-                        <ArrowDown className="w-4 h-4 text-brand-amber animate-bounce" />
-                      </div>
+              <p className="text-sm sm:text-base md:text-lg text-brand-cream/80 max-w-xl font-normal leading-relaxed">
+                {CHAPTERS[0].body}
+              </p>
 
-                      <p className="text-sm sm:text-base text-white/80 max-w-xl font-normal leading-relaxed pt-3">
-                        {ch.narrative}
-                      </p>
-                    </div>
-                  ) : (
-                    // Terroir Chapter Layout (Identical to Swiss watch / city slide layout)
-                    <div className="space-y-4">
-                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-black/15 dark:border-white/15 bg-black/5 dark:bg-white/5 font-mono text-[11px] font-bold tracking-widest uppercase text-brand-amber">
-                        <Sparkles className="w-3.5 h-3.5" />
-                        <span>{ch.produceName}</span>
-                      </div>
+              <div className="pt-2 flex items-center gap-3 text-xs font-mono text-brand-cream/50 uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-amber" />
+                <span>ZERO BLADES &bull; ZERO THERMAL DEGRADATION &bull; 100% LIVING JUICE</span>
+              </div>
+            </div>
 
-                      <h2 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight leading-[0.84] text-brand-950 dark:text-white">
-                        <span className="block">{ch.headlineFirst}</span>
-                        <span className="block text-brand-amber">{ch.headlineSecond}</span>
-                      </h2>
-
-                      <p className="text-sm sm:text-base md:text-lg text-brand-800 dark:text-white/85 max-w-xl font-normal leading-relaxed">
-                        {ch.narrative}
-                      </p>
-
-                      {/* Editorial Callout */}
-                      <div className="pt-4 border-t border-black/10 dark:border-white/10 flex items-start gap-6 font-mono">
-                        <div>
-                          <span className="text-[10px] tracking-widest text-black/50 dark:text-white/50 block font-bold uppercase">
-                            {ch.calloutPrefix}
-                          </span>
-                          <span className="font-display text-2xl sm:text-3xl font-black text-brand-950 dark:text-white uppercase tracking-tight block mt-0.5">
-                            {ch.calloutTitle}
-                          </span>
-                          <span className="text-xs text-brand-700 dark:text-white/70 block mt-1 font-sans">
-                            {ch.calloutNote}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Right Column: Mechanical Swiss-Style Precision Instrument (5 Cols) */}
-                <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
-                  <div className="cursor-pointer" onClick={() => playChimeSound()}>
-                    {ch.dialType === 'curcumin' && <CurcuminInstrument active={activeIdx === idx} />}
-                    {ch.dialType === 'solar' && <SolarInstrument active={activeIdx === idx} />}
-                    {ch.dialType === 'altitude' && <AltitudeInstrument active={activeIdx === idx} />}
-                    {ch.dialType === 'rainforest' && <RainforestInstrument active={activeIdx === idx} />}
-                  </div>
-
-                  <span className="mt-3 font-mono text-[10px] uppercase tracking-widest text-black/40 dark:text-white/40">
-                    &bull; TAP INSTRUMENT TO TEST MECHANICAL TICK &bull;
+            {/* Right Visual Card: Interactive Hydraulic Cold-Press Simulator */}
+            <div className="lg:col-span-5">
+              <div className="bg-[#171412] rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl space-y-6 relative overflow-hidden">
+                <div className="flex items-center justify-between pb-4 border-b border-white/10 font-mono text-xs">
+                  <span className="flex items-center gap-2 text-brand-gold font-bold uppercase tracking-wider">
+                    <Gauge className="w-4 h-4 text-brand-amber" /> HYDRAULIC PRESSURE
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded bg-brand-amber/20 text-brand-amber font-mono font-bold text-[11px]">
+                    LIVE PRESS LAB
                   </span>
                 </div>
-              </div>
 
-              {/* Bottom Terroir Certifications */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-black/10 dark:border-white/10 font-mono text-xs text-black/60 dark:text-white/60">
-                <div className="flex items-center gap-4">
-                  <span className="font-bold text-brand-950 dark:text-white">CERTIFIED TERROIR</span>
-                  <span>&bull;</span>
-                  <span>100% ORGANIC CERTIFIED</span>
-                  <span>&bull;</span>
-                  <span className="text-brand-amber font-bold">ZERO FAST BLADES &bull; ZERO HEAT</span>
+                {/* Pressure Level Slider */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="text-white/60 uppercase">Chamber Pressure:</span>
+                    <span className="font-bold text-brand-amber text-sm">{pressurePsi.toLocaleString()} PSI</span>
+                  </div>
+
+                  <input
+                    type="range"
+                    min="5000"
+                    max="15000"
+                    step="500"
+                    value={pressurePsi}
+                    onChange={(e) => {
+                      setPressurePsi(Number(e.target.value));
+                      if (Math.random() > 0.7) playPopSound();
+                    }}
+                    className="w-full accent-brand-amber cursor-pointer h-2 bg-white/10 rounded-lg appearance-none"
+                  />
+
+                  <div className="flex justify-between text-[10px] font-mono text-white/40">
+                    <span>5,000 PSI (Gentle)</span>
+                    <span className="text-brand-gold font-bold">15,000 PSI (Full Extraction)</span>
+                  </div>
                 </div>
 
-                <div className="text-right text-[11px] text-black/40 dark:text-white/40 hidden md:block">
-                  {ch.state} &bull; {ch.coordinates}
+                {/* 3 Real Cold-Press Metrics (Exact from user's original site) */}
+                <div className="grid grid-cols-3 gap-3 pt-3 border-t border-white/10">
+                  <div className="bg-white/5 p-3.5 rounded-2xl border border-white/5 text-center">
+                    <span className="block text-[10px] font-mono text-white/50 uppercase">Heat Generated</span>
+                    <span className="text-lg sm:text-xl font-display font-black text-white mt-1 block">0.0°C</span>
+                    <span className="text-[9px] font-mono text-brand-amber block mt-0.5">Zero Friction</span>
+                  </div>
+
+                  <div className="bg-white/5 p-3.5 rounded-2xl border border-white/5 text-center">
+                    <span className="block text-[10px] font-mono text-white/50 uppercase">Juice Purity</span>
+                    <span className="text-lg sm:text-xl font-display font-black text-brand-gold mt-1 block">100%</span>
+                    <span className="text-[9px] font-mono text-white/60 block mt-0.5">Pure Harvest</span>
+                  </div>
+
+                  <div className="bg-white/5 p-3.5 rounded-2xl border border-white/5 text-center">
+                    <span className="block text-[10px] font-mono text-white/50 uppercase">Live Vitamins</span>
+                    <span className="text-lg sm:text-xl font-display font-black text-emerald-400 mt-1 block">100%</span>
+                    <span className="text-[9px] font-mono text-emerald-400/80 block mt-0.5">Intact Enzymes</span>
+                  </div>
                 </div>
               </div>
             </div>
-          );
-        })}
+          </div>
+        </div>
+
+        {/* ================================================================= */}
+        {/* SLIDE 02: FARM QUALITY (100% ORGANIC INDIAN SOIL)                 */}
+        {/* ================================================================= */}
+        <div className="w-screen h-full shrink-0 flex items-center justify-center px-6 sm:px-12 lg:px-20 pt-20 pb-16 bg-[#F2EADF] text-brand-950 relative">
+          <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+            {/* Left Narrative Column */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="flex items-center gap-3 font-mono text-xs">
+                <span className="px-3 py-1 rounded-full bg-brand-moss text-white font-bold tracking-widest uppercase">
+                  {CHAPTERS[1].badge}
+                </span>
+                <span className="px-3 py-1 rounded-full bg-brand-950/10 text-brand-900 font-semibold uppercase tracking-wider">
+                  {CHAPTERS[1].subBadge}
+                </span>
+              </div>
+
+              <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-black text-brand-950 uppercase tracking-tight leading-[0.88]">
+                {CHAPTERS[1].headline}
+                <br />
+                <span className="font-editorial italic font-normal text-brand-moss lowercase tracking-normal">
+                  {CHAPTERS[1].headlineAccent}
+                </span>
+              </h2>
+
+              <p className="text-sm sm:text-base md:text-lg text-brand-800 max-w-xl font-normal leading-relaxed">
+                {CHAPTERS[1].body}
+              </p>
+
+              {/* 99/100 Organic Harvest Score Callout */}
+              <div className="flex items-center gap-5 pt-2">
+                <div className="text-4xl sm:text-5xl font-display font-black text-brand-950">
+                  99<span className="text-xl sm:text-2xl text-brand-amber font-normal">/100</span>
+                </div>
+                <div className="border-l border-brand-950/20 pl-4 font-mono text-xs">
+                  <span className="block font-bold text-brand-950 uppercase tracking-wider">ORGANIC HARVEST SCORE</span>
+                  <span className="text-brand-700 block mt-0.5">Certified chemical-free volcanic &amp; laterite soils</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Visual Card: Interactive Partner Region Selector */}
+            <div className="lg:col-span-6">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-brand-950/10 shadow-xl space-y-6">
+                <div className="flex items-center justify-between pb-3 border-b border-brand-950/10 font-mono text-xs">
+                  <span className="flex items-center gap-2 text-brand-950 font-bold uppercase tracking-wider">
+                    <MapPin className="w-4 h-4 text-brand-amber" /> SELECT PARTNER REGION
+                  </span>
+                  <span className="text-brand-moss font-bold font-mono text-xs">
+                    DIRECT FROM FARMERS
+                  </span>
+                </div>
+
+                {/* 4 Region Selection Buttons */}
+                <div className="grid grid-cols-2 gap-2.5">
+                  {FARMS.map((farm, idx) => (
+                    <button
+                      key={farm.id}
+                      onClick={() => {
+                        setSelectedFarmIdx(idx);
+                        playPopSound();
+                      }}
+                      className={`p-3 rounded-2xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
+                        selectedFarmIdx === idx
+                          ? 'bg-brand-950 text-white border-brand-950 shadow-md scale-102'
+                          : 'bg-brand-cream/60 hover:bg-white text-brand-900 border-brand-950/10'
+                      }`}
+                    >
+                      <span className="font-mono text-xs font-bold block truncate">{farm.name.split(' ')[0]}</span>
+                      <span className="text-[10px] font-mono mt-1 opacity-70 block">{farm.distance}</span>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Selected Farm Detail Panel */}
+                <div className="bg-brand-cream p-5 rounded-2xl border border-brand-950/10 space-y-3 font-mono text-xs">
+                  <div className="flex items-center justify-between font-bold text-brand-950">
+                    <span className="flex items-center gap-1.5">
+                      <Leaf className="w-3.5 h-3.5 text-brand-moss" /> {activeFarm.region}
+                    </span>
+                    <span className="px-2 py-0.5 rounded bg-brand-moss/10 text-brand-moss text-[11px]">
+                      SOIL SCORE: {activeFarm.soilScore}/100
+                    </span>
+                  </div>
+
+                  <div className="text-sm font-display font-bold text-brand-950 pt-1">
+                    {activeFarm.produce}
+                  </div>
+
+                  <p className="text-xs font-sans text-brand-700 leading-relaxed pt-1">
+                    {activeFarm.highlight}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ================================================================= */}
+        {/* SLIDE 03: COLD FRESHNESS (NO BOILED JUICE. EVER.)                 */}
+        {/* ================================================================= */}
+        <div className="w-screen h-full shrink-0 flex items-center justify-center px-6 sm:px-12 lg:px-20 pt-20 pb-16 bg-[#FAF6EE] text-brand-950 relative">
+          <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+            {/* Left Narrative Column */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="flex items-center gap-3 font-mono text-xs">
+                <span className="px-3 py-1 rounded-full bg-[#8A1521] text-white font-bold tracking-widest uppercase">
+                  {CHAPTERS[2].badge}
+                </span>
+                <span className="px-3 py-1 rounded-full bg-brand-950/10 text-brand-900 font-semibold uppercase tracking-wider">
+                  {CHAPTERS[2].subBadge}
+                </span>
+              </div>
+
+              <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-black text-brand-950 uppercase tracking-tight leading-[0.88]">
+                {CHAPTERS[2].headline}
+                <br />
+                <span className="font-editorial italic font-normal text-[#8A1521] lowercase tracking-normal">
+                  {CHAPTERS[2].headlineAccent}
+                </span>
+              </h2>
+
+              <p className="text-sm sm:text-base md:text-lg text-brand-800 max-w-xl font-normal leading-relaxed">
+                {CHAPTERS[2].body}
+              </p>
+
+              <div className="pt-2 flex items-center gap-3 text-xs font-mono text-brand-moss font-bold uppercase tracking-wider">
+                <CheckCircle2 className="w-4 h-4 text-brand-moss shrink-0" />
+                <span>NATURAL VITAMINS &amp; ENZYMES: 100% INTACT &bull; UNPASTEURIZED</span>
+              </div>
+            </div>
+
+            {/* Right Visual Card: Comparison Breakdown */}
+            <div className="lg:col-span-6 space-y-4">
+              {/* Supermarket Comparison Card */}
+              <div className="bg-white/80 rounded-2xl p-5 border border-brand-950/10 shadow-sm space-y-2">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="text-red-700 font-bold uppercase tracking-wider">
+                    COMMERCIAL SUPERMARKET JUICE
+                  </span>
+                  <span className="px-2 py-0.5 rounded bg-red-100 text-red-800 text-[10px] font-bold">
+                    BOILED / FLASH-HEATED
+                  </span>
+                </div>
+                <p className="text-xs text-brand-700 leading-relaxed font-sans">
+                  Heated to 95°C for shelf life. Destroys delicate living vitamins, natural aroma, and essential phytonutrients. Often packed in single-use plastic.
+                </p>
+                <div className="text-[11px] font-mono text-red-700 font-semibold pt-1">
+                  &times; Killed live enzymes &bull; Months-old store shelf life
+                </div>
+              </div>
+
+              {/* Fruits & Roots Cold-Pressed Card */}
+              <div className="bg-brand-950 text-white rounded-2xl p-6 border border-brand-800 shadow-xl space-y-2 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-brand-amber/15 blur-2xl pointer-events-none" />
+
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="text-brand-gold font-bold uppercase tracking-wider flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-brand-amber" /> FRUITS &amp; ROOTS METHOD
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">
+                    CHILLED COLD WATER PRESSURE
+                  </span>
+                </div>
+
+                <p className="text-xs text-brand-cream/80 leading-relaxed font-sans pt-1">
+                  100% raw juice bottled immediately at 2.2°C. Cold hydraulic pressure eliminates bacteria without heating a single degree. Taste the crisp snap of sunrise farm harvest.
+                </p>
+
+                <div className="text-xs font-mono text-emerald-400 font-bold pt-2 flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>100% Alive Enzymes &bull; Delivered Ice-Cold in Mumbai</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ================================================================= */}
+        {/* SLIDE 04: REUSABLE GLASS (ZERO PLASTIC. PURE GLASS.)              */}
+        {/* ================================================================= */}
+        <div className="w-screen h-full shrink-0 flex items-center justify-center px-6 sm:px-12 lg:px-20 pt-20 pb-16 bg-[#171412] text-brand-cream relative">
+          <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+            {/* Left Narrative Column */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="flex items-center gap-3 font-mono text-xs">
+                <span className="px-3 py-1 rounded-full bg-brand-amber text-brand-950 font-bold tracking-widest uppercase">
+                  {CHAPTERS[3].badge}
+                </span>
+                <span className="px-3 py-1 rounded-full bg-white/10 text-brand-gold font-semibold uppercase tracking-wider">
+                  {CHAPTERS[3].subBadge}
+                </span>
+              </div>
+
+              <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-black text-brand-cream uppercase tracking-tight leading-[0.88]">
+                {CHAPTERS[3].headline}
+                <br />
+                <span className="font-editorial italic font-normal text-brand-gold lowercase tracking-normal">
+                  {CHAPTERS[3].headlineAccent}
+                </span>
+              </h2>
+
+              <p className="text-sm sm:text-base md:text-lg text-brand-cream/80 max-w-xl font-normal leading-relaxed">
+                {CHAPTERS[3].body}
+              </p>
+
+              <div className="pt-2 flex items-center gap-3 text-xs font-mono text-brand-gold uppercase tracking-widest">
+                <RotateCcw className="w-4 h-4 text-brand-amber shrink-0" />
+                <span>CIRCULAR PACKAGING &bull; RINSE &bull; RETURN &bull; INSTANT UPI REFUND</span>
+              </div>
+            </div>
+
+            {/* Right Visual Card: Bottle Deposit Circular Economy Stats */}
+            <div className="lg:col-span-6">
+              <div className="bg-[#241F1A] rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl space-y-6">
+                <div className="flex items-center justify-between pb-3 border-b border-white/10 font-mono text-xs">
+                  <span className="text-brand-gold font-bold uppercase tracking-wider flex items-center gap-2">
+                    <RotateCcw className="w-4 h-4 text-brand-amber" /> BOTTLE RECYCLING IMPACT
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded bg-brand-amber/20 text-brand-amber text-xs font-bold">
+                    MUMBAI CIRCULAR INITIATIVE
+                  </span>
+                </div>
+
+                {/* Giant Metric Counter */}
+                <div className="bg-black/30 p-6 rounded-2xl border border-white/5 text-center space-y-1">
+                  <div className="font-display text-4xl sm:text-5xl font-black text-white tracking-tight">
+                    248,600+
+                  </div>
+                  <div className="font-mono text-xs text-brand-amber uppercase tracking-wider font-bold">
+                    PLASTIC BOTTLES SAVED FROM MUMBAI LANDFILLS
+                  </div>
+                </div>
+
+                {/* 3 Step Circular Deposit Workflow */}
+                <div className="grid grid-cols-3 gap-3 text-center font-mono text-xs">
+                  <div className="bg-white/5 p-3 rounded-xl border border-white/5 space-y-1">
+                    <span className="text-brand-gold font-bold block text-sm">/01</span>
+                    <span className="text-white block font-semibold text-[11px]">DRINK RAW</span>
+                    <span className="text-[10px] text-white/50 block">Pure taste in crystal glass</span>
+                  </div>
+
+                  <div className="bg-white/5 p-3 rounded-xl border border-white/5 space-y-1">
+                    <span className="text-brand-gold font-bold block text-sm">/02</span>
+                    <span className="text-white block font-semibold text-[11px]">RINSE &amp; HAND</span>
+                    <span className="text-[10px] text-white/50 block">Give empty bottle to rider</span>
+                  </div>
+
+                  <div className="bg-white/5 p-3 rounded-xl border border-white/5 space-y-1">
+                    <span className="text-brand-gold font-bold block text-sm">/03</span>
+                    <span className="text-emerald-400 block font-semibold text-[11px]">GET ₹25 UPI</span>
+                    <span className="text-[10px] text-emerald-400/70 block">Instant account credit</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* ------------------------------------------------------------------- */}
-      {/* 3. Sticky Right Rail: Chapter Navigation Index (Direct Blum Jeffrey) */}
+      {/* 3. Jeffrey Blum Right-Hand Vertical Chapter Tracker                 */}
       {/* ------------------------------------------------------------------- */}
-      <div className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-4 font-mono text-xs select-none">
+      <div className="absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col gap-5 font-mono text-xs select-none">
         {CHAPTERS.map((ch, idx) => {
           const isActive = activeIdx === idx;
           return (
             <button
               key={ch.id}
-              onClick={() => jumpToChapter(idx)}
-              className="group flex items-center justify-end gap-3 text-right py-1 transition-all"
+              onClick={() => jumpToSlide(idx)}
+              className="group flex items-center justify-end gap-3 transition-all duration-300 cursor-pointer"
             >
               <span
-                className={`transition-colors uppercase tracking-widest ${
-                  isActive
-                    ? 'text-brand-amber font-bold'
-                    : 'text-white/40 group-hover:text-white/80'
+                className={`text-[11px] font-bold uppercase tracking-widest transition-colors duration-200 ${
+                  isActive ? 'text-brand-amber font-black' : 'text-white/40 group-hover:text-white/80'
                 }`}
               >
                 {ch.code}
               </span>
               <span
-                className={`block h-[2px] transition-all duration-300 ${
+                className={`h-[2px] transition-all duration-300 ${
                   isActive
-                    ? 'w-10 bg-brand-amber'
-                    : 'w-4 bg-white/20 group-hover:w-7 group-hover:bg-white/60'
+                    ? 'w-10 bg-brand-amber shadow-[0_0_8px_rgba(200,116,27,0.8)]'
+                    : 'w-4 bg-white/20 group-hover:w-6 group-hover:bg-white/50'
                 }`}
               />
             </button>
@@ -901,12 +620,40 @@ export const BentoGrid: React.FC = () => {
       </div>
 
       {/* ------------------------------------------------------------------- */}
-      {/* 4. Bottom Horizontal Progress Line */}
+      {/* 4. Bottom Sticky Telemetry Ribbon & Progress Bar                    */}
       {/* ------------------------------------------------------------------- */}
-      <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/15 z-40">
+      <div className="absolute bottom-0 left-0 right-0 z-30 px-6 sm:px-12 py-3 bg-brand-950/85 backdrop-blur-md border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
+        {/* Cold-Chain Dispatch Telemetry (From original site) */}
+        <div className="flex items-center gap-3 text-white/80">
+          <span className="px-2 py-0.5 rounded bg-brand-amber text-brand-950 font-black text-[11px]">
+            2.2°C
+          </span>
+          <span className="font-semibold text-white/90 truncate">
+            COLD-CHAIN INTEGRITY DISPATCH &bull; Bandra West Press Room 01 &bull; Lot #0849-BOM
+          </span>
+        </div>
+
+        {/* Scroll Progress & Jump CTA */}
+        <div className="flex items-center gap-4 shrink-0">
+          <div className="hidden sm:flex items-center gap-2 text-white/50 text-[11px]">
+            <span>SCROLL TO DISCOVER</span>
+            <ArrowDown className="w-3 h-3 text-brand-amber animate-bounce" />
+          </div>
+
+          <a
+            href="#catalog"
+            onClick={() => playPopSound()}
+            className="px-4 py-1.5 rounded-full bg-brand-amber hover:bg-brand-gold text-brand-950 font-bold uppercase tracking-wider text-[11px] transition shadow-md flex items-center gap-1.5"
+          >
+            <span>EXPLORE BLENDS</span>
+            <ArrowUpRight className="w-3 h-3 text-brand-950" />
+          </a>
+        </div>
+
+        {/* Ultra-fine horizontal scrubber line */}
         <div
-          className="h-full bg-brand-amber transition-all duration-150 ease-out"
-          style={{ width: `${Math.max(4, scrollProgress * 100)}%` }}
+          className="absolute bottom-0 left-0 h-[2px] bg-brand-amber transition-all duration-75 origin-left"
+          style={{ width: `${Math.round(scrollProgress * 100)}%` }}
         />
       </div>
     </section>
