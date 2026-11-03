@@ -28,40 +28,40 @@ export const FloatingProduce: React.FC = () => {
   const layerMidRef = useRef<HTMLDivElement>(null);
   const layerNearRef = useRef<HTMLDivElement>(null);
 
-  // Carefully curated botanical produce distributed across the Hero canvas
+  // Carefully curated botanical produce distributed across the Hero canvas perimeter
   const elementsRef = useRef<BotanicalElement[]>([
     // Top-Left Cluster (Framing "COLD-")
-    { id: 1, type: 'orange-slice', x: 6, y: 10, size: 78, depth: 0.12, rotation: 18, speed: 1.1, opacity: 0.9 },
-    { id: 2, type: 'mint-leaf', x: 15, y: 7, size: 62, depth: 0.16, rotation: -32, speed: 1.3, opacity: 0.88 },
-    { id: 3, type: 'pomegranate-arils', x: 23, y: 14, size: 48, depth: 0.08, rotation: 14, speed: 0.9, opacity: 0.85 },
+    { id: 1, type: 'orange-slice', x: 5, y: 10, size: 74, depth: 0.12, rotation: 18, speed: 1.1, opacity: 0.75 },
+    { id: 2, type: 'mint-leaf', x: 14, y: 7, size: 58, depth: 0.16, rotation: -32, speed: 1.3, opacity: 0.75 },
+    { id: 3, type: 'pomegranate-arils', x: 18, y: 16, size: 44, depth: 0.08, rotation: 14, speed: 0.9, opacity: 0.70 },
 
-    // Top-Center & Top-Right (Framing "PRESSED." and "RAW.")
-    { id: 4, type: 'tropical-leaf', x: 73, y: 6, size: 76, depth: 0.14, rotation: 26, speed: 1.4, opacity: 0.88 },
-    { id: 5, type: 'orange-wedge', x: 86, y: 11, size: 72, depth: 0.11, rotation: -22, speed: 1.0, opacity: 0.92 },
-    { id: 6, type: 'mint-leaf', x: 92, y: 22, size: 58, depth: 0.15, rotation: 42, speed: 1.2, opacity: 0.85 },
-    { id: 7, type: 'lemon-wheel', x: 80, y: 24, size: 60, depth: 0.09, rotation: -15, speed: 1.1, opacity: 0.88 },
+    // Top-Right Cluster (Framing "PRESSED." and "RAW.")
+    { id: 4, type: 'tropical-leaf', x: 84, y: 6, size: 72, depth: 0.14, rotation: 26, speed: 1.4, opacity: 0.75 },
+    { id: 5, type: 'orange-wedge', x: 89, y: 12, size: 68, depth: 0.11, rotation: -22, speed: 1.0, opacity: 0.78 },
+    { id: 6, type: 'mint-leaf', x: 93, y: 22, size: 54, depth: 0.15, rotation: 42, speed: 1.2, opacity: 0.70 },
+    { id: 7, type: 'lemon-wheel', x: 86, y: 26, size: 56, depth: 0.09, rotation: -15, speed: 1.1, opacity: 0.72 },
 
-    // Middle-Left (Flanking Headline & Bottle)
-    { id: 8, type: 'beet-wheel', x: 4, y: 34, size: 82, depth: 0.13, rotation: -12, speed: 1.2, opacity: 0.92 },
-    { id: 9, type: 'dew-leaf', x: 12, y: 44, size: 54, depth: 0.18, rotation: 28, speed: 1.5, opacity: 0.88 },
-    { id: 10, type: 'turmeric-root', x: 6, y: 58, size: 76, depth: 0.10, rotation: -36, speed: 0.95, opacity: 0.9 },
-    { id: 11, type: 'orange-wedge', x: 16, y: 68, size: 66, depth: 0.15, rotation: 35, speed: 1.3, opacity: 0.88 },
+    // Middle-Left Flank (Clear of central 3D stage)
+    { id: 8, type: 'beet-wheel', x: 4, y: 36, size: 76, depth: 0.13, rotation: -12, speed: 1.2, opacity: 0.75 },
+    { id: 9, type: 'dew-leaf', x: 11, y: 46, size: 50, depth: 0.18, rotation: 28, speed: 1.5, opacity: 0.72 },
+    { id: 10, type: 'turmeric-root', x: 5, y: 58, size: 70, depth: 0.10, rotation: -36, speed: 0.95, opacity: 0.75 },
+    { id: 11, type: 'orange-wedge', x: 14, y: 70, size: 62, depth: 0.15, rotation: 35, speed: 1.3, opacity: 0.75 },
 
-    // Middle-Right (Flanking Headline & Bottle)
-    { id: 12, type: 'dragonfruit-wheel', x: 90, y: 42, size: 78, depth: 0.13, rotation: -18, speed: 1.1, opacity: 0.92 },
-    { id: 13, type: 'mint-leaf', x: 84, y: 54, size: 64, depth: 0.17, rotation: -40, speed: 1.4, opacity: 0.88 },
-    { id: 14, type: 'beet-wheel', x: 92, y: 66, size: 70, depth: 0.11, rotation: 22, speed: 1.0, opacity: 0.9 },
-    { id: 15, type: 'dew-leaf', x: 82, y: 72, size: 50, depth: 0.16, rotation: 18, speed: 1.2, opacity: 0.85 },
+    // Middle-Right Flank (Clear of central 3D stage)
+    { id: 12, type: 'dragonfruit-wheel', x: 91, y: 42, size: 74, depth: 0.13, rotation: -18, speed: 1.1, opacity: 0.78 },
+    { id: 13, type: 'mint-leaf', x: 87, y: 54, size: 58, depth: 0.17, rotation: -40, speed: 1.4, opacity: 0.72 },
+    { id: 14, type: 'beet-wheel', x: 93, y: 66, size: 66, depth: 0.11, rotation: 22, speed: 1.0, opacity: 0.75 },
+    { id: 15, type: 'dew-leaf', x: 85, y: 74, size: 48, depth: 0.16, rotation: 18, speed: 1.2, opacity: 0.70 },
 
     // Lower-Left & Lower-Right Framing
-    { id: 16, type: 'pomegranate-arils', x: 8, y: 80, size: 54, depth: 0.07, rotation: -15, speed: 0.85, opacity: 0.85 },
-    { id: 17, type: 'tropical-leaf', x: 18, y: 86, size: 74, depth: 0.14, rotation: 48, speed: 1.3, opacity: 0.88 },
-    { id: 18, type: 'orange-slice', x: 76, y: 84, size: 74, depth: 0.12, rotation: -28, speed: 1.1, opacity: 0.9 },
-    { id: 19, type: 'lemon-wheel', x: 88, y: 88, size: 64, depth: 0.09, rotation: 16, speed: 1.0, opacity: 0.88 },
+    { id: 16, type: 'pomegranate-arils', x: 7, y: 82, size: 50, depth: 0.07, rotation: -15, speed: 0.85, opacity: 0.70 },
+    { id: 17, type: 'tropical-leaf', x: 16, y: 88, size: 68, depth: 0.14, rotation: 48, speed: 1.3, opacity: 0.75 },
+    { id: 18, type: 'orange-slice', x: 84, y: 86, size: 68, depth: 0.12, rotation: -28, speed: 1.1, opacity: 0.75 },
+    { id: 19, type: 'lemon-wheel', x: 91, y: 90, size: 58, depth: 0.09, rotation: 16, speed: 1.0, opacity: 0.72 },
 
-    // Subtle Subtle Floating accents near center edges
-    { id: 20, type: 'dew-leaf', x: 26, y: 30, size: 42, depth: 0.06, rotation: -18, speed: 1.1, opacity: 0.75 },
-    { id: 21, type: 'mint-leaf', x: 72, y: 38, size: 44, depth: 0.07, rotation: 24, speed: 1.2, opacity: 0.75 },
+    // Subtle ambient perimeter leaves (strictly outside central 3D stage)
+    { id: 20, type: 'dew-leaf', x: 13, y: 28, size: 38, depth: 0.06, rotation: -18, speed: 1.1, opacity: 0.60 },
+    { id: 21, type: 'mint-leaf', x: 86, y: 36, size: 40, depth: 0.07, rotation: 24, speed: 1.2, opacity: 0.60 },
   ]);
 
   // Hardware-accelerated smooth parallax animation with zero React re-renders
