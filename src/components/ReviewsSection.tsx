@@ -117,19 +117,49 @@ export const ReviewsSection: React.FC = () => {
           alt="Fresh Organic Botanical Harvest Macro Background"
           className="w-full h-full object-cover object-center scale-105"
         />
-        {/* Warm Earthy Botanical Harvest Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#241712]/88 via-[#1A110D]/80 to-[#261510]/92 backdrop-blur-[2px]" />
+        {/* Warm Earthy Botanical Harvest Gradient Overlay with High-Contrast Scrim */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#140D0A]/94 via-[#140D0A]/88 to-[#1A0E0B]/96 backdrop-blur-[3px]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-16 sm:pb-24">
         
-        {/* Top Press Mentions Ticker (Retaining Editorial Credibility) */}
-        <div className="mb-14 pb-8 border-b border-white/15">
-          <div className="flex flex-wrap items-center justify-around gap-6 text-center font-mono text-xs uppercase tracking-widest text-white/70">
+        {/* Top Press Mentions (Editorial Credibility with 100% Contrast & High-End Typography) */}
+        <div className="mb-14 sm:mb-16">
+          {/* Section Sub-Eyebrow */}
+          <div className="text-center mb-5 flex items-center justify-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-[#F59E0B] font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-ping" />
+            <span>CRITICALLY ACCLAIMED &bull; EDITORIAL PRAISE</span>
+          </div>
+
+          {/* 4 Frosted Glass Press Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {PRESS_MENTIONS.map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2">
-                <span className="font-display font-black text-white text-sm sm:text-base uppercase tracking-wider">{item.outlet}</span>
-                <span className="text-brand-amber font-normal hidden md:inline">&mdash; &ldquo;{item.quote}&rdquo;</span>
+              <div
+                key={idx}
+                className="bg-[#0C0A09]/85 backdrop-blur-xl border border-white/20 hover:border-[#F59E0B]/60 rounded-2xl p-5 flex flex-col justify-between shadow-[0_12px_32px_rgba(0,0,0,0.6)] hover:bg-[#120F0D] transition-all duration-300 group hover:-translate-y-1"
+              >
+                <div>
+                  {/* Publication Title & 5 Gold Stars */}
+                  <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-3">
+                    <span className="font-sans font-black text-sm text-white tracking-wider uppercase group-hover:text-[#F59E0B] transition-colors">
+                      {item.outlet}
+                    </span>
+                    <span className="text-[#F59E0B] text-xs tracking-widest select-none">
+                      ★★★★★
+                    </span>
+                  </div>
+
+                  {/* High Contrast Editorial Quote */}
+                  <p className="font-serif italic text-white text-xs sm:text-[13px] leading-relaxed drop-shadow-sm font-normal">
+                    &ldquo;{item.quote}&rdquo;
+                  </p>
+                </div>
+
+                {/* Bottom Verified Badge */}
+                <div className="pt-3 mt-3 border-t border-white/10 flex items-center gap-1.5 font-mono text-[10px] text-white/60 font-semibold uppercase tracking-wider">
+                  <span className="text-[#F59E0B]">✦</span>
+                  <span>VERIFIED PRESS FEATURE</span>
+                </div>
               </div>
             ))}
           </div>
