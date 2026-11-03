@@ -1297,7 +1297,8 @@ export const ThreeJuiceGlassCanvas: React.FC<ThreeJuiceGlassCanvasProps> = ({
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
-      if (!isVisible) return; // Completely pause WebGL draw calls when offscreen
+      // Pause WebGL drawing if offscreen or while preloader is active to guarantee 120 FPS
+      if (!isVisible || document.getElementById('huyml-preloader')) return;
 
       const delta = Math.min(clock.getDelta(), 0.1);
       const time = clock.getElapsedTime();
