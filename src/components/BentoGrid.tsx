@@ -591,7 +591,7 @@ export const BentoGrid: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 3. Jeffrey Blum Right-Hand Vertical Chapter Tracker                 */}
       {/* ------------------------------------------------------------------- */}
-      <div className="absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col gap-5 font-mono text-xs select-none">
+      <div className="absolute right-6 sm:right-10 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col gap-4 font-mono text-xs select-none bg-brand-950/85 backdrop-blur-md px-4 py-5 rounded-2xl border border-white/15 shadow-2xl">
         {CHAPTERS.map((ch, idx) => {
           const isActive = activeIdx === idx;
           return (
@@ -602,7 +602,7 @@ export const BentoGrid: React.FC = () => {
             >
               <span
                 className={`text-[11px] font-bold uppercase tracking-widest transition-colors duration-200 ${
-                  isActive ? 'text-brand-amber font-black' : 'text-white/40 group-hover:text-white/80'
+                  isActive ? 'text-brand-amber font-black' : 'text-white/70 group-hover:text-white'
                 }`}
               >
                 {ch.code}
@@ -611,7 +611,7 @@ export const BentoGrid: React.FC = () => {
                 className={`h-[2px] transition-all duration-300 ${
                   isActive
                     ? 'w-10 bg-brand-amber shadow-[0_0_8px_rgba(200,116,27,0.8)]'
-                    : 'w-4 bg-white/20 group-hover:w-6 group-hover:bg-white/50'
+                    : 'w-4 bg-white/40 group-hover:w-6 group-hover:bg-white/80'
                 }`}
               />
             </button>
