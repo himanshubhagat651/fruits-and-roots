@@ -26,6 +26,7 @@ import { ProductDetailModal } from './components/ProductDetailModal';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { SearchModal } from './components/SearchModal';
+import { CookieBanner } from './components/CookieBanner';
 import { CheckCircle2 } from 'lucide-react';
 
 const MainApp: React.FC = () => {
@@ -200,6 +201,7 @@ const MainApp: React.FC = () => {
       <CartDrawer />
       <CheckoutModal />
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      <CookieBanner />
     </div>
   );
 };

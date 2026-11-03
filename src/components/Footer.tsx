@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
-import { playChimeSound } from '../utils/audio';
+import { playChimeSound, playPopSound } from '../utils/audio';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -38,7 +38,13 @@ export const Footer: React.FC = () => {
     { name: 'Privacy Policy', href: '#' },
     { name: 'FSSAI Lic. #10023022001489', href: '#' },
     { name: '₹25 Bottle Return Policy', href: '#terroir' },
-    { name: 'Cookie Preferences', href: '#' },
+    {
+      name: 'Cookie Preferences',
+      onClick: () => {
+        playPopSound();
+        window.dispatchEvent(new CustomEvent('open-cookie-settings'));
+      },
+    },
   ];
 
   return (
@@ -178,12 +184,22 @@ export const Footer: React.FC = () => {
                 <ul className="space-y-2 text-sm font-sans text-white/70">
                   {LEGAL_LINKS.map((item) => (
                     <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="hover:text-white transition-colors block"
-                      >
-                        {item.name}
-                      </a>
+                      {item.onClick ? (
+                        <button
+                          type="button"
+                          onClick={item.onClick}
+                          className="hover:text-white transition-colors block text-left cursor-pointer"
+                        >
+                          {item.name}
+                        </button>
+                      ) : (
+                        <a
+                          href={item.href}
+                          className="hover:text-white transition-colors block"
+                        >
+                          {item.name}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>
